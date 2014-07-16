@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.48.4 r9943 custom"
+   width="100%"
+   height="100%"
+   sodipodi:docname="new-totautis-station-game.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1860"
+     inkscape:window-height="1036"
+     id="namedview3036"
+     showgrid="false"
+     inkscape:zoom="2.5371828"
+     inkscape:cx="152.79658"
+     inkscape:cy="686.28304"
+     inkscape:window-x="60"
+     inkscape:window-y="22"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2985" />
+  <metadata
+     id="metadata3040">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3038" />
+  <path
+     id="dorms 2"
+     d="M251.7664 144.03392L306.95781 144.03392L306.95781 115.6674L251.7664 115.6674L251.7664 144.03392"
+     style="fill:#06a33e;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="RLS BOHR 2-entry"
+     d="M140.34741 344.039L158.18043 344.039L158.18043 331.69876L140.34741 331.69876L140.34741 344.039"
+     style="fill:#cccccc;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="RLS BOHR 2"
+     d="M154.70358 350.09077L171.02308 348.25733L179.87825 345.36111L183.42549 337.39596L179.87825 330.77327L171.90083 326.89379L155.09772 325.25534"
+     style="fill:#666666;stroke:none"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccccc" />
+  <path
+     id="LSS DAEDALUS-entry"
+     d="M59.192167 427.71028L69.960997 427.71028L69.960997 413.92994L59.192167 413.92994L59.192167 427.71028"
+     style="fill:#cccccc;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="LSS DAEDALUS"
+     d="M59.010364 439.36532L101.06066 438.57705L126.93358 436.78245L126.28549 428.55906L101.06066 425.31133L57.980127 424.6975L4.22519 417.82271L4.619328 444.88325"
+     style="fill:#999999;stroke:none"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccccccc" />
+  <path
+     id="hangar-entry"
+     d="M75.990157 306.56308L105.91051 306.56308L105.91051 266.11332L75.990157 266.11332L75.990157 306.56308"
+     style="fill:#a3a281;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="hangar"
+     d="M25.764237 414.16645L143.78609 414.16645L143.78609 306.18797L25.764237 306.18797L25.764237 414.16645"
+     style="fill:#a38884;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="hangar-ceiling"
+     d="M30.260177 409.28309L139.11072 409.28309L139.11072 322.99672L30.260177 322.99672L30.260177 409.28309"
+     style="fill:#a32b35;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lounge-window"
+     d="M312.99087 169.95973L355.51412 169.95973L355.51412 69.98349L312.99087 69.98349L312.99087 169.95973"
+     style="fill:#1f13a3;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lounge-skylights"
+     d="M161.58219 140.82252L317.53165 140.82252L317.53165 120.02256L161.58219 120.02256L161.58219 140.82252"
+     style="fill:#0d1fcc;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="rect3006"
+     d="M84.384447 165.04351L187.03427 165.04351L187.03427 80.48443L84.384447 80.48443L84.384447 165.04351"
+     style="fill:#57a32c;stroke:none"
+     inkscape:connector-curvature="0">
+    <path
+       id="rect3012"
+       d="M235.34473 161.48863L246.7809 161.48863L246.7809 133.28195L235.34473 133.28195L235.34473 161.48863"
+       style="fill:#cc0000;stroke:none"
+       inkscape:connector-curvature="0" />
+  </path>
+  <path
+     id="rect3008"
+     d="M66.852527 265.03674L179.06236 265.03674L179.06236 167.89949L66.852527 167.89949L66.852527 265.03674"
+     style="fill:#a36b4f;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="rect3010"
+     d="M61.130687 257.83513L174.12498 257.83513L174.12498 95.6292L61.130687 95.6292L61.130687 257.83513"
+     style="fill:#0d1fcc;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 1-entry"
+     d="M220.47493 124.3388L234.17637 124.3388L234.17637 96.12749L220.47493 96.12749L220.47493 124.3388"
+     style="fill:#cc0000;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 3-entry"
+     d="M264.87761 122.966L276.31379 122.966L276.31379 94.75932L264.87761 94.75932L264.87761 122.966"
+     style="fill:#cc0000;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 4-entry"
+     d="M274.77991 163.20403L286.21609 163.20403L286.21609 134.99735L274.77991 134.99735L274.77991 163.20403"
+     style="fill:#cc0000;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 2"
+     d="M214.81895 181.88071L251.17302 181.88071L251.17302 153.62314L214.81895 153.62314L214.81895 181.88071"
+     style="fill:#663333;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 4"
+     d="M255.7308 180.56399L289.8196 180.56399L289.8196 152.31104L255.7308 152.31104L255.7308 180.56399"
+     style="fill:#663333;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 3"
+     d="M256.13007 103.77261L290.21887 103.77261L290.21887 75.51966L256.13007 75.51966L256.13007 103.77261"
+     style="fill:#663333;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 1"
+     d="M215.12348 104.94538L251.47754 104.94538L251.47754 76.6878L215.12348 76.6878L215.12348 104.94538"
+     style="fill:#663333;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lounge"
+     d="M298.12564 175.62405L349.97767 175.62405L349.97767 65.31489L298.12564 65.31489L298.12564 175.62405"
+     style="fill:#4aa353;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="dorms 1"
+     d="M183.77828 144.03392L252.67698 144.03392L252.67698 115.6674L183.77828 115.6674L183.77828 144.03392"
+     style="fill:#06a33e;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="elevator 1"
+     d="M81.107587 77.87643L117.64547 77.87643L117.64547 44.71457L81.107587 44.71457L81.107587 77.87643"
+     style="fill:#42a31d;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="main hall 1"
+     d="M56.160107 267.66523L191.96332 267.66523L191.96332 76.69101L56.160107 76.69101L56.160107 267.66523"
+     style="fill:#4fa308;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:#0000ff;stroke:none"
+     d="M110.0069 437.05423L113.55414 434.29527L114.34242 430.74802L110.79518 426.80664L120.25449 429.56561L119.86035 433.50699L110.0069 437.05423"
+     id="LSS DAEDALUS-windshield"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     id="main hall 1-generators"
+     d="M59.120689 113.13148L106.02311 113.13148L106.02311 230.97871L59.120689 230.97871L59.120689 113.13148"
+     style="opacity:0.91284407;fill:#999999;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#cc0000;stroke:none"
+     d="M223.54198 161.23334L234.97816 161.23334L234.97816 133.02666L223.54198 133.02666L223.54198 161.23334"
+     id="pod 2-entry" />
+</svg>

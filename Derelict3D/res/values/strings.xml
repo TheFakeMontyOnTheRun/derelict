@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Derelict</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main_menu">Derelict</string>
+    <string name="title_activity_screen_controller">Derelict</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_play_game">Derelict</string>
+    <string name="odb">Ostrich Design Bureau</string>
+    <string name="presents">presents...</string>
+    <string name="odblogodesc">Ostrich Design Bureau logo</string>
+    <string name="backtomenu">Back to menu</string>
+    <string name="viewbob_options">View bob</string>
+    <string name="playmusic_options">Play music</string>
+    <string name="vibrate_options">Vibrate</string>
+    <string name="title_activity_story_telling">Derelict</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="title_activity_load_game">Loading...</string>
+    <string name="loading">Loading...</string>
+    <string name="title_activity_terminal_access">TerminalAccessActivity</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

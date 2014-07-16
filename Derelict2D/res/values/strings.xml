@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Derelict2D</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_derelict1_d">Derelict2D - 1D</string>
+    <string name="title_activity_explore_station">Explore the station</string>
+    <string name="title_activity_manage_inventory">Manager you inventory</string>
+    <string name="title_activity_show_game_splash">Derelict</string>
+    <string name="title_activity_show_outcome">...and then...</string>
+    <string name="title_activity_show_how_to_play">How to play</string>
+    <string name="title_activity_show_credits">ShowCreditsActivity</string>
+    <string name="title_activity_derelict2_d">Explore the Totautis Station</string>
+
+</resources>

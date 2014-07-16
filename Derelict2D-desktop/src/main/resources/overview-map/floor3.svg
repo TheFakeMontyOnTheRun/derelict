@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.48.4 r9943 custom"
+   width="100%"
+   height="100%"
+   sodipodi:docname="floor3.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1860"
+     inkscape:window-height="1036"
+     id="namedview3036"
+     showgrid="false"
+     inkscape:zoom="1.2685914"
+     inkscape:cx="381.14922"
+     inkscape:cy="745.27198"
+     inkscape:window-x="60"
+     inkscape:window-y="22"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2985" />
+  <metadata
+     id="metadata3040">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3038" />
+  <path
+     id="lab 2-entry"
+     d="M137.63755 304.42913L167.5579 304.42913L167.5579 263.97937L137.63755 263.97937L137.63755 304.42913"
+     style="fill:#a3a281;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:#a05a2c;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M54.067337 296.20645L183.38303 296.20645L183.38303 469.55636L54.067337 469.55636L54.067337 296.20645"
+     id="lab 2-walls"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#ac9393;stroke:none"
+     d="M14.892414 137.7854L57.736504 137.7854L57.736504 103.83526L14.892414 103.83526L14.892414 137.7854"
+     id="lab 1-entry" />
+  <path
+     style="fill:#241c1c;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M-104.66484 89.089058L22.860001 89.089058L22.860001 244.18233L-104.66484 244.18233L-104.66484 89.089058"
+     id="lab 1-walls"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lab 3-entry"
+     d="M182.67153 136.37129L208.56769 136.37129L208.56769 105.57425L182.67153 105.57425L182.67153 136.37129"
+     style="fill:#917c6f;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lab 2"
+     d="M59.6601 463.70302L177.68195 463.70302L177.68195 302.64073L59.6601 302.64073L59.6601 463.70302"
+     style="fill:#008080;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="rect3006"
+     d="M84.384447 165.04351L187.03427 165.04351L187.03427 80.48443L84.384447 80.48443L84.384447 165.04351"
+     style="fill:#57a32c;stroke:none;opacity:1"
+     inkscape:connector-curvature="0">
+    <path
+       id="rect3012"
+       d="M235.34473 161.48863L246.7809 161.48863L246.7809 133.28195L235.34473 133.28195L235.34473 161.48863"
+       style="fill:#cc0000;stroke:none"
+       inkscape:connector-curvature="0" />
+  </path>
+  <path
+     id="rect3008"
+     d="M66.852527 265.03674L179.06236 265.03674L179.06236 167.89949L66.852527 167.89949L66.852527 265.03674"
+     style="fill:#a36b4f;stroke:none;opacity:1"
+     inkscape:connector-curvature="0" />
+  <path
+     id="rect3010"
+     d="M61.130687 257.83513L174.12498 257.83513L174.12498 95.6292L61.130687 95.6292L61.130687 257.83513"
+     style="fill:#0d1fcc;stroke:none;opacity:1"
+     inkscape:connector-curvature="0" />
+  <path
+     id="elevator 3"
+     d="M81.107587 77.87643L117.64547 77.87643L117.64547 44.71457L81.107587 44.71457L81.107587 77.87643"
+     style="fill:#008000;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="main hall 3-walls"
+     d="M56.160107 267.66523L191.96332 267.66523L191.96332 76.69101L56.160107 76.69101L56.160107 267.66523"
+     style="fill:#806600;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     id="lab 1"
+     d="M-101.15141 91.848027L19.312768 91.848027L19.312768 241.62043L-101.15141 241.62043L-101.15141 91.848027"
+     style="fill:#008080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     style="fill:#483737;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M206.52828 79.235617L344.89193 79.235617L344.89193 239.64975L206.52828 239.64975L206.52828 79.235617"
+     id="lab 3-walls"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:#008080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M211.25793 84.818344L339.73612 84.818344L339.73612 234.9201L211.25793 234.9201L211.25793 84.818344"
+     id="lab 3"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:#ffcc00;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M64.244484 85.935959L185.24483 85.935959L185.24483 259.75079L64.244484 259.75079L64.244484 85.935959"
+     id="main hall 3"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:#554400;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M63.444824 141.021L96.888538 141.021L96.888538 226.30247L63.444824 226.30247L63.444824 141.021"
+     id="main hall 3-generators"
+     inkscape:connector-curvature="0" />
+</svg>

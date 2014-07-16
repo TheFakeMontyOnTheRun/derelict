@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgrepeat"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".RootGameMenuActivity" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <br.odb.gamelib.android.GameView
+            android:id="@+id/gvbg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#AA888888"
+                android:orientation="vertical"
+                android:padding="10dp" >
+
+                <Button
+                    android:id="@+id/btnExploreStation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Start Game" />
+
+                <Button
+                    android:id="@+id/btnHowToPlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="How to Play" />
+
+                <Button
+                    android:id="@+id/btnAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="About this game" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#55FFFFFF" >
+
+                <LinearLayout
+                    android:layout_width="537dp"
+                    android:layout_height="match_parent"
+                    android:background="#77999999"
+                    android:orientation="vertical" >
+
+                    <CheckBox
+                        android:id="@+id/chkSound"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sound enabled" />
+
+                    <CheckBox
+                        android:id="@+id/chkSpeech"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Read the game texts to me (speech synthesis)" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="center"
+                    android:src="@drawable/logo1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

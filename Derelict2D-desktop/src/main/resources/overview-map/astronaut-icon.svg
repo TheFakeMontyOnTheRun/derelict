@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg3136"
+   version="1.1"
+   inkscape:version="0.48.4 r9943 custom"
+   sodipodi:docname="astronaut-icon.svg">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="33.525686"
+     inkscape:cy="1034.3992"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="849"
+     inkscape:window-height="550"
+     inkscape:window-x="901"
+     inkscape:window-y="55"
+     inkscape:window-maximized="0" />
+  <defs
+     id="defs3138" />
+  <metadata
+     id="metadata3141">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path3144"
+       d="M-12.352092 29.024137L-9.342591 4.844089L-2.776408 -7.245938L-12.625684 -4.223431L-17.823912 2.920675L-21.654186 0.997261L-15.635184 -8.070259L-4.965135 -14.390044L7.346458 -16.58823L11.450323 -24.831429L13.968883 -27.548916L18.837279 -26.205297L18.290095 -22.083697L15.007004 -15.489137L12.48155 -13.248678L17.469325 -9.444126L24.03551 -3.948659L31.969646 -4.498206L34.705557 -1.475699L22.667553 0.72249L12.818277 -2.849564L5.978504 3.195447L17.195735 12.262967L18.942388 27.962727L27.318601 32.321419L21.026009 32.046653L13.388114 31.596429L13.754471 22.290523L7.620051 13.087288L0.780276 8.416145L-2.502818 18.582758L-3.597182 30.123236L-8.248228 42.21326L-6.333089 46.88441L-14.267229 47.15918L-12.625684 41.114167L-12.352091 29.024137"
+       style="fill:#ff0000;stroke:#000000;stroke-width:0.09596353px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+</svg>

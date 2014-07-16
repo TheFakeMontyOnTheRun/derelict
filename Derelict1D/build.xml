@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="Derelict1D">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../keppler"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="gamelib-java.location" value="../gamelib-java"/>
+    <property name="derelict-core-java.location" value="../derelict-core-java"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="Plug-in Dependencies.libraryclasspath"/>
+    <path id="gamelib-java.classpath">
+        <pathelement location="${gamelib-java.location}/."/>
+    </path>
+    <path id="derelict-core-java.classpath">
+        <pathelement location="${derelict-core-java.location}/."/>
+        <path refid="gamelib-java.classpath"/>
+    </path>
+    <path id="Derelict1D.classpath">
+        <pathelement location="target/classes"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+        <path refid="derelict-core-java.classpath"/>
+        <path refid="gamelib-java.classpath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="build.xml" dir="${gamelib-java.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${derelict-core-java.location}" inheritAll="false" target="clean"/>
+    </target>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects">
+        <ant antfile="build.xml" dir="${gamelib-java.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${derelict-core-java.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="Derelict1D.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Derelict1DTelnetApp">
+        <java classname="br.odb.derelict.game.Derelict1DTelnetApp" failonerror="true" fork="yes">
+            <classpath refid="Derelict1D.classpath"/>
+        </java>
+    </target>
+    <target name="TestBombRemoteController">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="br.odb.derelict.tests.TestBombRemoteController" todir="${junit.output.dir}"/>
+            <classpath refid="Derelict1D.classpath"/>
+        </junit>
+    </target>
+    <target name="AstronautTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.java.AstronautTest" todir="${junit.output.dir}"/>
+            <classpath refid="Derelict1D.classpath"/>
+        </junit>
+    </target>
+    <target name="DerelictGameTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="br.odb.derelict.tests.DerelictGameTest" todir="${junit.output.dir}"/>
+            <classpath refid="Derelict1D.classpath"/>
+        </junit>
+    </target>
+    <target name="DerelictGameTest (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.java.DerelictGameTest" todir="${junit.output.dir}"/>
+            <classpath refid="Derelict1D.classpath"/>
+        </junit>
+    </target>
+    <target name="UseWithCommandTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="br.odb.derelict.tests.UseWithCommandTest" todir="${junit.output.dir}"/>
+            <classpath refid="Derelict1D.classpath"/>
+        </junit>
+    </target>
+    <target name="SecuredDoorTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="br.odb.derelict.tests.SecuredDoorTest" todir="${junit.output.dir}"/>
+            <classpath refid="Derelict1D.classpath"/>
+        </junit>
+    </target>
+    <target name="Derelict1D">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.java.AstronautTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.DerelictGameTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.DoorTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.DropCommandTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.ExamineCommandTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.ItemsCommandTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.MetalPlateTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.MoveCommandTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.PickCommandTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.SecuredDoorTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.SecuredLocationTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.TestBombRemoteController" todir="${junit.output.dir}"/>
+            <test name="tests.java.ToggleCommandTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.TotautisSpaceStationTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.UseCommandTest" todir="${junit.output.dir}"/>
+            <test name="tests.java.UseWithCommandTest" todir="${junit.output.dir}"/>
+            <classpath refid="Derelict1D.classpath"/>
+        </junit>
+    </target>
+    <target name="Derelict1DMainApp">
+        <java classname="br.odb.derelict.game.Derelict1DMainApp" failonerror="true" fork="yes">
+            <classpath refid="Derelict1D.classpath"/>
+        </java>
+    </target>
+    <target name="ItemsCommandTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="br.odb.derelict.tests.ItemsCommandTest" todir="${junit.output.dir}"/>
+            <classpath refid="Derelict1D.classpath"/>
+        </junit>
+    </target>
+    <target name="TotautisSpaceStationTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="br.odb.derelict.tests.TotautisSpaceStationTest" todir="${junit.output.dir}"/>
+            <classpath refid="Derelict1D.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>

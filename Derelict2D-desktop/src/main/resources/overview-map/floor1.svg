@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="floor1.svg"
+   height="100%"
+   width="100%"
+   inkscape:version="0.48.4 r9943 custom"
+   version="1.1"
+   id="svg2985">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1860"
+     inkscape:window-height="1036"
+     id="namedview3036"
+     showgrid="false"
+     inkscape:zoom="1.7940592"
+     inkscape:cx="184.28237"
+     inkscape:cy="768.70612"
+     inkscape:window-x="60"
+     inkscape:window-y="22"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2985"
+     showguides="true"
+     inkscape:guide-bbox="true" />
+  <metadata
+     id="metadata3040">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3038" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#cccccc;stroke:none"
+     d="M257.72389 343.25276L289.26768 343.25276L289.26768 324.64843L257.72389 324.64843L257.72389 343.25276"
+     id="RLS BOHR 2-entry" />
+  <path
+     inkscape:connector-curvature="0"
+     id="RLS BOHR 2"
+     d="M287.28942 309.63166L287.28942 359.51854L310.14262 356.33426L329.65145 336.16723L311.25741 310.69309L287.28942 309.63166"
+     style="fill:#ac9393;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#a3a281;stroke:none"
+     d="M75.990157 306.56308L105.91051 306.56308L105.91051 266.11332L75.990157 266.11332L75.990157 306.56308"
+     id="hangar-entry" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#a38884;stroke:none"
+     d="M55.044395 468.97798L263.80637 468.97798L263.80637 306.18797L55.044395 306.18797L55.044395 468.97798"
+     id="hangar-walls" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#6c5353;stroke:none"
+     d="M59.511163 464.58679L258.32505 464.58679L258.32505 309.54339L59.511163 309.54339L59.511163 464.58679"
+     id="hangar" />
+  <path
+     id="hangar-pit"
+     d="M98.514091 360.6347L253.05743 360.6347L253.05743 436.76017L98.514091 436.76017L98.514091 360.6347"
+     style="fill:#483e37;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:#6c5d53;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M285.81572 86.061905L348.11185 86.061905L348.11185 262.70613L285.81572 262.70613L285.81572 86.061905"
+     id="dorms 2-shielding"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dorms 1-shielding"
+     d="M199.66956 86.061905L284.2615 86.061905L284.2615 262.70613L199.66956 262.70613L199.66956 86.061905"
+     style="fill:#6c5d53;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#cc0000;stroke:none"
+     d="M312.72628 217.52863L324.72852 217.52863L324.72852 198.95201L312.72628 198.95201L312.72628 217.52863"
+     id="pod 4-entry" />
+  <path
+     id="pod 2-entry"
+     d="M247.61011 219.70234L259.42411 219.70234L259.42411 198.95797L247.61011 198.95797L247.61011 219.70234"
+     style="fill:#cc0000;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#cc0000;stroke:none"
+     d="M300.71061 160.81138L312.16637 160.81138L312.16637 138.29339L300.71061 138.29339L300.71061 160.81138"
+     id="pod 3-entry" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#88aa00;stroke:none"
+     d="M283.47208 201.02558L361.23415 201.02558L361.23415 160.14689L283.47208 160.14689L283.47208 201.02558"
+     id="dorms 2" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#cccccc;stroke:none"
+     d="M114.17311 489.39686L133.22147 489.39686L133.22147 468.62141L114.17311 468.62141L114.17311 489.39686"
+     id="LSS DAEDALUS-entry" />
+  <path
+     sodipodi:nodetypes="cccccccccccc"
+     inkscape:connector-curvature="0"
+     style="fill:#999999;stroke:none"
+     d="M141.73824 531.33073L166.75166 511.96161L188.23185 505.77977L233.99695 503.0742L232.85058 490.6765L188.23185 485.78017L112.02921 484.85475L102.43874 474.61326L16.94523 474.49024L-9.3043267 483.94558L-12.319229 509.19054L17.642398 515.28713"
+     id="LSS DAEDALUS" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#1f13a3;stroke:none"
+     d="M369.73445 254.85863L429.64769 254.85863L429.64769 91.472372L369.73445 91.472372L369.73445 254.85863"
+     id="lounge-window" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#cc0000;stroke:none"
+     d="M242.08811 162.98677L254.15597 162.98677L254.15597 140.46211L242.08811 140.46211L242.08811 162.98677"
+     id="pod 1-entry" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#663333;stroke:none"
+     d="M231.41488 255.56618L282.63603 255.56618L282.63603 214.8445L231.41488 214.8445L231.41488 255.56618"
+     id="path3203" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#663333;stroke:none"
+     d="M289.05773 252.68333L336.69309 252.68333L336.69309 212.95364L289.05773 212.95364L289.05773 252.68333"
+     id="path3205" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#663333;stroke:none"
+     d="M289.62029 141.4289L336.07323 141.4289L336.07323 102.29042L289.62029 102.29042L289.62029 141.4289"
+     id="path3201" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#663333;stroke:none"
+     d="M231.84395 144.69551L283.06509 144.69551L283.06509 103.97382L231.84395 103.97382L231.84395 144.69551"
+     id="path3199" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#4aa353;stroke:none"
+     d="M348.79005 262.45343L421.8471 262.45343L421.8471 87.584443L348.79005 87.584443L348.79005 262.45343"
+     id="path3209" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#668000;stroke:none"
+     d="M187.68005 201.02558L284.75504 201.02558L284.75504 160.14689L187.68005 160.14689L187.68005 201.02558"
+     id="dorms 1" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#42a31d;stroke:none"
+     d="M81.107587 77.87643L117.64547 77.87643L117.64547 44.71457L81.107587 44.71457L81.107587 77.87643"
+     id="elevator 1" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#4fa308;stroke:none"
+     d="M56.160107 267.66523L191.96332 267.66523L191.96332 76.69101L56.160107 76.69101L56.160107 267.66523"
+     id="path3207" />
+  <path
+     inkscape:connector-curvature="0"
+     id="LSS DAEDALUS-windshield"
+     d="M204.05633 503.48394L210.33084 499.32449L211.72518 493.97661L205.45068 488.03452L222.1827 492.19399L221.48553 498.13607L204.05633 503.48394"
+     style="fill:#554400;stroke:none" />
+  <path
+     id="main hall 1"
+     d="M59.908966 82.782852L187.21552 82.782852L187.21552 262.50975L59.908966 262.50975L59.908966 82.782852"
+     style="fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:#008000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M59.120689 113.13148L106.02311 113.13148L106.02311 230.97871L59.120689 230.97871L59.120689 113.13148"
+     id="main hall 1-generators"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     id="LSS DAEDALUS-hull"
+     d="M-8.6548204 508.326L164.93992 512.48546L189.34079 505.35496L180.97478 485.74608L-8.6548204 485.15187L-8.6548204 508.326"
+     style="fill:#483737;stroke:none" />
+  <path
+     id="pod 1"
+     d="M234.44975 107.07747L279.15314 107.07747L279.15314 140.87275L234.44975 140.87275L234.44975 107.07747"
+     style="fill:#008000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 3"
+     d="M293.03622 105.94148L333.29704 105.94148L333.29704 138.88478L293.03622 138.88478L293.03622 105.94148"
+     style="fill:#008000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 2"
+     d="M233.61676 218.11909L279.70845 218.11909L279.70845 252.76636L233.61676 252.76636L233.61676 218.11909"
+     style="fill:#008000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 4"
+     d="M291.37024 216.41515L333.57468 216.41515L333.57468 249.92643L291.37024 249.92643L291.37024 216.41515"
+     style="fill:#008000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lounge"
+     d="M353.01096 94.013733L417.42826 94.013733L417.42826 257.02628L353.01096 257.02628L353.01096 94.013733"
+     style="fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lounge-sofa1"
+     d="M377.4451 114.4613L401.87925 114.4613L401.87925 169.55613L377.4451 169.55613L377.4451 114.4613"
+     style="fill:#552200;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lounge-cushion1"
+     d="M386.33026 121.84515L401.32395 121.84515L401.32395 162.74028L386.33026 162.74028L386.33026 121.84515"
+     style="fill:#aa4400;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lounge-desk"
+     d="M374.11316 182.61987L405.21117 182.61987L405.21117 197.38756L374.11316 197.38756L374.11316 182.61987"
+     style="fill:#2b1100;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lounge-side desk1"
+     d="M384.66428 99.125618L400.7686 99.125618L400.7686 112.18934L384.66428 112.18934L384.66428 99.125618"
+     style="fill:#552200;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lounge-screen"
+     d="M358.00885 246.50682L410.7644 246.50682L410.7644 253.32268L358.00885 253.32268L358.00885 246.50682"
+     style="fill:#008080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lounge-sofa2"
+     d="M410.79616 206.31606L411.28086 229.27655L357.4217 229.94328L356.937 206.9828L410.79616 206.31606"
+     style="fill:#552200;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lounge-cushion2"
+     d="M403.72155 215.52204L404.05366 228.82554L364.07573 229.24403L363.74362 215.94054L403.72155 215.52204"
+     style="fill:#aa4400;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="lounge-side desk2"
+     d="M394.45354 232.20981L394.85199 242.99388L374.31974 243.78751L373.92129 233.00343L394.45354 232.20981"
+     style="fill:#552200;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 2-bed"
+     d="M233.61676 240.8412L279.70845 240.8412L279.70845 253.32267L233.61676 253.32267L233.61676 240.8412"
+     style="fill:#aa4400;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 1-bed"
+     d="M234.44974 107.06577L279.11842 107.06577L279.11842 120.69748L234.44974 120.69748L234.44974 107.06577"
+     style="fill:#aa4400;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 3-bed"
+     d="M293.03619 105.60358L333.29701 105.60358L333.29701 119.80327L293.03619 119.80327L293.03619 105.60358"
+     style="fill:#aa4400;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 4-bed"
+     d="M291.37024 237.43329L333.57468 237.43329L333.57468 249.91475L291.37024 249.91475L291.37024 237.43329"
+     style="fill:#aa4400;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 1-pillow"
+     d="M235.56038 108.48576L243.05722 108.48576L243.05722 119.27753L235.56038 119.27753L235.56038 108.48576"
+     style="fill:#d38d5f;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 3-pillow"
+     d="M294.42447 107.06577L301.92131 107.06577L301.92131 117.85754L294.42447 117.85754L294.42447 107.06577"
+     style="fill:#d38d5f;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 2-pillow"
+     d="M234.44974 241.67892L241.94658 241.67892L241.94658 252.47069L234.44974 252.47069L234.44974 241.67892"
+     style="fill:#d38d5f;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 4-pillow"
+     d="M292.20322 238.271L299.70006 238.271L299.70006 249.06277L292.20322 249.06277L292.20322 238.271"
+     style="fill:#d38d5f;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 1-desk"
+     d="M259.08026 133.13261L279.20469 133.13261L279.20469 140.86396L259.08026 140.86396L259.08026 133.13261"
+     style="fill:#916f6f;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 3-desk"
+     d="M313.17081 131.02406L333.29523 131.02406L333.29523 138.7554L313.17081 138.7554L313.17081 131.02406"
+     style="fill:#916f6f;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 2-desk"
+     d="M259.44342 218.21022L279.56785 218.21022L279.56785 225.94156L259.44342 225.94156L259.44342 218.21022"
+     style="fill:#916f6f;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 4-desk"
+     d="M291.51328 216.50624L311.6377 216.50624L311.6377 224.23758L291.51328 224.23758L291.51328 216.50624"
+     style="fill:#916f6f;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 1-cushion"
+     d="M265.21951 125.35509L271.05081 125.35509L271.05081 131.77475L265.21951 131.77475L265.21951 125.35509"
+     style="fill:#6c5353;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 1-back support"
+     d="M264.29187 124.6303L271.89022 124.6303L271.89022 126.49408L264.29187 126.49408L264.29187 124.6303"
+     style="fill:#ac9d93;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 3-cushion"
+     d="M319.94003 123.22021L325.77133 123.22021L325.77133 129.63987L319.94003 129.63987L319.94003 123.22021"
+     style="fill:#6c5353;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 3-back support"
+     d="M319.0123 122.4954L326.61065 122.4954L326.61065 124.35917L319.0123 124.35917L319.0123 122.4954"
+     style="fill:#ac9d93;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 2-cushion"
+     d="M269.36405 233.38246L262.53395 233.44676L262.47135 227.24814L269.30145 227.18384L269.36405 233.38246"
+     style="fill:#6c5353;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 2-back support"
+     d="M270.45777 234.07205L261.55792 234.15595L261.53972 232.35635L270.43956 232.27245L270.45776 234.07205"
+     style="fill:#ac9d93;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 4-cushion"
+     d="M304.72857 231.62556L297.89847 231.68986L297.83587 225.49124L304.66597 225.42694L304.72857 231.62556"
+     style="fill:#6c5353;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 4-back support"
+     d="M305.82223 232.31518L296.92238 232.39908L296.90418 230.59948L305.80402 230.51558L305.82222 232.31518"
+     style="fill:#ac9d93;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 1-locker"
+     d="M234.46594 128.65794L241.96278 128.65794L241.96278 140.86968L234.46594 140.86968L234.46594 128.65794"
+     style="fill:#916f6f;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 3-locker"
+     d="M293.10992 126.63699L300.60677 126.63699L300.60677 138.84873L293.10992 138.84873L293.10992 126.63699"
+     style="fill:#916f6f;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 4-locker"
+     d="M325.99615 216.5013L333.493 216.5013L333.493 228.71304L325.99615 228.71304L325.99615 216.5013"
+     style="fill:#916f6f;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="pod 2-locker"
+     d="M233.71828 218.1078L241.21512 218.1078L241.21512 230.31954L233.71828 230.31954L233.71828 218.1078"
+     style="fill:#916f6f;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     sodipodi:nodetypes="ccccc"
+     inkscape:connector-curvature="0"
+     id="LSS DAEDALUS-cargo area"
+     d="M42.362037 488.83561L42.919432 505.55747L179.48126 504.44268L175.57949 489.95041L42.362037 488.83561"
+     style="fill:#f4d7d7;stroke:none" />
+  <path
+     id="dorms 1-floor"
+     d="M205.67883 166.10379L284.9683 166.10379L284.9683 195.64574L205.67883 195.64574L205.67883 166.10379"
+     style="fill:#aad400;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     id="dorms 2-floor"
+     d="M284.35318 166.07288L348.45362 166.07288L348.45362 195.61482L284.35318 195.61482L284.35318 166.07288"
+     style="fill:#aad400;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0" />
+</svg>

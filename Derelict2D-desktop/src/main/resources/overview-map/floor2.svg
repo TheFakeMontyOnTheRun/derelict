@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.48.4 r9943 custom"
+   width="100%"
+   height="100%"
+   sodipodi:docname="floor2.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1860"
+     inkscape:window-height="1036"
+     id="namedview3036"
+     showgrid="false"
+     inkscape:zoom="1.7940592"
+     inkscape:cx="270.59948"
+     inkscape:cy="891.6262"
+     inkscape:window-x="60"
+     inkscape:window-y="22"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2985" />
+  <metadata
+     id="metadata3040">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3038" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#a3a281;stroke:none"
+     d="M64.618777 304.98653L94.539127 304.98653L94.539127 264.53677L64.618777 264.53677L64.618777 304.98653"
+     id="control room-entry" />
+  <path
+     inkscape:connector-curvature="0"
+     id="control room-walls"
+     d="M54.067337 296.20645L183.38303 296.20645L183.38303 349.71639L54.067337 349.71639L54.067337 296.20645"
+     style="fill:#28170b;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     id="dinner room-entry"
+     d="M14.892414 137.7854L57.736504 137.7854L57.736504 103.83526L14.892414 103.83526L14.892414 137.7854"
+     style="fill:#ac9393;stroke:none"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-walls"
+     d="M-79.024658 89.089058L22.860001 89.089058L22.860001 244.18233L-79.024658 244.18233L-79.024658 89.089058"
+     style="fill:#241c1c;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#917c6f;stroke:none"
+     d="M187.13069 230.01368L213.02685 230.01368L213.02685 199.21664L187.13069 199.21664L187.13069 230.01368"
+     id="hyggym-entry" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#008080;stroke:none"
+     d="M59.6601 345.53524L177.68195 345.53524L177.68195 302.64073L59.6601 302.64073L59.6601 345.53524"
+     id="control room" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#57a32c;stroke:none;opacity:1"
+     d="M84.384447 165.04351L187.03427 165.04351L187.03427 80.48443L84.384447 80.48443L84.384447 165.04351"
+     id="rect3006">
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#cc0000;stroke:none"
+       d="M235.34473 161.48863L246.7809 161.48863L246.7809 133.28195L235.34473 133.28195L235.34473 161.48863"
+       id="rect3012" />
+  </path>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#a36b4f;stroke:none;opacity:1"
+     d="M66.852527 265.03674L179.06236 265.03674L179.06236 167.89949L66.852527 167.89949L66.852527 265.03674"
+     id="rect3008" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#0d1fcc;stroke:none;opacity:1"
+     d="M61.130687 257.83513L174.12498 257.83513L174.12498 95.6292L61.130687 95.6292L61.130687 257.83513"
+     id="rect3010" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#008000;stroke:none"
+     d="M81.107587 77.87643L117.64547 77.87643L117.64547 44.71457L81.107587 44.71457L81.107587 77.87643"
+     id="elevator 2" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#000080;stroke:none"
+     d="M56.160107 267.66523L191.96332 267.66523L191.96332 76.69101L56.160107 76.69101L56.160107 267.66523"
+     id="main hall 2-walls" />
+  <path
+     style="fill:#6c5d53;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M-76.068624 91.848027L19.312768 91.848027L19.312768 241.62043L-76.068624 241.62043L-76.068624 91.848027"
+     id="dinner room"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-walls"
+     d="M206.52828 79.235617L319.25175 79.235617L319.25175 239.64975L206.52828 239.64975L206.52828 79.235617"
+     style="fill:#483737;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-bathroom"
+     d="M210.8638 83.965263L314.91621 83.965263L314.91621 141.11526L210.8638 141.11526L210.8638 83.965263"
+     style="fill:#00ffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-gym-area"
+     d="M236.87691 143.87424L316.49277 143.87424L316.49277 234.52596L236.87691 234.52596L236.87691 143.87424"
+     style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-gym-station"
+     d="M306.63932 232.16113L306.24518 212.45423L287.32656 211.66596L286.53828 187.22941L306.63932 187.62354L307.03345 160.03389L310.97483 160.03389L311.36897 232.94941L306.63932 232.16113"
+     style="fill:#241c1c;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="control room-table"
+     d="M108.66463 330.05899L168.18145 330.05899L168.18145 337.54761L108.66463 337.54761L108.66463 330.05899"
+     style="fill:#222b00;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="control room-chair cushion 1"
+     d="M115.44164 314.60278L126.4775 314.60278L126.4775 328.79175L115.44164 328.79175L115.44164 314.60278"
+     style="fill:#2b1100;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="control room-right arm 1"
+     d="M112.43579 316.24564L115.98303 316.24564L115.98303 327.2815L112.43579 327.2815L112.43579 316.24564"
+     style="fill:#803300;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="control room-left arm 1"
+     d="M126.15304 316.26956L129.70028 316.26956L129.70028 327.30542L126.15304 327.30542L126.15304 316.26956"
+     style="fill:#803300;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="control room-back support 1"
+     d="M112.45862 313.20831L129.68047 313.20831L129.68047 316.75555L112.45862 316.75555L112.45862 313.20831"
+     style="fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="control room-chair cushion 2"
+     d="M150.55753 314.8815L161.59339 314.8815L161.59339 329.07047L150.55753 329.07047L150.55753 314.8815"
+     style="fill:#2b1100;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="control room-right arm 2"
+     d="M147.55168 316.52435L151.09892 316.52435L151.09892 327.56021L147.55168 327.56021L147.55168 316.52435"
+     style="fill:#803300;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="control room-left arm 2"
+     d="M161.26894 316.54828L164.81618 316.54828L164.81618 327.58414L161.26894 327.58414L161.26894 316.54828"
+     style="fill:#803300;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="control room-back support 2"
+     d="M147.57451 313.48703L164.79636 313.48703L164.79636 317.03427L147.57451 317.03427L147.57451 313.48703"
+     style="fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="control room-cabinet"
+     d="M64.100449 331.92886L98.101559 331.92886L98.101559 342.79807L64.100449 342.79807L64.100449 331.92886"
+     style="fill:#916f6f;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-whatever2"
+     d="M285.10766 155.51327L270.89408 154.95588L270.89408 156.90676L272.00887 169.16946L276.74673 169.16946L274.51715 158.02155L287.05854 159.41504L285.10766 155.51327"
+     style="fill:#6c5353;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-whatever1"
+     d="M276.74673 211.5315L255.00831 212.64629L261.97575 227.41726L266.43492 226.02377L260.58227 215.99066L279.25501 215.99066L276.74673 211.5315"
+     style="fill:#483737;stroke:none" />
+  <path
+     sodipodi:nodetypes="ccccccccccccc"
+     inkscape:connector-curvature="0"
+     id="hyggym-workout-equipment"
+     d="M251.94264 163.5955L249.85241 167.1489L253.61482 169.8662L254.17222 189.51438L251.45492 191.88331L254.17222 195.22769L257.16822 195.22768L260.51259 192.02266L257.23789 189.23568L256.9592 169.79653L260.65195 167.00953L257.51659 163.59548L251.94264 163.5955"
+     style="fill:#483737;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-crapper 1"
+     d="M224.8557 83.768204L243.97139 83.768204L243.97139 100.12493L224.8557 100.12493L224.8557 83.768204"
+     style="fill:#483737;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-crapper 2"
+     d="M246.13914 83.571129L263.28415 83.571129L263.28415 100.51906L246.13914 100.51906L246.13914 83.571129"
+     style="fill:#483737;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-showers"
+     d="M295.80051 89.483192L315.31034 89.483192L315.31034 133.42957L295.80051 133.42957L295.80051 89.483192"
+     style="fill:#008080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-shower1"
+     d="M297.77121 93.030434L313.33966 93.030434L313.33966 105.24871L297.77121 105.24871L297.77121 93.030434"
+     style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-shower2"
+     d="M297.96826 107.41647L312.9455 107.41647L312.9455 118.6494L297.96826 118.6494L297.96826 107.41647"
+     style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-shower3"
+     d="M297.96826 121.40837L313.33964 121.40837L313.33964 131.06475L297.96826 131.06475L297.96826 121.40837"
+     style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-stand 1"
+     d="M-69.368279 204.96561L-3.5472412 204.96561L-3.5472412 216.39561L-69.368279 216.39561L-69.368279 204.96561"
+     style="fill:#ff00ff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-stand 2"
+     d="M-3.7443104 204.96561L10.838794 204.96561L10.838794 241.62043L-3.7443104 241.62043L-3.7443104 204.96561"
+     style="fill:#ff00ff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-stove"
+     d="M-17.851648 216.41953L-3.6626825 216.41953L-3.6626825 232.97332L-17.851648 232.97332L-17.851648 216.41953"
+     style="fill:#ac9d93;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-working area"
+     d="M-76.018105 232.91637L-3.6937943 232.91637L-3.6937943 241.5874L-76.018105 241.5874L-76.018105 232.91637"
+     style="fill:#483e37;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-sink 1"
+     d="M-64.88031 233.86276L-51.578156 233.86276L-51.578156 240.76018L-64.88031 240.76018L-64.88031 233.86276"
+     style="fill:#aca793;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-table"
+     d="M-46.084827 109.19009L-19.677586 109.19009L-19.677586 190.77664L-46.084827 190.77664L-46.084827 109.19009"
+     style="fill:#806600;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-cabinet"
+     d="M2.1970692 137.76509L19.34207 137.76509L19.34207 195.70337L2.1970692 195.70337L2.1970692 137.76509"
+     style="fill:#88aa00;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-storage"
+     d="M-75.703796 96.18354L-63.879658 96.18354L-63.879658 195.11216L-75.703796 195.11216L-75.703796 96.18354"
+     style="fill:#d38d5f;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-bench1"
+     d="M-55.54414 115.10217L-48.055519 115.10217L-48.055519 186.83528L-55.54414 186.83528L-55.54414 115.10217"
+     style="fill:#d38d5f;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-bench 2"
+     d="M-17.54414 115.10217L-10.055519 115.10217L-10.055519 186.83528L-17.54414 186.83528L-17.54414 115.10217"
+     style="fill:#d38d5f;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym"
+     d="M211.25793 141.11526L238.84759 141.11526L238.84759 234.9201L211.25793 234.9201L211.25793 141.11526"
+     style="fill:#d38d5f;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="main hall 2"
+     d="M64.244484 85.935959L185.24483 85.935959L185.24483 259.75079L64.244484 259.75079L64.244484 85.935959"
+     style="fill:#0000ff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="hyggym-sauna"
+     d="M238.74905 125.34973L277.37457 125.34973L277.37457 141.11525L238.74905 141.11525L238.74905 125.34973"
+     style="fill:#008080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-tap 1"
+     d="M-59.432266 239.12256L-58.247801 239.12256L-58.247801 241.63084L-59.432266 241.63084L-59.432266 239.12256"
+     style="fill:#445500;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-sink 2"
+     d="M-39.903763 233.79309L-26.601608 233.79309L-26.601608 240.6905L-39.903763 240.6905L-39.903763 233.79309"
+     style="fill:#aca793;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="dinner room-tap 2"
+     d="M-34.455719 239.05289L-33.271254 239.05289L-33.271254 241.56117L-34.455719 241.56117L-34.455719 239.05289"
+     style="fill:#445500;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="control room-table computer"
+     d="M111.061 331.65018L164.84964 331.65018L164.84964 335.83064L111.061 335.83064L111.061 331.65018"
+     style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     inkscape:connector-curvature="0"
+     id="main hall 2-generators"
+     d="M63.444824 141.021L96.888538 141.021L96.888538 226.30247L63.444824 226.30247L63.444824 141.021"
+     style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <g
+     style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+     id="flowRoot4262" />
+</svg>

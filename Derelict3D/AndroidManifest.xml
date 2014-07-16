@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.odb.derelict"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:name="br.odb.derelict.engine.bzk3.DerelictApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="br.odb.derelict.menus.ScreenControllerActivity"
+            android:label="@string/title_activity_screen_controller"
+            
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="br.odb.derelict.menus.ShowODBSplashActivity"
+            android:label="@string/app_name"
+            
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="br.odb.derelict.menus.MainMenuActivity"
+            android:label="@string/title_activity_main_menu"
+            
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="br.odb.derelict.menus.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="br.odb.derelict.menus.PlayGameActivity"
+            android:label="@string/title_activity_play_game"
+            
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="br.odb.derelict.menus.StoryTellingActivity"
+            android:label="@string/title_activity_story_telling"
+            
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="br.odb.derelict.menus.LoadGameActivity"
+            android:label="@string/title_activity_load_game"
+            
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="br.odb.derelict.menus.TerminalAccessActivity"
+            android:label="@string/title_activity_terminal_access" >
+        </activity>
+    </application>
+
+</manifest>
