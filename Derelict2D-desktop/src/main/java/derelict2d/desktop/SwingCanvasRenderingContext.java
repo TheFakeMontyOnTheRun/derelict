@@ -34,7 +34,7 @@ public class SwingCanvasRenderingContext extends RenderingContext {
 
     @Override
     public void fillRect(Color color, Rect rect) {
-        graphics.setColor(new java.awt.Color(color.getR(), color.getG(), color.getB()));
+        graphics.setColor(new java.awt.Color(color.r, color.g, color.b ) );
         graphics.fillRect((int) rect.x0, (int) rect.y0, (int) rect.getDX(), (int) rect.getDY());
     }
 
@@ -86,5 +86,10 @@ public class SwingCanvasRenderingContext extends RenderingContext {
 
     @Override
     public void setClipRect(Rect bounds) {
+    }
+
+    @Override
+    public void drawBitmap(RasterImage ri, Vec2 vec2, Vec2 vec21, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
