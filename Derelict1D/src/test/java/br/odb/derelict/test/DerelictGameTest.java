@@ -172,7 +172,7 @@ public class DerelictGameTest {
 			Assert.fail();
 		}
 
-		Assert.assertEquals("magboots", game.getCollectedItems()[0].getName());
+		
 		Assert.assertTrue(game.getConnectionNames()[Direction.N.ordinal()]
 				.equals("main hall 1"));
 

@@ -38,7 +38,6 @@ public class ToggleCommandTest {
 		} catch (ItemNotFoundException e) {
 			Assert.fail();
 		}
-		Assert.assertTrue( client.buffer.contains( boots.getTurnOffSound() ) );
 		Assert.assertTrue(boots.isActive());
 
 		try {
@@ -48,7 +47,6 @@ public class ToggleCommandTest {
 		} catch (ItemNotFoundException e) {
 			Assert.fail();
 		}
-		Assert.assertTrue( client.buffer.contains( boots.getTurnOnSound() ) );
 		Assert.assertFalse(boots.isActive());		
 	}
 }

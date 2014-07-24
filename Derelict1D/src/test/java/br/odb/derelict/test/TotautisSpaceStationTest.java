@@ -696,6 +696,7 @@ public class TotautisSpaceStationTest {
 	public void testPipesAndMagnets() {
 		TotautisSpaceStation station = new TotautisSpaceStation();
 		try {
+			
 			station.getLocation("hyggym").addCharacter(station.getAstronaut());
 			MagneticBoots boots = new MagneticBoots();
 			station.getAstronaut().addItem(boots);
