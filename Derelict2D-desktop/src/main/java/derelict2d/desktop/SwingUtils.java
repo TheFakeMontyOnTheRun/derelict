@@ -13,7 +13,7 @@ import java.awt.Color;
 class SwingUtils {
 
     static Color getSwingColor(br.odb.utils.Color color) {
-        Color swingColor = new Color( color.getR(), color.getG(), color.getB() );
+        Color swingColor = new Color( color.r, color.g, color.b );
         
         return swingColor;
     }
