@@ -21,11 +21,13 @@ public class Pipe extends ItemContainer {
 	 */
 	@Override
 	public void useWith(Item item1) throws ItemActionNotSupportedException {
-		super.useWith(item1);
+		
 
 		if (item1 instanceof Destructive
 				|| ((item1 instanceof MagnecticActive) && (contains instanceof MagnecticActive))) {
 			dropItem();
+		} else {
+			super.useWith(item1);	
 		}
 	}
 }
