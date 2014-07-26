@@ -3,6 +3,8 @@ package br.odb.derelict.core;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.sun.java_cup.internal.runtime.virtual_parse_stack;
+
 import br.odb.derelict.core.commands.DerelictUserMetaCommandLineAction;
 import br.odb.derelict.core.commands.DropCommand;
 import br.odb.derelict.core.commands.ItemsCommand;
@@ -38,6 +40,34 @@ public class DerelictGame extends ConsoleApplication {
 		void onGameEnd(int ending);
 	}
 
+	public String getJSONGameState() {
+		
+		String visitedLocationsList = "";
+		
+		for ( Location l : station.getLocations() ) {
+			if ( l.hasBeenExplored && hero.getLocation() != l ) {
+				visitedLocationsList += ", " + l.getName();
+			}
+		}
+		
+		
+		String toReturn = "{";
+		
+		toReturn += "'replayMode': '" + this.replayMode + "',";
+		
+		toReturn += "'currentLocation': '" + this.hero.getLocation().getName() + "',";
+
+		if ( visitedLocationsList.length() > 0 ) {
+			
+			toReturn += ",'visitedLocations': [ " + visitedLocationsList + " ],";
+		}
+		
+		toReturn += "'currentPlace': " + this.station.getJSONState() + ",";
+		
+		toReturn += "}";
+		
+		return toReturn;
+	}
 	public static final int DEFAULT_ELAPSED_BASE_TIME = 1000;
 	public final static String finalMessage[] = new String[32];
 	public static final String BOMBING_TARGET = TotautisSpaceStation.WEAK_SPOT;
@@ -516,7 +546,7 @@ public class DerelictGame extends ConsoleApplication {
 
 	@Override
 	public ConsoleApplication showUI() {
-
+		//getClient().printNormal( getJSONGameState() );
 		getClient().printNormal(getTextOutput());
 
 		return super.showUI();
