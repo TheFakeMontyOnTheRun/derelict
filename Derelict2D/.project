@@ -32,29 +32,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>derelict2d-core-java</name>
-			<type>2</type>
-			<location>/home/monty/montyplayground/derelict/derelict2d-core-java</location>
-		</link>
-		<link>
 			<name>gamelib-android</name>
 			<type>2</type>
-			<location>/home/monty/montyplayground/derelict/gamelib-android/src</location>
-		</link>
-		<link>
-			<name>gamerendering</name>
-			<type>2</type>
-			<location>/home/monty/montyplayground/gamerendering/src/main/java</location>
-		</link>
-		<link>
-			<name>libsvg</name>
-			<type>2</type>
-			<location>/home/monty/montyplayground/libsvg/src/main/java</location>
-		</link>
-		<link>
-			<name>littlehelper3d-core-java</name>
-			<type>2</type>
-			<location>/home/monty/montyplayground/derelict/littlehelper3d-core-java</location>
+			<location>/Users/monty/gitcenter/gamelib-android/src</location>
 		</link>
 	</linkedResources>
 	<variableList>

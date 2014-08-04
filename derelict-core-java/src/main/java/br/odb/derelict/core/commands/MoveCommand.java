@@ -5,11 +5,11 @@ import br.odb.derelict.core.locations.TotautisSpaceStation;
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.CharacterIsNotMovableException;
-import br.odb.gameworld.Direction;
 import br.odb.gameworld.Place;
 import br.odb.gameworld.exceptions.DoorActionException;
 import br.odb.gameworld.exceptions.InvalidLocationException;
 import br.odb.gameworld.exceptions.InvalidSlotException;
+import br.odb.utils.Direction;
 
 public class MoveCommand extends DerelictUserMoveCommandLineAction {
 

@@ -9,8 +9,8 @@ import org.junit.Test;
 import br.odb.derelict.core.Clearance;
 import br.odb.derelict.core.SecuredDoor;
 import br.odb.derelict.core.SecuredLocation;
-import br.odb.gameworld.Direction;
 import br.odb.gameworld.Location;
+import br.odb.utils.Direction;
 
 /**
  * @author monty

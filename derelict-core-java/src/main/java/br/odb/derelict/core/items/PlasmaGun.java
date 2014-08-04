@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import br.odb.derelict.core.Astronaut;
 import br.odb.gameworld.ActiveItem;
 import br.odb.gameworld.CharacterActor;
-import br.odb.gameworld.Direction;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.Location;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
+import br.odb.utils.Direction;
 
 /**
  * @author monty

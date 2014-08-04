@@ -400,7 +400,7 @@ public class DerelictGame extends ConsoleApplication {
 
 		materialsOnShipWorth = 0.0f;
 
-		// s�� conta a LSS DAEDALUS se o jogador estiver nela. Ele pode ter
+		// s������ conta a LSS DAEDALUS se o jogador estiver nela. Ele pode ter
 		// fugido pela capsula.
 		try {
 			ship = station.getLocation("LSS DAEDALUS");
@@ -580,7 +580,7 @@ public class DerelictGame extends ConsoleApplication {
 
 		if (getFinalScore() > 0) {
 
-			doQuit();
+			onQuit();
 		} else {
 			getClient()
 					.printNormal(

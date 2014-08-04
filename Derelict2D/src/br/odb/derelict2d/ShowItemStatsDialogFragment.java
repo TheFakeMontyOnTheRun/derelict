@@ -71,8 +71,8 @@ public class ShowItemStatsDialogFragment extends DialogFragment implements
 		graphic = graphic.scaleTo( 200.0f, 200.0f );
 		Rect bound = graphic.makeBounds();
 		SVGRenderingNode node = new SVGRenderingNode(graphic, "title");
-		trans.x = -bound.x0;
-		trans.y = -bound.y0;
+		trans.x = -bound.p0.x;
+		trans.y = -bound.p0.y;
 		node.translate.set(trans);
 
 		dl.setItems(new RenderingNode[] { node });

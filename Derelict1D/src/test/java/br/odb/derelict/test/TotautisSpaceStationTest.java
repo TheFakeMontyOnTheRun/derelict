@@ -21,7 +21,6 @@ import br.odb.derelict.core.locations.LanderShip;
 import br.odb.derelict.core.locations.TotautisSpaceStation;
 import br.odb.gameworld.ActiveItem;
 import br.odb.gameworld.CharacterActor;
-import br.odb.gameworld.Direction;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.Kind;
 import br.odb.gameworld.Location;
@@ -31,6 +30,7 @@ import br.odb.gameworld.exceptions.InvalidSlotException;
 import br.odb.gameworld.exceptions.InventoryManipulationException;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
+import br.odb.utils.Direction;
 import br.odb.utils.ScheduledEvent;
 import br.odb.utils.Utils;
 
@@ -349,7 +349,7 @@ public class TotautisSpaceStationTest {
 	 * {@link br.odb.derelict.core.Level#moveCharacter(java.lang.String, java.lang.String)}
 	 * .
 	 */
-	// NÃO É UM BOM TESTE...
+	// N��O �� UM BOM TESTE...
 	// @Test
 	// public final void testMoveCharacter() {
 	//
@@ -440,7 +440,7 @@ public class TotautisSpaceStationTest {
 	 */
 	@Test
 	public final void testAddNewLocation() {
-		Location l = station.addNewLocation("Niterói");
+		Location l = station.addNewLocation("Niter��i");
 		Assert.assertNotNull(l);
 		try {
 			Assert.assertEquals(l, station.getLocation(l.getName()));

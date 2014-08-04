@@ -3,8 +3,8 @@
  */
 package br.odb.derelict.core;
 
-import br.odb.gameworld.Direction;
 import br.odb.gameworld.Location;
+import br.odb.utils.Direction;
 
 /**
  * @author monty

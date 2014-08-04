@@ -16,7 +16,6 @@ import br.odb.derelict.core.items.Pipe;
 import br.odb.derelict.core.items.PlasmaGun;
 import br.odb.derelict.core.items.TimeBomb;
 import br.odb.gameworld.CharacterActor;
-import br.odb.gameworld.Direction;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.Location;
 import br.odb.gameworld.Place;
@@ -24,6 +23,7 @@ import br.odb.gameworld.exceptions.InvalidCharacterHandlingException;
 import br.odb.gameworld.exceptions.InvalidLocationException;
 import br.odb.gameworld.exceptions.InvalidSlotException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
+import br.odb.utils.Direction;
 import br.odb.utils.Utils;
 import br.odb.utils.math.Vec2;
 

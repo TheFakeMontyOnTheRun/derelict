@@ -6,7 +6,7 @@ import org.junit.Test;
 import br.odb.derelict.core.Astronaut;
 import br.odb.derelict.core.commands.TurnToDirectionCommand;
 import br.odb.derelict.core.locations.TotautisSpaceStation;
-import br.odb.gameworld.Direction;
+import br.odb.utils.Direction;
 
 public class TurnToDirectionCommandTest {
 

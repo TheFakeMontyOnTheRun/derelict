@@ -64,15 +64,15 @@ public class RootGameMenuActivity extends Activity implements OnClickListener {
 			Rect bound = graphic.makeBounds();
 
 			// não me interessa a parte acima da "página".
-			float newWidth = bound.x1;
-			float newHeight = bound.y1;
+			float newWidth = bound.p1.x;
+			float newHeight = bound.p1.y;
 
 			if (newWidth > newHeight) {
 				scale = gvSplash.getWidth() / newWidth;
-				trans.y = (gvSplash.getHeight() - (bound.y1 * scale)) / 2.0f;
+				trans.y = (gvSplash.getHeight() - (bound.p1.y * scale)) / 2.0f;
 			} else {
 				scale = gvSplash.getHeight() / newHeight;
-				trans.x = (gvSplash.getWidth() - (bound.x1 * scale)) / 2.0f;
+				trans.x = (gvSplash.getWidth() - (bound.p1.x * scale)) / 2.0f;
 			}
 		}
 

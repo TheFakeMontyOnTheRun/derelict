@@ -4,14 +4,15 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="src" path="gamelib-android"/>
-	<classpathentry kind="src" path="gamerendering"/>
-	<classpathentry kind="src" path="libsvg"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="libs/derelict-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="libs/derelict-core-java-1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="libs/derelict2d-core-java-1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="libs/gameapp-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="libs/gamerendering-1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="libs/gameutils-1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="libs/gameworld-1.0-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="/Users/monty/montyplayground/derelict/Derelict2D/libs/derelict-core-java-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="libs/libsvg-1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

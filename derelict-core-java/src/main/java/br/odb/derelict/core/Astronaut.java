@@ -8,11 +8,11 @@ import br.odb.derelict.core.items.Toxic;
 import br.odb.derelict.core.items.ValuableItem;
 import br.odb.gameworld.ActiveItem;
 import br.odb.gameworld.CharacterActor;
-import br.odb.gameworld.Direction;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.Kind;
 import br.odb.gameworld.exceptions.InventoryManipulationException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
+import br.odb.utils.Direction;
 
 public class Astronaut extends CharacterActor {
 

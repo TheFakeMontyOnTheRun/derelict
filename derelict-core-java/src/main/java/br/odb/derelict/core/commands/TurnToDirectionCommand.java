@@ -3,8 +3,8 @@ package br.odb.derelict.core.commands;
 import br.odb.derelict.core.Astronaut;
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gameworld.CharacterActor;
-import br.odb.gameworld.Direction;
 import br.odb.gameworld.Place;
+import br.odb.utils.Direction;
 
 public final class TurnToDirectionCommand extends DerelictUserMoveCommandLineAction {
 

@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -20,15 +19,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict2d.game.GameLevel;
-import br.odb.derelict3d.Derelict3DView;
 import br.odb.gameapp.GameUpdateDelegate;
 import br.odb.gamerendering.rendering.AssetManager;
-import br.odb.gameworld.Direction;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.Location;
 import br.odb.gameworld.exceptions.InvalidLocationException;
 import br.odb.gameworld.exceptions.InvalidSlotException;
 import br.odb.libsvg.SVGGraphic;
+import br.odb.utils.Direction;
 import br.odb.utils.Utils;
 
 
@@ -51,7 +49,7 @@ public class ExploreStationFragment extends Fragment implements
 	
 	
 	SVGGraphic stationGraphics;
-	Derelict3DView view3D;
+//	Derelict3DView view3D;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -111,12 +109,12 @@ public class ExploreStationFragment extends Fragment implements
 
 		case R.id.btnGo:
 			
-			if ( view3D != null ) {
-				
-				stationGraphics = null;
-				view3D.clearScene();
-			}
-			
+//			if ( view3D != null ) {
+//				
+//				stationGraphics = null;
+//				view3D.clearScene();
+//			}
+//			
 			Direction d;
 			Location l;
 
@@ -165,11 +163,11 @@ public class ExploreStationFragment extends Fragment implements
 
 		if (gameView != null && currentLevel != null && resManager != null) {
 
-			if ( stationGraphics == null && view3D != null ) {
-				
-				stationGraphics = resManager.getGraphics("floor1");		
-				view3D.addScene( stationGraphics, game.hero.getLocation().getName() );
-			}
+//			if ( stationGraphics == null && view3D != null ) {
+//				
+//				stationGraphics = resManager.getGraphics("floor1");		
+//				view3D.addScene( stationGraphics, game.hero.getLocation().getName() );
+//			}
 
 			
 			gameView.setSnapshot(game, resManager);

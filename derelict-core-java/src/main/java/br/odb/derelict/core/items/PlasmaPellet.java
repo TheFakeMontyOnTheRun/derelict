@@ -1,9 +1,9 @@
 package br.odb.derelict.core.items;
 
-import br.odb.gameworld.Direction;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.Location;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
+import br.odb.utils.Direction;
 
 public class PlasmaPellet extends Item implements Destructive {
 

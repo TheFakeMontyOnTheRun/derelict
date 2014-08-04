@@ -97,15 +97,15 @@ public class ManageInventoryFragment extends Fragment implements
 			Rect bound = graphic.makeBounds();
 
 			// não me interessa a parte acima da "página".
-			float newWidth = bound.x1;
-			float newHeight = bound.y1;
+			float newWidth = bound.p1.x;
+			float newHeight = bound.p1.y;
 
 			if (newWidth > newHeight) {
 				scale = gv.getWidth() / newWidth;
-				trans.y = (gv.getHeight() - (bound.y1 * scale)) / 2.0f;
+				trans.y = (gv.getHeight() - (bound.p1.y * scale)) / 2.0f;
 			} else {
 				scale = gv.getHeight() / newHeight;
-				trans.x = (gv.getWidth() - (bound.x1 * scale)) / 2.0f;
+				trans.x = (gv.getWidth() - (bound.p1.x * scale)) / 2.0f;
 			}
 		}
 		
