@@ -44,6 +44,7 @@ public class ManageInventoryFragment extends Fragment implements
 	GameView gvUseWith;
 	GameView gvUse;
 	GameView gvDrop;
+	GameView gvToggle;
 	private WebView wvDescription;
 	Button btnDo;
 	private Button btnInfo;
@@ -70,11 +71,13 @@ public class ManageInventoryFragment extends Fragment implements
 		gvUseWith = (GameView) toReturn.findViewById(R.id.gvUseWith);
 		gvUse = (GameView) toReturn.findViewById(R.id.gvUse);
 		gvDrop = (GameView) toReturn.findViewById(R.id.gvDrop);
+		gvToggle = (GameView) toReturn.findViewById(R.id.gvToggle);
 
 		initImage(gvPick, "icon-pick");
 		initImage(gvUseWith, "icon-use-with");
 		initImage(gvUse, "icon-use");
 		initImage(gvDrop, "icon-drop");
+		initImage(gvToggle, "icon-toggle");
 
 		buildCommandList();
 

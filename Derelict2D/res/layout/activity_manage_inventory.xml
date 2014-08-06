@@ -70,12 +70,6 @@
         android:layout_height="123dp" >
 
         <br.odb.gamelib.android.GameView
-            android:id="@+id/gvPick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <br.odb.gamelib.android.GameView
             android:id="@+id/gvUse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,6 +77,18 @@
 
         <br.odb.gamelib.android.GameView
             android:id="@+id/gvUseWith"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <br.odb.gamelib.android.GameView
+            android:id="@+id/gvToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <br.odb.gamelib.android.GameView
+            android:id="@+id/gvPick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
