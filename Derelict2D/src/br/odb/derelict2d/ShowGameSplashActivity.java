@@ -70,10 +70,10 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 
 			if (newWidth > newHeight) {
 				scale = gvSplash.getWidth() / newWidth;
-				trans.y = (gvSplash.getHeight() - (bound.p1.y * scale)) / 2.0f;
+				trans.y = (gvLogo.getHeight() - (bound.p1.y * scale)) / 2.0f;
 			} else {
 				scale = gvSplash.getHeight() / newHeight;
-				trans.x = (gvSplash.getWidth() - (bound.p1.x * scale)) / 2.0f;
+				trans.x = (gvLogo.getWidth() - (bound.p1.x * scale)) / 2.0f;
 			}
 		}
 
@@ -84,8 +84,8 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 		node.translate.set(trans);
 
 		rect = logo.makeBounds();
-		node2.translate.set((gvSplash.getWidth() - rect.getDX()) / 2.0f,
-				(gvSplash.getHeight() - rect.getDY()) / 2.0f);
+		node2.translate.set((gvLogo.getWidth() - rect.getDX()) / 2.0f,
+				(gvLogo.getHeight() - rect.getDY()) / 2.0f);
 
 		dl.setItems(new RenderingNode[] { node });
 

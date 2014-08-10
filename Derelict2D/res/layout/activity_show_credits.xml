@@ -10,49 +10,117 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ShowCreditsActivity" >
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#999" >
+        android:layout_height="wrap_content" >
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:src="@drawable/daniel" />
-
-        <TextView
-            android:id="@+id/textView1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:text="Daniel Monteiro"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:orientation="vertical" >
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#AAA"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="To see the complete credits, scroll down this page"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#888"
-        android:orientation="horizontal" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#999"
+                android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:text="Paulo Nideck"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:src="@drawable/daniel" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:src="@drawable/daniel" />
+                <TextView
+                    android:id="@+id/tvDaniel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Daniel Monteiro - That&apos;s me! The programmer. I&apos;ve been trying to create this for quite some time! Tap this square for more info on my other games (and to check out the Derelict online highscores too!)"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/paulo" />
+
+                <TextView
+                    android:id="@+id/tvPaulo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#888"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Paulo Nideck kindly providede me with the Derelict theme song. Tap this square to reach his languages course"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cindy" />
+
+                <TextView
+                    android:id="@+id/tvCindy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:background="#999"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Cindy Dalfovo helped-me develop the concept (previously developed in many botched ways). She&apos;s also a photographer. You can reach her by tapping this square."
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="300dp"
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/pedro" />
+
+                <TextView
+                    android:id="@+id/tvPedro"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:background="#888"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Pedro Fernandes gave numerous tips on the game look and UX. Without him, this would be a messy, ugly, thing. He&apos;s a great designer! You can reach him by tapping this square as well."
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

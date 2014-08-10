@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgrepeat"
+    android:background="@color/derelict_background_empty"
     android:orientation="horizontal"
     android:padding="0dip"
     tools:context=".ExploreStationActivity" >

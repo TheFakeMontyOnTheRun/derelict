@@ -54,7 +54,7 @@ public class RootGameMenuActivity extends Activity implements OnClickListener {
 		AssetManager resManager = ((Derelict2DApplication) getApplication())
 				.getAssetManager();
 
-		SVGGraphic graphic = resManager.getGraphics("title");
+		SVGGraphic graphic = resManager.getGraphics("logo");
 		
 		float scale = 1;
 		Vec2 trans = new Vec2();
