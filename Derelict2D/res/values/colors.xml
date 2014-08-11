@@ -2,5 +2,5 @@
 <resources>
     <color name="derelict_foreground">#A6B06F</color>
     <color name="derelict_background">#545C28</color>
-    <color name="derelict_background_empty">#000</color>
+    <color name="derelict_background_empty">#062347</color>
 </resources>
