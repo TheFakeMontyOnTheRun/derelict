@@ -90,6 +90,21 @@ public class Derelict2DApplication extends Application implements
 			resManager.putGraphic("ship-ignition-key", SVGParsingUtils
 					.readSVG(openAsset("items/ship-ignition-key.svg")));
 
+			
+			resManager.putGraphic("icon-n", SVGParsingUtils
+					.readSVG(openAsset("action-icons/chevron-n.svg")));
+			resManager.putGraphic("icon-e", SVGParsingUtils
+					.readSVG(openAsset("action-icons/chevron-e.svg")));
+			resManager.putGraphic("icon-w", SVGParsingUtils
+					.readSVG(openAsset("action-icons/chevron-w.svg")));
+			resManager.putGraphic("icon-s", SVGParsingUtils
+					.readSVG(openAsset("action-icons/chevron-s.svg")));
+			
+			
+			resManager.putGraphic("icon-move", SVGParsingUtils
+					.readSVG(openAsset("action-icons/move.svg")));
+			resManager.putGraphic("icon-turn", SVGParsingUtils
+					.readSVG(openAsset("action-icons/turn.svg")));
 			resManager.putGraphic("icon-pick", SVGParsingUtils
 					.readSVG(openAsset("action-icons/pick.svg")));
 			resManager.putGraphic("icon-use-with", SVGParsingUtils
@@ -101,6 +116,9 @@ public class Derelict2DApplication extends Application implements
 			
 			resManager.putGraphic("icon-toggle", SVGParsingUtils
 					.readSVG(openAsset("action-icons/toggle.svg")));
+			
+			
+			
 			
 
 		} catch (IOException ex) {

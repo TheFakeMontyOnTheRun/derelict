@@ -20,6 +20,8 @@ import android.widget.Spinner;
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict2d.game.GameLevel;
 import br.odb.gameapp.GameUpdateDelegate;
+import br.odb.gamelib.android.AndroidUtils;
+import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.Location;
@@ -50,6 +52,8 @@ public class ExploreStationFragment extends Fragment implements
 	
 	SVGGraphic stationGraphics;
 //	Derelict3DView view3D;
+	private GameView gvMove;
+	private GameView gvTurn;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,6 +77,15 @@ public class ExploreStationFragment extends Fragment implements
 //		btnPick = (Button) toReturn.findViewById(R.id.btnPick);
 //		btnPick.setOnClickListener(this);
 		toReturn.findViewById(R.id.btnGo).setOnClickListener(this);
+		
+		gvMove = (GameView) toReturn.findViewById(R.id.gvMove);		
+		gvMove.setOnClickListener( this );
+		AndroidUtils.initImage(gvMove, "icon-move", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+
+		gvTurn = (GameView) toReturn.findViewById(R.id.gvTurn);		
+		gvTurn.setOnClickListener( this );
+		AndroidUtils.initImage(gvTurn, "icon-turn", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+		
 
 		return toReturn;
 	}

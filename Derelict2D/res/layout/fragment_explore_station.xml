@@ -18,6 +18,24 @@
         android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="123dp" >
+
+        <br.odb.gamelib.android.GameView
+            android:id="@+id/gvMove"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <br.odb.gamelib.android.GameView
+            android:id="@+id/gvTurn"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"

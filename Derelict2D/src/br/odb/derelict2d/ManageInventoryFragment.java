@@ -21,6 +21,7 @@ import br.odb.derelict.core.commands.DerelictUserMetaCommandLineAction;
 import br.odb.derelict.core.commands.DerelictUserMoveCommandLineAction;
 import br.odb.gameapp.GameUpdateDelegate;
 import br.odb.gameapp.UserCommandLineAction;
+import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gamerendering.rendering.DisplayList;
@@ -80,58 +81,17 @@ public class ManageInventoryFragment extends Fragment implements
 		gvDrop.setOnClickListener( this );
 		gvToggle.setOnClickListener( this );
 
-		initImage(gvPick, "icon-pick");
-		initImage(gvUseWith, "icon-use-with");
-		initImage(gvUse, "icon-use");
-		initImage(gvDrop, "icon-drop");
-		initImage(gvToggle, "icon-toggle");
+		AndroidUtils.initImage(gvPick, "icon-pick", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+		AndroidUtils.initImage(gvUseWith, "icon-use-with", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+		AndroidUtils.initImage(gvUse, "icon-use", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+		AndroidUtils.initImage(gvDrop, "icon-drop", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+		AndroidUtils.initImage(gvToggle, "icon-toggle", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
 
 		buildCommandList();
 
 		return toReturn;
 	}
 
-	void initImage(GameView gv, String graphicPath) {
-
-		DisplayList dl = new DisplayList("dl");
-		AssetManager resManager = ((Derelict2DApplication) getActivity()
-				.getApplication()).getAssetManager();
-
-		SVGGraphic graphic = resManager.getGraphics(graphicPath);
-
-		float scale = 1;
-		Vec2 trans = new Vec2();
-
-		if ( gv.getWidth() > 0 && gv.getHeight() > 0) {
-
-			Rect bound = graphic.makeBounds();
-
-			// não me interessa a parte acima da "página".
-			float newWidth = bound.p1.x;
-			float newHeight = bound.p1.y;
-
-			if (newWidth > newHeight) {
-				scale = gv.getWidth() / newWidth;
-				trans.y = (gv.getHeight() - (bound.p1.y * scale)) / 2.0f;
-			} else {
-				scale = gv.getHeight() / newHeight;
-				trans.x = (gv.getWidth() - (bound.p1.x * scale)) / 2.0f;
-			}
-		}
-		
-		graphic = graphic.scale( scale, scale );
-		
-		
-		
-		SVGRenderingNode node = new SVGRenderingNode(graphic, "graphic_"
-				+ graphicPath);
-
-		gv.setAntiAliasing( false );
-		dl.setItems(new RenderingNode[] { node });
-		gv.setRenderingContent(dl);
-		gv.updater.setRunning( false );
-		gv.postInvalidate();
-	}
 
 	@Override
 	public void onAttach(Activity activity) {
