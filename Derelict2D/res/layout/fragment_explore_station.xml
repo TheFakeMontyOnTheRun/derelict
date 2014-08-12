@@ -5,27 +5,6 @@
     android:background="@color/derelict_background"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="0dip" >
-
-        <Spinner
-            android:id="@+id/spnObjectsToPick"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5" />
-
-        <Button
-            android:id="@+id/btnPick"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="10dp"
-            android:text="Pick" />
-    </LinearLayout>
-
     <br.odb.derelict2d.ExploreStationView
         android:id="@+id/overviewMap"
         android:layout_width="match_parent"

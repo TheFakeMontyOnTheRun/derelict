@@ -37,15 +37,16 @@ public class ManageInventoryFragment extends Fragment implements
 	private DerelictGame game;
 	private Spinner spnCollectedItems;
 	private Spinner spnLocationItems;
-	private Spinner spnActions;
+//	private Spinner spnActions;
 	GameView gvPick;
 	GameView gvUseWith;
 	GameView gvUse;
 	GameView gvDrop;
 	GameView gvToggle;
 	private WebView wvDescription;
-	Button btnDo;
+//	Button btnDo;
 	private Button btnInfo;
+	private Button btnInfoToCollect;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,20 +57,28 @@ public class ManageInventoryFragment extends Fragment implements
 		spnCollectedItems = (Spinner) toReturn.findViewById(R.id.spnCollected);
 		spnLocationItems = (Spinner) toReturn
 				.findViewById(R.id.spnLocationItems);
-		spnActions = (Spinner) toReturn.findViewById(R.id.spnActions);
-		spnActions.setOnItemSelectedListener(this);
+//		spnActions = (Spinner) toReturn.findViewById(R.id.spnActions);
+//		spnActions.setOnItemSelectedListener(this);
 		wvDescription = (WebView) toReturn.findViewById(R.id.wvDescription);
 
-		btnDo = (Button) toReturn.findViewById(R.id.btnDo);
+//		btnDo = (Button) toReturn.findViewById(R.id.btnDo);
 		btnInfo = (Button) toReturn.findViewById(R.id.btnInfo);
-		btnDo.setOnClickListener(this);
+		btnInfoToCollect = (Button) toReturn.findViewById(R.id.btnInfoToCollect);
+//		btnDo.setOnClickListener(this);
 		btnInfo.setOnClickListener(this);
+		btnInfoToCollect.setOnClickListener(this);
 
 		gvPick = (GameView) toReturn.findViewById(R.id.gvPick);
 		gvUseWith = (GameView) toReturn.findViewById(R.id.gvUseWith);
 		gvUse = (GameView) toReturn.findViewById(R.id.gvUse);
 		gvDrop = (GameView) toReturn.findViewById(R.id.gvDrop);
 		gvToggle = (GameView) toReturn.findViewById(R.id.gvToggle);
+		
+		gvPick.setOnClickListener( this );
+		gvUseWith.setOnClickListener( this );
+		gvUse.setOnClickListener( this );
+		gvDrop.setOnClickListener( this );
+		gvToggle.setOnClickListener( this );
 
 		initImage(gvPick, "icon-pick");
 		initImage(gvUseWith, "icon-use-with");
@@ -143,9 +152,9 @@ public class ManageInventoryFragment extends Fragment implements
 			}
 		}
 
-		spnActions.setAdapter(new ArrayAdapter<UserCommandLineAction>(
-				getActivity(), android.R.layout.simple_spinner_item,
-				cmdsFiltered));
+//		spnActions.setAdapter(new ArrayAdapter<UserCommandLineAction>(
+//				getActivity(), android.R.layout.simple_spinner_item,
+//				cmdsFiltered));
 	}
 
 	@Override
@@ -189,22 +198,22 @@ public class ManageInventoryFragment extends Fragment implements
 
 	private void updateWidgets() {
 
-		UserCommandLineAction cmd = ((UserCommandLineAction) spnActions
-				.getSelectedItem());
+//		UserCommandLineAction cmd = ((UserCommandLineAction) spnActions
+//				.getSelectedItem());
 
 		spnCollectedItems.setEnabled(spnCollectedItems.getCount() > 0);
 		btnInfo.setEnabled(spnCollectedItems.isEnabled());
 
-		spnLocationItems.setEnabled(cmd.requiredOperands() > 1
-				&& spnLocationItems.getCount() > 0);
-
-		btnDo.setEnabled((spnCollectedItems.getCount() > 0 && cmd
-				.requiredOperands() == 1)
-				|| (spnCollectedItems.getCount() > 0
-						&& spnLocationItems.getCount() > 0 && cmd
-						.requiredOperands() == 2)
-				|| (spnLocationItems.getCount() > 0 && cmd.requiredOperands() == 1)
-				|| (cmd.requiredOperands() == 0));
+//		spnLocationItems.setEnabled(cmd.requiredOperands() > 1
+//				&& spnLocationItems.getCount() > 0);
+//
+//		btnDo.setEnabled((spnCollectedItems.getCount() > 0 && cmd
+//				.requiredOperands() == 1)
+//				|| (spnCollectedItems.getCount() > 0
+//						&& spnLocationItems.getCount() > 0 && cmd
+//						.requiredOperands() == 2)
+//				|| (spnLocationItems.getCount() > 0 && cmd.requiredOperands() == 1)
+//				|| (cmd.requiredOperands() == 0));
 
 		String desc = game.getTextOutput().replaceAll("\n", "<br/>");
 		wvDescription.getSettings().setJavaScriptEnabled(false);
@@ -217,43 +226,113 @@ public class ManageInventoryFragment extends Fragment implements
 	public void onClick(View v) {
 
 		String line;
-
+		String itemName;
+		String itemName2;
+		
 		switch (v.getId()) {
-		case R.id.btnDo:
-			UserCommandLineAction cmd = ((UserCommandLineAction) spnActions
-					.getSelectedItem());
-			String actionName = cmd.toString();
-			String operand = "";
-			int operandsTakenSoFar = 0;
-			String operand2 = "";
-			UserCommandLineAction action;
-			action = (UserCommandLineAction) spnActions.getSelectedItem();
-
-			if (spnCollectedItems.getCount() > 0
-					&& action.requiredOperands() > operandsTakenSoFar) {
-				operand = ((Item) spnCollectedItems.getSelectedItem())
-						.getName();
-
-				++operandsTakenSoFar;
+		
+		case R.id.gvDrop:
+			
+			itemName = getCurrentHoldingItemName();
+			
+			if ( itemName != null ) {				
+				game.sendData( "drop " + itemName  );
 			}
-
-			if (spnLocationItems.getCount() > 0
-					&& action.requiredOperands() > operandsTakenSoFar) {
-				operand2 = ((Item) spnLocationItems.getSelectedItem())
-						.getName();
-				++operandsTakenSoFar;
-			}
-
-			line = actionName + " " + operand2 + " " + operand;
-			System.out.println(">" + line);
-			game.sendData(line);
 			((ExploreStationActivity) getActivity()).update();
 			break;
+		case R.id.gvToggle:
+			
+			itemName = getCurrentHoldingItemName();
+			
+			if ( itemName != null ) {				
+				game.sendData( "toggle " + itemName  );
+			}
+			((ExploreStationActivity) getActivity()).update();
+			break;
+			
+		case R.id.gvPick:
+			itemName = getCurrentLocationItemName();
+			
+			if ( itemName != null ) {				
+				game.sendData( "pick " + itemName  );
+			}
+			((ExploreStationActivity) getActivity()).update();
+			break;
+			
+		case R.id.gvUseWith:
+			itemName = getCurrentHoldingItemName();
+			itemName2 = getCurrentLocationItemName();
+			
+			if ( itemName != null ) {				
+				game.sendData( "useWith " + itemName2 + " " + itemName  );
+			}
+			((ExploreStationActivity) getActivity()).update();
+			break;
+		
+//		case R.id.btnDo:
+//			UserCommandLineAction cmd = ((UserCommandLineAction) spnActions
+//					.getSelectedItem());
+//			String actionName = cmd.toString();
+//			String operand = "";
+//			int operandsTakenSoFar = 0;
+//			String operand2 = "";
+//			UserCommandLineAction action;
+//			action = (UserCommandLineAction) spnActions.getSelectedItem();
+//
+//			if (spnCollectedItems.getCount() > 0
+//					&& action.requiredOperands() > operandsTakenSoFar) {
+//				operand = getCurrentHoldingItemName();
+//
+//				++operandsTakenSoFar;
+//			}
+//
+//			if (spnLocationItems.getCount() > 0
+//					&& action.requiredOperands() > operandsTakenSoFar) {
+//				operand2 = getCurrentLocationItemName();
+//				++operandsTakenSoFar;
+//			}
+//
+//			line = actionName + " " + operand2 + " " + operand;
+//			System.out.println(">" + line);
+//			game.sendData(line);
+//			((ExploreStationActivity) getActivity()).update();
+//			break;
 
 		case R.id.btnInfo:
 			showInfoDialog();
 			break;
+		case R.id.btnInfoToCollect:
+			showInfoToCollectDialog();
+			break;
 		}
+	}
+
+	private String getCurrentLocationItemName() {
+		if ( spnLocationItems.getCount() > 0 ) {		
+			return ((Item) spnLocationItems.getSelectedItem()).getName();
+		} else {
+			return null;
+		}
+	}
+
+	private String getCurrentHoldingItemName() {
+		
+		if ( spnCollectedItems.getCount() > 0 ) {			
+			return ((Item) spnCollectedItems.getSelectedItem()).getName();
+		} else {
+			return null;
+		}
+	}
+	
+	public void showInfoToCollectDialog() {
+		FragmentManager fm = getFragmentManager();
+		ShowItemStatsDialogFragment showItemStatsFragment = new ShowItemStatsDialogFragment();
+		Bundle args = new Bundle();
+		Item item = ((Item) spnLocationItems.getSelectedItem());
+		args.putString("name", item.getName());
+		args.putString("desc", item.getDescription());
+		showItemStatsFragment.setArguments(args);
+		showItemStatsFragment.show(fm, "show_item_stats_layout");		
 	}
 
 	private void showInfoDialog() {

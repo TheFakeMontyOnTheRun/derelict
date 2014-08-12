@@ -16,12 +16,12 @@ public class AtmospherePurifier extends ActiveItem {
 	
 	@Override
 	public String getTurnOffSound() {	
-		return "bonk";
+		return "atmosphereoff";
 	}
 	
 	@Override
 	public String getTurnOnSound() {		
-		return "bonk";
+		return "atmosphereon";
 	}
 	
 	@Override

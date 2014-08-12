@@ -33,11 +33,11 @@ import br.odb.utils.Utils;
 public class ExploreStationFragment extends Fragment implements
 		GameUpdateDelegate, OnClickListener, OnItemSelectedListener {
 
-	Spinner spnItems;
+//	Spinner spnItems;
 	EditText edtOutput;
 	EditText edtEntry;
 	Button btnSend;
-	Button btnPick;
+//	Button btnPick;
 	ExploreStationView gameView;
 	private Spinner spnLocations;
 	private Spinner spnDirections;
@@ -60,7 +60,7 @@ public class ExploreStationFragment extends Fragment implements
 
 		btnSend = (Button) toReturn.findViewById(R.id.btnSend);
 		gameView = (ExploreStationView) toReturn.findViewById(R.id.overviewMap);
-		spnItems = (Spinner) toReturn.findViewById(R.id.spnObjectsToPick);
+//		spnItems = (Spinner) toReturn.findViewById(R.id.spnObjectsToPick);
 		spnLocations = (Spinner) toReturn.findViewById(R.id.spnLocations);
 		spnDirections = (Spinner) toReturn.findViewById(R.id.spnDirection);
 		
@@ -70,8 +70,8 @@ public class ExploreStationFragment extends Fragment implements
 		
 		spnDirections.setOnItemSelectedListener(this);
 		
-		btnPick = (Button) toReturn.findViewById(R.id.btnPick);
-		btnPick.setOnClickListener(this);
+//		btnPick = (Button) toReturn.findViewById(R.id.btnPick);
+//		btnPick.setOnClickListener(this);
 		toReturn.findViewById(R.id.btnGo).setOnClickListener(this);
 
 		return toReturn;
@@ -102,10 +102,10 @@ public class ExploreStationFragment extends Fragment implements
 	public void onClick(View v) {
 
 		switch (v.getId()) {
-		case R.id.btnPick:
-			game.sendData("pick "
-					+ ((Item) spnItems.getSelectedItem()).getName());
-			break;
+//		case R.id.btnPick:
+//			game.sendData("pick "
+//					+ ((Item) spnItems.getSelectedItem()).getName());
+//			break;
 
 		case R.id.btnGo:
 			
@@ -181,10 +181,10 @@ public class ExploreStationFragment extends Fragment implements
 			
 			Item[] items = tmp.toArray( new Item[ tmp.size() ] );
 			
-			spnItems.setAdapter(new ArrayAdapter<Item>(getActivity(),
-					android.R.layout.simple_spinner_item, 
-					items ) );
-			
+//			spnItems.setAdapter(new ArrayAdapter<Item>(getActivity(),
+//					android.R.layout.simple_spinner_item, 
+//					items ) );
+//			
 			Utils.reverseArray( game.getCollectableItems() );
 			
 			spnLocations.setAdapter(new ArrayAdapter<String>(getActivity(),
@@ -198,8 +198,8 @@ public class ExploreStationFragment extends Fragment implements
 
 
 			spnDirections.setSelection(game.hero.direction.ordinal());
-			btnPick.setEnabled((game.getCollectableItems().length > 0));
-			spnItems.setEnabled(btnPick.isEnabled());
+//			btnPick.setEnabled((game.getCollectableItems().length > 0));
+//			spnItems.setEnabled(btnPick.isEnabled());
 	
 			gameView.setBackgroundColor( Color.argb( 255, ( int )Utils.clamp( game.station.hullTemperature, 0, 255 ), 0, 64 ) );
 			gameView.update( 100 );

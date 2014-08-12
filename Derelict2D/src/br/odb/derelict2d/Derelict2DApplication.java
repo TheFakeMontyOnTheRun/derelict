@@ -107,6 +107,8 @@ public class Derelict2DApplication extends Application implements
 			ex.printStackTrace();
 		}
 
+		resManager.addResId("atmosphereon", R.raw.atmosphereon);
+		resManager.addResId("atmosphereoff", R.raw.atmosphereoff);
 		resManager.addResId("magbootsuse", R.raw.magbootsused);
 		resManager.addResId("magbootsoff", R.raw.magbootsoff);
 		resManager.addResId("magbootson", R.raw.magbootson);

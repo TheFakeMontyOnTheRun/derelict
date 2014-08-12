@@ -46,27 +46,6 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#666" >
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="Action to perform" />
-
-        <Spinner
-            android:id="@+id/spnActions"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="123dp" >
 
         <br.odb.gamelib.android.GameView
@@ -135,12 +114,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="2" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btnInfoToCollect"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Info" />
 
-    <Button
-        android:id="@+id/btnDo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Do" />
+    </LinearLayout>
 
 </LinearLayout>
