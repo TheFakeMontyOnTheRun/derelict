@@ -1,5 +1,8 @@
 package br.odb.derelict2d;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gamerendering.rendering.DisplayList;
@@ -8,12 +11,6 @@ import br.odb.gamerendering.rendering.SVGRenderingNode;
 import br.odb.libsvg.SVGGraphic;
 import br.odb.utils.Rect;
 import br.odb.utils.math.Vec2;
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.DragEvent;
-import android.view.Menu;
-import android.view.View;
-import android.view.View.OnDragListener;
 
 public class ShowHowToPlayActivity extends Activity {
 
@@ -32,13 +29,6 @@ public class ShowHowToPlayActivity extends Activity {
 		super.onWindowFocusChanged(hasFocus);
 
 		initImage((GameView) findViewById(R.id.gvHowToPlayHero), "heroGraphic");
-		initImage((GameView) findViewById(R.id.gvHowToPlayItem), "plasma-gun");
-		
-		
-		initImage((GameView) findViewById(R.id.gvHowToPlayPick), "icon-pick");
-		initImage((GameView) findViewById(R.id.gvHowToPlayToggle), "icon-toggle");
-		initImage((GameView) findViewById(R.id.gvHowToPlayUseWith), "icon-use-with");
-		initImage((GameView) findViewById(R.id.gvHowToPlayUse), "icon-use");
 	}
 
 	@Override

@@ -6,157 +6,31 @@
     android:orientation="vertical"
     tools:context=".ShowHowToPlayActivity" >
 
-    <ScrollView
-        android:id="@+id/scrollView1"
+    <br.odb.gamelib.android.GameView
+        android:id="@+id/gvHowToPlayHero"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@color/derelict_background" >
+        android:layout_height="558dp"
+        android:background="#888" />
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btnPrev"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:background="@color/derelict_foreground"
-            android:orientation="vertical" >
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="Previous" />
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:text="How to play Derelict:"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="Next" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" >
-
-                <br.odb.gamelib.android.GameView
-                    android:id="@+id/gvHowToPlayHero"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#888" />
-
-                <TextView
-                    android:id="@+id/TextView01"
-                    android:layout_width="fill_parent"
-                    android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="This is your place in the situation map" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" >
-
-                <TextView
-                    android:id="@+id/TextView02"
-                    android:layout_width="fill_parent"
-                    android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="This is how objects are represented in the map" />
-
-                <br.odb.gamelib.android.GameView
-                    android:id="@+id/gvHowToPlayItem"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#888" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" >
-
-                <br.odb.gamelib.android.GameView
-                    android:id="@+id/gvHowToPlayPick"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#888" />
-
-                <TextView
-                    android:id="@+id/TextView03"
-                    android:layout_width="fill_parent"
-                    android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="This will allow you to pick an object" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" >
-
-                <br.odb.gamelib.android.GameView
-                    android:id="@+id/gvHowToPlayUse"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#888" />
-
-                <TextView
-                    android:id="@+id/TextView08"
-                    android:layout_width="fill_parent"
-                    android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="This allows you to use an object you hold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" >
-
-                <br.odb.gamelib.android.GameView
-                    android:id="@+id/gvHowToPlayUseWith"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#888" />
-
-                <TextView
-                    android:id="@+id/TextView07"
-                    android:layout_width="fill_parent"
-                    android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="This will allow you to use an object you hold into an object in the environment" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" >
-
-                <br.odb.gamelib.android.GameView
-                    android:id="@+id/gvHowToPlayToggle"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#888" />
-
-                <TextView
-                    android:id="@+id/TextView06"
-                    android:layout_width="fill_parent"
-                    android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="This will toggle an object between active and inactive state" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </LinearLayout>
-        </LinearLayout>
-
-    </ScrollView>
+    </LinearLayout>
 
 </LinearLayout>
