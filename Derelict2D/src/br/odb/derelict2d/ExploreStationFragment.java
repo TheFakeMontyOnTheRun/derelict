@@ -24,9 +24,6 @@ import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gameworld.Item;
-import br.odb.gameworld.Location;
-import br.odb.gameworld.exceptions.InvalidLocationException;
-import br.odb.gameworld.exceptions.InvalidSlotException;
 import br.odb.libsvg.SVGGraphic;
 import br.odb.utils.Direction;
 import br.odb.utils.Utils;
@@ -35,13 +32,10 @@ import br.odb.utils.Utils;
 public class ExploreStationFragment extends Fragment implements
 		GameUpdateDelegate, OnClickListener, OnItemSelectedListener {
 
-//	Spinner spnItems;
 	EditText edtOutput;
 	EditText edtEntry;
 	Button btnSend;
-//	Button btnPick;
 	ExploreStationView gameView;
-	private Spinner spnLocations;
 	private Spinner spnDirections;
 	private GameLevel currentLevel;
 	DerelictGame game;
@@ -51,9 +45,7 @@ public class ExploreStationFragment extends Fragment implements
 	
 	
 	SVGGraphic stationGraphics;
-//	Derelict3DView view3D;
 	private GameView gvMove;
-	private GameView gvTurn;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,28 +56,11 @@ public class ExploreStationFragment extends Fragment implements
 
 		btnSend = (Button) toReturn.findViewById(R.id.btnSend);
 		gameView = (ExploreStationView) toReturn.findViewById(R.id.overviewMap);
-//		spnItems = (Spinner) toReturn.findViewById(R.id.spnObjectsToPick);
-		spnLocations = (Spinner) toReturn.findViewById(R.id.spnLocations);
 		spnDirections = (Spinner) toReturn.findViewById(R.id.spnDirection);
-		
-
-//		view3D = (Derelict3DView) toReturn.findViewById( R.id.view3D );
-		
-		
 		spnDirections.setOnItemSelectedListener(this);
-		
-//		btnPick = (Button) toReturn.findViewById(R.id.btnPick);
-//		btnPick.setOnClickListener(this);
-		toReturn.findViewById(R.id.btnGo).setOnClickListener(this);
-		
 		gvMove = (GameView) toReturn.findViewById(R.id.gvMove);		
 		gvMove.setOnClickListener( this );
 		AndroidUtils.initImage(gvMove, "icon-move", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
-
-		gvTurn = (GameView) toReturn.findViewById(R.id.gvTurn);		
-		gvTurn.setOnClickListener( this );
-		AndroidUtils.initImage(gvTurn, "icon-turn", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
-		
 
 		return toReturn;
 	}
@@ -115,30 +90,15 @@ public class ExploreStationFragment extends Fragment implements
 	public void onClick(View v) {
 
 		switch (v.getId()) {
-//		case R.id.btnPick:
-//			game.sendData("pick "
-//					+ ((Item) spnItems.getSelectedItem()).getName());
-//			break;
-
-		case R.id.btnGo:
-			
-//			if ( view3D != null ) {
-//				
-//				stationGraphics = null;
-//				view3D.clearScene();
-//			}
-//			
+		
+		case R.id.gvMove:
 			Direction d;
-			Location l;
+				
+				d = (Direction) spnDirections.getSelectedItem();
 
-			try {
-				l = game.station.getLocation((String) spnLocations
-						.getSelectedItem());
-				d = game.station.getAstronaut().getLocation()
-						.getConnectionDirectionForLocation(l);
-				if (game.station.canMove(game.station.getAstronaut(),
-						(String) spnLocations.getSelectedItem())) {
-
+				//not good!
+				if ( game.station.getAstronaut().getLocation().getConnections()[ d.ordinal() ] != null ) {
+				
 					if (d != Direction.CEILING && d != Direction.FLOOR) {
 						if (fiveSteps != null) {
 
@@ -153,15 +113,9 @@ public class ExploreStationFragment extends Fragment implements
 					}
 
 				}
-			} catch (InvalidLocationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvalidSlotException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 
-			game.sendData("move " + spnLocations.getSelectedItem());
+
+			game.sendData("move " + spnDirections.getSelectedItem());
 			break;
 		}
 	}
@@ -175,14 +129,7 @@ public class ExploreStationFragment extends Fragment implements
 		currentLevel = explore.currentLevel;
 
 		if (gameView != null && currentLevel != null && resManager != null) {
-
-//			if ( stationGraphics == null && view3D != null ) {
-//				
-//				stationGraphics = resManager.getGraphics("floor1");		
-//				view3D.addScene( stationGraphics, game.hero.getLocation().getName() );
-//			}
-
-			
+						
 			gameView.setSnapshot(game, resManager);
 			
 			ArrayList< Item > tmp = new ArrayList< Item >();
@@ -192,27 +139,13 @@ public class ExploreStationFragment extends Fragment implements
 				tmp.add( 0, i );
 			}
 			
-			Item[] items = tmp.toArray( new Item[ tmp.size() ] );
-			
-//			spnItems.setAdapter(new ArrayAdapter<Item>(getActivity(),
-//					android.R.layout.simple_spinner_item, 
-//					items ) );
-//			
 			Utils.reverseArray( game.getCollectableItems() );
 			
-			spnLocations.setAdapter(new ArrayAdapter<String>(getActivity(),
-					android.R.layout.simple_spinner_item, game
-							.getConnectionNames()));
-			
-			
-
 			spnDirections.setAdapter(new ArrayAdapter<Direction>(getActivity(),
 					android.R.layout.simple_spinner_item, Direction.values()));
 
 
 			spnDirections.setSelection(game.hero.direction.ordinal());
-//			btnPick.setEnabled((game.getCollectableItems().length > 0));
-//			spnItems.setEnabled(btnPick.isEnabled());
 	
 			gameView.setBackgroundColor( Color.argb( 255, ( int )Utils.clamp( game.station.hullTemperature, 0, 255 ), 0, 64 ) );
 			gameView.update( 100 );
@@ -223,28 +156,11 @@ public class ExploreStationFragment extends Fragment implements
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View v, int arg2,
 			long arg3) {
-
-//		if ( v == spnDirections ) {
 			
 			game.hero.direction = (Direction) spnDirections.getSelectedItem();
-			spnLocations.setAdapter(new ArrayAdapter<String>(getActivity(),
-					android.R.layout.simple_spinner_item, game
-					.getConnectionNames()));
-//		} else {
-//			try {
-//				spnDirections.setSelection( game.hero.getLocation().getConnectionDirectionForLocation( game.station.getLocation( (String) spnLocations.getSelectedItem() ) ).ordinal() );
-//			} catch (InvalidSlotException e) {
-//				e.printStackTrace();
-//			} catch (InvalidLocationException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
-
 	}
 }

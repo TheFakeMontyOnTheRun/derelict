@@ -23,14 +23,8 @@ import br.odb.gameapp.GameUpdateDelegate;
 import br.odb.gameapp.UserCommandLineAction;
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
-import br.odb.gamerendering.rendering.AssetManager;
-import br.odb.gamerendering.rendering.DisplayList;
-import br.odb.gamerendering.rendering.RenderingNode;
-import br.odb.gamerendering.rendering.SVGRenderingNode;
+import br.odb.gameworld.ActiveItem;
 import br.odb.gameworld.Item;
-import br.odb.libsvg.SVGGraphic;
-import br.odb.utils.Rect;
-import br.odb.utils.math.Vec2;
 
 public class ManageInventoryFragment extends Fragment implements
 		GameUpdateDelegate, OnClickListener, OnItemSelectedListener {
@@ -38,14 +32,12 @@ public class ManageInventoryFragment extends Fragment implements
 	private DerelictGame game;
 	private Spinner spnCollectedItems;
 	private Spinner spnLocationItems;
-//	private Spinner spnActions;
 	GameView gvPick;
 	GameView gvUseWith;
 	GameView gvUse;
 	GameView gvDrop;
 	GameView gvToggle;
 	private WebView wvDescription;
-//	Button btnDo;
 	private Button btnInfo;
 	private Button btnInfoToCollect;
 
@@ -58,14 +50,14 @@ public class ManageInventoryFragment extends Fragment implements
 		spnCollectedItems = (Spinner) toReturn.findViewById(R.id.spnCollected);
 		spnLocationItems = (Spinner) toReturn
 				.findViewById(R.id.spnLocationItems);
-//		spnActions = (Spinner) toReturn.findViewById(R.id.spnActions);
-//		spnActions.setOnItemSelectedListener(this);
+		
+		spnCollectedItems.setOnItemSelectedListener( this );
+		spnLocationItems.setOnItemSelectedListener( this );
+		
 		wvDescription = (WebView) toReturn.findViewById(R.id.wvDescription);
 
-//		btnDo = (Button) toReturn.findViewById(R.id.btnDo);
 		btnInfo = (Button) toReturn.findViewById(R.id.btnInfo);
 		btnInfoToCollect = (Button) toReturn.findViewById(R.id.btnInfoToCollect);
-//		btnDo.setOnClickListener(this);
 		btnInfo.setOnClickListener(this);
 		btnInfoToCollect.setOnClickListener(this);
 
@@ -111,10 +103,6 @@ public class ManageInventoryFragment extends Fragment implements
 				cmdsFiltered.add(ucmd);
 			}
 		}
-
-//		spnActions.setAdapter(new ArrayAdapter<UserCommandLineAction>(
-//				getActivity(), android.R.layout.simple_spinner_item,
-//				cmdsFiltered));
 	}
 
 	@Override
@@ -158,23 +146,46 @@ public class ManageInventoryFragment extends Fragment implements
 
 	private void updateWidgets() {
 
-//		UserCommandLineAction cmd = ((UserCommandLineAction) spnActions
-//				.getSelectedItem());
 
 		spnCollectedItems.setEnabled(spnCollectedItems.getCount() > 0);
 		btnInfo.setEnabled(spnCollectedItems.isEnabled());
-
-//		spnLocationItems.setEnabled(cmd.requiredOperands() > 1
-//				&& spnLocationItems.getCount() > 0);
-//
-//		btnDo.setEnabled((spnCollectedItems.getCount() > 0 && cmd
-//				.requiredOperands() == 1)
-//				|| (spnCollectedItems.getCount() > 0
-//						&& spnLocationItems.getCount() > 0 && cmd
-//						.requiredOperands() == 2)
-//				|| (spnLocationItems.getCount() > 0 && cmd.requiredOperands() == 1)
-//				|| (cmd.requiredOperands() == 0));
-
+		
+		gvUseWith.setEnabled( spnCollectedItems.isEnabled() );
+		gvUse.setEnabled( spnCollectedItems.isEnabled() );		
+		gvToggle.setEnabled( spnCollectedItems.getCount() > 0 && ( spnCollectedItems.getSelectedItem() instanceof ActiveItem ) );
+		gvDrop.setEnabled( spnCollectedItems.getCount() > 0 );
+		gvPick.setEnabled( spnLocationItems.getCount() > 0 );
+		
+		if ( gvToggle.isEnabled() ) {
+			gvToggle.setAlpha( 1.0f );
+		} else {			
+			gvToggle.setAlpha( 0.5f );
+		}
+		
+		if ( gvUse.isEnabled() ) {
+			gvUse.setAlpha( 1.0f );
+		} else {			
+			gvUse.setAlpha( 0.5f );
+		}
+		
+		if ( gvUseWith.isEnabled() ) {
+			gvUseWith.setAlpha( 1.0f );
+		} else {			
+			gvUseWith.setAlpha( 0.5f );
+		}
+		
+		if ( gvDrop.isEnabled() ) {
+			gvDrop.setAlpha( 1.0f );
+		} else {			
+			gvDrop.setAlpha( 0.5f );
+		}
+		
+		if ( gvPick.isEnabled() ) {
+			gvPick.setAlpha( 1.0f );
+		} else {			
+			gvPick.setAlpha( 0.5f );
+		}
+		
 		String desc = game.getTextOutput().replaceAll("\n", "<br/>");
 		wvDescription.getSettings().setJavaScriptEnabled(false);
 		wvDescription.loadDataWithBaseURL(null,
@@ -185,7 +196,6 @@ public class ManageInventoryFragment extends Fragment implements
 	@Override
 	public void onClick(View v) {
 
-		String line;
 		String itemName;
 		String itemName2;
 		
@@ -228,36 +238,6 @@ public class ManageInventoryFragment extends Fragment implements
 			}
 			((ExploreStationActivity) getActivity()).update();
 			break;
-		
-//		case R.id.btnDo:
-//			UserCommandLineAction cmd = ((UserCommandLineAction) spnActions
-//					.getSelectedItem());
-//			String actionName = cmd.toString();
-//			String operand = "";
-//			int operandsTakenSoFar = 0;
-//			String operand2 = "";
-//			UserCommandLineAction action;
-//			action = (UserCommandLineAction) spnActions.getSelectedItem();
-//
-//			if (spnCollectedItems.getCount() > 0
-//					&& action.requiredOperands() > operandsTakenSoFar) {
-//				operand = getCurrentHoldingItemName();
-//
-//				++operandsTakenSoFar;
-//			}
-//
-//			if (spnLocationItems.getCount() > 0
-//					&& action.requiredOperands() > operandsTakenSoFar) {
-//				operand2 = getCurrentLocationItemName();
-//				++operandsTakenSoFar;
-//			}
-//
-//			line = actionName + " " + operand2 + " " + operand;
-//			System.out.println(">" + line);
-//			game.sendData(line);
-//			((ExploreStationActivity) getActivity()).update();
-//			break;
-
 		case R.id.btnInfo:
 			showInfoDialog();
 			break;
@@ -309,14 +289,6 @@ public class ManageInventoryFragment extends Fragment implements
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3) {
-
-		// porque preciso disso?
-
-		// UserCommandLineAction cmd = ((UserCommandLineAction) spnActions
-		// .getSelectedItem());
-		//
-		// spnLocationItems.setEnabled(cmd.requiredOperands() > 1
-		// && spnLocationItems.getCount() > 0);
 
 		updateWidgets();
 	}

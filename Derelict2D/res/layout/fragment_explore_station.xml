@@ -12,29 +12,6 @@
         android:layout_weight="1.11"
         android:padding="0dip" />
 
-    <Spinner
-        android:id="@+id/spnDirection"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="123dp" >
-
-        <br.odb.gamelib.android.GameView
-            android:id="@+id/gvMove"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
-
-        <br.odb.gamelib.android.GameView
-            android:id="@+id/gvTurn"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
-
-    </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,18 +20,15 @@
         android:padding="0dip" >
 
         <Spinner
-            android:id="@+id/spnLocations"
-            android:layout_width="0dp"
+            android:id="@+id/spnDirection"
+            android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:layout_weight="5" />
+            android:layout_weight="0.81" />
 
-        <Button
-            android:id="@+id/btnGo"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="0dip"
-            android:text="Go" />
+        <br.odb.gamelib.android.GameView
+            android:id="@+id/gvMove"
+            android:layout_width="123dp"
+            android:layout_height="123dp" />
     </LinearLayout>
 
 </LinearLayout>
