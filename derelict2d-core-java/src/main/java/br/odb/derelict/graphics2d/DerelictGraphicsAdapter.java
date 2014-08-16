@@ -74,7 +74,7 @@ public class DerelictGraphicsAdapter {
 
 				offset += 10;
 
-				item = new SVGRenderingNode( resManager.getGraphics(i.getName()), i.getName());
+				item = new SVGRenderingNode( resManager.getGraphics(i.getName()).scaleTo( 32, 32), i.getName());
 
 				if (i instanceof ActiveItem) {
 

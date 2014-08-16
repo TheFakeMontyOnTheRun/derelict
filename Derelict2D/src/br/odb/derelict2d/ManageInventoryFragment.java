@@ -1,6 +1,7 @@
 package br.odb.derelict2d;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -10,12 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.LinearLayout;
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict.core.commands.DerelictUserMetaCommandLineAction;
 import br.odb.derelict.core.commands.DerelictUserMoveCommandLineAction;
@@ -23,15 +22,16 @@ import br.odb.gameapp.GameUpdateDelegate;
 import br.odb.gameapp.UserCommandLineAction;
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
+import br.odb.gamerendering.rendering.DisplayList;
+import br.odb.gamerendering.rendering.SVGRenderingNode;
 import br.odb.gameworld.ActiveItem;
 import br.odb.gameworld.Item;
+import br.odb.libsvg.ColoredPolygon;
 
 public class ManageInventoryFragment extends Fragment implements
-		GameUpdateDelegate, OnClickListener, OnItemSelectedListener {
+		GameUpdateDelegate, OnClickListener {
 
 	private DerelictGame game;
-	private Spinner spnCollectedItems;
-	private Spinner spnLocationItems;
 	GameView gvPick;
 	GameView gvUseWith;
 	GameView gvUse;
@@ -40,19 +40,22 @@ public class ManageInventoryFragment extends Fragment implements
 	private WebView wvDescription;
 	private Button btnInfo;
 	private Button btnInfoToCollect;
-
+	Item selectedCollectedItem;
+	Item selectedLocationItem;
+	LinearLayout llCollectedItems;
+	LinearLayout llLocationItems;
+	final HashMap< GameView, Item > itemForView = new HashMap< GameView, Item >();
+	final HashMap< Item, GameView > viewForItem = new HashMap< Item, GameView >();
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View toReturn = inflater.inflate(R.layout.activity_manage_inventory,
 				container, false);
 
-		spnCollectedItems = (Spinner) toReturn.findViewById(R.id.spnCollected);
-		spnLocationItems = (Spinner) toReturn
-				.findViewById(R.id.spnLocationItems);
 		
-		spnCollectedItems.setOnItemSelectedListener( this );
-		spnLocationItems.setOnItemSelectedListener( this );
+		llCollectedItems = (LinearLayout) toReturn.findViewById( R.id.llCollectedItems );
+		llLocationItems = (LinearLayout) toReturn.findViewById( R.id.llLocationItems );
 		
 		wvDescription = (WebView) toReturn.findViewById(R.id.wvDescription);
 
@@ -83,8 +86,7 @@ public class ManageInventoryFragment extends Fragment implements
 
 		return toReturn;
 	}
-
-
+	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -108,53 +110,105 @@ public class ManageInventoryFragment extends Fragment implements
 	@Override
 	public void update() {
 
-		ArrayList<Item> tmp = new ArrayList<Item>();
-
+		GameView gv;
+		ColoredPolygon active;
+		DisplayList dl;
+		ViewGroup vg;
+		
+		llLocationItems.removeAllViews();
 		for (Item i : game.getCollectableItems()) {
-			tmp.add(0, i);
+			
+			
+			if ( !viewForItem.containsKey( i ) ) {
+				
+				gv = new GameView( llLocationItems.getContext() );		
+				gv.setLayoutParams( new LayoutParams( 128, 128 ) );
+				gv.setOnClickListener( this );
+				gv.setAlpha( 0.5f );			
+				AndroidUtils.initImage(gv, i.getName(), ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager(), 128, 128, "" );
+				itemForView.put( gv, i );
+				viewForItem.put( i, gv );
+				
+				
+			} else {
+				gv = viewForItem.get( i );
+			}
+
+			dl = (DisplayList) gv.getRenderingContent();			
+			active = ((SVGRenderingNode) dl.getItems()[0] ).graphic
+					.getShapeById("active");
+
+			if (active != null) {
+				active.visible = ((ActiveItem) i).isActive();
+			}
+			
+			llLocationItems.addView( gv );
+		}
+		
+		vg = llLocationItems;
+		
+		for ( int c = 0; c < vg.getChildCount(); ++c ) {
+			vg.getChildAt( c ).setAlpha( 0.5f );
+		}			
+		
+		if ( selectedLocationItem != null ) {
+			viewForItem.get( selectedLocationItem ).setAlpha( 1.0f );
+		}
+		
+		
+		
+		llCollectedItems.removeAllViews();
+		for (Item i : game.getCollectedItems()) {
+			
+			if ( !viewForItem.containsKey( i ) ) {
+				
+				gv = new GameView( llCollectedItems.getContext() );		
+				gv.setLayoutParams( new LayoutParams( 128, 128 ) );
+				gv.setOnClickListener( this );
+				gv.setAlpha( 0.5f );			
+				AndroidUtils.initImage(gv, i.getName(), ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager(), 128, 128, "" );
+				itemForView.put( gv, i );
+				viewForItem.put( i, gv );
+				
+				
+			} else {
+				gv = viewForItem.get( i );
+			}
+			
+			dl = (DisplayList) gv.getRenderingContent();			
+			active = ((SVGRenderingNode) dl.getItems()[0] ).graphic
+					.getShapeById("active");
+
+			if (active != null) {
+				active.visible = ((ActiveItem) i).isActive();
+			}
+			
+			llCollectedItems.addView( gv );
+		}
+		vg = llCollectedItems;
+		for ( int c = 0; c < vg.getChildCount(); ++c ) {
+			vg.getChildAt( c ).setAlpha( 0.5f );
+		}			
+		
+		if ( selectedCollectedItem != null ) {
+			viewForItem.get( selectedCollectedItem ).setAlpha( 1.0f );
 		}
 
-		Item[] items = tmp.toArray(new Item[tmp.size()]);
 
-		setListFor(spnLocationItems, items);
-		setListFor(spnCollectedItems, game.getCollectedItems());
 		updateWidgets();
 	}
 
-	private void setListFor(Spinner widget, Item[] itemList) {
-
-		Item previousSelection;
-		int itemIndex = -1;
-
-		previousSelection = (Item) widget.getSelectedItem();
-
-		widget.setAdapter(new ArrayAdapter<Item>(getActivity(),
-				android.R.layout.simple_spinner_item, itemList));
-
-		for (int c = 0; c < widget.getCount(); ++c) {
-			if (previousSelection == widget.getItemAtPosition(c)) {
-				itemIndex = c;
-			}
-		}
-
-		if (itemIndex != -1) {
-			widget.setSelection(itemIndex, true);
-			widget.postInvalidate();
-		}
-
-	}
 
 	private void updateWidgets() {
 
-
-		spnCollectedItems.setEnabled(spnCollectedItems.getCount() > 0);
-		btnInfo.setEnabled(spnCollectedItems.isEnabled());
 		
-		gvUseWith.setEnabled( spnCollectedItems.isEnabled() );
-		gvUse.setEnabled( spnCollectedItems.isEnabled() );		
-		gvToggle.setEnabled( spnCollectedItems.getCount() > 0 && ( spnCollectedItems.getSelectedItem() instanceof ActiveItem ) );
-		gvDrop.setEnabled( spnCollectedItems.getCount() > 0 );
-		gvPick.setEnabled( spnLocationItems.getCount() > 0 );
+		llCollectedItems.setEnabled(llCollectedItems.getChildCount() > 0);
+		btnInfo.setEnabled( selectedLocationItem != null );		
+		gvUseWith.setEnabled( selectedCollectedItem != null && selectedLocationItem != null );
+		gvUse.setEnabled( selectedCollectedItem != null );		
+		gvToggle.setEnabled( selectedCollectedItem != null );
+		gvDrop.setEnabled( selectedCollectedItem != null );
+		gvPick.setEnabled( selectedLocationItem != null );
 		
 		if ( gvToggle.isEnabled() ) {
 			gvToggle.setAlpha( 1.0f );
@@ -208,6 +262,8 @@ public class ManageInventoryFragment extends Fragment implements
 			if ( itemName != null ) {				
 				game.sendData( "drop " + itemName  );
 			}
+			
+			selectedCollectedItem = null;
 			((ExploreStationActivity) getActivity()).update();
 			break;
 		case R.id.gvToggle:
@@ -226,6 +282,8 @@ public class ManageInventoryFragment extends Fragment implements
 			if ( itemName != null ) {				
 				game.sendData( "pick " + itemName  );
 			}
+			selectedCollectedItem = selectedLocationItem;
+			selectedLocationItem = null;
 			((ExploreStationActivity) getActivity()).update();
 			break;
 			
@@ -244,12 +302,34 @@ public class ManageInventoryFragment extends Fragment implements
 		case R.id.btnInfoToCollect:
 			showInfoToCollectDialog();
 			break;
+		default:
+			
+			ViewGroup vg;
+			Item i = itemForView.get( v );
+			
+			if ( i == null ) {
+				return;
+			}
+			
+			if ( v.getParent() == llLocationItems ) {
+				
+				selectedLocationItem = i;
+				vg = llLocationItems;				
+				
+			} else if ( v.getParent() == llCollectedItems ) {
+				selectedCollectedItem = i;
+				vg = llCollectedItems;				
+			} else {
+				return;
+			}
+			
+			((ExploreStationActivity) getActivity()).update();
 		}
 	}
 
 	private String getCurrentLocationItemName() {
-		if ( spnLocationItems.getCount() > 0 ) {		
-			return ((Item) spnLocationItems.getSelectedItem()).getName();
+		if ( selectedLocationItem != null ) {		
+			return selectedLocationItem.getName();
 		} else {
 			return null;
 		}
@@ -257,18 +337,23 @@ public class ManageInventoryFragment extends Fragment implements
 
 	private String getCurrentHoldingItemName() {
 		
-		if ( spnCollectedItems.getCount() > 0 ) {			
-			return ((Item) spnCollectedItems.getSelectedItem()).getName();
+		if ( selectedCollectedItem != null ) {			
+			return selectedCollectedItem.getName();
 		} else {
 			return null;
 		}
 	}
 	
 	public void showInfoToCollectDialog() {
+	
+		if ( selectedLocationItem == null ) {
+			return;
+		}
+		
 		FragmentManager fm = getFragmentManager();
 		ShowItemStatsDialogFragment showItemStatsFragment = new ShowItemStatsDialogFragment();
 		Bundle args = new Bundle();
-		Item item = ((Item) spnLocationItems.getSelectedItem());
+		Item item = selectedLocationItem;
 		args.putString("name", item.getName());
 		args.putString("desc", item.getDescription());
 		showItemStatsFragment.setArguments(args);
@@ -276,24 +361,18 @@ public class ManageInventoryFragment extends Fragment implements
 	}
 
 	private void showInfoDialog() {
+		
+		if ( selectedCollectedItem == null ) {
+			return;
+		}
+		
 		FragmentManager fm = getFragmentManager();
 		ShowItemStatsDialogFragment showItemStatsFragment = new ShowItemStatsDialogFragment();
 		Bundle args = new Bundle();
-		Item item = ((Item) spnCollectedItems.getSelectedItem());
+		Item item = selectedCollectedItem;
 		args.putString("name", item.getName());
 		args.putString("desc", item.getDescription());
 		showItemStatsFragment.setArguments(args);
 		showItemStatsFragment.show(fm, "show_item_stats_layout");
-	}
-
-	@Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-			long arg3) {
-
-		updateWidgets();
-	}
-
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
 	}
 }

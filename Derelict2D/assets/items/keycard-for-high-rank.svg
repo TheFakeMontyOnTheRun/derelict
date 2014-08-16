@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9943 custom"
-   sodipodi:docname="keycard-for-high rank.svg">
+   sodipodi:docname="keycard-for-high-rank.svg">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -54,30 +54,30 @@
      inkscape:groupmode="layer"
      inkscape:label="Layer 1">
     <rect
-       y="-17.637806"
-       x="-14.813189"
+       y="0.21933691"
+       x="0.18681145"
        height="32.318436"
        width="36.988731"
        id="rect2993"
        style="fill:#666666;fill-opacity:1;fill-rule:nonzero;stroke:none" />
     <path
        style="fill:#800000;stroke:none"
-       d="M-2.7753 -5.99954L11.623152 -8.64146L12.54782 -0.71571L-1.388294 2.05831L-2.7753 -5.99954"
+       d="M 12.2247,11.857603 26.623152,9.2156829 27.54782,17.141433 13.611706,19.915453 12.2247,11.857603"
        id="path3937"
        inkscape:connector-curvature="0" />
     <path
        style="fill:#87de87;stroke:none"
-       d="M-2.445061 -5.73535L4.622069 -5.14092L5.150452 -1.70642L-1.19015 2.05831L-2.445061 -5.73535"
+       d="M 12.554939,12.121793 19.622069,12.716223 20.150452,16.150723 13.80985,19.915453 12.554939,12.121793"
        id="path3939"
        inkscape:connector-curvature="0" />
     <path
        style="fill:#d40000;stroke:none"
-       d="M4.093685 -4.74463L4.489973 -1.90457L1.848055 -1.70642L1.517816 -3.62181L4.093685 -4.74463"
+       d="M 19.093685,13.112513 19.489973,15.952573 16.848055,16.150723 16.517816,14.235333 19.093685,13.112513"
        id="path3941"
        inkscape:connector-curvature="0" />
     <path
        style="opacity:0.10091744;fill:#cccccc;stroke:none"
-       d="M-1.124102 2.05831L10.434287 -1.37618L11.623152 -8.77356L12.54782 -0.71571L-1.124102 2.05831"
+       d="M 13.875898,19.915453 25.434287,16.480963 26.623152,9.0835829 27.54782,17.141433 13.875898,19.915453"
        id="path3943"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />

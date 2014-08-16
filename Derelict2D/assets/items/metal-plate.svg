@@ -31,7 +31,7 @@
      inkscape:window-width="1855"
      inkscape:window-height="1036"
      inkscape:window-x="148"
-     inkscape:window-y="330"
+     inkscape:window-y="308"
      inkscape:window-maximized="0"
      showguides="true"
      inkscape:guide-bbox="true" />
@@ -54,26 +54,26 @@
      inkscape:groupmode="layer"
      inkscape:label="Layer 1">
     <rect
-       y="-15.075477"
-       x="-18.090288"
+       y="0.076811425"
+       x="-0.033811543"
        height="31.428562"
        width="35.970264"
        id="rect2993"
        style="fill:#666666;fill-opacity:1;fill-rule:nonzero;stroke:none" />
     <path
        style="fill:#4d4d4d;stroke:none"
-       d="M-11.971808 -4.20727L0.424454 9.85895L15.454118 -4.59265L4.085526 -12.10748L-11.971808 -4.20727"
+       d="M 6.0846686,10.945018 18.480931,25.011238 33.510595,10.559638 22.142003,3.0448081 6.0846686,10.945018"
        id="path3945"
        inkscape:connector-curvature="0" />
     <path
        style="fill:#333333;stroke:none"
-       d="M-11.971808 -4.20727L-12.132381 -3.4044L0.215709 10.85451L0.488683 9.92318L-11.971808 -4.20727"
+       d="M 6.0846686,10.945018 5.9240956,11.747888 18.272186,26.006798 18.54516,25.075468 6.0846686,10.945018"
        id="path3947"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <path
        style="fill:#cccccc;stroke:none"
-       d="M0.552913 9.79472L0.167536 10.88662L15.197201 -3.95035L15.518347 -4.59265L0.552913 9.79472"
+       d="M 18.60939,24.947008 18.224013,26.038908 33.253678,11.201938 33.574824,10.559638 18.60939,24.947008"
        id="path3949"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />

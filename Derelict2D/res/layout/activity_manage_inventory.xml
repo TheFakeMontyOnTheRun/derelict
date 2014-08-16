@@ -9,13 +9,13 @@
     <WebView
         android:id="@+id/wvDescription"
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.00"
+        android:layout_height="249dp"
+        android:layout_weight="0.51"
         android:background="#090" />
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="123dp"
+        android:layout_height="128dp"
         android:background="#777" >
 
         <TextView
@@ -26,23 +26,35 @@
             android:gravity="center_vertical"
             android:text="Collected Item:" />
 
-        <Spinner
-            android:id="@+id/spnCollected"
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2" />
+            android:layout_height="128dp"
+            android:layout_weight="5"
+            android:background="#222" >
+
+            <LinearLayout
+                android:id="@+id/llCollectedItems"
+                android:layout_width="wrap_content"
+                android:layout_height="128dp"
+                android:background="#222"
+                android:orientation="horizontal" >
+
+            </LinearLayout>
+        </HorizontalScrollView>
 
         <Button
             android:id="@+id/btnInfo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="Info" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="123dp"
+        android:layout_height="128dp"
         android:background="#000" >
 
         <br.odb.gamelib.android.GameView
@@ -74,12 +86,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="123dp"
+        android:layout_height="128dp"
         android:background="#777" >
 
         <TextView
@@ -90,16 +101,28 @@
             android:gravity="center_vertical"
             android:text="Object in location:" />
 
-        <Spinner
-            android:id="@+id/spnLocationItems"
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2" />
+            android:layout_height="128dp"
+            android:layout_weight="5"
+            android:background="#222" >
+
+            <LinearLayout
+                android:id="@+id/llLocationItems"
+                android:layout_width="wrap_content"
+                android:layout_height="128dp"
+                android:background="#222"
+                android:orientation="horizontal" >
+
+            </LinearLayout>
+        </HorizontalScrollView>
 
         <Button
             android:id="@+id/btnInfoToCollect"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="Info" />
 
     </LinearLayout>
