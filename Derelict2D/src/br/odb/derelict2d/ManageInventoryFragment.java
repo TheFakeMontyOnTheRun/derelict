@@ -203,7 +203,8 @@ public class ManageInventoryFragment extends Fragment implements
 
 		
 		llCollectedItems.setEnabled(llCollectedItems.getChildCount() > 0);
-		btnInfo.setEnabled( selectedLocationItem != null );		
+		btnInfo.setEnabled( selectedCollectedItem != null );		
+		btnInfoToCollect.setEnabled( selectedLocationItem != null );				
 		gvUseWith.setEnabled( selectedCollectedItem != null && selectedLocationItem != null );
 		gvUse.setEnabled( selectedCollectedItem != null );		
 		gvToggle.setEnabled( selectedCollectedItem != null );
