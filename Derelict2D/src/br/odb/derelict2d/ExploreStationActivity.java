@@ -211,7 +211,7 @@ public class ExploreStationActivity extends Activity implements
 	@Override
 	public void alert(String string) {
 
-		Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, string, Toast.LENGTH_LONG).show();
 
 		if (tts != null) {
 			tts.speak(string, TextToSpeech.QUEUE_FLUSH, null);
