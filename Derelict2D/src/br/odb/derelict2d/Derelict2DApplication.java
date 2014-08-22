@@ -91,16 +91,6 @@ public class Derelict2DApplication extends Application implements
 					.readSVG(openAsset("items/ship-ignition-key.svg")));
 
 			
-			resManager.putGraphic("icon-n", SVGParsingUtils
-					.readSVG(openAsset("action-icons/chevron-n.svg")));
-			resManager.putGraphic("icon-e", SVGParsingUtils
-					.readSVG(openAsset("action-icons/chevron-e.svg")));
-			resManager.putGraphic("icon-w", SVGParsingUtils
-					.readSVG(openAsset("action-icons/chevron-w.svg")));
-			resManager.putGraphic("icon-s", SVGParsingUtils
-					.readSVG(openAsset("action-icons/chevron-s.svg")));
-			
-			
 			resManager.putGraphic("icon-move", SVGParsingUtils
 					.readSVG(openAsset("action-icons/move.svg")));
 			resManager.putGraphic("icon-turn", SVGParsingUtils
