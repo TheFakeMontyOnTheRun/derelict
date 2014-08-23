@@ -19,6 +19,8 @@ import br.odb.gamerendering.rendering.DisplayList;
  */
 public class ExploreStationView extends PointerNodeSelectableScrollableView {
 
+	DerelictGraphicsAdapter adapter = new DerelictGraphicsAdapter();
+	
 	public ExploreStationView(Context context) {
 		super(context);
 	}
@@ -29,7 +31,7 @@ public class ExploreStationView extends PointerNodeSelectableScrollableView {
 
 	public void setSnapshot(DerelictGame game, AssetManager resManager) {
 
-		DisplayList node = DerelictGraphicsAdapter.parse(game, resManager);
+		DisplayList node = adapter.parse(game, resManager);
 
 		super.setSelectedItem(node
 				.getElementById("SVGRenderingNode_heroGraphic"));

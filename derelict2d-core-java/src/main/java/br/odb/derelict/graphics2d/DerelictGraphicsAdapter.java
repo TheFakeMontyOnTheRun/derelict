@@ -6,6 +6,7 @@ package br.odb.derelict.graphics2d;
  */
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict.core.items.PlasmaGun;
@@ -30,7 +31,9 @@ import br.odb.utils.math.Vec2;
  */
 public class DerelictGraphicsAdapter {
 
-	public static final DisplayList parse(DerelictGame game,
+	final HashMap< String, RenderingNode > cache = new HashMap< String, RenderingNode >();
+	
+	public final DisplayList parse(DerelictGame game,
 			AssetManager resManager) {
 
 		TotautisSpaceStation station = game.station;
@@ -63,9 +66,17 @@ public class DerelictGraphicsAdapter {
 			if (!location.hasBeenExplored && !location.hasExploredNeighbour()) {
 				continue;
 			}
+			
+			if ( cache.containsKey( cp.id ) ) {
+				newNode = cache.get( cp.id );
+			} else {
+				
+				newNode = new SVGRenderingNode(new SVGGraphic(
+						stationGraphics.getShapesStartingWith(cp.id)), cp.id);
+				cache.put( cp.id, newNode );
+			}
+					
 
-			newNode = new SVGRenderingNode(new SVGGraphic(
-					stationGraphics.getShapesStartingWith(cp.id)), cp.id);
 			nodes.add(newNode);
 
 			ColoredPolygon active;
@@ -73,8 +84,15 @@ public class DerelictGraphicsAdapter {
 			for (Item i : location.getCollectableItems()) {
 
 				offset += 10;
+				
+				if ( cache.containsKey( i.getName() ) ) {
+					item = cache.get( i.getName() );
+				} else {
+				
+					item = new SVGRenderingNode( resManager.getGraphics(i.getName()).scaleTo( 32, 32), i.getName());
+					cache.put( i.getName(), item );
+				}
 
-				item = new SVGRenderingNode( resManager.getGraphics(i.getName()).scaleTo( 32, 32), i.getName());
 
 				if (i instanceof ActiveItem) {
 
