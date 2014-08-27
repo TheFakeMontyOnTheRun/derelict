@@ -39,6 +39,8 @@ public class Derelict2DApplication extends Application implements
 					.readSVG(openAsset("overview-map/floor3.svg")));
 			resManager.putGraphic("heroGraphic", SVGParsingUtils
 					.readSVG(openAsset("overview-map/astronaut-icon.svg")));
+			resManager.putGraphic("hero-centered", SVGParsingUtils
+					.readSVG(openAsset("overview-map/centered-astronaut.svg")));
 			resManager.putGraphic("blowtorch",
 					SVGParsingUtils.readSVG(openAsset("items/blowtorch.svg")));
 			
