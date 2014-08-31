@@ -32,7 +32,7 @@ public class Derelict2DApplication extends Application implements
 		try {
 
 			resManager.putGraphic("floor1", SVGParsingUtils
-					.readSVG(openAsset("overview-map/floor1.svg")));
+					.readSVG(openAsset("overview-map/floor1_old.svg")));
 			resManager.putGraphic("floor2", SVGParsingUtils
 					.readSVG(openAsset("overview-map/floor2.svg")));
 			resManager.putGraphic("floor3", SVGParsingUtils

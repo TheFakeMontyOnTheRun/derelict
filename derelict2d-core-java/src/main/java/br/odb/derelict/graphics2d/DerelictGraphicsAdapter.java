@@ -128,8 +128,8 @@ public class DerelictGraphicsAdapter {
 				for (PlasmaPellet pp : plasmaGun.firedPellets) {
 					if (pp.location == location && !pp.isDepleted() ) {
 						item = new SVGRenderingNode(
-								resManager.getGraphics("plasma-gun"),
-								"plasma-gun");
+								resManager.getGraphics("plasma-pellet"),
+								"plasma-pellet");
 						nodes.add(item);
 						item.translate.set(cp.getCenter().add(
 								new Vec2(offset, offset)));

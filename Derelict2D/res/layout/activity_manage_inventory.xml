@@ -27,7 +27,7 @@
             android:text="Collected Item:" />
 
         <HorizontalScrollView
-            android:id="@+id/horizontalScrollView1"
+            android:id="@+id/lvCollected"
             android:layout_width="0dp"
             android:layout_height="128dp"
             android:layout_weight="5"
@@ -102,7 +102,7 @@
             android:text="Object in location:" />
 
         <HorizontalScrollView
-            android:id="@+id/horizontalScrollView2"
+            android:id="@+id/lvLocationItems"
             android:layout_width="0dp"
             android:layout_height="128dp"
             android:layout_weight="5"

@@ -50,6 +50,7 @@ public class ManageInventoryFragment extends Fragment implements
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
 		View toReturn = inflater.inflate(R.layout.activity_manage_inventory,
 				container, false);
 
@@ -76,6 +77,8 @@ public class ManageInventoryFragment extends Fragment implements
 		gvDrop.setOnClickListener( this );
 		gvToggle.setOnClickListener( this );
 
+		llCollectedItems.setOnClickListener( this );
+		
 		AndroidUtils.initImage(gvPick, "icon-pick", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
 		AndroidUtils.initImage(gvUseWith, "icon-use-with", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
 		AndroidUtils.initImage(gvUse, "icon-use", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
@@ -285,6 +288,15 @@ public class ManageInventoryFragment extends Fragment implements
 			}
 			selectedCollectedItem = selectedLocationItem;
 			selectedLocationItem = null;
+			((ExploreStationActivity) getActivity()).update();
+			break;
+			
+		case R.id.gvUse:
+			itemName = getCurrentHoldingItemName();
+			
+			if ( itemName != null ) {				
+				game.sendData( "use " + itemName  );
+			}
 			((ExploreStationActivity) getActivity()).update();
 			break;
 			
