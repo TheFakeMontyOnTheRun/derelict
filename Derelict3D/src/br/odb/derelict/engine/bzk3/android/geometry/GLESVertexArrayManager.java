@@ -121,7 +121,7 @@ public class GLESVertexArrayManager extends VertexArrayManager {
 				colorByteBuffer.position(colorIntBuffer.position() * 4);
 
 			} else {
-				Log.d("derelict", "estouro de limite de buffer de renderização");
+				Log.d("derelict", "estouro de limite de buffer de renderização 1: " + init + ", length: " + length + " capacity: " + capacity );
 			}
 		} catch (BufferOverflowException e) {
 			e.printStackTrace();
@@ -148,7 +148,7 @@ public class GLESVertexArrayManager extends VertexArrayManager {
 				colorIntBuffer.position(colorBuffer.position());
 				colorByteBuffer.position(colorBuffer.position() * 4);
 			} else {
-				Log.d("derelict", "estouro de limite de buffer de renderização");
+				Log.d("derelict", "estouro de limite de buffer de renderização 2: " + init + ", length: " +  length + " capacity: " + capacity );
 			}
 		} catch (BufferOverflowException e) {
 			e.printStackTrace();
