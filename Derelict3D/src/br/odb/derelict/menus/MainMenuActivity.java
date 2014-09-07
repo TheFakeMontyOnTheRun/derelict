@@ -67,16 +67,16 @@ public class MainMenuActivity extends Activity implements OnClickListener {
 
 	public void onClickSettings() {
 
-		Intent intent;
-		intent = new Intent( this, SettingsActivity.class );
-		this.startActivity( intent );
+//		Intent intent;
+//		intent = new Intent( this, SettingsActivity.class );
+//		this.startActivity( intent );
 	}
 
 	public void onPrologueClicked() {
 
-		Intent intent;
-		intent = new Intent( this, StoryTellingActivity.class );
-		this.startActivity( intent );
+//		Intent intent;
+//		intent = new Intent( this, StoryTellingActivity.class );
+//		this.startActivity( intent );
 	}
 	
 	public void onClickQuit() {

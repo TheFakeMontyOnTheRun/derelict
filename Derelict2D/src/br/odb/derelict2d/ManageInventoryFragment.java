@@ -119,6 +119,7 @@ public class ManageInventoryFragment extends Fragment implements
 		ViewGroup vg;
 		
 		llLocationItems.removeAllViews();
+		
 		for (Item i : game.getCollectableItems()) {
 			
 			
@@ -145,6 +146,11 @@ public class ManageInventoryFragment extends Fragment implements
 				active.visible = ((ActiveItem) i).isActive();
 			}
 			
+			if ( gv.getParent() != null ) {
+				
+				vg = (ViewGroup) gv.getParent();
+				vg.removeView( gv );			
+			}
 			llLocationItems.addView( gv );
 		}
 		
@@ -184,6 +190,12 @@ public class ManageInventoryFragment extends Fragment implements
 
 			if (active != null) {
 				active.visible = ((ActiveItem) i).isActive();
+			}
+			
+			if ( gv.getParent() != null ) {
+				
+				vg = (ViewGroup) gv.getParent();
+				vg.removeView( gv );			
 			}
 			
 			llCollectedItems.addView( gv );
@@ -249,6 +261,7 @@ public class ManageInventoryFragment extends Fragment implements
 		wvDescription.loadDataWithBaseURL(null,
 				"<html><body bgcolor = '#0D0' >" + desc + "</body></html>",
 				"text/html", "utf-8", null);
+		
 	}
 
 	@Override

@@ -15,14 +15,6 @@ public class ScreenControllerActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		
-		if ( !splashShown ){
-			
-			setContentView(R.layout.activity_screen_controller);
-			intent = new Intent( this, ShowODBSplashActivity.class );
-			this.startActivityForResult( intent, 1 );
-			splashShown = true;
-		}
 	}
 
 	@Override

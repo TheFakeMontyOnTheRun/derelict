@@ -13,7 +13,9 @@ public class ItemContainer extends Item {
 	}
 
 	void dropItem() {
-		location.addItem(contains);
+		if ( contains != null ) {			
+			location.addItem(contains);
+		}
 		contains = null;
 	}
 }

@@ -25,12 +25,10 @@ import android.view.WindowManager;
 import android.widget.Toast;
 import br.odb.derelict.engine.bzk3.android.geometry.GLESRenderer;
 import br.odb.derelict.menus.PlayGameActivity;
-import br.odb.derelict.menus.StoryTellingActivity;
 import br.odb.gameapp.GameAssetManager;
 import br.odb.gameapp.GameAudioManager;
 import br.odb.gameapp.GameEngineController;
 import br.odb.gameapp.GameResource;
-import br.odb.gameworld.Actor;
 import br.odb.libscene.Actor3D;
 import br.odb.libscene.ActorConstants;
 import br.odb.libscene.Sector;
@@ -598,12 +596,12 @@ public class EngineView extends GLSurfaceView implements GameEngineViewer,
 
 		saveState();
 
-		renderer.detach();
-		gameEngine.stop();
-		// gameEngine.destroy();
-		Intent intent = new Intent(this.getContext(),
-				StoryTellingActivity.class);
-		getContext().startActivity(intent);
+//		renderer.detach();
+//		gameEngine.stop();
+//		// gameEngine.destroy();
+//		Intent intent = new Intent(this.getContext(),
+//				StoryTellingActivity.class);
+//		getContext().startActivity(intent);
 	}
 
 	@Override

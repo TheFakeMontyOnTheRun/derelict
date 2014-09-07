@@ -49,7 +49,6 @@ public class ExploreStationActivity extends Activity implements
 	DerelictGame game;
 	AssetManager resManager;
 	MediaPlayer playerSound;
-
 	// MediaPlayer music;
 
 	@Override
@@ -70,6 +69,8 @@ public class ExploreStationActivity extends Activity implements
 		game.endGameListener = this;
 		game.setApplicationClient(this);
 		game.setGameUpdateDelegate(this);
+		
+		game.hero.setGender( Math.random() > 0.5 ? "f" : "m" );
 
 		currentLevel = new Derelict2DTotautisSpaceStation(game.station, this);
 
@@ -90,6 +91,7 @@ public class ExploreStationActivity extends Activity implements
 			// music = MediaPlayer.create(this, R.raw.ravelbolero);
 		}
 
+		showInfoDialog();
 		update();
 	}
 
@@ -145,6 +147,11 @@ public class ExploreStationActivity extends Activity implements
 			playerSound.stop();
 		}
 
+		
+		if ( tts != null ) {
+			tts.stop();
+		}
+		
 		super.onDestroy();
 	}
 
@@ -233,6 +240,13 @@ public class ExploreStationActivity extends Activity implements
 
 	@Override
 	public void update() {
+		
+		if ( game.hero.toxicity > 99.9f ) {
+			playMedia( "coughdeath" + game.hero.getGender(), "*cough*" );			
+		} else if ( game.getTextOutput().contains("*cough*")) {
+			playMedia( "cough" + game.hero.getGender(), "*cough*" );
+		}
+		
 
 		for (GameUpdateDelegate gup : updateDelegates) {
 			gup.update();
@@ -375,4 +389,14 @@ public class ExploreStationActivity extends Activity implements
 		dialog.setArguments(args);
 		dialog.show(fm, "fragment_info_dialog");
 	}
+	
+	private void showInfoDialog() {
+		
+		FragmentManager fm = getFragmentManager();
+		ShowGameIntroDialogFragment gameIntro = new ShowGameIntroDialogFragment();
+		Bundle args = new Bundle();
+		args.putString("desc", DerelictGame.GAME_STORY1 + "\n\n\n" + DerelictGame.GAME_STORY2 + "\n\n\n" + DerelictGame.GAME_RULES );
+		gameIntro.setArguments(args);		
+		gameIntro.show(fm, "show_game_intro");
+	}	
 }

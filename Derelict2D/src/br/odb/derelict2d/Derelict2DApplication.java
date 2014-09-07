@@ -108,6 +108,9 @@ public class Derelict2DApplication extends Application implements
 			
 			resManager.putGraphic("icon-toggle", SVGParsingUtils
 					.readSVG(openAsset("action-icons/toggle.svg")));
+
+			resManager.putGraphic("intro-comics", SVGParsingUtils
+					.readSVG(openAsset("intro.svg")));
 			
 			
 			
@@ -132,6 +135,11 @@ public class Derelict2DApplication extends Application implements
 		resManager.addResId("blowtorch-turned-on", R.raw.blowtorchon);
 		resManager.addResId("blowtorch-used", R.raw.blowtorchuse);
 		resManager.addResId("shot", R.raw.shot);
+
+		resManager.addResId("coughf", R.raw.coughf);
+		resManager.addResId("coughm", R.raw.coughm);
+		resManager.addResId("coughdeathf", R.raw.coughdeathf);
+		resManager.addResId("coughdeathm", R.raw.coughdeathm);
 
 		startNewGame();
 	}

@@ -24,6 +24,7 @@ import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gameworld.Item;
+import br.odb.gameworld.Location;
 import br.odb.libsvg.SVGGraphic;
 import br.odb.utils.Direction;
 import br.odb.utils.Utils;
@@ -94,28 +95,27 @@ public class ExploreStationFragment extends Fragment implements
 		case R.id.gvMove:
 			Direction d;
 				
-				d = (Direction) spnDirections.getSelectedItem();
+			d = (Direction) spnDirections.getSelectedItem();
+			Location l = game.hero.getLocation();
+			game.sendData("move " + spnDirections.getSelectedItem());
+			
+			//not good!
+			if ( l != game.hero.getLocation() && game.station.getAstronaut().getLocation().getConnections()[ d.ordinal() ] != null ) {
+			
+				if (d != Direction.CEILING && d != Direction.FLOOR) {
+					if (fiveSteps != null) {
 
-				//not good!
-				if ( game.station.getAstronaut().getLocation().getConnections()[ d.ordinal() ] != null ) {
-				
-					if (d != Direction.CEILING && d != Direction.FLOOR) {
-						if (fiveSteps != null) {
-
-							fiveSteps.start();
-						}
-					} else {
-
-						if (ding != null) {
-
-							ding.start();
-						}
+						fiveSteps.start();
 					}
+				} else {
 
+					if (ding != null) {
+
+						ding.start();
+					}
 				}
 
-
-			game.sendData("move " + spnDirections.getSelectedItem());
+			}			
 			break;
 		}
 	}

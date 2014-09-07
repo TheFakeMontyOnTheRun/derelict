@@ -10,7 +10,6 @@ import br.odb.utils.FileServerDelegate;
 public class Derelict2DTotautisSpaceStation extends GameLevel {
 
 	public TotautisSpaceStation station;
-	public SVGGraphic graphic;
 	public SVGGraphic heroGraphic;
 
 	public Derelict2DTotautisSpaceStation( FileServerDelegate delegate) {
@@ -24,7 +23,6 @@ public class Derelict2DTotautisSpaceStation extends GameLevel {
 		this.station = station;
 		
 		try {
-			graphic = SVGParsingUtils.readSVG( delegate.openAsInputStream( "overview-map/totautis-station-game.svg" ) );
 			heroGraphic = SVGParsingUtils.readSVG( delegate.openAsInputStream( "overview-map/astronaut-icon.svg" ) );			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

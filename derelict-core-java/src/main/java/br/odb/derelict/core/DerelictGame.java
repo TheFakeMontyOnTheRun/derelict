@@ -71,8 +71,12 @@ public class DerelictGame extends ConsoleApplication {
 	public static final int DEFAULT_ELAPSED_BASE_TIME = 1000;
 	public final static String finalMessage[] = new String[32];
 	public static final String BOMBING_TARGET = TotautisSpaceStation.WEAK_SPOT;
-	private static final String GAME_STORY1 = "I'm space junker. There is no day I curse more this fate.\n What else can I say? They can't stand me anymore. They keep saying that if you are not happy, you go looking for something else.\n Now it seems almost like a revenge. Lucas had to warn me so late about the misscalculation?!\n I only got some 15 minutes or so to do this one. It is my stuff in the line and I might lose my license.\n At least he had the decency to warn me about some possible gas leakage\n and the lack of artificial gravity (not invented by then, it seems). Hope this blowtorch is enough to cut this old metal. And that I'm all alone in here...";
-	private static final String GAME_STORY2 = "I must admit: I love going through other people's stuff.\nI see whole lives unfolding in front of me. Almost like a diorama or a shrine. And I tend to keep the best stuff to myself, \ndespite what it might worth. And then, blowing up the station - almost like a special burial.\n I'm doing this people a favor. I tend to uncover the mysteries they never could in life, \nsimply by going through other people's stuff. It's a requiem.";
+	public static final String GAME_RULES = "Remember: You can only carry "
+			+ Astronaut.INVENTORY_LIMIT
+			+ " objects at once. The more you have, the slower you move (it gets hard to pass through doors). \n "
+			+ "And of course, you must either carry the object or leave it at your ship for it to count as salvage.";
+	public static final String GAME_STORY1 = "I'm space junker. There is no day I curse more this fate.\n What else can I say? They can't stand me anymore. They keep saying that if you are not happy, you go looking for something else.\n Now it seems almost like a revenge. Lucas had to warn me so late about the misscalculation?!\n I only got some 15 minutes or so to do this one. It is my stuff in the line and I might lose my license.\n At least he had the decency to warn me about some possible gas leakage\n and the lack of artificial gravity (not invented by then, it seems). Hope this blowtorch is enough to cut this old metal. And that I'm all alone in here...";
+	public static final String GAME_STORY2 = "I must admit: I love going through other people's stuff.\nI see whole lives unfolding in front of me. Almost like a diorama or a shrine. And I tend to keep the best stuff to myself, \ndespite what it might worth. And then, blowing up the station - almost like a special burial.\n I'm doing this people a favor. I tend to uncover the mysteries they never could in life, \nsimply by going through other people's stuff. It's a requiem.";
 
 	// .alert("The station orbit finally decayed.\nThankfully, you were in your ship and was able to escape. Too bad you lost your license.");
 	// .alert("You failed to blow the station. But at least you managed to survive. Too bad you gonna lose your operating license.");
@@ -532,13 +536,7 @@ public class DerelictGame extends ConsoleApplication {
 
 		getClient().printNormal("");
 		getClient()
-				.printNormal(
-						"Remember: You can only carry "
-								+ Astronaut.INVENTORY_LIMIT
-								+ " objects at once. The more you have, the slower you move (it gets hard to pass through doors).");
-		getClient()
-				.printNormal(
-						"And of course, you must either carry the object or leave it at your ship for it to count as salvage.");
+				.printNormal( GAME_RULES );
 		getClient().printNormal("");
 
 		return this;

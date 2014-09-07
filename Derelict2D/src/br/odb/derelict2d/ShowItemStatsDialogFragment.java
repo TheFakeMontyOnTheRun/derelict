@@ -26,11 +26,13 @@ public class ShowItemStatsDialogFragment extends DialogFragment implements
 		
 		View view = inflater.inflate(R.layout.show_item_stats_layout,
 				container, true);
+		
 		view.findViewById(R.id.btnCloseItemStat).setOnClickListener(this);
 		wvStats = (WebView) view.findViewById(R.id.wvStats);
 		gvItemView = (GameView) view.findViewById(R.id.gvItemView);
 		Bundle args = getArguments();
 		initImage(args.getString("name"));
+		getDialog().setTitle( args.getString("name") );
 		updateDescription(args.getString("desc"));
 
 		return view;
