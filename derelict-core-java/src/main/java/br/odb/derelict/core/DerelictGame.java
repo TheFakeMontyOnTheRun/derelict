@@ -3,8 +3,6 @@ package br.odb.derelict.core;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.sun.java_cup.internal.runtime.virtual_parse_stack;
-
 import br.odb.derelict.core.commands.DerelictUserMetaCommandLineAction;
 import br.odb.derelict.core.commands.DropCommand;
 import br.odb.derelict.core.commands.ItemsCommand;

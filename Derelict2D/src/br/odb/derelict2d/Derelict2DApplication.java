@@ -109,8 +109,12 @@ public class Derelict2DApplication extends Application implements
 			resManager.putGraphic("icon-toggle", SVGParsingUtils
 					.readSVG(openAsset("action-icons/toggle.svg")));
 
-			resManager.putGraphic("intro-comics", SVGParsingUtils
-					.readSVG(openAsset("intro.svg")));
+			resManager.putGraphic("intro-comics0", SVGParsingUtils
+					.readSVG(openAsset("intro1.svg")));
+			resManager.putGraphic("intro-comics1", SVGParsingUtils
+					.readSVG(openAsset("intro2.svg")));
+			resManager.putGraphic("intro-comics2", SVGParsingUtils
+					.readSVG(openAsset("intro3.svg")));
 			
 			
 			

@@ -24,6 +24,7 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 	private Button btNextFinish;
 	String [] storyBits;
 	String [] buttonTitles = { "Next", "Next", "Dismiss" };
+	String [] imagePath = { "intro-comics1", "intro-comics2", "intro-comics3" };
 	int currentStoryPoint = 0;
 
 	@Override
@@ -40,8 +41,6 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 		gvIntroComics = (GameView) view.findViewById(R.id.gvIntroComics);
 		Bundle args = getArguments();
 		
-		AndroidUtils.initImage(gvIntroComics, "intro-comics", ((Derelict2DApplication) getActivity()
-				.getApplication()).getAssetManager());
 		
 		getDialog().setTitle( "..And so, here we go..." );
 		storyBits = args.getString("desc").split( "\n\n\n"  );
@@ -57,7 +56,9 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 		wvStory.loadDataWithBaseURL(null, "<html><body bgcolor = '#0D0' >"
 				+ storyBits[ storyPoint ].replaceAll("\n", "<br/>") + "</body></html>", "text/html", "utf-8", null);
 
-		
+		AndroidUtils.initImage(gvIntroComics, "intro-comics" + storyPoint, ((Derelict2DApplication) getActivity()
+				.getApplication()).getAssetManager());
+
 		btNextFinish.setText( buttonTitles[ storyPoint ] );
 	}
 
