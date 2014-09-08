@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/derelict_background"
+    android:background="@color/derelict_background_empty"
     android:orientation="vertical" >
 
     <br.odb.derelict2d.ExploreStationView
@@ -19,11 +19,21 @@
         android:orientation="horizontal"
         android:padding="0dip" >
 
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#777"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="You&apos;re facing:"
+            android:textColor="#000" />
+
         <Spinner
             android:id="@+id/spnDirection"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.81" />
+            android:layout_weight="0.81"
+            android:background="@color/derelict_foreground" />
 
         <br.odb.gamelib.android.GameView
             android:id="@+id/gvMove"

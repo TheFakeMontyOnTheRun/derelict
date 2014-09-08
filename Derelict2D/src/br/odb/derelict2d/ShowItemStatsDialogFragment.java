@@ -7,12 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
-import br.odb.gamerendering.rendering.AssetManager;
-import br.odb.gamerendering.rendering.DisplayList;
-import br.odb.gamerendering.rendering.RenderingNode;
-import br.odb.gamerendering.rendering.SVGRenderingNode;
-import br.odb.libsvg.SVGGraphic;
 
 public class ShowItemStatsDialogFragment extends DialogFragment implements
 		OnClickListener {
@@ -31,11 +27,23 @@ public class ShowItemStatsDialogFragment extends DialogFragment implements
 		wvStats = (WebView) view.findViewById(R.id.wvStats);
 		gvItemView = (GameView) view.findViewById(R.id.gvItemView);
 		Bundle args = getArguments();
-		initImage(args.getString("name"));
+		int bigger;
+		
+		bigger = 255;
+		
+		AndroidUtils.initImage(gvItemView, args.getString("name"), ((Derelict2DApplication) getActivity()
+				.getApplication()).getAssetManager(), bigger, bigger, "");
+		
 		getDialog().setTitle( args.getString("name") );
 		updateDescription(args.getString("desc"));
 
 		return view;
+	}
+	
+	@Override
+	public void onStart() {
+	
+		super.onStart();
 	}
 
 	private void updateDescription(String desc) {
@@ -53,22 +61,5 @@ public class ShowItemStatsDialogFragment extends DialogFragment implements
 			dismiss();
 			break;
 		}
-	}
-
-	void initImage(String name) {
-
-		DisplayList dl = new DisplayList("dl");
-		AssetManager resManager = ((Derelict2DApplication) getActivity()
-				.getApplication()).getAssetManager();
-
-		SVGGraphic graphic = resManager.getGraphics(name);
-		graphic = graphic.scaleTo( 200, 200 );
-		SVGRenderingNode node = new SVGRenderingNode(graphic, "title");
-
-		dl.setItems(new RenderingNode[] { node });
-
-		gvItemView.setRenderingContent(dl);
-
-		gvItemView.postInvalidate();
 	}
 }
