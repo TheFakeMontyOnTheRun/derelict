@@ -22,9 +22,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.9195959"
-     inkscape:cx="-39.93118"
-     inkscape:cy="1043.2552"
+     inkscape:zoom="5.6"
+     inkscape:cx="-41.408136"
+     inkscape:cy="1022.2083"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -58,23 +58,23 @@
        id="rect2993"
        width="37.687344"
        height="32.928841"
-       x="-15.881088"
-       y="-15.137807" />
+       x="0.011768981"
+       y="0.040764626" />
     <path
        style="fill:#008000;fill-opacity:1;stroke:none"
-       d="M-11.743023 -2.3633495L-3.4092649 11.652517L15.026019 10.516095L12.879445 7.1068306L-3.0304576 10.389826L-3.0304577 5.970409L14.142136 5.0865255L5.42957 -6.5302288L-11.995562 -6.4039597L-11.743023 -2.3633495L-11.743023 -2.3633495"
+       d="M 4.1498342,12.815222 12.483592,26.831089 30.918876,25.694667 28.772302,22.285402 12.8624,25.568398 12.8624,21.148981 30.034993,20.265097 21.322427,8.6483427 3.8972952,8.7746118 4.1498342,12.815222 4.1498342,12.815222"
        id="path2995"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccccc" />
     <path
        style="fill:#cccccc;stroke:none"
-       d="M-2.9041886 6.0966781L13.510791 5.3390636L13.258252 10.011019L-3.1567267 11.021172L-2.9041886 6.0966781L-2.9041886 6.0966781"
+       d="M 12.988669,21.27525 29.403648,20.517635 29.151109,25.189591 12.736131,26.199744 12.988669,21.27525 12.988669,21.27525"
        id="path2997"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccc" />
     <path
-       style="opacity:1;fill:#0000ff;fill-opacity:1;stroke:none"
-       d="M14.268405 5.2127946L5.3033009 -6.5302287L-11.995561 -6.5302288L-2.7779195 5.970409L14.268405 5.2127946"
+       style="fill:#0000ff;fill-opacity:1;stroke:none"
+       d="M 30.161262,20.391366 21.196158,8.6483428 3.8972962,8.6483427 13.114938,21.148981 30.161262,20.391366"
        id="path3795"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="scccs" />

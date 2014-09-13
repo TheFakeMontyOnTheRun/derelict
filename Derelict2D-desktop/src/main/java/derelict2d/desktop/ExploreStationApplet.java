@@ -3,13 +3,15 @@ package derelict2d.desktop;
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict.graphics2d.DerelictGraphicsAdapter;
 import br.odb.gameapp.UserCommandLineAction;
+import br.odb.gamelib.swing.SwingMediaPlayer;
+import br.odb.gamelib.swing.SwingTextClientAdapter;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gamerendering.rendering.DisplayList;
-import br.odb.gameworld.Direction;
 import br.odb.gameworld.Location;
 import br.odb.gameworld.exceptions.InvalidLocationException;
 import br.odb.gameworld.exceptions.InvalidSlotException;
 import br.odb.libsvg.SVGParsingUtils;
+import br.odb.utils.Direction;
 import br.odb.utils.FileServerDelegate;
 import br.odb.utils.math.Vec2;
 import static java.applet.Applet.newAudioClip;
@@ -28,7 +30,7 @@ import java.util.logging.Logger;
  * @author monty
  */
 public class ExploreStationApplet extends javax.swing.JApplet implements FileServerDelegate {
-
+    DerelictGraphicsAdapter adapter = new DerelictGraphicsAdapter();
     private DerelictGame game;
     private AssetManager resManager;
     private DisplayList node;
@@ -147,17 +149,18 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
 
             resManager.registerMediaPlayer( "pick", new SwingMediaPlayer( newAudioClip(getClass().getResource("/pick.wav") ) ) );
             resManager.registerMediaPlayer( "drop", new SwingMediaPlayer( newAudioClip(getClass().getResource("/drop.wav") ) ) );
-
-            
-            
+            resManager.registerMediaPlayer( "bonk", new SwingMediaPlayer( newAudioClip(getClass().getResource("/bonk.wav") ) ) );            
             resManager.registerMediaPlayer( "spooky1", new SwingMediaPlayer( newAudioClip(getClass().getResource("/spooky1.wav") )  ) );
             resManager.registerMediaPlayer( "spooky2", new SwingMediaPlayer( newAudioClip(getClass().getResource("/spooky2.wav") )  ) );
-            resManager.registerMediaPlayer( "spooky3", new SwingMediaPlayer( newAudioClip(getClass().getResource("/spooky3.wav") )  ) );            
-            
+            resManager.registerMediaPlayer( "spooky3", new SwingMediaPlayer( newAudioClip(getClass().getResource("/spooky3.wav") )  ) );                        
             resManager.registerMediaPlayer( "click", new SwingMediaPlayer( newAudioClip(getClass().getResource("/click.wav") )  ) );
             resManager.registerMediaPlayer( "blowtorch-turned-on", new SwingMediaPlayer( newAudioClip(getClass().getResource("/blowtorchon.wav") )  ) );
+       //     resManager.registerMediaPlayer( "blowtorch-turned-off", new SwingMediaPlayer( newAudioClip(getClass().getResource("/blowtorchoff.wav") )  ) );
             resManager.registerMediaPlayer( "blowtorch-used", new SwingMediaPlayer( newAudioClip(getClass().getResource("/blowtorchuse.wav") )  ) );
-            resManager.registerMediaPlayer( "shot", new SwingMediaPlayer( newAudioClip(getClass().getResource("/shot.wav") )  ) );
+            resManager.registerMediaPlayer( "shot", new SwingMediaPlayer( newAudioClip(getClass().getResource("/shot.wav") )  ) );            
+            resManager.registerMediaPlayer( "magbootson", new SwingMediaPlayer( newAudioClip(getClass().getResource("/magbootson.wav") )  ) );
+            resManager.registerMediaPlayer( "magbootsoff", new SwingMediaPlayer( newAudioClip(getClass().getResource("/magbootsoff.wav") )  ) );
+            resManager.registerMediaPlayer( "magbootsused", new SwingMediaPlayer( newAudioClip(getClass().getResource("/magbootsused.wav") )  ) );            
         } catch (IOException ex) {
             Logger.getLogger(ExploreStationApplet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -463,7 +466,7 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
         cmbInventory.setModel(new javax.swing.DefaultComboBoxModel(game.getCollectedItemNames()));
 
 
-        node = DerelictGraphicsAdapter.parse(game, resManager);
+        node = adapter.parse(game, resManager);
         pnlExploreStationView.setSelectedItem(node.getElementById("SVGRenderingNode_heroGraphic"));
         pnlExploreStationView.setRenderingContent(node);
         pnlExploreStationView.repaint();

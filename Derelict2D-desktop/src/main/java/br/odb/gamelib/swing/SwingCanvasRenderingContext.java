@@ -2,8 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package derelict2d.desktop;
-
+package br.odb.gamelib.swing;
 
 import br.odb.gamerendering.rendering.RasterImage;
 import br.odb.gamerendering.rendering.RenderingContext;
@@ -34,8 +33,8 @@ public class SwingCanvasRenderingContext extends RenderingContext {
 
     @Override
     public void fillRect(Color color, Rect rect) {
-        graphics.setColor(new java.awt.Color(color.r, color.g, color.b ) );
-        graphics.fillRect((int) rect.x0, (int) rect.y0, (int) rect.getDX(), (int) rect.getDY());
+        graphics.setColor(new java.awt.Color(color.r, color.g, color.b));
+        graphics.fillRect((int) rect.p0.x, (int) rect.p0.y, (int) rect.getDX(), (int) rect.getDY());
     }
 
     @Override
@@ -49,6 +48,8 @@ public class SwingCanvasRenderingContext extends RenderingContext {
     @Override
     public void drawColoredPolygon(ColoredPolygon c, Rect bounds, String style, HashMap<String, SVGParsingUtils.Gradient> gradients) {
 
+        int[] xpoints = null;
+        int[] ypoints = null;
         GeneralPath path = new GeneralPath();
 
         Vec2 point = c.controlPoints.get(0);
@@ -57,15 +58,32 @@ public class SwingCanvasRenderingContext extends RenderingContext {
 
         path.moveTo(point.x + currentOrigin.x, point.y + currentOrigin.y);
 
+        if (style != null) {
+            xpoints = new int[c.npoints];
+            ypoints = new int[c.npoints];
+        }
 
         for (int i = 0; i < c.npoints; ++i) {
 
             path.lineTo(c.xpoints[ i] + currentOrigin.x, c.ypoints[ i] + currentOrigin.y);
+
+            if (style != null) {
+                xpoints[ i] = (int) c.xpoints[ i];
+                ypoints[ i] = (int) c.ypoints[ i];
+            }
         }
 
         path.closePath();
 
         ((Graphics2D) graphics).fill(path);
+
+        graphics.setColor(SwingUtils.getSwingColor(Color.getColorFromHTMLColor("#000000")));
+
+        
+        if (style != null) {
+            ((Graphics2D) graphics).drawPolyline(xpoints, ypoints, c.npoints);
+        }
+
     }
 
     @Override
@@ -91,5 +109,10 @@ public class SwingCanvasRenderingContext extends RenderingContext {
     @Override
     public void drawBitmap(RasterImage ri, Vec2 vec2, Vec2 vec21, int i) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void drawLine(Vec2 p0, Vec2 p1) {
+        graphics.drawLine( ( int )p0.x, ( int )p0.y, ( int )p1.x, ( int )p1.y );
     }
 }

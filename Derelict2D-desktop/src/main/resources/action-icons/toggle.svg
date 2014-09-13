@@ -47,9 +47,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="85.050346"
-     inkscape:cy="531.91084"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="166.53762"
+     inkscape:cy="944.33208"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -75,57 +75,64 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
+       style="opacity:0.71100913;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect3126"
+       width="128"
+       height="128"
+       x="-0.35355297"
+       y="-0.16626394" />
+    <rect
        style="fill:#800080;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="rect3792"
-       width="133.94183"
-       height="126.54267"
-       x="-4.0655789"
-       y="-0.84339094" />
+       width="127.58829"
+       height="127.59719"
+       x="-0.18489058"
+       y="0.22046527" />
     <path
        style="fill:#aa8800;stroke:none"
-       d="M 49.606259,-0.85035087 129.91875,93.003276 129.81476,125.80126 -4.2426407,126.0523 -4.2426407,-1.2269166 z"
+       d="M 50.941017,0.21344735 127.44388,94.849188 127.34482,127.92049 -0.35355339,128.17362 -0.35355339,-0.16625643 z"
        id="path3994"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccc" />
     <path
        style="fill:#c8ab37;stroke:none"
-       d="M 44.585382,29.651474 59.773535,27.141035 66.175152,36.429656 52.493263,39.191138 z"
+       d="M 46.158306,30.969454 60.626007,28.438095 66.723963,37.804121 53.691076,40.588615 z"
        id="path3998"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <path
        style="fill:#d4aa00;stroke:none"
-       d="M 12.577296,34.67235 30.903495,31.910868 C 44.682809,43.40087 58.265719,52.730435 73.329902,78.353976 L 56.447203,83.688658 C 44.755569,59.129502 28.847514,46.80392 12.577296,34.67235 z"
+       d="M 15.668527,36.032171 33.125421,33.247676 C 46.251112,44.833428 59.189715,54.24074 73.539327,80.07781 L 57.45746,85.456948 C 46.32042,60.693132 31.166966,48.264837 15.668527,36.032171 z"
        id="path4002"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <path
        style="fill:#ffcc00;stroke:none"
-       d="M 26.886794,48.479761 44.648146,29.588712 52.493263,39.19114 35.673327,58.521514 z"
+       d="M 29.299253,49.954643 46.218093,30.906169 53.691076,40.588617 37.668996,60.080078 z"
        id="path3996"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <path
        style="fill:#d4aa00;stroke:none"
-       d="M 37.556155,56.387642 52.493263,39.191138 66.175154,36.178613 54.752657,52.998551 z"
+       d="M 39.462511,57.928423 53.691076,40.588615 66.723965,37.550986 55.843295,54.51109 z"
        id="path4000"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <path
        style="fill:#ffcc00;stroke:none"
-       d="M 12.577296,34.421307 56.509965,83.87694 C 46.770865,60.253526 31.32477,48.316091 12.577296,34.421307 z"
+       d="M 15.668527,35.779036 57.517245,85.646799 C 48.240121,61.826523 33.526713,49.789609 15.668527,35.779036 z"
        id="path4004"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccc" />
     <path
        style="fill:#ffffff;stroke:none"
-       d="M 63.790235,87.642597 C 58.348413,114.53325 101.63429,94.692691 70.892993,84.424714 93.781031,94.922197 64.693933,108.89662 63.790235,87.642597 z"
+       d="M 64.452175,89.443836 C 59.268486,116.55858 100.5011,96.552681 71.218013,86.199138 93.020354,96.7841 65.313006,110.87498 64.452175,89.443836 z"
        id="path4006"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccc" />
     <path
        style="fill:#ffffff;stroke:none"
-       d="M 63.84223,84.994021 C 67.961885,88.888488 69.122068,95.491403 74.637113,92.274292 70.638298,87.975269 69.641474,82.922862 63.84223,84.994021 z"
+       d="M 64.501703,86.773189 C 68.425942,90.70011 69.531092,97.358049 74.78453,94.114129 70.975399,89.779281 70.02586,84.68477 64.501703,86.773189 z"
        id="path4008"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccc" />

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package derelict2d.desktop;
+package br.odb.gamelib.swing;
 
 
 import br.odb.gameapp.ApplicationClient;
@@ -19,10 +19,10 @@ import javax.swing.JTextArea;
  *
  * @author monty
  */
-class SwingTextClientAdapter implements ApplicationClient {
+public class SwingTextClientAdapter implements ApplicationClient {
 
     private final JTextArea output;
-    String log = "*DERELICT2D LOG*";
+    public String log = "*DERELICT2D LOG*";
     private boolean continueRunning = true;
     private final AssetManager resManager;
 

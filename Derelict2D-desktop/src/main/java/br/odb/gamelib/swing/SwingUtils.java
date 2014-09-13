@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package derelict2d.desktop;
+package br.odb.gamelib.swing;
 
 import java.awt.Color;
 
@@ -10,10 +10,10 @@ import java.awt.Color;
  *
  * @author monty
  */
-class SwingUtils {
+public class SwingUtils {
 
-    static Color getSwingColor(br.odb.utils.Color color) {
-        Color swingColor = new Color( color.r, color.g, color.b );
+    public static Color getSwingColor(br.odb.utils.Color color) {
+        Color swingColor = new Color( color.r, color.g, color.b, color.a );
         
         return swingColor;
     }

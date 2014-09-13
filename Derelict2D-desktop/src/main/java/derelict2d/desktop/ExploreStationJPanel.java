@@ -5,6 +5,7 @@
 package derelict2d.desktop;
 
 
+import br.odb.gamelib.swing.SwingCanvasRenderingContext;
 import br.odb.gamerendering.rendering.DisplayList;
 import br.odb.gamerendering.rendering.GameRenderer;
 import br.odb.gamerendering.rendering.RenderingNode;
@@ -90,7 +91,7 @@ public class ExploreStationJPanel extends javax.swing.JPanel {
     private void renderDefaultEmptyScreen() {
         if (defaultRenderingNode == null) {
 
-            defaultRenderingNode = new SolidSquareRenderingNode(Rect.makeRectWith(100, 100, 200, 200), new Color(255, 255, 0));
+            defaultRenderingNode = new SolidSquareRenderingNode( new Rect(100, 100, 200, 200), new Color(255, 255, 0));
         }
         gameRenderer.renderNode(defaultRenderingNode);
 
