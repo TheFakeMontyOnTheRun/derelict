@@ -21,3 +21,6 @@ derelict-core-java/.classpath
 
 derelict-core-java/target/maven-archiver/pom.properties
 /Derelict2D-desktop/target/
+derelict2d-core-java/.classpath
+
+derelict2d-core-java/.project
