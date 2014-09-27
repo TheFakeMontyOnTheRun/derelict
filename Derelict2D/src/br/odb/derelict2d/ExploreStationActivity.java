@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
@@ -30,7 +29,6 @@ import br.odb.gameapp.ApplicationClient;
 import br.odb.gameapp.ConsoleApplication;
 import br.odb.gameapp.GameUpdateDelegate;
 import br.odb.gamerendering.rendering.AssetManager;
-import br.odb.gameworld.Item;
 import br.odb.utils.FileServerDelegate;
 
 //Here's the model - just a small view glue allowed

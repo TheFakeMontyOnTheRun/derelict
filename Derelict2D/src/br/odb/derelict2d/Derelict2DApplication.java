@@ -113,7 +113,7 @@ public class Derelict2DApplication extends Application implements
 			resManager.putGraphic("intro-comics0", SVGParsingUtils
 					.readSVG(openAsset("chapters/intro1.svg")));
 			resManager.putGraphic("intro-comics1", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro2.svg")));
+					.readSVG(openAsset("chapters/intro1.svg")));
 			resManager.putGraphic("intro-comics2", SVGParsingUtils
 					.readSVG(openAsset("chapters/intro3.svg")));
 			

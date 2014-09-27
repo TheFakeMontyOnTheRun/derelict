@@ -10,11 +10,6 @@ import android.webkit.WebView;
 import android.widget.Button;
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
-import br.odb.gamerendering.rendering.AssetManager;
-import br.odb.gamerendering.rendering.DisplayList;
-import br.odb.gamerendering.rendering.RenderingNode;
-import br.odb.gamerendering.rendering.SVGRenderingNode;
-import br.odb.libsvg.SVGGraphic;
 
 public class ShowGameIntroDialogFragment extends DialogFragment implements
 		OnClickListener {

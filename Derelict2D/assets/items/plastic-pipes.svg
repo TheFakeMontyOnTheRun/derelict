@@ -13,8 +13,8 @@
    inkscape:version="0.48.4 r9943 custom"
    version="1.1"
    id="svg2"
-   height="1052.3622047"
-   width="744.09448819">
+   height="33.160095"
+   width="37.687344">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -23,18 +23,22 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="15.839192"
-     inkscape:cx="13.371392"
-     inkscape:cy="1021.6626"
+     inkscape:cx="13.279443"
+     inkscape:cy="2.1174702"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1855"
      inkscape:window-height="1036"
      inkscape:window-x="224"
-     inkscape:window-y="129"
+     inkscape:window-y="107"
      inkscape:window-maximized="0"
      showguides="true"
-     inkscape:guide-bbox="true" />
+     inkscape:guide-bbox="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <defs
      id="defs4" />
   <metadata
@@ -52,7 +56,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-0.09194885,0.34304428)">
     <rect
        style="fill:#666666;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="rect2993"
