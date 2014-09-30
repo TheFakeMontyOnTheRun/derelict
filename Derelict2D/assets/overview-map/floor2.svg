@@ -26,9 +26,9 @@
      inkscape:window-height="1036"
      id="namedview3036"
      showgrid="false"
-     inkscape:zoom="1.2685914"
-     inkscape:cx="250.2481"
-     inkscape:cy="714.01468"
+     inkscape:zoom="1"
+     inkscape:cx="430.16318"
+     inkscape:cy="777.33778"
      inkscape:window-x="60"
      inkscape:window-y="22"
      inkscape:window-maximized="0"
@@ -65,17 +65,17 @@
      inkscape:connector-curvature="0" />
   <path
      style="fill:#28170b;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M214.74823 435.55472L402.70136 435.55472L402.70136 522.5089L214.74823 522.5089L214.74823 435.55472"
+     d="M 214.74823,435.55472 402.70136,435.55472 402.70136,522.5089 214.74823,522.5089 214.74823,435.55472"
      id="control room-walls"
      inkscape:connector-curvature="0" />
   <path
      inkscape:connector-curvature="0"
      style="fill:#ac9393;stroke:none"
-     d="M157.80968 178.11894L220.08117 178.11894L220.08117 122.94963L157.80968 122.94963L157.80968 178.11894"
+     d="M 157.80968,178.11894 220.08117,178.11894 220.08117,122.94963 157.80968,122.94963 157.80968,178.11894"
      id="dinner room-entry" />
   <path
      style="fill:#241c1c;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M-57.843642 98.986906L169.39013 98.986906L169.39013 406.75453L-57.843642 406.75453L-57.843642 98.986906"
+     d="M -57.843642,98.986906 169.39013,98.986906 169.39013,406.75453 -57.843642,406.75453 -57.843642,98.986906"
      id="dinner room-walls"
      inkscape:connector-curvature="0" />
   <path
@@ -85,12 +85,12 @@
      inkscape:connector-curvature="0" />
   <path
      id="control room"
-     d="M222.87701 515.71449L394.41516 515.71449L394.41516 446.01049L222.87701 446.01049L222.87701 515.71449"
+     d="M 222.87701,515.71449 394.41516,515.71449 394.41516,446.01049 222.87701,446.01049 222.87701,515.71449"
      style="fill:#008080;stroke:none"
      inkscape:connector-curvature="0" />
   <path
      id="rect3006"
-     d="M258.81246 222.41364L408.00823 222.41364L408.00823 85.0043L258.81246 85.0043L258.81246 222.41364"
+     d="M 258.81246,222.41364 408.00823,222.41364 408.00823,85.0043 258.81246,85.0043 258.81246,222.41364"
      style="fill:#57a32c;stroke:none"
      inkscape:connector-curvature="0">
     <path
@@ -101,240 +101,211 @@
   </path>
   <path
      id="rect3008"
-     d="M233.33079 384.90363L396.42151 384.90363L396.42151 227.05463L233.33079 227.05463L233.33079 384.90363"
+     d="M 233.33079,384.90363 396.42151,384.90363 396.42151,227.05463 233.33079,227.05463 233.33079,384.90363"
      style="fill:#a36b4f;stroke:none"
      inkscape:connector-curvature="0" />
   <path
      id="rect3010"
-     d="M225.01442 373.20094L389.2453 373.20094L389.2453 109.6147L225.01442 109.6147L225.01442 373.20094"
+     d="M 225.01442,373.20094 389.2453,373.20094 389.2453,109.6147 225.01442,109.6147 225.01442,373.20094"
      style="fill:#0d1fcc;stroke:none"
      inkscape:connector-curvature="0" />
   <path
      id="elevator-shaft-2"
-     d="M254.04972 80.766274L307.1555 80.766274L307.1555 26.877923L254.04972 26.877923L254.04972 80.766274"
+     d="M 254.04972,80.766274 307.1555,80.766274 307.1555,26.877923 254.04972,26.877923 254.04972,80.766274"
      style="fill:#008000;stroke:none"
      inkscape:connector-curvature="0" />
   <path
      id="main hall 2-walls"
-     d="M217.78996 389.17495L415.17233 389.17495L415.17233 78.839955L217.78996 78.839955L217.78996 389.17495"
+     d="M 217.78996,389.17495 415.17233,389.17495 415.17233,78.839955 217.78996,78.839955 217.78996,389.17495"
      style="fill:#784421;stroke:none"
      inkscape:connector-curvature="0" />
   <path
      inkscape:connector-curvature="0"
      id="dinner room"
-     d="M-51.250787 104.46182L161.47873 104.46182L161.47873 401.67068L-51.250787 401.67068L-51.250787 104.46182"
+     d="M -51.250787,104.46182 161.47873,104.46182 161.47873,401.67068 -51.250787,401.67068 -51.250787,104.46182"
      style="fill:#6c5d53;fill-opacity:1;fill-rule:nonzero;stroke:none" />
   <path
      style="fill:#483737;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M436.34169 82.974967L743.98691 82.974967L743.98691 406.07778L436.34169 406.07778L436.34169 82.974967"
+     d="M 436.34169,82.974967 743.98691,82.974967 743.98691,406.07778 436.34169,406.07778 436.34169,82.974967"
      id="hyggym-walls"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#00ffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M448.17419 92.501321L732.15433 92.501321L732.15433 207.61167L448.17419 207.61167L448.17419 92.501321"
+     d="M 448.17419,92.501321 732.15433,92.501321 732.15433,207.61167 448.17419,207.61167 448.17419,92.501321"
      id="hyggym-bathroom"
      inkscape:connector-curvature="0" />
   <path
-     style="fill:#550000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M519.16925 213.16874L736.45708 213.16874L736.45708 395.75755L519.16925 395.75755L519.16925 213.16874"
-     id="hyggym-gym-area"
-     inkscape:connector-curvature="0" />
-  <path
-     style="fill:#241c1c;stroke:none"
-     d="M716.81117 373.71511L715.73548 334.02188L664.10272 332.43416L661.95134 283.21458L716.81117 284.00841L717.88682 228.43792L728.64365 228.43792L729.71934 375.30285L716.81117 373.71511"
-     id="hyggym-gym-station"
-     inkscape:connector-curvature="0" />
-  <path
      style="fill:#222b00;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M294.10235 490.56543L380.60672 490.56543L380.60672 502.73451L294.10235 502.73451L294.10235 490.56543"
+     d="M 294.10235,490.56543 380.60672,490.56543 380.60672,502.73451 294.10235,502.73451 294.10235,490.56543"
      id="control room-table"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#2b1100;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M303.95236 465.44894L319.99236 465.44894L319.99236 488.50615L303.95236 488.50615L303.95236 465.44894"
+     d="M 303.95236,465.44894 319.99236,465.44894 319.99236,488.50615 303.95236,488.50615 303.95236,465.44894"
      id="control room-chair cushion 1"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#803300;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M299.58352 468.1186L304.73924 468.1186L304.73924 486.05198L299.58352 486.05198L299.58352 468.1186"
+     d="M 299.58352,468.1186 304.73924,468.1186 304.73924,486.05198 299.58352,486.05198 299.58352,468.1186"
      id="control room-right arm 1"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#803300;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M319.52078 468.15747L324.67649 468.15747L324.67649 486.09085L319.52078 486.09085L319.52078 468.15747"
+     d="M 319.52078,468.15747 324.67649,468.15747 324.67649,486.09085 319.52078,486.09085 319.52078,468.15747"
      id="control room-left arm 1"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M299.6167 463.18291L324.6477 463.18291L324.6477 468.94721L299.6167 468.94721L299.6167 463.18291"
+     d="M 299.6167,463.18291 324.6477,463.18291 324.6477,468.94721 299.6167,468.94721 299.6167,463.18291"
      id="control room-back support 1"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#2b1100;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M354.99134 465.90186L371.03134 465.90186L371.03134 488.95908L354.99134 488.95908L354.99134 465.90186"
+     d="M 354.99134,465.90186 371.03134,465.90186 371.03134,488.95908 354.99134,488.95908 354.99134,465.90186"
      id="control room-chair cushion 2"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#803300;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M350.6225 468.57151L355.77822 468.57151L355.77822 486.50489L350.6225 486.50489L350.6225 468.57151"
+     d="M 350.6225,468.57151 355.77822,468.57151 355.77822,486.50489 350.6225,486.50489 350.6225,468.57151"
      id="control room-right arm 2"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#803300;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M370.55977 468.61039L375.71549 468.61039L375.71549 486.54378L370.55977 486.54378L370.55977 468.61039"
+     d="M 370.55977,468.61039 375.71549,468.61039 375.71549,486.54378 370.55977,486.54378 370.55977,468.61039"
      id="control room-left arm 2"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M350.65568 463.63583L375.68668 463.63583L375.68668 469.40013L350.65568 469.40013L350.65568 463.63583"
+     d="M 350.65568,463.63583 375.68668,463.63583 375.68668,469.40013 350.65568,469.40013 350.65568,463.63583"
      id="control room-back support 2"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#916f6f;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M229.33081 493.60399L278.74952 493.60399L278.74952 511.26656L229.33081 511.26656L229.33081 493.60399"
+     d="M 229.33081,493.60399 278.74952,493.60399 278.74952,511.26656 229.33081,511.26656 229.33081,493.60399"
      id="control room-cabinet"
      inkscape:connector-curvature="0" />
   <path
-     style="fill:#6c5353;stroke:none"
-     d="M 641.45648,240.76591 680.25237,241.73406 680.23667,237.80467 677.09582,213.11771 664.16535,213.16921 670.33971,235.59869 636.10081,232.9283 641.45643,240.7659"
-     id="hyggym-whatever2"
-     inkscape:connector-curvature="0" />
-  <path
-     style="fill:#483737;stroke:none"
-     d="M 688.77496,367.04835 629.44641,369.29373 648.46196,399.04511 660.63193,396.23838 644.65886,376.02989 695.62057,376.02989 688.77496,367.04835"
-     id="hyggym-whatever1"
-     inkscape:connector-curvature="0" />
-  <path
-     style="fill:#b3b3b3;fill-opacity:1;stroke:none"
-     d="M 609.15979,288.95451 C 600.91052,298.68017 603.00319,295.87081 613.72351,301.58482 L 615.24477,341.15979 C 605.17902,347.39046 606.89187,345.08028 615.24477,352.66741 L 623.42145,352.66739 C 634.82467,344.52506 634.95278,347.72176 623.61159,340.59844 L 622.85099,301.44449 C 635.49628,294.3432 635.17372,297.63465 624.37223,288.95447 L 609.15979,288.95451"
-     id="hyggym-workout-equipment"
-     inkscape:connector-curvature="0"
-     sodipodi:nodetypes="ccccccccc" />
-  <path
      style="fill:#483737;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M475.32508 92.10441L538.53153 92.10441L538.53153 125.04979L475.32508 125.04979L475.32508 92.10441"
+     d="M 475.32508,92.10441 538.53153,92.10441 538.53153,125.04979 475.32508,125.04979 475.32508,92.10441"
      id="hyggym-crapper 1"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#483737;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M544.44775 91.707465L615.28237 91.707465L615.28237 125.84364L544.44775 125.84364L544.44775 91.707465"
+     d="M 544.44775,91.707465 615.28237,91.707465 615.28237,125.84364 544.44775,125.84364 544.44775,91.707465"
      id="hyggym-crapper 2"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#008080;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M679.9837 103.61542L733.23 103.61542L733.23 192.1313L679.9837 192.1313L679.9837 103.61542"
+     d="M 679.9837,103.61542 733.23,103.61542 733.23,192.1313 679.9837,192.1313 679.9837,103.61542"
      id="hyggym-showers"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M685.36216 110.7602L727.85162 110.7602L727.85162 135.37L685.36216 135.37L685.36216 110.7602"
+     d="M 685.36216,110.7602 727.85162,110.7602 727.85162,135.37 685.36216,135.37 685.36216,110.7602"
      id="hyggym-private3"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M685.89995 139.73626L726.77587 139.73626L726.77587 162.36138L685.89995 162.36138L685.89995 139.73626"
+     d="M 685.89995,139.73626 726.77587,139.73626 726.77587,162.36138 685.89995,162.36138 685.89995,139.73626"
      id="hyggym-private2"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M685.89995 167.91844L727.85156 167.91844L727.85156 187.36813L685.89995 187.36813L685.89995 167.91844"
+     d="M 685.89995,167.91844 727.85156,167.91844 727.85156,187.36813 685.89995,187.36813 685.89995,167.91844"
      id="hyggym-private1"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#483737;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M-36.306981 328.93274L110.49395 328.93274L110.49395 351.61446L-36.306981 351.61446L-36.306981 328.93274"
+     d="M -36.306981,328.93274 110.49395,328.93274 110.49395,351.61446 -36.306981,351.61446 -36.306981,328.93274"
      id="dinner room-stand 1"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#483737;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M110.05442 328.93274L142.57917 328.93274L142.57917 401.67068L110.05442 401.67068L110.05442 328.93274"
+     d="M 110.05442,328.93274 142.57917,328.93274 142.57917,401.67068 110.05442,401.67068 110.05442,328.93274"
      id="dinner room-stand 2"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#ac9d93;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M78.590763 351.66193L110.23647 351.66193L110.23647 384.51132L78.590763 384.51132L78.590763 351.66193"
+     d="M 78.590763,351.66193 110.23647,351.66193 110.23647,384.51132 78.590763,384.51132 78.590763,351.66193"
      id="dinner room-stove"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#483e37;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M-51.138115 384.39832L110.16709 384.39832L110.16709 401.60514L-51.138115 401.60514L-51.138115 384.39832"
+     d="M -51.138115,384.39832 110.16709,384.39832 110.16709,401.60514 -51.138115,401.60514 -51.138115,384.39832"
      id="dinner room-working area"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#aca793;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M-26.297445 386.27633L3.3704023 386.27633L3.3704023 399.9636L-26.297445 399.9636L-26.297445 386.27633"
+     d="M -26.297445,386.27633 3.3704023,386.27633 3.3704023,399.9636 -26.297445,399.9636 -26.297445,386.27633"
      id="dinner room-sink 1"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#806600;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M15.622196 138.87546L74.518364 138.87546L74.518364 300.77609L15.622196 300.77609L15.622196 138.87546"
+     d="M 15.622196,138.87546 74.518364,138.87546 74.518364,300.77609 15.622196,300.77609 15.622196,138.87546"
      id="dinner room-table"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#445500;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M123.30552 195.57979L161.54407 195.57979L161.54407 310.55272L123.30552 310.55272L123.30552 195.57979"
+     d="M 123.30552,195.57979 161.54407,195.57979 161.54407,310.55272 123.30552,310.55272 123.30552,195.57979"
      id="dinner room-cabinet"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#502d16;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M-50.43711 113.06522L-24.065688 113.06522L-24.065688 309.37951L-50.43711 309.37951L-50.43711 113.06522"
+     d="M -50.43711,113.06522 -24.065688,113.06522 -24.065688,309.37951 -50.43711,309.37951 -50.43711,113.06522"
      id="dinner room-storage"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#d38d5f;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M-5.4749483 150.60741L11.226953 150.60741L11.226953 292.95484L-5.4749483 292.95484L-5.4749483 150.60741"
+     d="M -5.4749483,150.60741 11.226953,150.60741 11.226953,292.95484 -5.4749483,292.95484 -5.4749483,150.60741"
      id="dinner room-bench1"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#d38d5f;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M79.276606 150.60741L95.978506 150.60741L95.978506 292.95484L79.276606 292.95484L79.276606 150.60741"
+     d="M 79.276606,150.60741 95.978506,150.60741 95.978506,292.95484 79.276606,292.95484 79.276606,150.60741"
      id="dinner room-bench 2"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#d38d5f;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M449.24986 207.61167L524.54763 207.61167L524.54763 396.55142L449.24986 396.55142L449.24986 207.61167"
+     d="M 449.24986,207.61167 524.54763,207.61167 524.54763,396.55142 449.24986,396.55142 449.24986,207.61167"
      id="hyggym"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#484537;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M229.54015 93.863089L405.40738 93.863089L405.40738 376.31391L229.54015 376.31391L229.54015 93.863089"
+     d="M 229.54015,93.863089 405.40738,93.863089 405.40738,376.31391 229.54015,376.31391 229.54015,93.863089"
      id="main hall 2"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#008080;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M524.2787 184.13395L629.69558 184.13395L629.69558 207.61164L524.2787 207.61164L524.2787 184.13395"
+     d="M 524.2787,184.13395 629.69558,184.13395 629.69558,207.61164 524.2787,207.61164 524.2787,184.13395"
      id="hyggym-sauna"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#445500;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M-14.146651 396.7139L-11.504935 396.7139L-11.504935 401.69134L-14.146651 401.69134L-14.146651 396.7139"
+     d="M -14.146651,396.7139 -11.504935,396.7139 -11.504935,401.69134 -14.146651,401.69134 -14.146651,396.7139"
      id="dinner room-tap 1"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#aca793;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M29.407847 386.13809L59.075697 386.13809L59.075697 399.82533L29.407847 399.82533L29.407847 386.13809"
+     d="M 29.407847,386.13809 59.075697,386.13809 59.075697,399.82533 29.407847,399.82533 29.407847,386.13809"
      id="dinner room-sink 2"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#445500;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M41.558642 396.57565L44.200358 396.57565L44.200358 401.55309L41.558642 401.55309L41.558642 396.57565"
+     d="M 41.558642,396.57565 44.200358,396.57565 44.200358,401.55309 41.558642,401.55309 41.558642,396.57565"
      id="dinner room-tap 2"
      inkscape:connector-curvature="0" />
   <path
      style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M297.58534 493.15113L375.76412 493.15113L375.76412 499.94442L297.58534 499.94442L297.58534 493.15113"
+     d="M 297.58534,493.15113 375.76412,493.15113 375.76412,499.94442 297.58534,499.94442 297.58534,493.15113"
      id="control room-table computer"
      inkscape:connector-curvature="0" />
   <g
      id="flowRoot4262"
      style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" />
-  <rect
+  <path
      style="opacity:0.40366971;fill:#00ffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     id="control room-window"
-     width="165.53793"
-     height="11.43"
-     x="227.02345"
-     y="512.78735" />
+     d="M 227.02345,512.78735 392.56139,512.78735 392.56139,524.21735 227.02345,524.21735 z"
+     id="control room-window" />
   <path
      sodipodi:nodetypes="cccccc"
      inkscape:connector-curvature="0"
@@ -371,96 +342,52 @@
      id="hyggym-toilete-water3"
      d="M 708.12152,176.85473 C 714.49729,182.38688 712.83706,182.67395 718.58258,177.0518 712.6571,170.98457 714.1921,171.52142 708.12152,176.85473 z"
      style="fill:#00ffff;stroke:none" />
-  <rect
-     y="93.363708"
-     x="480.35587"
-     height="25.361483"
-     width="52.792686"
-     id="hyggym-box2"
-     style="opacity:0.40366971;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
-  <rect
-     y="93.363708"
-     x="548.75562"
-     height="26.476273"
-     width="59.946587"
-     id="hyggym-box1"
-     style="opacity:0.40366971;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     style="opacity:0.40366971;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M 480.35587,93.363708 533.14855,93.363708 533.14855,118.72519 480.35587,118.72519 z"
+     id="hyggym-box2" />
+  <path
+     style="opacity:0.40366971;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M 548.75562,93.363708 608.7022,93.363708 608.7022,119.83998 548.75562,119.83998 z"
+     id="hyggym-box1" />
   <path
      sodipodi:nodetypes="ccccccccc"
      inkscape:connector-curvature="0"
      id="hyggym-shower1"
-     d="M517.88248 93.611492L518.01483 103.28138L513.14462 103.26448L512.99827 111.8732L526.34194 111.8563L526.37574 103.23357L520.80179 103.23357L520.62162 93.57769L517.88248 93.611492"
+     d="M 517.88248,93.611492 518.01483,103.28138 513.14462,103.26448 512.99827,111.8732 526.34194,111.8563 526.37574,103.23357 520.80179,103.23357 520.62162,93.57769 517.88248,93.611492"
      style="fill:#cccccc;stroke:none" />
   <path
      style="fill:#cccccc;stroke:none"
-     d="M568.33213 93.315888L568.46448 102.98577L563.59427 102.96887L563.44792 111.57759L576.79159 111.56069L576.82539 102.93796L571.25144 102.93796L571.07127 93.282086L568.33213 93.315888"
+     d="M 568.33213,93.315888 568.46448,102.98577 563.59427,102.96887 563.44792,111.57759 576.79159,111.56069 576.82539,102.93796 571.25144,102.93796 571.07127,93.282086 568.33213,93.315888"
      id="hyggym-shower2"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccccccccc" />
-  <rect
-     y="189.20009"
-     x="552.97552"
-     height="18.130344"
-     width="55.967587"
-     id="hyggym-sink"
-     style="opacity:0.40366971;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  <path
+     style="opacity:0.40366971;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M 552.97552,189.20009 608.94311,189.20009 608.94311,207.33043 552.97552,207.33043 z"
+     id="hyggym-sink" />
   <path
      sodipodi:nodetypes="ccccccccc"
      inkscape:connector-curvature="0"
      id="hyggym-tap2"
-     d="M563.53312 207.33169L563.48262 201.2032L565.33954 201.2139L565.39534 195.75794L560.30766 195.76864L560.29476 201.23347L562.42 201.23347L562.4887 207.35309L563.53312 207.33169"
+     d="M 563.53312,207.33169 563.48262,201.2032 565.33954,201.2139 565.39534,195.75794 560.30766,195.76864 560.29476,201.23347 562.42,201.23347 562.4887,207.35309 563.53312,207.33169"
      style="fill:#cccccc;stroke:none" />
   <path
      style="fill:#cccccc;stroke:none"
-     d="M597.03484 207.72583L596.98434 201.59734L598.84126 201.60804L598.89706 196.15208L593.80938 196.16278L593.79648 201.62761L595.92172 201.62761L595.99042 207.74723L597.03484 207.72583"
+     d="M 597.03484,207.72583 596.98434,201.59734 598.84126,201.60804 598.89706,196.15208 593.80938,196.16278 593.79648,201.62761 595.92172,201.62761 595.99042,207.74723 597.03484,207.72583"
      id="hyggym-tap1"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccccccccc" />
   <path
-     inkscape:connector-curvature="0"
-     id="hyggym-workout-glare-3"
-     d="M 670.0345,295.61734 671.61105,327.93665 685.80002,318.47734 C 698.57842,332.80286 699.01803,327.85797 710.23657,314.53596 697.02964,300.3845 696.79942,286.31043 685.80002,305.86492 L 670.0345,295.61734"
-     style="fill:#e3dbdb;stroke:none"
-     sodipodi:nodetypes="cccccc" />
-  <path
      style="fill:#ac9d93;stroke:none"
      d="M 228.75215,133.06924 262.89,131.95445 264.07242,93.818715 295.60346,93.818714 293.43569,280.04889 405.88044,282.20264 405.86354,316.11251 294.22398,315.12717 292.91622,376.80905 258.40523,376.88078 260.52518,162.59579 228.45655,163.90765 228.75215,133.06924 228.75215,133.06924"
-     id="path3062"
+     id="main hall 2 pathways"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="cccccccccccccc" />
   <path
-     sodipodi:nodetypes="ccccssc"
-     inkscape:connector-curvature="0"
-     id="path3986"
-     d="M 609.15979,288.95451 C 600.91052,298.68017 603.00319,295.87081 613.72351,301.58482 L 615.24477,341.15979 C 605.17902,347.39046 606.89187,345.08028 615.24477,352.66741 617.66486,353.10266 625.25093,353.84977 623.08082,350.38949 614.67295,336.98293 616.40238,300.03137 621.20744,293.24602 624.41057,288.72279 611.69892,288.65882 609.15979,288.95451"
-     style="opacity:0.6238532;fill:#333333;fill-opacity:1;stroke:none" />
-  <path
      sodipodi:nodetypes="ccccc"
      inkscape:connector-curvature="0"
-     id="path3988"
-     d="M 484.00139,396.91079 483.21311,391.39286 510.40863,391.39286 510.36082,396.51665 z"
-     style="fill:#ffe680;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-  <path
-     sodipodi:nodetypes="ccccccccccc"
-     inkscape:connector-curvature="0"
-     id="path3990"
-     d="M 483.21311,394.15182 448.92311,323.20699 448.52897,139.14458 C 469.64042,123.22039 506.82829,128.81983 524.09623,143.98967 L 524.57369,213.17078 584.9007,213.24251 C 615.98515,226.63173 617.16615,239.10767 620.76726,259.35665 L 524.62843,366.7012 524.65695,363.3248 511.59105,393.75769 z"
-     style="opacity:0.34862384;fill:#ffeeaa;stroke:none" />
-  <path
-     inkscape:connector-curvature="0"
-     id="path3992"
-     d="M 636.92691,92.6363 636.92691,98.154231 659.78691,98.154231 659.78691,92.242162 z"
-     style="fill:#ffeeaa;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-  <path
-     sodipodi:nodetypes="cccccccccccc"
-     inkscape:connector-curvature="0"
-     id="path3994"
-     d="M 636.53277,94.60699 615.24933,104.0663 615.34786,125.74388 585.29484,158.45734 C 591.90717,175.21033 593.00846,174.63489 607.7607,184.12412 L 629.64526,183.93695 629.83243,207.33044 667.66967,207.72458 C 673.68281,204.65569 679.21711,201.779 680.28208,192.3532 L 679.98648,103.67216 660.18105,94.60699 z"
-     style="opacity:0.4816514;fill:#ffeeaa;stroke:none" />
-  <path
-     sodipodi:nodetypes="ccccc"
-     inkscape:connector-curvature="0"
-     id="path3996"
+     id="dinner room lamp"
      d="M -9.4757187,104.23291 -10.033114,108.13468 134.33225,107.57729 134.4716,104.37226 z"
      style="fill:#ffeeaa;fill-opacity:1;stroke:none" />
   <path
@@ -472,37 +399,37 @@
   <path
      sodipodi:nodetypes="ccccccccccccccccccccc"
      inkscape:connector-curvature="0"
-     id="path4002"
-     d="M -10.033114,105.9051 -24.002832,119.17808 -24.063628,242.95869 C -21.895833,250.58478 -15.164597,255.92914 -5.5739522,259.8438 L -5.6436266,242.07684 C 3.7083306,245.32831 5.9527155,244.05094 11.147905,243.95804 L 11.287253,259.28641 15.746415,259.56511 15.622521,243.82714 74.413712,243.12194 74.413712,256.49943 79.2332,256.5487 79.150121,242.56455 95.871978,242.56455 96.102858,257.05683 C 111.95027,255.97943 119.34282,252.25989 123.3505,247.48258 L 123.41523,195.51339 161.54608,195.47957 161.47845,123.18435 133.77485,104.23291 z"
+     id="dinner room glare"
+     d="M -10.033114,107.9051 -24.002832,121.17808 -24.063628,244.95869 C -21.895833,252.58478 -15.164597,257.92914 -5.5739522,261.8438 L -5.6436266,244.07684 C 3.7083306,247.32831 5.9527155,246.05094 11.147905,245.95804 L 11.287253,261.28641 15.746415,261.56511 15.622521,245.82714 74.413712,245.12194 74.413712,258.49943 79.2332,258.5487 79.150121,244.56455 95.871978,244.56455 96.102858,259.05683 C 111.95027,257.97943 119.34282,254.25989 123.3505,249.48258 L 123.41523,197.51339 161.54608,197.47957 161.47845,125.18435 133.77485,106.23291 z"
      style="opacity:0.39908256;fill:#ffeeaa;fill-opacity:1;stroke:none" />
   <path
      style="fill:#ffeeaa;fill-opacity:1;stroke:none"
      d="M -51.419709,317.71528 -46.821198,317.71528 -46.68185,377.21723 -51.559058,377.35657 z"
-     id="path4004"
+     id="dinner room lamp 2"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccccc" />
   <path
      sodipodi:nodetypes="ccccc"
      inkscape:connector-curvature="0"
-     id="path4006"
+     id="dinner room 3"
      d="M 156.58029,317.71528 161.1788,317.71528 161.31815,377.21723 156.44094,377.35657 z"
      style="fill:#ffeeaa;fill-opacity:1;stroke:none" />
   <path
      sodipodi:nodetypes="ccccsssscccccc"
      inkscape:connector-curvature="0"
-     id="path4008"
-     d="M -49.329477,317.15789 -39.575061,309.35436 -23.967994,309.07566 15.049671,302.94431 C 25.657988,308.19333 27.090678,329.02864 28.304312,329.00822 L 16.831847,329.20125 C 21.133296,329.12888 19.940974,351.61012 19.725829,351.61745 L 33.101009,351.16194 C 36.144384,351.05829 29.648818,373.8252 24.077707,384.24465 L 12.240792,384.10805 C 13.032794,390.68201 9.3853656,395.98756 6.7051505,401.56945 L -39.575061,402.16066 -50.16557,377.63527 -49.329477,317.15789"
-     style="fill:#ffeeaa;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1;opacity:0.20642202" />
+     id="dinner room glare 2"
+     d="M -47.329477,317.15789 -37.575061,309.35436 -21.967994,309.07566 17.049671,302.94431 C 27.657988,308.19333 29.090678,329.02864 30.304312,329.00822 L 18.831847,329.20125 C 23.133296,329.12888 21.940974,351.61012 21.725829,351.61745 L 35.101009,351.16194 C 38.144384,351.05829 31.648818,373.8252 26.077707,384.24465 L 14.240792,384.10805 C 15.032794,390.68201 11.385366,395.98756 8.7051505,401.56945 L -37.575061,402.16066 -48.16557,377.63527 -47.329477,317.15789"
+     style="opacity:0.20642204;fill:#ffeeaa;fill-opacity:1;stroke:none" />
   <path
-     style="opacity:0.73853211;fill:#000000;stroke:none"
+     style="opacity:0.73853215;fill:#000000;stroke:none"
      d="M -17.834741,399.96535 -12.637048,386.26906 -26.308708,386.28174 -26.296753,400.0104 z"
-     id="path4184"
+     id="dinner room shadow"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccccc" />
   <path
-     style="fill:#fff6d5;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;opacity:0.19724771"
+     style="opacity:0.19724773;fill:#fff6d5;stroke:none"
      d="M 156.34936,318.27268 150.49671,310.19045 123.46304,310.74784 123.18434,307.12477 77.199238,299.32125 C 72.41769,307.46714 68.255446,316.15493 69.330975,329.42577 L 77.583957,329.1377 C 74.150411,338.55955 76.637902,344.13397 78.000632,351.44361 L 68.68858,351.16889 C 64.526201,369.41088 67.698006,375.73482 69.12027,384.90177 L 77.067363,384.61979 C 76.844844,393.31423 77.520587,396.31842 80.264912,402.16066 L 145.75885,402.16066 156.62806,377.63527 z"
-     id="path4186"
+     id="dinner room glare 3"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccccccccccccccc" />
   <path
@@ -512,7 +439,7 @@
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccccccc" />
   <path
-     style="fill:#550000;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     style="fill:#550000;stroke:none"
      d="M 86.768067,353.48595 81.632319,357.05709 86.664581,360.6501 91.312607,357.09295 z"
      id="path4190"
      inkscape:connector-curvature="0"
@@ -535,16 +462,4 @@
      id="path4196"
      d="M 93.172808,374.37525 88.03706,377.94639 93.069322,381.5394 97.717345,377.98225 z"
      style="fill:#550000;stroke:none" />
-  <path
-     style="fill:#ffeeaa;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;opacity:0.49082568999999998"
-     d="M 405.22632,94.199801 300.43602,94.199801 C 284.08752,194.34668 343.44224,210.22018 404.11153,224.63028 z"
-     id="path4198"
-     inkscape:connector-curvature="0"
-     sodipodi:nodetypes="cccc" />
-  <path
-     sodipodi:nodetypes="cccc"
-     inkscape:connector-curvature="0"
-     id="path4200"
-     d="M 229.45746,376.43115 326.71929,376.43115 C 301.93011,307.6831 275.19092,309.91064 230.49216,306.58796 z"
-     style="fill:#ffeeaa;stroke:none;stroke-width:0.70499033000000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;opacity:0.36238532" />
 </svg>

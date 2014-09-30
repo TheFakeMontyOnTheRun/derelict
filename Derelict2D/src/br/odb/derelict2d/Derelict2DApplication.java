@@ -22,17 +22,16 @@ public class Derelict2DApplication extends Application implements
 	public void onCreate() {
 		super.onCreate();
 
-		
-//		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-//	    .detectAll().penaltyLog().penaltyDeath().build());
-//	StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll()
-//	    .penaltyLog().penaltyDeath().build());
-		
+		// StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+		// .detectAll().penaltyLog().penaltyDeath().build());
+		// StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll()
+		// .penaltyLog().penaltyDeath().build());
+
 		resManager = new AssetManager();
 		try {
 
 			resManager.putGraphic("floor1", SVGParsingUtils
-					.readSVG(openAsset("overview-map/floor1_old.svg")));
+					.readSVG(openAsset("overview-map/floor1.svg")));
 			resManager.putGraphic("floor2", SVGParsingUtils
 					.readSVG(openAsset("overview-map/floor2.svg")));
 			resManager.putGraphic("floor3", SVGParsingUtils
@@ -43,7 +42,7 @@ public class Derelict2DApplication extends Application implements
 					.readSVG(openAsset("overview-map/centered-astronaut.svg")));
 			resManager.putGraphic("blowtorch",
 					SVGParsingUtils.readSVG(openAsset("items/blowtorch.svg")));
-			
+
 			resManager.putGraphic("bomb-remote-controller", SVGParsingUtils
 					.readSVG(openAsset("items/bomb-remote-controller.svg")));
 			resManager.putGraphic("book",
@@ -72,7 +71,6 @@ public class Derelict2DApplication extends Application implements
 			resManager.putGraphic("pattern",
 					SVGParsingUtils.readSVG(openAsset("pattern.svg")));
 
-			
 			resManager.putGraphic("magboots",
 					SVGParsingUtils.readSVG(openAsset("items/magboots.svg")));
 			resManager
@@ -88,100 +86,44 @@ public class Derelict2DApplication extends Application implements
 					SVGParsingUtils.readSVG(openAsset("items/time-bomb.svg")));
 			resManager.putGraphic("computer-stand", SVGParsingUtils
 					.readSVG(openAsset("items/computer-stand.svg")));
-			
+
 			resManager.putGraphic("ship-ignition-key", SVGParsingUtils
 					.readSVG(openAsset("items/ship-ignition-key.svg")));
 
-			
-			resManager.putGraphic("icon-move", SVGParsingUtils
-					.readSVG(openAsset("action-icons/move.svg")));
-			resManager.putGraphic("icon-turn", SVGParsingUtils
-					.readSVG(openAsset("action-icons/turn.svg")));
-			resManager.putGraphic("icon-pick", SVGParsingUtils
-					.readSVG(openAsset("action-icons/pick.svg")));
+			resManager
+					.putGraphic("icon-move", SVGParsingUtils
+							.readSVG(openAsset("action-icons/move.svg")));
+			resManager
+					.putGraphic("icon-turn", SVGParsingUtils
+							.readSVG(openAsset("action-icons/turn.svg")));
+			resManager
+					.putGraphic("icon-pick", SVGParsingUtils
+							.readSVG(openAsset("action-icons/pick.svg")));
 			resManager.putGraphic("icon-use-with", SVGParsingUtils
 					.readSVG(openAsset("action-icons/useWith.svg")));
-			resManager.putGraphic("icon-use", SVGParsingUtils
-					.readSVG(openAsset("action-icons/use.svg")));
-			resManager.putGraphic("icon-drop", SVGParsingUtils
-					.readSVG(openAsset("action-icons/drop.svg")));
-			
+			resManager.putGraphic("icon-use",
+					SVGParsingUtils.readSVG(openAsset("action-icons/use.svg")));
+			resManager
+					.putGraphic("icon-drop", SVGParsingUtils
+							.readSVG(openAsset("action-icons/drop.svg")));
+
 			resManager.putGraphic("icon-toggle", SVGParsingUtils
 					.readSVG(openAsset("action-icons/toggle.svg")));
 
-			
-			resManager.putGraphic("intro-comics0", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro1.svg")));
-			resManager.putGraphic("intro-comics1", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro1.svg")));
-			resManager.putGraphic("intro-comics2", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			
-			
-			resManager.putGraphic("ending0", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending1", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending2", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending3", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending4", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending5", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending6", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending7", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending8", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending9", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending10", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending11", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending12", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending13", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending14", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending15", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending16", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending17", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending18", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending19", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending20", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending21", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending22", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending23", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending24", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending25", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending26", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending27", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending28", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending29", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending30", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
-			resManager.putGraphic("ending31", SVGParsingUtils
-					.readSVG(openAsset("chapters/intro3.svg")));
+			resManager.putGraphic("intro-comics0",
+					SVGParsingUtils.readSVG(openAsset("chapters/intro1.svg")));
+			resManager.putGraphic("intro-comics1",
+					SVGParsingUtils.readSVG(openAsset("chapters/intro1.svg")));
+			resManager.putGraphic("intro-comics2",
+					SVGParsingUtils.readSVG(openAsset("chapters/intro3.svg")));
+
+			for (int c = 0; c < 31; ++c) {
+
+				resManager.putGraphic(
+						"ending" + c,
+						SVGParsingUtils.readSVG(openAsset("chapters/ending" + c
+								+ ".svg")));
+			}
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -213,7 +155,8 @@ public class Derelict2DApplication extends Application implements
 
 	public void startNewGame() {
 		game = new DerelictGame();
-		game.setAppName("DERELICT - THE GRAPHICAL ADVENTURE").setAuthorName("Daniel Monteiro")
+		game.setAppName("DERELICT - THE GRAPHICAL ADVENTURE")
+				.setAuthorName("Daniel Monteiro")
 				.setLicenseName("3-Clause BSD").setReleaseYear(2014).init();
 	}
 
