@@ -11,7 +11,7 @@ public class BlowTorch extends ActiveItem implements Toxic, Destructive {
 
 	float fuel;
 
-	String originalDescription = "precision vintage-but-rather-well-kept metal cutter ( fuel: %d ).";
+	String originalDescription = "precision vintage-but-rather-well-kept metal cutter (fuel: %d).";
 
 	public BlowTorch(float initialFluel) {
 		super( BlowTorch.NAME );

@@ -26,9 +26,9 @@
      inkscape:window-height="1036"
      id="namedview3036"
      showgrid="false"
-     inkscape:zoom="1"
-     inkscape:cx="430.16318"
-     inkscape:cy="777.33778"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="473.89679"
+     inkscape:cy="834.85727"
      inkscape:window-x="60"
      inkscape:window-y="22"
      inkscape:window-maximized="0"
@@ -130,7 +130,7 @@
      id="hyggym-walls"
      inkscape:connector-curvature="0" />
   <path
-     style="fill:#00ffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     style="fill:#0066ff;fill-opacity:1;fill-rule:nonzero;stroke:none"
      d="M 448.17419,92.501321 732.15433,92.501321 732.15433,207.61167 448.17419,207.61167 448.17419,92.501321"
      id="hyggym-bathroom"
      inkscape:connector-curvature="0" />
@@ -265,10 +265,11 @@
      id="dinner room-bench 2"
      inkscape:connector-curvature="0" />
   <path
-     style="fill:#d38d5f;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M 449.24986,207.61167 524.54763,207.61167 524.54763,396.55142 449.24986,396.55142 449.24986,207.61167"
+     style="fill:#806600;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M 448.24986,207.67417 523.54763,207.67417 523.54763,396.61392 448.24986,396.61392 448.24986,207.67417"
      id="hyggym"
-     inkscape:connector-curvature="0" />
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
   <path
      style="fill:#484537;fill-opacity:1;fill-rule:nonzero;stroke:none"
      d="M 229.54015,93.863089 405.40738,93.863089 405.40738,376.31391 229.54015,376.31391 229.54015,93.863089"
@@ -379,8 +380,8 @@
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccccccccc" />
   <path
-     style="fill:#ac9d93;stroke:none"
-     d="M 228.75215,133.06924 262.89,131.95445 264.07242,93.818715 295.60346,93.818714 293.43569,280.04889 405.88044,282.20264 405.86354,316.11251 294.22398,315.12717 292.91622,376.80905 258.40523,376.88078 260.52518,162.59579 228.45655,163.90765 228.75215,133.06924 228.75215,133.06924"
+     style="fill:#28170b;stroke:none"
+     d="M 228.75215,133.06924 254.015,133.20445 254.07242,93.818715 355.60346,93.818714 353.43569,280.04889 405.88044,282.20264 405.86354,316.11251 294.22398,315.12717 292.91622,376.80905 258.40523,376.88078 259.90018,164.09579 228.45655,163.90765 228.75215,133.06924 228.75215,133.06924"
      id="main hall 2 pathways"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="cccccccccccccc" />
@@ -462,4 +463,70 @@
      id="path4196"
      d="M 93.172808,374.37525 88.03706,377.94639 93.069322,381.5394 97.717345,377.98225 z"
      style="fill:#550000;stroke:none" />
+  <path
+     style="fill:#fff6d5;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M 346.5,224.36218 354.5,224.36218 354.5,255.86218 346.5,255.86218 z"
+     id="main hall 2-lamp"
+     inkscape:connector-curvature="0" />
+  <path
+     style="opacity:0.30275233;fill:#fff6d5;stroke:none"
+     d="M 350.9064,255.65158 308.52267,315.23902 294.25953,315.11348 258.6875,329.98718 259.94194,164.09701 239.43371,133.12171 254.05806,133.21573 254,108.36218 350.81802,224.39942 z"
+     id="main hall 2 - glare"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccccccccc" />
+  <path
+     style="opacity:0.35321105;fill:#000000;stroke:none"
+     d="M 336.58282,230.95717 259.55689,206.56199 259.07252,265.1581 336.93637,246.15997 z"
+     id="main hall 2 box soft shadow"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     style="fill:#222b00;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M 322.08713,230.42685 336.75959,230.42685 336.75959,245.62964 322.08713,245.62964 z"
+     id="main hall 2 box"
+     inkscape:connector-curvature="0" />
+  <path
+     style="opacity:0.25688076;fill:#000000;stroke:none"
+     d="M 322.12818,230.42592 259.42608,216.17043 259.09933,256.08536 322.13132,245.62964 z"
+     id="main hall 2 box hard shadow"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <rect
+     style="opacity:0.57339448;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     id="control room shadow"
+     width="178.1909"
+     height="77.074638"
+     x="220.26376"
+     y="441.77548" />
+  <path
+     style="fill:#008000;stroke:none"
+     d="M 555.07881,210.36224 556.84657,279.84804 527.89073,283.76226 527.68362,326.05998 558.96789,339.24501 562.32666,395.28322 743.16921,395.46 743.16921,359.69045 625.78948,359.39756 588.31283,332.5275 588.31283,300.00059 738.92657,256.86707 738.92657,210.19803 708.52098,210.28014 694.26488,236.36098 582.65597,268.18078 582.53097,210.15146 z"
+     id="hyggym plumbing"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccccccccccccccccc" />
+  <path
+     style="fill:#445500;stroke:none"
+     d="M 527.97855,287.52461 520.04105,287.39961 520.10355,292.52461 527.65468,295.53912 527.63258,300.35542 519.97855,302.27461 519.97855,307.39961 527.52209,310.95832 527.47855,316.14961 519.97855,317.36836 520.0098,322.71211 527.85355,324.77461 z"
+     id="hyggym prop pipe"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccccccccccc" />
+  <rect
+     style="fill:#fff6d5;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     id="hyggym-lamp"
+     width="16.125"
+     height="6.5"
+     x="533.125"
+     y="92.737175" />
+  <path
+     style="opacity:0.60091744;fill:#f4eed7;stroke:none"
+     d="M 551.5004,96.000253 531.85522,96.000253 526.29993,103.18492 523.57479,103.22986 520.72043,111.92902 525.27264,111.88731 522.76704,118.82145 499.90533,118.69594 497.5296,125.17353 521.9688,125.01224 448.16596,197.48017 448.23784,222.35139 C 464.80262,251.25254 492.94595,266.21912 524.55008,274.44116 L 524.55008,207.49457 629.67859,207.72313 613.06158,184.18149 599.273,184.18149 564.62477,126.05229 583.3631,125.69874 576.35832,119.82092 567.78465,119.9093 z"
+     id="hyggym-glare"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccccccccccccccccccccc" />
+  <path
+     style="opacity:0.19724773;fill:#000000;stroke:none"
+     d="M 524.73483,185.06929 494.01608,263.53804 C 503.91199,268.01326 514.02215,271.87248 524.58275,274.43671 z"
+     id="hyggym-shadow"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccc" />
 </svg>

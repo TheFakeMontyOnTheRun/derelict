@@ -67,7 +67,7 @@ public class MetalPlate extends ValuableItem {
 			}
 		}
 
-		throw new ItemActionNotSupportedException( "Don't give me your funny talk. You can't do that, smartass" );
+		throw new ItemActionNotSupportedException( "Don't give me your funny talk. You can't do that, smartass." );
 	}
 
 	@Override

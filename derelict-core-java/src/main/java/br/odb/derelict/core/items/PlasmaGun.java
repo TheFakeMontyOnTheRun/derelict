@@ -107,8 +107,8 @@ public class PlasmaGun extends ActiveItem implements Destructive {
 		}
 
 		setIsDepleted(ammo <= 0);
-		setDescription( "A mostly harmless gun. Useful for heating surfaces and light defense. ( ammo: " 
-				+ ammo + " )." ); 
+		setDescription( "A mostly harmless gun. Useful for heating surfaces and light defense. (ammo: " 
+				+ ammo + ")." ); 
 	}
 
 	@Override

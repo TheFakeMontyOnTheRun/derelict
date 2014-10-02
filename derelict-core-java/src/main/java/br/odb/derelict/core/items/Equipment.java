@@ -10,7 +10,7 @@ public class Equipment extends ActiveItem implements EletroMagnecticActive {
 		super(name);
 		
 		setActive( true );
-		setDescription( "All these equipment looks the same. Doesn't look valuable for me. " );
+		setDescription( "All these equipment looks the same. Doesn't look valuable for me." );
 	}
 
 	@Override
