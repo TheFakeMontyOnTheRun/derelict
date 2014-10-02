@@ -27,8 +27,8 @@
      id="namedview3036"
      showgrid="false"
      inkscape:zoom="1.4142136"
-     inkscape:cx="332.15379"
-     inkscape:cy="769.17885"
+     inkscape:cx="476.72665"
+     inkscape:cy="596.36495"
      inkscape:window-x="60"
      inkscape:window-y="22"
      inkscape:window-maximized="0"
@@ -145,13 +145,13 @@
      id="lab 2-table2" />
   <path
      inkscape:connector-curvature="0"
-     style="opacity:0.40366971;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M 436.9223,440.8172 508.14935,440.8172 508.14935,622.93227 436.9223,622.93227 z"
+     style="opacity:1;fill:#28220b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M 436.9223,440.8172 612.09404,440.8172 612.09404,479.3896 436.9223,479.3896 z"
      id="lab 2-table1" />
   <path
      inkscape:connector-curvature="0"
-     style="opacity:0.40366971;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M 525.66333,544.39014 599.52842,544.39014 599.52842,702.28778 525.66333,702.28778 z"
+     style="opacity:1;fill:#504416;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M 572.33237,496.30688 610.13502,496.30688 610.13502,544.60297 572.33237,544.60297 z"
      id="lab 2-table3" />
   <path
      inkscape:connector-curvature="0"
@@ -440,7 +440,7 @@
      inkscape:connector-curvature="0" />
   <path
      style="opacity:0.72018349;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M 333.0473,433.64374 616.59711,433.64374 616.59711,717.90067 333.0473,717.90067 z"
+     d="M 334.211,434.82171 617.76081,434.82171 617.76081,719.07864 334.211,719.07864 z"
      id="lab 2 shadow"
      inkscape:connector-curvature="0" />
   <path
