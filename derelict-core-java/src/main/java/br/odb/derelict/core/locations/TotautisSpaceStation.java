@@ -129,7 +129,7 @@ public class TotautisSpaceStation extends Place {
 				.addItem(new KeyCard(Clearance.HIGH_RANK)).addItem( new Book( BOOK5_TITLE, BOOK5_TEXT ) );
 
 		floor2.addNewLocation("control room")  
-				.setDescription("Lots of old equiptment.").addItem( new Book( BOOK7_TITLE, BOOK7_TEXT ) ).addItem(new Equipment("computer-stand").setDescription("JACKPOT!" ) );  
+				.setDescription("Lots of old equiptment.").addItem( new Book( BOOK7_TITLE, BOOK7_TEXT ) ).addItem(new Equipment("computer-stand").setDescription("JACKPOT! A very valuable vintage rare-and-in-working-conditions computer rack!" ) );  
 
 		floor1.addNewLocation("lounge")  
 				.setDescription("Here, it seems like a relaxation place. You gaze at the stars and the planet. Very nice.");  

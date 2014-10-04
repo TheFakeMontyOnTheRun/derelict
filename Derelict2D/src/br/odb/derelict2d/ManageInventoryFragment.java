@@ -6,14 +6,20 @@ import java.util.HashMap;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict.core.commands.DerelictUserMetaCommandLineAction;
@@ -42,8 +48,11 @@ public class ManageInventoryFragment extends Fragment implements
 	private Button btnInfoToCollect;
 	Item selectedCollectedItem;
 	Item selectedLocationItem;
-	LinearLayout llCollectedItems;
+	LinearLayout llCollectedItems;	
 	LinearLayout llLocationItems;
+	HorizontalScrollView hsvCollected;
+	HorizontalScrollView lvLocationItems;
+	
 	final HashMap< GameView, Item > itemForView = new HashMap< GameView, Item >();
 	final HashMap< Item, GameView > viewForItem = new HashMap< Item, GameView >();
 	
@@ -51,12 +60,20 @@ public class ManageInventoryFragment extends Fragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
-		View toReturn = inflater.inflate(R.layout.activity_manage_inventory,
+		final View toReturn = inflater.inflate(R.layout.activity_manage_inventory,
 				container, false);
+
+		
+		
+	
+		
 
 		
 		llCollectedItems = (LinearLayout) toReturn.findViewById( R.id.llCollectedItems );
 		llLocationItems = (LinearLayout) toReturn.findViewById( R.id.llLocationItems );
+		
+		hsvCollected = (HorizontalScrollView) toReturn.findViewById( R.id.lvCollected );
+		lvLocationItems = (HorizontalScrollView) toReturn.findViewById( R.id.lvLocationItems );
 		
 		wvDescription = (WebView) toReturn.findViewById(R.id.wvDescription);
 
@@ -79,16 +96,34 @@ public class ManageInventoryFragment extends Fragment implements
 
 		llCollectedItems.setOnClickListener( this );
 		
-		AndroidUtils.initImage(gvPick, "icon-pick", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
-		AndroidUtils.initImage(gvUseWith, "icon-use-with", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
-		AndroidUtils.initImage(gvUse, "icon-use", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
-		AndroidUtils.initImage(gvDrop, "icon-drop", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
-		AndroidUtils.initImage(gvToggle, "icon-toggle", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
 
 		buildCommandList();
 
+		toReturn.post(new Runnable() {
+            @Override
+            public void run() {
+				AndroidUtils.initImage(gvPick, "icon-pick", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+				AndroidUtils.initImage(gvUseWith, "icon-use-with", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+				AndroidUtils.initImage(gvUse, "icon-use", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+				AndroidUtils.initImage(gvDrop, "icon-drop", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+				AndroidUtils.initImage(gvToggle, "icon-toggle", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+				scheduleUpdate( toReturn );	
+            }
+        });
+		
+		
 		return toReturn;
 	}
+	
+	public void scheduleUpdate( View view ) {
+		view.post(new Runnable() {
+            @Override
+            public void run() {
+				update();
+            }
+        });
+	}
+	
 	
 	@Override
 	public void onAttach(Activity activity) {
@@ -109,7 +144,14 @@ public class ManageInventoryFragment extends Fragment implements
 			}
 		}
 	}
-
+	
+	@Override
+	public void onViewCreated(View view, Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onViewCreated(view, savedInstanceState);
+		update();
+	}
+	
 	@Override
 	public void update() {
 
@@ -117,19 +159,24 @@ public class ManageInventoryFragment extends Fragment implements
 		ColoredPolygon active;
 		DisplayList dl;
 		ViewGroup vg;
+
+		int size = llLocationItems.getHeight();
+		
+		if ( size == 0 ) {
+			return;
+		}
 		
 		llLocationItems.removeAllViews();
-		
 		for (Item i : game.getCollectableItems()) {
 			
 			
 			if ( !viewForItem.containsKey( i ) ) {
 				
 				gv = new GameView( llLocationItems.getContext() );		
-				gv.setLayoutParams( new LayoutParams( 128, 128 ) );
+				gv.setLayoutParams( new LayoutParams( size, size ) );
 				gv.setOnClickListener( this );
 				gv.setAlpha( 0.5f );			
-				AndroidUtils.initImage(gv, i.getName(), ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager(), 128, 128, "" );
+				AndroidUtils.initImage(gv, i.getName(), ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager(), size, size, "" );
 				itemForView.put( gv, i );
 				viewForItem.put( i, gv );
 				
@@ -172,10 +219,10 @@ public class ManageInventoryFragment extends Fragment implements
 			if ( !viewForItem.containsKey( i ) ) {
 				
 				gv = new GameView( llCollectedItems.getContext() );		
-				gv.setLayoutParams( new LayoutParams( 128, 128 ) );
+				gv.setLayoutParams( new LayoutParams( size, size ) );
 				gv.setOnClickListener( this );
 				gv.setAlpha( 0.5f );			
-				AndroidUtils.initImage(gv, i.getName(), ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager(), 128, 128, "" );
+				AndroidUtils.initImage(gv, i.getName(), ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager(), size, size, "" );
 				itemForView.put( gv, i );
 				viewForItem.put( i, gv );
 				
