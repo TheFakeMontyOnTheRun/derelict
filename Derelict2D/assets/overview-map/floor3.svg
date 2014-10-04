@@ -9,7 +9,7 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2985"
    version="1.1"
-   inkscape:version="0.48.4 r9943 custom"
+   inkscape:version="0.48.3.1 r9886"
    width="100%"
    height="100%"
    sodipodi:docname="floor3.svg">
@@ -22,16 +22,16 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1860"
-     inkscape:window-height="1036"
+     inkscape:window-width="981"
+     inkscape:window-height="578"
      id="namedview3036"
      showgrid="false"
      inkscape:zoom="1.4142136"
-     inkscape:cx="476.72665"
-     inkscape:cy="596.36495"
-     inkscape:window-x="60"
-     inkscape:window-y="22"
-     inkscape:window-maximized="0"
+     inkscape:cx="415.59695"
+     inkscape:cy="774.25813"
+     inkscape:window-x="43"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
      inkscape:current-layer="svg2985"
      showguides="true"
      inkscape:guide-bbox="true" />
@@ -83,29 +83,8 @@
   <path
      inkscape:connector-curvature="0"
      style="fill:#008080;stroke:none"
-     d="M 333.64022,717.82143 616.13664,717.82143 616.13664,434.69446 333.64022,434.69446 333.64022,717.82143"
-     id="lab 2" />
-  <path
-     inkscape:connector-curvature="0"
-     style="fill:#57a32c;stroke:none"
-     d="M 363.62101,235.75966 510.45811,235.75966 510.45811,114.80076 363.62101,114.80076 363.62101,235.75966"
-     id="rect3006">
-    <path
-       inkscape:connector-curvature="0"
-       style="fill:#cc0000;stroke:none"
-       d="M235.34473 161.48863L246.7809 161.48863L246.7809 133.28195L235.34473 133.28195L235.34473 161.48863"
-       id="rect3012" />
-  </path>
-  <path
-     inkscape:connector-curvature="0"
-     style="fill:#a36b4f;stroke:none"
-     d="M 338.54219,378.79659 499.05456,378.79659 499.05456,239.84505 338.54219,239.84505 338.54219,378.79659"
-     id="rect3008" />
-  <path
-     inkscape:connector-curvature="0"
-     style="fill:#0d1fcc;stroke:none"
-     d="M 330.35729,368.49493 491.99181,368.49493 491.99181,136.46484 330.35729,136.46484 330.35729,368.49493"
-     id="rect3010" />
+     d="M 333.64022,717.82143 L 616.13664,717.82143 L 616.13664,434.69446 L 333.64022,434.69446 L 333.64022,717.82143"
+     id="lab 2 - floor blue" />
   <path
      inkscape:connector-curvature="0"
      style="fill:#008000;stroke:none"
@@ -124,7 +103,7 @@
   <path
      inkscape:connector-curvature="0"
      id="lab 3"
-     d="M 271.60243,124.5722 -16.851136,124.5722 -16.851136,371.7421 271.60243,371.7421 271.60243,124.5722"
+     d="M 271.60243,124.5722 L -16.851136,124.5722 L -16.851136,371.7421 L 271.60243,371.7421 L 271.60243,124.5722"
      style="fill:#008080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
   <path
      sodipodi:nodetypes="cccccc"
@@ -135,8 +114,8 @@
   <path
      sodipodi:nodetypes="ccccc"
      inkscape:connector-curvature="0"
-     id="main hall 3"
-     d="M 334.81147,122.59899 506.12476,122.00778 506.12476,370.64401 334.81147,371.23522 334.81147,122.59899"
+     id="main hall 3 floor"
+     d="M 334.81147,122.59899 L 506.12476,122.00778 L 506.12476,370.64401 L 334.81147,371.23522 L 334.81147,122.59899"
      style="fill:#2b2200;fill-opacity:1;fill-rule:nonzero;stroke:none" />
   <path
      inkscape:connector-curvature="0"
@@ -231,8 +210,8 @@
      style="fill:#241c1c;fill-opacity:1;fill-rule:nonzero;stroke:none" />
   <path
      style="fill:#008080;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M 793.34136,119.28496 544.32443,119.28496 544.32443,379.20323 793.34136,379.20323 793.34136,119.28496"
-     id="lab 1"
+     d="M 793.34136,119.28496 L 544.32443,119.28496 L 544.32443,379.20323 L 793.34136,379.20323 L 793.34136,119.28496"
+     id="lab 1 - floor"
      inkscape:connector-curvature="0" />
   <path
      inkscape:connector-curvature="0"
@@ -423,21 +402,11 @@
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccccc" />
   <path
-     style="fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     d="M 477.50891,269.13342 506.29303,269.13342 506.29303,292.4104 477.50891,292.4104 z"
-     id="main hall 3 box2"
-     inkscape:connector-curvature="0" />
-  <path
-     style="opacity:0.85321099;fill:#2b2200;stroke:none"
-     d="M 477.71796,292.84729 469.81385,359.06215 C 493.23695,373.05843 498.79514,369.59463 506.47426,370.60665 L 506.74709,292.48626 z"
+     style="opacity:0.44247788;fill:#000000;stroke:none"
+     d="M 414.89085,225.38294 L 381.24353,267.14259 C 408.60042,286.90473 397.484,278.90056 401.95504,282.1192 C 403.84011,283.47624 408.49604,286.82827 419.97456,295.09743 L 443.39854,248.56354 z"
      id="main hall 3 box2 shadow 1"
      inkscape:connector-curvature="0"
-     sodipodi:nodetypes="ccccc" />
-  <path
-     style="opacity:0.41743116;fill:#502d16;stroke:none"
-     d="M 477.25,269.61219 461.75,355.36218 469.75,359.36218 477.75,292.36219 z"
-     id="main hall 3 box2 shadow 2"
-     inkscape:connector-curvature="0" />
+     sodipodi:nodetypes="ccsccc" />
   <path
      style="opacity:0.72018349;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
      d="M 334.211,434.82171 617.76081,434.82171 617.76081,719.07864 334.211,719.07864 z"
@@ -465,4 +434,29 @@
      d="M 29,152.86219 46.25,160.11219 44.75,191.86219 z"
      id="lab 3 glare 2"
      inkscape:connector-curvature="0" />
+  <path
+     style="opacity:0.5;fill:#000000;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 414.67677,225.47832 L 399.49999,257.3622 L 399.49999,267.1122 L 416.49999,267.3622 L 443.08578,248.56931 z"
+     id="main hall 3 - smaller shadow"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     style="fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M 414.57641,225.2928 L 443.36053,225.2928 L 443.36053,248.56978 L 414.57641,248.56978 z"
+     id="main hall 3"
+     inkscape:connector-curvature="0" />
+  <rect
+     style="opacity:0.62389377;fill:#000000;stroke:none"
+     id="lab 1"
+     width="63"
+     height="25"
+     x="641.17676"
+     y="118.948" />
+  <rect
+     style="opacity:0.62389377;fill:#000000;stroke:none"
+     id="lab 2"
+     width="25.455845"
+     height="29.698484"
+     x="366.63483"
+     y="650.72552" />
 </svg>
