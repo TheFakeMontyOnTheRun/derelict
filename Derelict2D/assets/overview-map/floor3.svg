@@ -9,7 +9,7 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2985"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.48.4 r9943 custom"
    width="100%"
    height="100%"
    sodipodi:docname="floor3.svg">
@@ -22,16 +22,16 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="981"
-     inkscape:window-height="578"
+     inkscape:window-width="1858"
+     inkscape:window-height="1036"
      id="namedview3036"
      showgrid="false"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="415.59695"
-     inkscape:cy="774.25813"
-     inkscape:window-x="43"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
+     inkscape:zoom="2.0000001"
+     inkscape:cx="348.65746"
+     inkscape:cy="930.4168"
+     inkscape:window-x="62"
+     inkscape:window-y="22"
+     inkscape:window-maximized="0"
      inkscape:current-layer="svg2985"
      showguides="true"
      inkscape:guide-bbox="true" />
@@ -62,7 +62,7 @@
   </defs>
   <path
      inkscape:connector-curvature="0"
-     style="fill:#a3a281;stroke:none"
+     style="fill:#800080;stroke:none"
      d="M 341.50994,429.48922 384.30998,429.48922 384.30998,371.62721 341.50994,371.62721 341.50994,429.48922"
      id="lab 2-entry" />
   <path
@@ -73,11 +73,11 @@
   <path
      id="lab 1-entry"
      d="M 264.21501,196.76786 325.50203,196.76786 325.50203,148.20333 264.21501,148.20333 264.21501,196.76786"
-     style="fill:#ac9393;stroke:none"
+     style="fill:#800080;stroke:none"
      inkscape:connector-curvature="0" />
   <path
      inkscape:connector-curvature="0"
-     style="fill:#917c6f;stroke:none"
+     style="fill:#800080;stroke:none"
      d="M 504.21736,194.74502 541.26094,194.74502 541.26094,150.6909 504.21736,150.6909 504.21736,194.74502"
      id="lab 3-entry" />
   <path
@@ -402,11 +402,11 @@
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccccc" />
   <path
-     style="opacity:0.44247788;fill:#000000;stroke:none"
-     d="M 414.89085,225.38294 L 381.24353,267.14259 C 408.60042,286.90473 397.484,278.90056 401.95504,282.1192 C 403.84011,283.47624 408.49604,286.82827 419.97456,295.09743 L 443.39854,248.56354 z"
+     style="opacity:0.44247808;fill:#000000;stroke:none"
+     d="M 414.89085,225.38294 381.24353,267.14259 C 389.17285,282.69411 392.77265,284.38073 412.47456,299.09743 L 443.39854,248.56354 z"
      id="main hall 3 box2 shadow 1"
      inkscape:connector-curvature="0"
-     sodipodi:nodetypes="ccsccc" />
+     sodipodi:nodetypes="ccccc" />
   <path
      style="opacity:0.72018349;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
      d="M 334.211,434.82171 617.76081,434.82171 617.76081,719.07864 334.211,719.07864 z"
