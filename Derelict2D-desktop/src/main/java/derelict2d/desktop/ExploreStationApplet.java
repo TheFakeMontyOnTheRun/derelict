@@ -376,8 +376,7 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
 
         try {
             l = game.station.getLocation((String) cmbLocations.getSelectedItem());
-            d = game.station.getAstronaut().getLocation()
-                    .getConnectionDirectionForLocation(l);
+            d = game.station.getAstronaut().getLocation().getConnectionDirectionForLocation(l);
             if (game.station.canMove(game.station.getAstronaut(), (String) cmbLocations.getSelectedItem())) {
 
                 if (d != Direction.CEILING && d != Direction.FLOOR) {
