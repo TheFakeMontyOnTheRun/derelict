@@ -47,6 +47,7 @@ public class ExploreStationActivity extends Activity implements
 	DerelictGame game;
 	AssetManager resManager;
 	MediaPlayer playerSound;
+	private long lastTimeCough = -1;
 	// MediaPlayer music;
 
 	@Override
@@ -241,8 +242,9 @@ public class ExploreStationActivity extends Activity implements
 		
 		if ( game.hero.toxicity > 99.9f ) {
 			playMedia( "coughdeath" + game.hero.getGender(), "*cough*" );			
-		} else if ( game.getTextOutput().contains("*cough*")) {
+		} else if ( game.getTextOutput().contains("*cough*") && lastTimeCough < game.station.elapsedTime ) {
 			playMedia( "cough" + game.hero.getGender(), "*cough*" );
+			lastTimeCough  = game.station.elapsedTime;
 		}
 		
 
