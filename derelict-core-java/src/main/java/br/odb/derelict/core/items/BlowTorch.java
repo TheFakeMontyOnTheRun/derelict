@@ -7,11 +7,15 @@ import br.odb.utils.Utils;
 
 public class BlowTorch extends ActiveItem implements Toxic, Destructive {
 
-	private static final String NAME = "blowtorch";
+	public static final String NAME = "blowtorch";
+	public static final float DEFAULT_FUEL_USAGE = 10.0f;
+	public static final float DEFAULT_IDLE_FUEL_USAGE = 0.0001f;
+	public static final float DEFAULT_TOXICITY = 0.25f;
+	public static final int DEFAULT_DESTRUCTIVE_POWER = 50;
+	public static final String ORIGINAL_DESCRIPTION = "precision vintage-but-rather-well-kept metal cutter (fuel: %.2f).";
 
 	float fuel;
 
-	String originalDescription = "precision vintage-but-rather-well-kept metal cutter (fuel: %d).";
 
 	public BlowTorch(float initialFluel) {
 		super( BlowTorch.NAME );
@@ -36,7 +40,17 @@ public class BlowTorch extends ActiveItem implements Toxic, Destructive {
 	public float getFuel() {
 		return fuel;
 	}
-
+	
+	@Override
+	public ActiveItem toggle() {
+		
+		super.toggle();
+		
+		updateFuelStatus();
+		
+		return this;
+	}
+	
 	private void updateFuelStatus() {
 
 		if (fuel < 0.0f) {
@@ -45,8 +59,9 @@ public class BlowTorch extends ActiveItem implements Toxic, Destructive {
 
 		weight = 20 + (fuel / 10);
 
-		setDescription(String.format(originalDescription, ( ( int )fuel ) ));
+		setDescription(String.format(ORIGINAL_DESCRIPTION,  fuel ) );
 		setIsDepleted(fuel <= 0.0f);
+		setActive( isActive() && ( !isDepleted() ) );
 	}
 
 	@Override
@@ -55,7 +70,7 @@ public class BlowTorch extends ActiveItem implements Toxic, Destructive {
 			
 			super.wasUsedOn(item1);
 			
-			fuel -= 10.0f;
+			fuel -= DEFAULT_FUEL_USAGE;
 			
 			updateFuelStatus();
 		} else {
@@ -66,17 +81,18 @@ public class BlowTorch extends ActiveItem implements Toxic, Destructive {
 	@Override
 	public void update(long MS) {
 		if (isActive()) {
-			fuel -= 0.1f * (MS * Utils.SECOND_IN_MILISSECONDS);
+			fuel -= DEFAULT_IDLE_FUEL_USAGE * MS;
+			updateFuelStatus();
 		}
 	}
 
 	@Override
 	public float getToxicity() {
-		return isActive() ? 0.25f : 0.0f;
+		return isActive() ? DEFAULT_TOXICITY : 0.0f;
 	}
 
 	@Override
 	public float getDestructivePower() {
-		return 50;
+		return DEFAULT_DESTRUCTIVE_POWER;
 	}
 }
