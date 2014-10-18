@@ -470,6 +470,11 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
         pnlExploreStationView.setRenderingContent(node);
         pnlExploreStationView.repaint();
         this.txtOutput.setText( game.getTextOutput() );
+        
+        if ( !game.checkGameContinuityConditions() ) {
+            game.doQuit();
+            System.exit( 0 );
+        }
     }
 
     @Override

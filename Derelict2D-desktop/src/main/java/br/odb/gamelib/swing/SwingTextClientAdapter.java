@@ -72,7 +72,12 @@ public class SwingTextClientAdapter implements ApplicationClient {
 
     @Override
     public int chooseOption(String question, String[] options) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String msg = "Choose:";
+        int id = 0;
+        for ( String opt : options ) {
+            msg += "\n" + ( id++) + ")" + opt;
+        }
+        return Integer.parseInt( getInput( msg ) );
     }
 
     @Override

@@ -143,7 +143,7 @@ public class TotautisSpaceStation extends Place {
 						new Equipment("electric-experiment")).addItem( new Book( BOOK8_TITLE, BOOK8_TEXT ) );  
 
 		floor3.addNewLocation("lab 3")  
-				.setDescription("Looks like this was a chemistry lab. Looks badly destroyed. I was told this was due to space-trash. That's why they got us! On the left wall, there are remnants of a 3D periodic table. If only this was in once piece, it could make some good cash.").addItem( new Book( BOOK6_TITLE, BOOK6_TEXT ) ).addItem(new Pipe( null ));  
+				.setDescription("Looks like this was a chemistry lab. Looks badly destroyed. I was told this was due to space-trash. That's why they got us!").addItem( new Book( BOOK6_TITLE, BOOK6_TEXT ) ).addItem(new Pipe( null ));  
 
 		floor1.addNewLocation("elevator-shaft-1").setDescription("Going down? The elevator no longer works. It seems to be stuck in level 3. You have to navegate the shaft by yourself.");    
 

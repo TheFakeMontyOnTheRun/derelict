@@ -572,7 +572,7 @@ public class DerelictGame extends ConsoleApplication {
 		return this;
 	}
 
-	protected void doQuit() {
+	public void doQuit() {
 
 		if (getFinalScore() > 0) {
 

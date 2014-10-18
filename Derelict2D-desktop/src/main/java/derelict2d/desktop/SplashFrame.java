@@ -4,6 +4,9 @@
  */
 package derelict2d.desktop;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author monty
@@ -64,6 +67,12 @@ public class SplashFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
+        try {
+            setVisible( false );
+            Derelict2DDesktop.main( null );
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SplashFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnPlayActionPerformed
 
     /**
