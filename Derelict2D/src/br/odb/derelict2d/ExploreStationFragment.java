@@ -25,6 +25,8 @@ import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.Location;
+import br.odb.gameworld.exceptions.InvalidLocationException;
+import br.odb.gameworld.exceptions.InvalidSlotException;
 import br.odb.libsvg.SVGGraphic;
 import br.odb.utils.Direction;
 import br.odb.utils.Utils;
@@ -61,7 +63,18 @@ public class ExploreStationFragment extends Fragment implements
 		spnDirections.setOnItemSelectedListener(this);
 		gvMove = (GameView) toReturn.findViewById(R.id.gvMove);		
 		gvMove.setOnClickListener( this );
-		AndroidUtils.initImage(gvMove, "icon-move", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+		
+		
+		
+		toReturn.post(new Runnable() {
+            @Override
+            public void run() {
+            	
+            	Thread.yield();
+            	
+				AndroidUtils.initImage(gvMove, "icon-move", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
+            }
+        });
 
 		return toReturn;
 	}
@@ -95,27 +108,35 @@ public class ExploreStationFragment extends Fragment implements
 		case R.id.gvMove:
 			Direction d;
 				
-			d = (Direction) spnDirections.getSelectedItem();
 			Location l = game.hero.getLocation();
-			game.sendData("move " + spnDirections.getSelectedItem());
-			
-			//not good!
-			if ( l != game.hero.getLocation() && game.station.getAstronaut().getLocation().getConnections()[ d.ordinal() ] != null ) {
-			
-				if (d != Direction.CEILING && d != Direction.FLOOR) {
-					if (fiveSteps != null) {
-
-						fiveSteps.start();
+			try {
+				d = l.getConnectionDirectionForLocation( game.station.getLocation(  (String) spnDirections.getSelectedItem() ) );
+				game.sendData("move " + d );
+				
+				//not good!
+				if ( l != game.hero.getLocation() && game.station.getAstronaut().getLocation().getConnections()[ d.ordinal() ] != null ) {
+					
+					if (d != Direction.CEILING && d != Direction.FLOOR) {
+						if (fiveSteps != null) {
+							
+							fiveSteps.start();
+						}
+					} else {
+						
+						if (ding != null) {
+							
+							ding.start();
+						}
 					}
-				} else {
-
-					if (ding != null) {
-
-						ding.start();
-					}
-				}
-
-			}			
+					
+				}			
+			} catch (InvalidSlotException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidLocationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		}
 	}
@@ -141,11 +162,12 @@ public class ExploreStationFragment extends Fragment implements
 			
 			Utils.reverseArray( game.getCollectableItems() );
 			
-			spnDirections.setAdapter(new ArrayAdapter<Direction>(getActivity(),
-					android.R.layout.simple_spinner_item, Direction.values()));
-
-
-			spnDirections.setSelection(game.hero.direction.ordinal());
+			String[] locations = game.getConnectionNames(); 
+			
+			spnDirections.setAdapter(new ArrayAdapter<String>(getActivity(),
+					android.R.layout.simple_spinner_item, locations ));
+			
+			spnDirections.setSelection( 0 );
 	
 			gameView.setBackgroundColor( Color.argb( 255, ( int )Utils.clamp( game.station.hullTemperature, 0, 255 ), 0, 64 ) );
 			gameView.update( 100 );
@@ -157,7 +179,11 @@ public class ExploreStationFragment extends Fragment implements
 	public void onItemSelected(AdapterView<?> arg0, View v, int arg2,
 			long arg3) {
 			
-			game.hero.direction = (Direction) spnDirections.getSelectedItem();
+			try {
+				game.hero.direction = game.hero.getLocation().getConnectionDirectionForLocation( game.station.getLocation( (String) spnDirections.getSelectedItem() ) );
+			} catch ( Exception e) {
+				//We simply bail out. It's not a big deal...
+			}
 	}
 
 	@Override

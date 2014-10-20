@@ -24,10 +24,11 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="#777"
+            android:background="#00F"
             android:gravity="center_vertical|center_horizontal"
             android:text="You&apos;re facing:"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:textColorHint="#000" />
 
         <Spinner
             android:id="@+id/spnDirection"
@@ -44,7 +45,7 @@
             <br.odb.gamelib.android.GameView
                 android:id="@+id/gvMove"
                 android:layout_width="123dp"
-                android:layout_height="match_parent" />
+                android:layout_height="123dp" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -54,7 +55,9 @@
                 android:text="Go"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#FFF" />
+
         </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

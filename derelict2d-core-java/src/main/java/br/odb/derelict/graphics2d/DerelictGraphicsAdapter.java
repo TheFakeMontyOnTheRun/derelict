@@ -1,8 +1,7 @@
 package br.odb.derelict.graphics2d;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * TODO: apply some good loggin solution.
  */
 
 import java.util.ArrayList;
@@ -96,17 +95,17 @@ public class DerelictGraphicsAdapter {
 
 				if (i instanceof ActiveItem) {
 
-					System.out.println("is " + i.getName() + " active?");
+//					System.out.println("is " + i.getName() + " active?");
 
 					active = ((SVGRenderingNode) item).graphic
 							.getShapeById("active");
 
-					System.out.println("active is " + active);
+//					System.out.println("active is " + active);
 
 					if (active != null) {
-						System.out.println("active");
+//						System.out.println("active");
 						active.visible = ((ActiveItem) i).isActive();
-						System.out.println("caught");
+//						System.out.println("caught");
 					}
 
 				}
