@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gamerendering.rendering.DisplayList;
@@ -17,10 +18,38 @@ import br.odb.utils.math.Vec2;
 
 public class RootGameMenuActivity extends Activity implements OnClickListener {
 
+	enum DificultyLevel {
+		EASY( "Easy: still figuring out what this is all about", "You will have SOME help", new String[] {
+				"pick magboots",
+				"toggle magboots",
+				"pick plasma-gun"
+		} ),
+		NORMAL( "Normal: players that read", "Are you ready, pal!?", new String[] {
+				"pick magboots"
+		}),
+		HARD( "Hard: the real deal", "GET LAMP", new String[]{} );
+		
+		public final String name;
+		public final String description;
+		public final String[] aid;
+		
+		DificultyLevel( String name, String description, String[] aid ) {
+			this.name = name;
+			this.description = description;
+			this.aid = aid;
+		}
+		
+		@Override
+		public String toString() {
+			return name + " (" + description + ")";
+		}
+	}
+	
 	private Bundle bundle;
 	private android.widget.CheckBox chkSound;
 	private android.widget.CheckBox chkSpeech;
-
+	Spinner spnLevel;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,12 +60,17 @@ public class RootGameMenuActivity extends Activity implements OnClickListener {
 		findViewById(R.id.btnAbout).setOnClickListener(this);
 		findViewById(R.id.btnHowToPlay).setOnClickListener(this);
 		
+		
+		spnLevel = (Spinner) findViewById( R.id.spnLevel );
 		chkSound = (android.widget.CheckBox) findViewById(R.id.chkSound);
 		chkSpeech = (android.widget.CheckBox) findViewById(R.id.chkSpeech);
 
 		chkSound.setChecked(((Derelict2DApplication) getApplication())
 				.mayEnableSound());
 		gvSplash = (GameView) findViewById(R.id.gvbg);
+		
+		spnLevel.setAdapter( new ArrayAdapter<DificultyLevel>( this, android.R.layout.simple_spinner_item, DificultyLevel.values() ));
+		spnLevel.setSelection( 1 );
 	}
 
 	GameView gvSplash;
@@ -92,6 +126,7 @@ public class RootGameMenuActivity extends Activity implements OnClickListener {
 		bundle = new Bundle();
 		bundle.putString("hasSound", chkSound.isChecked() ? "y" : "n");
 		bundle.putString("speech", chkSpeech.isChecked() ? "y" : "n");
+		bundle.putInt("aid", ( ( DificultyLevel )spnLevel.getSelectedItem() ).ordinal() );
 		
 		switch (v.getId()) {
 		

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -17,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict2d.game.GameLevel;
 import br.odb.gameapp.GameUpdateDelegate;
@@ -63,8 +65,6 @@ public class ExploreStationFragment extends Fragment implements
 		spnDirections.setOnItemSelectedListener(this);
 		gvMove = (GameView) toReturn.findViewById(R.id.gvMove);		
 		gvMove.setOnClickListener( this );
-		
-		
 		
 		toReturn.post(new Runnable() {
             @Override

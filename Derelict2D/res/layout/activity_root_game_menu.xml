@@ -28,6 +28,14 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dl" />
+
             <TextView
                 android:id="@+id/textView123456"
                 android:layout_width="fill_parent"
@@ -35,6 +43,7 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="An Open Source Space-Adventure by Daniel Monteiro" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -68,47 +77,38 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="About this game" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Difficulty:" />
+
+                <Spinner
+                    android:id="@+id/spnLevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#55FFFFFF" >
+                android:layout_width="537dp"
+                android:layout_height="match_parent"
+                android:background="#77999999"
+                android:orientation="vertical" >
 
-                <LinearLayout
-                    android:layout_width="537dp"
-                    android:layout_height="match_parent"
-                    android:background="#77999999"
-                    android:orientation="vertical" >
-
-                    <CheckBox
-                        android:id="@+id/chkSound"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sound enabled" />
-
-                    <CheckBox
-                        android:id="@+id/chkSpeech"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Read the game texts to me (speech synthesis)" />
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/imageView1"
+                <CheckBox
+                    android:id="@+id/chkSound"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="center"
-                    android:src="@drawable/logo1" />
-            </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:text="Sound enabled" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/dl" />
+                <CheckBox
+                    android:id="@+id/chkSpeech"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Read the game texts to me (speech synthesis)" />
+            </LinearLayout>
 
         </LinearLayout>
 

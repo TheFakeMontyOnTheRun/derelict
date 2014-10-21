@@ -23,6 +23,7 @@ import android.view.accessibility.AccessibilityEvent;
 import android.widget.EditText;
 import android.widget.Toast;
 import br.odb.derelict.core.DerelictGame;
+import br.odb.derelict2d.RootGameMenuActivity.DificultyLevel;
 import br.odb.derelict2d.game.Derelict2DTotautisSpaceStation;
 import br.odb.derelict2d.game.GameLevel;
 import br.odb.gameapp.ApplicationClient;
@@ -73,11 +74,20 @@ public class ExploreStationActivity extends Activity implements
 
 		currentLevel = new Derelict2DTotautisSpaceStation(game.station, this);
 
+		
+		DificultyLevel level;
+		
 		Intent intent;
 		intent = getIntent();
+		
 
+		level = DificultyLevel.values()[ intent.getExtras().getInt( "aid" ) ];
 		String hasSpeech = intent.getExtras().getString("speech");
 		String hasSound = intent.getExtras().getString("hasSound");
+		
+		for ( String cmd : level.aid ) {
+			game.sendData( cmd );
+		}
 
 		shouldPlaySound = (hasSound != null && hasSound.equals("y"));
 
