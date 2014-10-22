@@ -67,7 +67,7 @@ public class ExploreStationActivity extends Activity implements
 
 		game = ((Derelict2DApplication) getApplication()).game;
 		game.endGameListener = this;
-		game.setApplicationClient(this);
+		game.createDefaultClient();
 		game.setGameUpdateDelegate(this);
 		
 		game.hero.setGender( Math.random() > 0.5 ? "f" : "m" );
@@ -100,6 +100,8 @@ public class ExploreStationActivity extends Activity implements
 			// music = MediaPlayer.create(this, R.raw.ravelbolero);
 		}
 
+		game.setApplicationClient(this);
+		
 		showInfoDialog();
 		update();
 	}
