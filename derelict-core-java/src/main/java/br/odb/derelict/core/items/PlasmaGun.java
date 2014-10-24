@@ -79,7 +79,7 @@ public class PlasmaGun extends ActiveItem implements Destructive {
 	 * @see br.odb.gamelib.gameworld.Item#use(br.odb.gamelib.gameworld.CharacterActor)
 	 */
 	@Override
-	public void use(CharacterActor user) {
+	public void use(CharacterActor user) throws ItemActionNotSupportedException {
 		super.use(user);
 
 		if ( user instanceof Astronaut ) {

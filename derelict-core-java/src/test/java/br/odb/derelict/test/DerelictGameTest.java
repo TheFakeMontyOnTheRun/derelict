@@ -21,6 +21,7 @@ import br.odb.gameworld.exceptions.DoorActionException;
 import br.odb.gameworld.exceptions.InvalidLocationException;
 import br.odb.gameworld.exceptions.InvalidSlotException;
 import br.odb.gameworld.exceptions.InventoryManipulationException;
+import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
 import br.odb.utils.Direction;
 
@@ -243,7 +244,11 @@ public class DerelictGameTest {
 		}
 
 		Assert.assertTrue(game.continueRunning);
-		tb.use(game.hero);
+		try {
+			tb.use(game.hero);
+		} catch (ItemActionNotSupportedException e) {
+			Assert.fail();
+		}
 		game.station.update(TotautisSpaceStation.TIMEBOMB_DEFAULT_FUSE_TIME);
 		game.sendData("bogus");
 		Assert.assertFalse(game.continueRunning);
@@ -315,7 +320,7 @@ public class DerelictGameTest {
 		}
 	}
 
-	// /--------condi����es de vit��ria---------
+	// /--------condi������������es de vit������ria---------
 
 	@Test
 	public final void testBombingOnSpot() {
@@ -339,7 +344,11 @@ public class DerelictGameTest {
 		}
 
 		Assert.assertTrue(game.continueRunning);
-		tb.use(game.hero);
+		try {
+			tb.use(game.hero);
+		} catch (ItemActionNotSupportedException e) {
+			Assert.fail();
+		}
 		game.station.update(TotautisSpaceStation.TIMEBOMB_DEFAULT_FUSE_TIME);
 		game.sendData("bogus");
 		Assert.assertFalse(game.continueRunning);
@@ -354,7 +363,7 @@ public class DerelictGameTest {
 		Location hall;
 		Location lab;
 
-		// situa����o 1: Jogador na nave, bomba explode na nave
+		// situa������������o 1: Jogador na nave, bomba explode na nave
 		// final7
 		try {
 			dgc.buffer = "";
@@ -513,7 +522,7 @@ public class DerelictGameTest {
 			Assert.fail();
 		}
 
-		// situa����o 2: Jogador na nave, bomba explode fora da nave
+		// situa������������o 2: Jogador na nave, bomba explode fora da nave
 		// final25
 		try {
 			dgc.buffer = "";
@@ -531,7 +540,7 @@ public class DerelictGameTest {
 		} catch (ItemNotFoundException e) {
 			Assert.fail();
 		}
-		// situa����o 3: Jogador na nave, bomba explode no laborat��rio
+		// situa������������o 3: Jogador na nave, bomba explode no laborat������rio
 		// final16
 		try {
 			dgc.buffer = "";
@@ -549,7 +558,7 @@ public class DerelictGameTest {
 		} catch (ItemNotFoundException e) {
 			Assert.fail();
 		}
-		// situa����o 4: Jogador fora da nave, bomba explode na nave
+		// situa������������o 4: Jogador fora da nave, bomba explode na nave
 		// final9
 		try {
 			dgc.buffer = "";
@@ -578,7 +587,7 @@ public class DerelictGameTest {
 			Assert.fail();
 		}
 
-		// situa����o 5: Jogador fora da nave, bomba explode fora da nave
+		// situa������������o 5: Jogador fora da nave, bomba explode fora da nave
 		// final27
 		try {
 			dgc.buffer = "";
@@ -708,7 +717,7 @@ public class DerelictGameTest {
 		} catch (InventoryManipulationException e) {
 			Assert.fail();
 		}
-		// situa����o 6: Jogador fora da nave, bomba explode no laborat��rio
+		// situa������������o 6: Jogador fora da nave, bomba explode no laborat������rio
 
 		// final28
 		try {
@@ -873,7 +882,7 @@ public class DerelictGameTest {
 			Assert.fail();
 		}
 
-		// situa����o 7: bomba no lugar, mas n��o ativada. Esta����o reentra. Jogador
+		// situa������������o 7: bomba no lugar, mas n������o ativada. Esta������������o reentra. Jogador
 		// na nave
 		// final10
 		try {
@@ -1020,7 +1029,7 @@ public class DerelictGameTest {
 			Assert.fail();
 		}
 
-		// situa����o 11: bomba fora do lugar, ativada. Esta����o reentra. Jogador
+		// situa������������o 11: bomba fora do lugar, ativada. Esta������������o reentra. Jogador
 		// portando a bomba, no lugar onde ela deveria ser depositada
 		// final12
 		try {

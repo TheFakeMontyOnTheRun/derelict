@@ -8,6 +8,7 @@ import br.odb.derelict.core.items.Equipment;
 import br.odb.derelict.core.items.TimeBomb;
 import br.odb.derelict.core.locations.TotautisSpaceStation;
 import br.odb.gameworld.exceptions.InvalidLocationException;
+import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
 
 public class TestBombRemoteController {
@@ -71,7 +72,11 @@ public class TestBombRemoteController {
 		controller = new BombRemoteController(bomb0);
 		station0.getLocation("hangar").addItem(bomb0);
 		bomb0.toggle();
-		controller.use(null);
+		try {
+			controller.use(null);
+		} catch (ItemActionNotSupportedException e) {
+			Assert.fail();
+		}
 		Assert.assertTrue(station0.destroyed);
 	}
 }

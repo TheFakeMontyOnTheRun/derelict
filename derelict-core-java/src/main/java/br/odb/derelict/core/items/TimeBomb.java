@@ -49,7 +49,7 @@ public class TimeBomb extends ActiveItem implements Updatable {
 	}
 
 	@Override
-	public void use(CharacterActor user) {
+	public void use(CharacterActor user) throws ItemActionNotSupportedException {
 		super.use(user);
 
 		toggle();

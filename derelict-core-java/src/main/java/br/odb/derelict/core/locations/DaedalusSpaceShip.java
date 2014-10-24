@@ -2,6 +2,7 @@ package br.odb.derelict.core.locations;
 
 import br.odb.gameworld.ActiveItem;
 import br.odb.gameworld.CharacterActor;
+import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 
 public class DaedalusSpaceShip extends Spaceship {
 
@@ -27,7 +28,7 @@ public class DaedalusSpaceShip extends Spaceship {
 		 * @see br.odb.gamelib.gameworld.Item#use(br.odb.gamelib.gameworld.CharacterActor)
 		 */
 		@Override
-		public void use(CharacterActor user) {
+		public void use(CharacterActor user) throws ItemActionNotSupportedException {
 			
 			turnKey();
 			super.use(user);

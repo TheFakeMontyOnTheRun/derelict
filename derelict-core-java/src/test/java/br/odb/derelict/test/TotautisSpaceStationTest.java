@@ -349,7 +349,7 @@ public class TotautisSpaceStationTest {
 	 * {@link br.odb.derelict.core.Level#moveCharacter(java.lang.String, java.lang.String)}
 	 * .
 	 */
-	// N��O �� UM BOM TESTE...
+	// N������O ������ UM BOM TESTE...
 	// @Test
 	// public final void testMoveCharacter() {
 	//
@@ -440,7 +440,7 @@ public class TotautisSpaceStationTest {
 	 */
 	@Test
 	public final void testAddNewLocation() {
-		Location l = station.addNewLocation("Niter��i");
+		Location l = station.addNewLocation("Niter������i");
 		Assert.assertNotNull(l);
 		try {
 			Assert.assertEquals(l, station.getLocation(l.getName()));
@@ -450,7 +450,7 @@ public class TotautisSpaceStationTest {
 	}
 
 	@Test
-	public final void testBombDetonation() {
+	public final void testBombDetonation() throws ItemActionNotSupportedException {
 
 		TimeBomb bomb;
 
@@ -492,7 +492,7 @@ public class TotautisSpaceStationTest {
 	}
 
 	@Test
-	public final void testUsingPlasmaGun() {
+	public final void testUsingPlasmaGun() throws ItemActionNotSupportedException {
 
 		PlasmaGun gun = new PlasmaGun(1);
 		MetalPlate plate = new MetalPlate();

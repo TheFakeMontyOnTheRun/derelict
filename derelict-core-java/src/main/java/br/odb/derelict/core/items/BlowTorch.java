@@ -1,6 +1,7 @@
 package br.odb.derelict.core.items;
 
 import br.odb.gameworld.ActiveItem;
+import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 import br.odb.utils.Utils;
@@ -32,9 +33,14 @@ public class BlowTorch extends ActiveItem implements Toxic, Destructive {
 	}
 
 	@Override
+	public void use(CharacterActor user) throws ItemActionNotSupportedException {
+		throw new ItemActionNotSupportedException( "This can't be used on it's on." + ( isActive() ? " Go look for something to cutout with this." : " Activate it and use it on other stuff." ) );
+	}
+	
+	@Override
 	public String getUseItemSound() {
 
-		return "blowtorch-used";
+		return isActive() ? "blowtorch-used" : "";
 	}
 
 	public float getFuel() {

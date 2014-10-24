@@ -1,6 +1,7 @@
 package br.odb.derelict.core.items;
 
 import br.odb.gameworld.ActiveItem;
+import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 
@@ -21,9 +22,15 @@ public class MagneticBoots extends ActiveItem implements MagnecticActive {
 	}
 	
 	@Override
+	public void use(CharacterActor user) throws ItemActionNotSupportedException {
+		throw new ItemActionNotSupportedException( "You are supposed to toggle it or maybe use it with other stuff" );
+	}
+	
+	
+	@Override
 	public String getUseItemSound() {
 
-		return "magbootsuse";
+		return isActive() ? "magbootsuse" : "";
 	}
 	
 	

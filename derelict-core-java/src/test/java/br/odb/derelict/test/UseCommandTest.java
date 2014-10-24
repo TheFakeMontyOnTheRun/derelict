@@ -12,6 +12,7 @@ import br.odb.derelict.core.items.TimeBomb;
 import br.odb.derelict.core.locations.TotautisSpaceStation;
 import br.odb.gameworld.Location;
 import br.odb.gameworld.exceptions.InventoryManipulationException;
+import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
 
 /**
@@ -42,6 +43,8 @@ public class UseCommandTest {
 			cmd.run(testPlace, astro, bomb.getName(), client);
 			bomb.update(10);
 		} catch (ItemNotFoundException e) {
+			Assert.fail();
+		} catch (ItemActionNotSupportedException e) {
 			Assert.fail();
 		}
 

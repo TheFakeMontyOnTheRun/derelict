@@ -5,13 +5,14 @@ import br.odb.gameapp.ApplicationClient;
 import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.Place;
+import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
 
 public class UseCommand extends DerelictUserCommandLineAction {
 
 	@Override
 	public void run(Place level, CharacterActor actor, String operand,
-			ApplicationClient client) throws ItemNotFoundException {
+			ApplicationClient client) throws ItemNotFoundException, ItemActionNotSupportedException {
 
 		Astronaut hero = (Astronaut) actor;
 
