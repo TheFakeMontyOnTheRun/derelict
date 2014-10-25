@@ -1,5 +1,6 @@
 package br.odb.derelict.core.items;
 
+import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 
@@ -13,7 +14,12 @@ public class Pipe extends ItemContainer {
 
 		setPickable(false);
 	}
-
+	
+	@Override
+	public void use(CharacterActor user) throws ItemActionNotSupportedException {
+		throw new ItemActionNotSupportedException( "Can't do it!" );
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 

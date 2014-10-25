@@ -1,5 +1,6 @@
 package br.odb.derelict.core.items;
 
+import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.Location;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
@@ -17,6 +18,16 @@ public class PlasmaPellet extends Item implements Destructive {
 		this.direction = d;
 		this.location = place;
 		setPickable(false);
+	}
+	
+	@Override
+	public void wasUsedOn(Item item1) throws ItemActionNotSupportedException {
+		throw new ItemActionNotSupportedException( "Can't do it!" );
+	}
+	
+	@Override
+	public void use(CharacterActor user) throws ItemActionNotSupportedException {
+		throw new ItemActionNotSupportedException( "Can't do it!" );
 	}
 	
 	@Override

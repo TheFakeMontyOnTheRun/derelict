@@ -1,6 +1,7 @@
 package br.odb.derelict.core.items;
 
 import br.odb.gameworld.ActiveItem;
+import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 
@@ -20,4 +21,9 @@ public class Equipment extends ActiveItem implements EletroMagnecticActive {
 			this.setIsDepleted(true);
 		}
 	}
+	
+	@Override
+	public void use(CharacterActor user) throws ItemActionNotSupportedException {
+		throw new ItemActionNotSupportedException( "Don't know how. Maybe you should stick with your mission." );
+	}	
 }

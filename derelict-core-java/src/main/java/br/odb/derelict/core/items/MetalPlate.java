@@ -4,6 +4,7 @@
 package br.odb.derelict.core.items;
 
 import br.odb.gameworld.ActiveItem;
+import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 
@@ -38,6 +39,12 @@ public class MetalPlate extends ValuableItem {
 		setDescription("A piece of metal that might be valuable."); 
 		weight = PLATE_WEIGHT_RAW;
 	}
+
+	@Override
+	public void use(CharacterActor user) throws ItemActionNotSupportedException {
+		throw new ItemActionNotSupportedException( "This is too valuable to atempt anything else but selling later." );
+	}
+	
 
 	/*
 	 * (non-Javadoc)

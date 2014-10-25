@@ -1,6 +1,7 @@
 package br.odb.derelict.core.items;
 
 import br.odb.gameworld.ActiveItem;
+import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 
@@ -26,6 +27,11 @@ public class AtmospherePurifier extends ActiveItem {
 	
 	@Override
 	public void wasUsedOn(Item item1) throws ItemActionNotSupportedException {
+		throw new ItemActionNotSupportedException( "Can't do it!" );
+	}
+	
+	@Override
+	public void use(CharacterActor user) throws ItemActionNotSupportedException {
 		throw new ItemActionNotSupportedException( "Can't do it!" );
 	}
 }

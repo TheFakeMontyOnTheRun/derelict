@@ -85,6 +85,8 @@ public class PlasmaGun extends ActiveItem implements Destructive {
 		if ( user instanceof Astronaut ) {
 			
 			shootDirection( ( (Astronaut) user ).direction, user.getLocation() );
+		} else {
+			throw new ItemActionNotSupportedException( "It's inactive!" );
 		}
 	}
 
