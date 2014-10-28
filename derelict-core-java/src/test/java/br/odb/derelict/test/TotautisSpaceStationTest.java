@@ -499,7 +499,12 @@ public class TotautisSpaceStationTest {
 		plate.setPickable(false);
 		Astronaut astro = station.getAstronaut();
 		int ammoBefore = gun.getAmmo();		
-		gun.use( astro );
+		try {
+			gun.use( astro );
+			Assert.fail();
+		} catch ( Exception e ) {
+			//OK
+		}
 		Assert.assertEquals( ammoBefore, gun.getAmmo() );
 		Assert.assertEquals( PlasmaGun.CLANK_SOUND, gun.getUseItemSound() );
 		gun.toggle();

@@ -80,10 +80,10 @@ public class PlasmaGun extends ActiveItem implements Destructive {
 	 */
 	@Override
 	public void use(CharacterActor user) throws ItemActionNotSupportedException {
-		super.use(user);
 
-		if ( user instanceof Astronaut ) {
+		if ( isActive() ) {
 			
+			super.use(user);
 			shootDirection( ( (Astronaut) user ).direction, user.getLocation() );
 		} else {
 			throw new ItemActionNotSupportedException( "It's inactive!" );
