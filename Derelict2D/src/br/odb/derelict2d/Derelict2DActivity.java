@@ -9,7 +9,5 @@ public class Derelict2DActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_derelict2_d);
-	
-		
 	}
 }

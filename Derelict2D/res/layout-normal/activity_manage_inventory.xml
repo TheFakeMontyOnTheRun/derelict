@@ -38,7 +38,7 @@
                 android:id="@+id/llCollectedItems"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:background="#222"
+                android:background="#800080"
                 android:orientation="horizontal" >
 
             </LinearLayout>
@@ -200,7 +200,7 @@
                 android:id="@+id/llLocationItems"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:background="#222"
+                android:background="#ffcc00"
                 android:orientation="horizontal" >
 
             </LinearLayout>

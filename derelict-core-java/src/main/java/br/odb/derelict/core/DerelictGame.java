@@ -39,33 +39,35 @@ public class DerelictGame extends ConsoleApplication {
 	}
 
 	public String getJSONGameState() {
-		
+
 		String visitedLocationsList = "";
-		
-		for ( Location l : station.getLocations() ) {
-			if ( l.hasBeenExplored && hero.getLocation() != l ) {
+
+		for (Location l : station.getLocations()) {
+			if (l.hasBeenExplored && hero.getLocation() != l) {
 				visitedLocationsList += ", " + l.getName();
 			}
 		}
-		
-		
-		String toReturn = "{";
-		
-		toReturn += "'replayMode': '" + this.replayMode + "',";
-		
-		toReturn += "'currentLocation': '" + this.hero.getLocation().getName() + "',";
 
-		if ( visitedLocationsList.length() > 0 ) {
-			
-			toReturn += ",'visitedLocations': [ " + visitedLocationsList + " ],";
+		String toReturn = "{";
+
+		toReturn += "'replayMode': '" + this.replayMode + "',";
+
+		toReturn += "'currentLocation': '" + this.hero.getLocation().getName()
+				+ "',";
+
+		if (visitedLocationsList.length() > 0) {
+
+			toReturn += ",'visitedLocations': [ " + visitedLocationsList
+					+ " ],";
 		}
-		
+
 		toReturn += "'currentPlace': " + this.station.getJSONState() + ",";
-		
+
 		toReturn += "}";
-		
+
 		return toReturn;
 	}
+
 	public static final int DEFAULT_ELAPSED_BASE_TIME = 1000;
 	public final static String finalMessage[] = new String[32];
 	public static final String BOMBING_TARGET = TotautisSpaceStation.WEAK_SPOT;
@@ -150,7 +152,8 @@ public class DerelictGame extends ConsoleApplication {
 					.getLocation(DaedalusSpaceShip.DEFAULT_NAME);
 			timeBomb = (TimeBomb) station.getItem("time-bomb");
 			lab2 = station.getLocation(BOMBING_TARGET);
-			shipKeyActive = ( ( DaedalusSpaceShip.Ignition )station.getItem( DaedalusSpaceShip.Ignition.NAME ) ).isActive();
+			shipKeyActive = ((DaedalusSpaceShip.Ignition) station
+					.getItem(DaedalusSpaceShip.Ignition.NAME)).isActive();
 			bombArmed = timeBomb.isActive();
 			bombWentOff = timeBomb.isDepleted()
 					|| (bombArmed && DAEDALUS.operative);
@@ -160,7 +163,8 @@ public class DerelictGame extends ConsoleApplication {
 			bombAtShip = (timeBomb.location == BOHR || timeBomb.location == DAEDALUS);
 			astroAtShip = (DAEDALUS == astronautPlacement || BOHR == astronautPlacement);
 			stationDecayed = station.isOrbitDecayed()
-					|| (!bombArmed && DAEDALUS.operative) || ( shipKeyActive && astroAtShip );
+					|| (!bombArmed && DAEDALUS.operative)
+					|| (shipKeyActive && astroAtShip);
 			astroAtSamePlaceAsBomb = (astronautPlacement == timeBomb.location);
 			bombAtTarget = (timeBomb.location == lab2);
 			astroAtTarget = (astronautPlacement == lab2);
@@ -356,7 +360,8 @@ public class DerelictGame extends ConsoleApplication {
 
 	@Override
 	public UserCommandLineAction[] getAvailableCommands() {
-		return getCommandList().values().toArray(new UserCommandLineAction[] {});
+		return getCommandList().values()
+				.toArray(new UserCommandLineAction[] {});
 	}
 
 	public Item[] getCollectableItems() {
@@ -372,17 +377,19 @@ public class DerelictGame extends ConsoleApplication {
 	public String[] getConnectionNames() {
 
 		ArrayList<String> names = new ArrayList<String>();
-		
-		if ( hero.getLocation().getConnections()[ hero.direction.ordinal() ] != null ) {
-			names.add( hero.getLocation().getConnections()[ hero.direction.ordinal() ].getName() );
+
+		if (hero.getLocation().getConnections()[hero.direction.ordinal()] != null) {
+			names.add(hero.getLocation().getConnections()[hero.direction
+					.ordinal()].getName());
 		}
 
 		for (Location l : hero.getLocation().getConnections()) {
-			
-			if ( l == hero.getLocation().getConnections()[ hero.direction.ordinal() ] ) {
+
+			if (l == hero.getLocation().getConnections()[hero.direction
+					.ordinal()]) {
 				continue;
 			}
-			
+
 			if (l != null) {
 				names.add(l.getName());
 			}
@@ -423,7 +430,33 @@ public class DerelictGame extends ConsoleApplication {
 
 	public String getFormatedElapsedTime() {
 
-		return (station.elapsedTime / 1000.0f) + " seconds";
+		int minutes = ((int) (station.elapsedTime / (1000.0f * 60.0f)));
+		int seconds = ((int) (station.elapsedTime / (1000.0f )));
+		
+		seconds -= minutes * 60;
+		
+		String toReturn = "";
+		
+		if ( minutes > 0 ) {
+			toReturn += "" + minutes + " minute";
+			
+			if ( minutes > 1 ) {
+				toReturn += "s";
+			}
+		}
+		
+		if ( seconds > 0 ) {
+			if ( minutes > 0 ) {
+				toReturn += ", ";
+			}
+			toReturn += "" + seconds + " second";
+			
+			if ( seconds > 1 ) {
+				toReturn += "s";
+			}
+		}		
+		
+		return toReturn;
 	}
 
 	public void initApp() {
@@ -528,13 +561,12 @@ public class DerelictGame extends ConsoleApplication {
 					" * "
 							+ ucla
 							+ " "
-							+ ((UserCommandLineAction) getCommandList().get(ucla))
-									.getHelp());
+							+ ((UserCommandLineAction) getCommandList().get(
+									ucla)).getHelp());
 		}
 
 		getClient().printNormal("");
-		getClient()
-				.printNormal( GAME_RULES );
+		getClient().printNormal(GAME_RULES);
 		getClient().printNormal("");
 
 		return this;
@@ -542,7 +574,7 @@ public class DerelictGame extends ConsoleApplication {
 
 	@Override
 	public ConsoleApplication showUI() {
-		//getClient().printNormal( getJSONGameState() );
+		// getClient().printNormal( getJSONGameState() );
 		getClient().printNormal(getTextOutput());
 
 		return super.showUI();
@@ -688,10 +720,10 @@ public class DerelictGame extends ConsoleApplication {
 		String output = "Mission status:\nTime elapsed: "
 				+ getFormatedElapsedTime() + ". ";
 
-		output += ("\nAprox. station outer hull temperature: "
+		output += ("\nStation outer hull temperature: "
 				+ station.hullTemperature + " C. ");
 
-		output += ("\nAprox. value collected: " + getFinalScore() + " $CRNV. ");
+		output += ("\nValue collected: " + getFinalScore() + " $CRNV. ");
 
 		output += ("\nYou're facing: " + station.getAstronaut().direction);
 		output += (". \nFloor: "

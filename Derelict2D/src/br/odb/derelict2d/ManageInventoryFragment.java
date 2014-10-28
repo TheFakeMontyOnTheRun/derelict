@@ -175,7 +175,7 @@ public class ManageInventoryFragment extends Fragment implements
 				gv = new GameView( llLocationItems.getContext() );		
 				gv.setLayoutParams( new LayoutParams( size, size ) );
 				gv.setOnClickListener( this );
-				gv.setAlpha( 0.5f );			
+				gv.setAlpha( 1.0f );			
 				AndroidUtils.initImage(gv, i.getName(), ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager(), size, size, "" );
 				itemForView.put( gv, i );
 				viewForItem.put( i, gv );
@@ -204,11 +204,11 @@ public class ManageInventoryFragment extends Fragment implements
 		vg = llLocationItems;
 		
 		for ( int c = 0; c < vg.getChildCount(); ++c ) {
-			vg.getChildAt( c ).setAlpha( 0.5f );
+			vg.getChildAt( c ).setAlpha( 1.0f );
 		}			
 		
 		if ( selectedLocationItem != null ) {
-			viewForItem.get( selectedLocationItem ).setAlpha( 1.0f );
+			viewForItem.get( selectedLocationItem ).setAlpha( 0.75f );
 		}
 		
 		
@@ -221,7 +221,7 @@ public class ManageInventoryFragment extends Fragment implements
 				gv = new GameView( llCollectedItems.getContext() );		
 				gv.setLayoutParams( new LayoutParams( size, size ) );
 				gv.setOnClickListener( this );
-				gv.setAlpha( 0.5f );			
+				gv.setAlpha( 1.0f );			
 				AndroidUtils.initImage(gv, i.getName(), ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager(), size, size, "" );
 				itemForView.put( gv, i );
 				viewForItem.put( i, gv );
@@ -249,11 +249,11 @@ public class ManageInventoryFragment extends Fragment implements
 		}
 		vg = llCollectedItems;
 		for ( int c = 0; c < vg.getChildCount(); ++c ) {
-			vg.getChildAt( c ).setAlpha( 0.5f );
+			vg.getChildAt( c ).setAlpha( 1.0f );
 		}			
 		
 		if ( selectedCollectedItem != null ) {
-			viewForItem.get( selectedCollectedItem ).setAlpha( 1.0f );
+			viewForItem.get( selectedCollectedItem ).setAlpha( 0.75f );
 		}
 
 

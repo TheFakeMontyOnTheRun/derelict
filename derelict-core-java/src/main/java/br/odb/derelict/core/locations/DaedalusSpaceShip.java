@@ -8,7 +8,7 @@ public class DaedalusSpaceShip extends Spaceship {
 
 
 	public static final String DEFAULT_NAME = "LSS DAEDALUS"; 
-	public static final int INITIAL_AMMO_AVAILABLE = 15000;
+	public static final int INITIAL_AMMO_AVAILABLE = 50;
 
 	public static class Ignition extends ActiveItem {
 		
