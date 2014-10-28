@@ -89,7 +89,7 @@
      style="fill:#008080;stroke:none"
      inkscape:connector-curvature="0" />
   <path
-     id="elevator-shaft-2"
+     id="elevator-level-2"
      d="M 254.04972,80.766274 L 307.1555,80.766274 L 307.1555,26.877923 L 254.04972,26.877923 L 254.04972,80.766274"
      style="fill:#008000;stroke:none"
      inkscape:connector-curvature="0" />
@@ -610,7 +610,7 @@
      y="137.95079" />
   <rect
      style="fill:#88aa00;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     id="elevator-shaft-2-entrance"
+     id="elevator-level-2-entrance"
      width="36.062447"
      height="36.062443"
      x="262.33658"

@@ -145,11 +145,11 @@ public class TotautisSpaceStation extends Place {
 		floor3.addNewLocation("lab 3")  
 				.setDescription("Looks like this was a chemistry lab. Looks badly destroyed. I was told this was due to space-trash. That's why they got us!").addItem( new Book( BOOK6_TITLE, BOOK6_TEXT ) ).addItem(new Pipe( null ));  
 
-		floor1.addNewLocation("elevator-shaft-1").setDescription("Going down? The elevator no longer works. It seems to be stuck in level 3. You have to navegate the shaft by yourself.");    
+		floor1.addNewLocation("elevator-level-1").setDescription("Going down? The elevator no longer works. It seems to be stuck in level 3. You have to navegate the shaft by yourself.");    
 
-		floor2.addNewLocation("elevator-shaft-2").setDescription("Going up or down? Looking down, you can clearly see the elevator cabin in level 3.");    
+		floor2.addNewLocation("elevator-level-2").setDescription("Going up or down? Looking down, you can clearly see the elevator cabin in level 3.");    
 
-		floor3.addNewLocation("elevator-shaft-3").setDescription("Going up? Fortunately, the escape hatch is open and this allows for access. The cabin itself is unremarkable.");    
+		floor3.addNewLocation("elevator-level-3").setDescription("Going up? Fortunately, the escape hatch is open and this allows for access. The cabin itself is unremarkable.");    
 
 		ship = new DaedalusSpaceShip();
 		TimeBomb bomb = new TimeBomb(TIMEBOMB_DEFAULT_FUSE_TIME);
@@ -170,30 +170,30 @@ public class TotautisSpaceStation extends Place {
 		floor1.addLocation(lander);
 
 		try {
-			getLocation("elevator-shaft-3").setConnected(Direction.CEILING,  
-							getLocation("elevator-shaft-2"));  
-			getLocation("elevator-shaft-2").setConnected(Direction.CEILING,  
-							getLocation("elevator-shaft-1"));  
+			getLocation("elevator-level-3").setConnected(Direction.CEILING,  
+							getLocation("elevator-level-2"));  
+			getLocation("elevator-level-2").setConnected(Direction.CEILING,  
+							getLocation("elevator-level-1"));  
 
-			getLocation("elevator-shaft-1").setConnected(Direction.FLOOR,  
-							getLocation("elevator-shaft-2"));  
-			getLocation("elevator-shaft-2").setConnected(Direction.FLOOR,  
-							getLocation("elevator-shaft-3"));  
+			getLocation("elevator-level-1").setConnected(Direction.FLOOR,  
+							getLocation("elevator-level-2"));  
+			getLocation("elevator-level-2").setConnected(Direction.FLOOR,  
+							getLocation("elevator-level-3"));  
 
-			getLocation("elevator-shaft-1").setConnected(Direction.S,  
+			getLocation("elevator-level-1").setConnected(Direction.S,  
 							getLocation("main hall 1"));  
-			getLocation("elevator-shaft-2").setConnected(Direction.S,  
+			getLocation("elevator-level-2").setConnected(Direction.S,  
 							getLocation("main hall 2"));  
-			getLocation("elevator-shaft-3").setConnected(Direction.S,  
+			getLocation("elevator-level-3").setConnected(Direction.S,  
 							getLocation("main hall 3"));  
 
 			getLocation("main hall 1").setConnected(Direction.N,  
-							getLocation("elevator-shaft-1"));  
+							getLocation("elevator-level-1"));  
 
 			getLocation("main hall 2").setConnected(Direction.N,  
-							getLocation("elevator-shaft-2"));  
+							getLocation("elevator-level-2"));  
 			getLocation("main hall 3").setConnected(Direction.N,  
-							getLocation("elevator-shaft-3"));  
+							getLocation("elevator-level-3"));  
 
 			getLocation("main hall 1").setConnected(Direction.E,  
 							getLocation("dorms 1"));  
@@ -291,7 +291,7 @@ public class TotautisSpaceStation extends Place {
 					.add(new ScheduledSpookySound(null,
 							15 * Utils.MINUTE_IN_MILISSECONDS, "spooky3",  
 							"You hear a melody, followed by numbers.",  
-							getLocation("elevator-shaft-2")));  
+							getLocation("elevator-level-2")));  
 		} catch (InvalidLocationException e) {
 			// TODO Die the hell out of this.
 			e.printStackTrace();

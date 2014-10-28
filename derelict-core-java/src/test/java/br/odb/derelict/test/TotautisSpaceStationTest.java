@@ -155,9 +155,9 @@ public class TotautisSpaceStationTest {
 			Assert.assertNotNull(station.getLocation("lab 1"));
 			Assert.assertNotNull(station.getLocation("lab 2"));
 			Assert.assertNotNull(station.getLocation("lab 3"));
-			Assert.assertNotNull(station.getLocation("elevator-shaft-1"));
-			Assert.assertNotNull(station.getLocation("elevator-shaft-2"));
-			Assert.assertNotNull(station.getLocation("elevator-shaft-3"));
+			Assert.assertNotNull(station.getLocation("elevator-level-1"));
+			Assert.assertNotNull(station.getLocation("elevator-level-2"));
+			Assert.assertNotNull(station.getLocation("elevator-level-3"));
 		} catch (InvalidLocationException e1) {
 			Assert.fail();
 		}
@@ -179,39 +179,39 @@ public class TotautisSpaceStationTest {
 		}
 
 		try {
-			Assert.assertNotNull(station.getLocation("elevator-shaft-3")
+			Assert.assertNotNull(station.getLocation("elevator-level-3")
 					.getConnectionDirectionForLocation(
-							station.getLocation("elevator-shaft-2")));
-			Assert.assertNotNull(station.getLocation("elevator-shaft-2")
+							station.getLocation("elevator-level-2")));
+			Assert.assertNotNull(station.getLocation("elevator-level-2")
 					.getConnectionDirectionForLocation(
-							station.getLocation("elevator-shaft-1")));
+							station.getLocation("elevator-level-1")));
 
-			Assert.assertNotNull(station.getLocation("elevator-shaft-1")
+			Assert.assertNotNull(station.getLocation("elevator-level-1")
 					.getConnectionDirectionForLocation(
-							station.getLocation("elevator-shaft-2")));
-			Assert.assertNotNull(station.getLocation("elevator-shaft-2")
+							station.getLocation("elevator-level-2")));
+			Assert.assertNotNull(station.getLocation("elevator-level-2")
 					.getConnectionDirectionForLocation(
-							station.getLocation("elevator-shaft-3")));
+							station.getLocation("elevator-level-3")));
 
-			Assert.assertNotNull(station.getLocation("elevator-shaft-1")
+			Assert.assertNotNull(station.getLocation("elevator-level-1")
 					.getConnectionDirectionForLocation(
 							station.getLocation("main hall 1")));
-			Assert.assertNotNull(station.getLocation("elevator-shaft-2")
+			Assert.assertNotNull(station.getLocation("elevator-level-2")
 					.getConnectionDirectionForLocation(
 							station.getLocation("main hall 2")));
-			Assert.assertNotNull(station.getLocation("elevator-shaft-3")
+			Assert.assertNotNull(station.getLocation("elevator-level-3")
 					.getConnectionDirectionForLocation(
 							station.getLocation("main hall 3")));
 
 			Assert.assertNotNull(station.getLocation("main hall 1")
 					.getConnectionDirectionForLocation(
-							station.getLocation("elevator-shaft-1")));
+							station.getLocation("elevator-level-1")));
 			Assert.assertNotNull(station.getLocation("main hall 2")
 					.getConnectionDirectionForLocation(
-							station.getLocation("elevator-shaft-2")));
+							station.getLocation("elevator-level-2")));
 			Assert.assertNotNull(station.getLocation("main hall 3")
 					.getConnectionDirectionForLocation(
-							station.getLocation("elevator-shaft-3")));
+							station.getLocation("elevator-level-3")));
 
 			Assert.assertNotNull(station.getLocation("main hall 1")
 					.getConnectionDirectionForLocation(
@@ -639,7 +639,7 @@ public class TotautisSpaceStationTest {
 		Assert.assertTrue(gun.getAmmo() == 1);
 		Assert.assertFalse(plate.isPickable());
 		try {
-			station.getLocation("elevator-shaft-1").addItem(plate);
+			station.getLocation("elevator-level-1").addItem(plate);
 			station.getLocation("main hall 1").addItem(new MagneticBoots());
 		} catch (InvalidLocationException e1) {
 			Assert.fail();
@@ -649,7 +649,7 @@ public class TotautisSpaceStationTest {
 			astro.getGun().toggle();
 			pellet = astro.shoot(Direction.N);
 			Assert.assertFalse(pellet.isPickable());
-			station.getLocation("elevator-shaft-1").addItem(pellet);
+			station.getLocation("elevator-level-1").addItem(pellet);
 		} catch (ItemNotFoundException e) {
 			Assert.fail();
 		} catch (InvalidLocationException e) {
@@ -666,7 +666,7 @@ public class TotautisSpaceStationTest {
 			++steps;
 		}
 		try {
-			Assert.assertEquals(station.getLocation("elevator-shaft-1"),
+			Assert.assertEquals(station.getLocation("elevator-level-1"),
 					pellet.location);
 		} catch (InvalidLocationException e) {
 			Assert.fail();
