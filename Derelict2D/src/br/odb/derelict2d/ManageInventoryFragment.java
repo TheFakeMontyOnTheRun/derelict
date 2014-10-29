@@ -56,17 +56,14 @@ public class ManageInventoryFragment extends Fragment implements
 	final HashMap< GameView, Item > itemForView = new HashMap< GameView, Item >();
 	final HashMap< Item, GameView > viewForItem = new HashMap< Item, GameView >();
 	
+	String oldText;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
 		final View toReturn = inflater.inflate(R.layout.activity_manage_inventory,
 				container, false);
-
-		
-		
-	
-		
 
 		
 		llCollectedItems = (LinearLayout) toReturn.findViewById( R.id.llCollectedItems );
@@ -76,7 +73,8 @@ public class ManageInventoryFragment extends Fragment implements
 		lvLocationItems = (HorizontalScrollView) toReturn.findViewById( R.id.lvLocationItems );
 		
 		wvDescription = (WebView) toReturn.findViewById(R.id.wvDescription);
-
+		wvDescription.getSettings().setJavaScriptEnabled(false);
+		
 		btnInfo = (Button) toReturn.findViewById(R.id.btnInfo);
 		btnInfoToCollect = (Button) toReturn.findViewById(R.id.btnInfoToCollect);
 		btnInfo.setOnClickListener(this);
@@ -304,10 +302,15 @@ public class ManageInventoryFragment extends Fragment implements
 		}
 		
 		String desc = game.getTextOutput().replaceAll("\n", "<br/>");
-		wvDescription.getSettings().setJavaScriptEnabled(false);
-		wvDescription.loadDataWithBaseURL(null,
-				"<html><body bgcolor = '#0D0' >" + desc + "</body></html>",
-				"text/html", "utf-8", null);
+		
+		
+		String newText = "<html><body bgcolor = '#0D0' >" + desc + "</body></html>";
+		
+		if ( !newText.equals( oldText ) ) {
+			oldText = newText;
+
+			wvDescription.loadDataWithBaseURL(null, newText, "text/html", "utf-8", null);
+		}
 		
 	}
 
