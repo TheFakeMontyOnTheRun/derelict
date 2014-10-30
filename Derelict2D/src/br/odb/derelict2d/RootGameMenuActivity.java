@@ -2,11 +2,15 @@ package br.odb.derelict2d;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gamerendering.rendering.DisplayList;
@@ -16,61 +20,64 @@ import br.odb.libsvg.SVGGraphic;
 import br.odb.utils.Rect;
 import br.odb.utils.math.Vec2;
 
-public class RootGameMenuActivity extends Activity implements OnClickListener {
+public class RootGameMenuActivity extends Activity implements OnClickListener, OnTouchListener {
 
 	enum DificultyLevel {
-		EASY( "Easy: still figuring out what this is all about", "You will have SOME help", new String[] {
-				"pick magboots",
-				"toggle magboots",
-				"pick plasma-gun"
-		} ),
-		NORMAL( "Normal: players that read", "Are you ready, pal!?", new String[] {
-				"pick magboots"
-		}),
-		HARD( "Hard: the real deal", "GET LAMP", new String[]{} );
-		
+		EASY("Easy: still figuring out what this is all about",
+				"You will have SOME help", new String[] { "pick magboots",
+						"toggle magboots", "pick plasma-gun" }), NORMAL(
+				"Normal: players that read", "Are you ready, pal!?",
+				new String[] { "pick magboots" }), HARD("Hard: the real deal",
+				"GET LAMP", new String[] {});
+
 		public final String name;
 		public final String description;
 		public final String[] aid;
-		
-		DificultyLevel( String name, String description, String[] aid ) {
+
+		DificultyLevel(String name, String description, String[] aid) {
 			this.name = name;
 			this.description = description;
 			this.aid = aid;
 		}
-		
+
 		@Override
 		public String toString() {
 			return name + " (" + description + ")";
 		}
 	}
-	
+
 	private Bundle bundle;
 	private android.widget.CheckBox chkSound;
 	private android.widget.CheckBox chkSpeech;
 	Spinner spnLevel;
-	
+
+	private GameView gvLogoInkscape;
+	private GameView gvGithub;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_root_game_menu);
 
 		findViewById(R.id.btnExploreStation).setOnClickListener(this);
-//		findViewById(R.id.btnExploreStation3D).setOnClickListener(this);
+		// findViewById(R.id.btnExploreStation3D).setOnClickListener(this);
 		findViewById(R.id.btnAbout).setOnClickListener(this);
 		findViewById(R.id.btnHowToPlay).setOnClickListener(this);
-		
-		
-		spnLevel = (Spinner) findViewById( R.id.spnLevel );
+
+		spnLevel = (Spinner) findViewById(R.id.spnLevel);
 		chkSound = (android.widget.CheckBox) findViewById(R.id.chkSound);
 		chkSpeech = (android.widget.CheckBox) findViewById(R.id.chkSpeech);
 
 		chkSound.setChecked(((Derelict2DApplication) getApplication())
 				.mayEnableSound());
 		gvSplash = (GameView) findViewById(R.id.gvbg);
-		
-		spnLevel.setAdapter( new ArrayAdapter<DificultyLevel>( this, android.R.layout.simple_spinner_item, DificultyLevel.values() ));
-		spnLevel.setSelection( 1 );
+		gvLogoInkscape = (GameView) findViewById(R.id.gvLogoInkscape);
+		gvGithub = (GameView) findViewById(R.id.gvLogoGithub);
+		findViewById(R.id.llGithub).setOnTouchListener( this );
+
+		spnLevel.setAdapter(new ArrayAdapter<DificultyLevel>(this,
+				android.R.layout.simple_spinner_item, DificultyLevel.values()));
+		spnLevel.setSelection(1);
 	}
 
 	GameView gvSplash;
@@ -80,6 +87,11 @@ public class RootGameMenuActivity extends Activity implements OnClickListener {
 		super.onWindowFocusChanged(hasFocus);
 
 		initImage();
+
+		AndroidUtils.initImage(gvGithub, "logo_github",
+				((Derelict2DApplication) getApplication()).getAssetManager());
+		AndroidUtils.initImage(gvLogoInkscape, "logo_inkscape",
+				((Derelict2DApplication) getApplication()).getAssetManager());
 	}
 
 	void initImage() {
@@ -89,7 +101,7 @@ public class RootGameMenuActivity extends Activity implements OnClickListener {
 				.getAssetManager();
 
 		SVGGraphic graphic = resManager.getGraphics("logo");
-		
+
 		float scale = 1;
 		Vec2 trans = new Vec2();
 
@@ -126,43 +138,49 @@ public class RootGameMenuActivity extends Activity implements OnClickListener {
 		bundle = new Bundle();
 		bundle.putString("hasSound", chkSound.isChecked() ? "y" : "n");
 		bundle.putString("speech", chkSpeech.isChecked() ? "y" : "n");
-		bundle.putInt("aid", ( ( DificultyLevel )spnLevel.getSelectedItem() ).ordinal() );
-		
+		bundle.putInt("aid",
+				((DificultyLevel) spnLevel.getSelectedItem()).ordinal());
+
 		switch (v.getId()) {
-		
-//		case R.id.btnExploreStation3D:
-//			((Derelict2DApplication) this.getApplication()).startNewGame();
-//			intent = new Intent(getBaseContext(),
-//					ExploreStationActivity.class);
-//			intent.putExtras(bundle);
-//			startActivityForResult(intent, 1);
-//			
-//			break;
+
+		// case R.id.btnExploreStation3D:
+		// ((Derelict2DApplication) this.getApplication()).startNewGame();
+		// intent = new Intent(getBaseContext(),
+		// ExploreStationActivity.class);
+		// intent.putExtras(bundle);
+		// startActivityForResult(intent, 1);
+		//
+		// break;
 		case R.id.btnExploreStation:
 			((Derelict2DApplication) this.getApplication()).startNewGame();
-			intent = new Intent(getBaseContext(),
-					ExploreStationActivity.class);
+			intent = new Intent(getBaseContext(), ExploreStationActivity.class);
 			intent.putExtras(bundle);
 			startActivityForResult(intent, 1);
 			break;
-			
-		
-			
+
 		case R.id.btnHowToPlay:
-			intent = new Intent( this, ShowHowToPlayActivity.class );
-			startActivity( intent );
+			intent = new Intent(this, ShowHowToPlayActivity.class);
+			startActivity(intent);
 			break;
 		case R.id.btnAbout:
-			intent = new Intent( this, ShowCreditsActivity.class );
-			startActivity( intent );
-			break;			
-		}		
+			intent = new Intent(this, ShowCreditsActivity.class);
+			startActivity(intent);
+			break;
+		}
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		if (resultCode == RESULT_CANCELED) {
-//			Toast.makeText(this, "Game Over!", Toast.LENGTH_SHORT).show();
+			// Toast.makeText(this, "Game Over!", Toast.LENGTH_SHORT).show();
 		}
+	}
+
+	@Override
+	public boolean onTouch(View arg0, MotionEvent arg1) {
+		Intent i = new Intent(Intent.ACTION_VIEW, 
+			       Uri.parse("https://github.com/TheFakeMontyOnTheRun/derelict"));
+			startActivity(i);
+		return true;
 	}
 }
