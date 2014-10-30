@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -18,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict2d.game.GameLevel;
 import br.odb.gameapp.GameUpdateDelegate;
@@ -33,7 +31,6 @@ import br.odb.libsvg.SVGGraphic;
 import br.odb.utils.Direction;
 import br.odb.utils.Utils;
 
-
 public class ExploreStationFragment extends Fragment implements
 		GameUpdateDelegate, OnClickListener, OnItemSelectedListener {
 
@@ -47,11 +44,10 @@ public class ExploreStationFragment extends Fragment implements
 	private MediaPlayer fiveSteps;
 	private MediaPlayer ding;
 	private AssetManager resManager;
-	
-	
+
 	SVGGraphic stationGraphics;
 	private GameView gvMove;
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -63,18 +59,21 @@ public class ExploreStationFragment extends Fragment implements
 		gameView = (ExploreStationView) toReturn.findViewById(R.id.overviewMap);
 		spnDirections = (Spinner) toReturn.findViewById(R.id.spnDirection);
 		spnDirections.setOnItemSelectedListener(this);
-		gvMove = (GameView) toReturn.findViewById(R.id.gvMove);		
-		gvMove.setOnClickListener( this );
-		
+		gvMove = (GameView) toReturn.findViewById(R.id.gvMove);
+		gvMove.setOnClickListener(this);
+
 		toReturn.post(new Runnable() {
-            @Override
-            public void run() {
-            	
-            	Thread.yield();
-            	
-				AndroidUtils.initImage(gvMove, "icon-move", ((Derelict2DApplication) getActivity() .getApplication()).getAssetManager());
-            }
-        });
+			@Override
+			public void run() {
+
+				Thread.yield();
+
+				AndroidUtils
+						.initImage(gvMove, "icon-move",
+								((Derelict2DApplication) getActivity()
+										.getApplication()).getAssetManager());
+			}
+		});
 
 		return toReturn;
 	}
@@ -104,32 +103,25 @@ public class ExploreStationFragment extends Fragment implements
 	public void onClick(View v) {
 
 		switch (v.getId()) {
-		
+
 		case R.id.gvMove:
 			Direction d;
-				
+
 			Location l = game.hero.getLocation();
 			try {
-				d = l.getConnectionDirectionForLocation( game.station.getLocation(  (String) spnDirections.getSelectedItem() ) );
-				game.sendData("move " + d );
-				
-				//not good!
-				if ( l != game.hero.getLocation() && game.station.getAstronaut().getLocation().getConnections()[ d.ordinal() ] != null ) {
-					
-					if (d != Direction.CEILING && d != Direction.FLOOR) {
-						if (fiveSteps != null) {
-							
-							fiveSteps.start();
-						}
-					} else {
-						
-						if (ding != null) {
-							
-							ding.start();
-						}
+				d = l.getConnectionDirectionForLocation(game.station
+						.getLocation((String) spnDirections.getSelectedItem()));
+				game.sendData("move " + d);
+
+				if (d == Direction.CEILING || d == Direction.FLOOR) {
+					if (ding != null) {
+						ding.start();
 					}
-					
-				}			
+				} else {
+					if (fiveSteps != null) {
+						fiveSteps.start();
+					}
+				}
 			} catch (InvalidSlotException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -150,40 +142,43 @@ public class ExploreStationFragment extends Fragment implements
 		currentLevel = explore.currentLevel;
 
 		if (gameView != null && currentLevel != null && resManager != null) {
-						
+
 			gameView.setSnapshot(game, resManager);
-			
-			ArrayList< Item > tmp = new ArrayList< Item >();
-			
-			
-			for ( Item i : game.getCollectableItems() ) {
-				tmp.add( 0, i );
+
+			ArrayList<Item> tmp = new ArrayList<Item>();
+
+			for (Item i : game.getCollectableItems()) {
+				tmp.add(0, i);
 			}
-			
-			Utils.reverseArray( game.getCollectableItems() );
-			
-			String[] locations = game.getConnectionNames(); 
-			
+
+			Utils.reverseArray(game.getCollectableItems());
+
+			String[] locations = game.getConnectionNames();
+
 			spnDirections.setAdapter(new ArrayAdapter<String>(getActivity(),
-					android.R.layout.simple_spinner_item, locations ));
-			
-			spnDirections.setSelection( 0 );
-	
-			gameView.setBackgroundColor( Color.argb( 255, ( int )Utils.clamp( game.station.hullTemperature, 0, 255 ), 0, 64 ) );
-			gameView.update( 100 );
+					android.R.layout.simple_spinner_item, locations));
+
+			spnDirections.setSelection(0);
+
+			gameView.setBackgroundColor(Color.argb(255,
+					(int) Utils.clamp(game.station.hullTemperature, 0, 255), 0,
+					64));
+			gameView.update(100);
 		}
 
 	}
 
 	@Override
-	public void onItemSelected(AdapterView<?> arg0, View v, int arg2,
-			long arg3) {
-			
-			try {
-				game.hero.direction = game.hero.getLocation().getConnectionDirectionForLocation( game.station.getLocation( (String) spnDirections.getSelectedItem() ) );
-			} catch ( Exception e) {
-				//We simply bail out. It's not a big deal...
-			}
+	public void onItemSelected(AdapterView<?> arg0, View v, int arg2, long arg3) {
+
+		try {
+			game.hero.direction = game.hero.getLocation()
+					.getConnectionDirectionForLocation(
+							game.station.getLocation((String) spnDirections
+									.getSelectedItem()));
+		} catch (Exception e) {
+			// We simply bail out. It's not a big deal...
+		}
 	}
 
 	@Override

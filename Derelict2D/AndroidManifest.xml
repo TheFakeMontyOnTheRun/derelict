@@ -12,17 +12,13 @@
         android:name="br.odb.derelict2d.Derelict2DApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:allowBackup="false"
         android:hardwareAccelerated="true" 
         android:theme="@style/AppTheme" >
         <activity
             android:name="br.odb.derelict2d.RootGameMenuActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
-        </activity>
-        <activity
-            android:name="br.odb.derelict2d.GameActivity"
-            android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="br.odb.derelict1d.Derelict1DActivity"

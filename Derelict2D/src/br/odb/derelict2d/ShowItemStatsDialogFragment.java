@@ -31,10 +31,12 @@ public class ShowItemStatsDialogFragment extends DialogFragment implements
 		
 		bigger = 255;
 		
-		AndroidUtils.initImage(gvItemView, args.getString("name"), ((Derelict2DApplication) getActivity()
+		AndroidUtils.initImage(gvItemView, args.getString("image"), ((Derelict2DApplication) getActivity()
 				.getApplication()).getAssetManager(), bigger, bigger, "");
 		
-		getDialog().setTitle( args.getString("name") );
+		String title = args.getString("name").substring(0, 1).toUpperCase() + args.getString("name").substring(1);
+		
+		getDialog().setTitle( title.replace( '-', ' ' ) );
 		updateDescription(args.getString("desc"));
 
 		return view;

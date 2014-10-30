@@ -34,10 +34,14 @@ public class MetalPlate extends ValuableItem {
 	/**
 	 * 
 	 */
-	public MetalPlate() {
-		super( NAME ); 
+	public MetalPlate( String name ) {
+		super( name ); 
 		setDescription("A piece of metal that might be valuable."); 
 		weight = PLATE_WEIGHT_RAW;
+	}
+	
+	public MetalPlate() {
+		this( NAME ); 
 	}
 
 	@Override

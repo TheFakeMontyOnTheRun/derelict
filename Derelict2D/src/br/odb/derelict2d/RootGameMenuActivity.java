@@ -77,7 +77,7 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 
 		spnLevel.setAdapter(new ArrayAdapter<DificultyLevel>(this,
 				android.R.layout.simple_spinner_item, DificultyLevel.values()));
-		spnLevel.setSelection(1);
+		spnLevel.setSelection(2);
 	}
 
 	GameView gvSplash;

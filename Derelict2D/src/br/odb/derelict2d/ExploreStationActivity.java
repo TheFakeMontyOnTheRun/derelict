@@ -260,7 +260,7 @@ public class ExploreStationActivity extends Activity implements
 	public void update() {
 		
 		if ( game.hero.toxicity > 99.9f ) {
-			playMedia( "coughdeath" + game.hero.getGender(), "*cough*" );			
+			playMedia( "coughdeathm", "*cough*" );			
 		} else if ( game.getTextOutput().contains("*cough*") && lastTimeCough < game.station.elapsedTime ) {
 			playMedia( "cough" + game.hero.getGender(), "*cough*" );
 			lastTimeCough  = game.station.elapsedTime;

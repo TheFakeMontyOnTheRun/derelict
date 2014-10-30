@@ -90,7 +90,7 @@ public class TotautisSpaceStation extends Place {
 
 		floor3.addNewLocation("main hall 3")  
 				.setCollectables(  
-						new Item[] { new MetalPlate().setPickable(false) , new Equipment("comm-system").setPickable( false ) } ).setDescription("This was a restricted area, so it's rather sparce. Mostly labs and equipment. A constant hum from the generaters can be heard");  
+						new Item[] { new MetalPlate("metal-sheet").setPickable(false) , new Equipment("comm-system").setPickable( false ) } ).setDescription("This was a restricted area, so it's rather sparce. Mostly labs and equipment. A constant hum from the generaters can be heard");  
 
 		floor1.addNewLocation("hangar")  
 				.setDescription("The station main hangar is rather unremarkable. The only thing you notice is a slight yellow tint of the air, as if a mist slides next to the floor. It's very faint. Your ship's computer tells you this is harmless (as if those readings were worth the trust). Unfortunately, no useful tools around here. Around the corner, near the escape pod entrance, there is deactivated ship reactor.")  
@@ -135,7 +135,7 @@ public class TotautisSpaceStation extends Place {
 				.setDescription("Here, it seems like a relaxation place. You gaze at the stars and the planet. Very nice.");  
 
 		floor3.addNewLocation("lab 1")  
-				.setDescription("A micro-g-hydrostatic lab. Lots of old equipments. There must be something valuable here." ).addItem( new Book( BOOK0_TITLE, BOOK0_TEXT ) ).addItem( new MetalPlate().setPickable(false)  );  
+				.setDescription("A micro-g-hydrostatic lab. Lots of old equipments. There must be something valuable here." ).addItem( new Book( BOOK0_TITLE, BOOK0_TEXT ) ).addItem( new MetalPlate("metal-scrap").setPickable(false)  );  
 
 		floor3.addNewLocation("lab 2")  
 				.setDescription("A low-atmosphere-electricity lab. Lots of strange equipment. Looks dangerous.")  
