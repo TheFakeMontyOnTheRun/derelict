@@ -16,18 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="#555"
         android:baselineAligned="false"
         android:orientation="horizontal"
-        android:padding="0dip" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="#777"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="You&apos;re facing:"
-            android:textColor="#000" />
+        android:padding="5dp" >
 
         <Spinner
             android:id="@+id/spnDirection"

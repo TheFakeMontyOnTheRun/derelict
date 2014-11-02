@@ -53,6 +53,7 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 
 	private GameView gvLogoInkscape;
 	private GameView gvGithub;
+	private GameView gvBeer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +74,7 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 		gvSplash = (GameView) findViewById(R.id.gvbg);
 		gvLogoInkscape = (GameView) findViewById(R.id.gvLogoInkscape);
 		gvGithub = (GameView) findViewById(R.id.gvLogoGithub);
+		gvBeer = (GameView) findViewById(R.id.gvBeer);
 		findViewById(R.id.llGithub).setOnTouchListener( this );
 
 		spnLevel.setAdapter(new ArrayAdapter<DificultyLevel>(this,
@@ -91,6 +93,8 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 		AndroidUtils.initImage(gvGithub, "logo_github",
 				((Derelict2DApplication) getApplication()).getAssetManager());
 		AndroidUtils.initImage(gvLogoInkscape, "logo_inkscape",
+				((Derelict2DApplication) getApplication()).getAssetManager());
+		AndroidUtils.initImage(gvBeer, "beer",
 				((Derelict2DApplication) getApplication()).getAssetManager());
 	}
 
@@ -177,10 +181,17 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 	}
 
 	@Override
-	public boolean onTouch(View arg0, MotionEvent arg1) {
-		Intent i = new Intent(Intent.ACTION_VIEW, 
-			       Uri.parse("https://github.com/TheFakeMontyOnTheRun/derelict"));
+	public boolean onTouch(View v, MotionEvent arg1) {
+		
+		switch ( v.getId() ) {
+		case R.id.gvBeer:
+			break;
+		case R.id.gvLogoGithub:
+			Intent i = new Intent(Intent.ACTION_VIEW, 
+					Uri.parse("https://github.com/TheFakeMontyOnTheRun/derelict"));
 			startActivity(i);
+			break;
+		}
 		return true;
 	}
 }

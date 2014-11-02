@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -17,7 +18,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 import br.odb.derelict.core.DerelictGame;
+import br.odb.derelict.core.items.Book;
 import br.odb.derelict2d.game.GameLevel;
 import br.odb.gameapp.GameUpdateDelegate;
 import br.odb.gamelib.android.AndroidUtils;
@@ -109,8 +113,13 @@ public class ExploreStationFragment extends Fragment implements
 
 			Location l = game.hero.getLocation();
 			try {
+
+				String locationName = (String) spnDirections.getSelectedItem();
+
+				locationName = locationName.toLowerCase().replace(' ', ' ');
+
 				d = l.getConnectionDirectionForLocation(game.station
-						.getLocation((String) spnDirections.getSelectedItem()));
+						.getLocation(locationName));
 				game.sendData("move " + d);
 
 				if (d == Direction.CEILING || d == Direction.FLOOR) {
@@ -155,8 +164,20 @@ public class ExploreStationFragment extends Fragment implements
 
 			String[] locations = game.getConnectionNames();
 
-			spnDirections.setAdapter(new ArrayAdapter<String>(getActivity(),
-					android.R.layout.simple_spinner_item, locations));
+			for (int c = 0; c < locations.length; ++c) {
+
+				locations[c] = locations[c].substring(0, 1).toUpperCase()
+						+ locations[c].substring(1);
+				locations[c] = locations[c].replace('-', ' ');
+			}
+
+			ArrayAdapter<String> adapter;
+			adapter = new ArrayAdapter<String>(getActivity(),
+					android.R.layout.simple_spinner_item, locations);
+
+			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+			spnDirections.setAdapter(adapter);
 
 			spnDirections.setSelection(0);
 

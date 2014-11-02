@@ -51,23 +51,23 @@ public class ExploreStationActivity extends Activity implements
 	AssetManager resManager;
 	MediaPlayer playerSound;
 	private long lastTimeCough = -1;
+
 	// MediaPlayer music;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 		setContentView(R.layout.activity_explore_station);
 
-//		findViewById(R.id.btnInfo).setOnClickListener(this);
+		// findViewById(R.id.btnInfo).setOnClickListener(this);
 
 		getWindow().getDecorView().setSystemUiVisibility(
 				View.SYSTEM_UI_FLAG_LOW_PROFILE);
-
 
 		resManager = ((Derelict2DApplication) getApplication())
 				.getAssetManager();
@@ -76,24 +76,22 @@ public class ExploreStationActivity extends Activity implements
 		game.endGameListener = this;
 		game.createDefaultClient();
 		game.setGameUpdateDelegate(this);
-		
-		game.hero.setGender( Math.random() > 0.5 ? "f" : "m" );
+
+		game.hero.setGender(Math.random() > 0.5 ? "f" : "m");
 
 		currentLevel = new Derelict2DTotautisSpaceStation(game.station, this);
 
-		
 		DificultyLevel level;
-		
+
 		Intent intent;
 		intent = getIntent();
-		
 
-		level = DificultyLevel.values()[ intent.getExtras().getInt( "aid" ) ];
+		level = DificultyLevel.values()[intent.getExtras().getInt("aid")];
 		String hasSpeech = intent.getExtras().getString("speech");
 		String hasSound = intent.getExtras().getString("hasSound");
-		
-		for ( String cmd : level.aid ) {
-			game.sendData( cmd );
+
+		for (String cmd : level.aid) {
+			game.sendData(cmd);
 		}
 
 		shouldPlaySound = (hasSound != null && hasSound.equals("y"));
@@ -108,7 +106,7 @@ public class ExploreStationActivity extends Activity implements
 		}
 
 		game.setApplicationClient(this);
-		
+
 		showInfoDialog();
 		update();
 	}
@@ -165,11 +163,10 @@ public class ExploreStationActivity extends Activity implements
 			playerSound.stop();
 		}
 
-		
-		if ( tts != null ) {
+		if (tts != null) {
 			tts.stop();
 		}
-		
+
 		super.onDestroy();
 	}
 
@@ -187,7 +184,9 @@ public class ExploreStationActivity extends Activity implements
 	@Override
 	public void printWarning(String msg) {
 
-		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+		msg = msg.substring(0, 1).toUpperCase() + msg.substring(1);
+
+		Toast.makeText(this, msg.replace('-', ' '), Toast.LENGTH_SHORT).show();
 
 		if (tts != null) {
 			tts.speak(msg, TextToSpeech.QUEUE_FLUSH, null);
@@ -236,8 +235,10 @@ public class ExploreStationActivity extends Activity implements
 	@Override
 	public void alert(String string) {
 
-		Toast.makeText(this, string, Toast.LENGTH_LONG).show();
+		string = string.substring(0, 1).toUpperCase() + string.substring(1);
 
+		Toast.makeText(this, string.replace('-', ' '), Toast.LENGTH_SHORT).show();
+		
 		if (tts != null) {
 			tts.speak(string, TextToSpeech.QUEUE_FLUSH, null);
 		}
@@ -258,14 +259,14 @@ public class ExploreStationActivity extends Activity implements
 
 	@Override
 	public void update() {
-		
-		if ( game.hero.toxicity > 99.9f ) {
-			playMedia( "coughdeathm", "*cough*" );			
-		} else if ( game.getTextOutput().contains("*cough*") && lastTimeCough < game.station.elapsedTime ) {
-			playMedia( "cough" + game.hero.getGender(), "*cough*" );
-			lastTimeCough  = game.station.elapsedTime;
+
+		if (game.hero.toxicity > 99.9f) {
+			playMedia("coughdeathm", "*cough*");
+		} else if (game.getTextOutput().contains("*cough*")
+				&& lastTimeCough < game.station.elapsedTime) {
+			playMedia("cough" + game.hero.getGender(), "*cough*");
+			lastTimeCough = game.station.elapsedTime;
 		}
-		
 
 		for (GameUpdateDelegate gup : updateDelegates) {
 			gup.update();
@@ -408,14 +409,15 @@ public class ExploreStationActivity extends Activity implements
 		dialog.setArguments(args);
 		dialog.show(fm, "fragment_info_dialog");
 	}
-	
+
 	private void showInfoDialog() {
-		
+
 		FragmentManager fm = getFragmentManager();
 		ShowGameIntroDialogFragment gameIntro = new ShowGameIntroDialogFragment();
 		Bundle args = new Bundle();
-		args.putString("desc", DerelictGame.GAME_STORY1 + "\n\n\n" + DerelictGame.GAME_STORY2 + "\n\n\n" + DerelictGame.GAME_RULES );
-		gameIntro.setArguments(args);		
+		args.putString("desc", DerelictGame.GAME_STORY1 + "\n\n\n"
+				+ DerelictGame.GAME_STORY2 + "\n\n\n" + DerelictGame.GAME_RULES);
+		gameIntro.setArguments(args);
 		gameIntro.show(fm, "show_game_intro");
-	}	
+	}
 }

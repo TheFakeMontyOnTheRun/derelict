@@ -13,9 +13,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.WebView;
+import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import br.odb.derelict.core.Astronaut;
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict.core.commands.DerelictUserMetaCommandLineAction;
 import br.odb.derelict.core.commands.DerelictUserMoveCommandLineAction;
@@ -39,7 +42,7 @@ public class ManageInventoryFragment extends Fragment implements
 	GameView gvUse;
 	GameView gvDrop;
 	GameView gvToggle;
-	private WebView wvDescription;
+	// private WebView wvDescription;
 	private Button btnInfo;
 	private Button btnInfoToCollect;
 	Item selectedCollectedItem;
@@ -48,11 +51,21 @@ public class ManageInventoryFragment extends Fragment implements
 	LinearLayout llLocationItems;
 	HorizontalScrollView hsvCollected;
 	HorizontalScrollView lvLocationItems;
+	Button btnLocationInfo;
+	TextView tvLocationName;
+
+	TextView tvToxicty;
+	TextView tvFloor;
+	TextView tvFacing;
+	TextView tvMoney;
+	TextView tvTemperature;
+	TextView tvTime;
 
 	final HashMap<GameView, Item> itemForView = new HashMap<GameView, Item>();
 	final HashMap<Item, GameView> viewForItem = new HashMap<Item, GameView>();
 
 	String oldText;
+	private TextView tvCapacity;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,8 +84,8 @@ public class ManageInventoryFragment extends Fragment implements
 		lvLocationItems = (HorizontalScrollView) toReturn
 				.findViewById(R.id.lvLocationItems);
 
-		wvDescription = (WebView) toReturn.findViewById(R.id.wvDescription);
-		wvDescription.getSettings().setJavaScriptEnabled(false);
+		// wvDescription = (WebView) toReturn.findViewById(R.id.wvDescription);
+		// wvDescription.getSettings().setJavaScriptEnabled(false);
 
 		btnInfo = (Button) toReturn.findViewById(R.id.btnInfo);
 		btnInfoToCollect = (Button) toReturn
@@ -91,6 +104,17 @@ public class ManageInventoryFragment extends Fragment implements
 		gvUse.setOnClickListener(this);
 		gvDrop.setOnClickListener(this);
 		gvToggle.setOnClickListener(this);
+
+		tvLocationName = (TextView) toReturn.findViewById(R.id.tvLocationName);
+		btnLocationInfo = (Button) toReturn.findViewById(R.id.btnLocationInfo);
+		btnLocationInfo.setOnClickListener(this);
+
+		tvToxicty = (TextView) toReturn.findViewById(R.id.txtToxicity);
+		tvFacing = (TextView) toReturn.findViewById(R.id.txtFacing);
+		tvMoney = (TextView) toReturn.findViewById(R.id.txtMoney);
+		tvTemperature = (TextView) toReturn.findViewById(R.id.txtTemperature);
+		tvTime = (TextView) toReturn.findViewById(R.id.txtTime);
+		tvCapacity = (TextView) toReturn.findViewById(R.id.txtCapacity);
 
 		llCollectedItems.setOnClickListener(this);
 
@@ -319,12 +343,21 @@ public class ManageInventoryFragment extends Fragment implements
 		String newText = "<html><body bgcolor = '#0D0' >" + desc
 				+ "</body></html>";
 
-		if (!newText.equals(oldText)) {
-			oldText = newText;
+		// if (!newText.equals(oldText)) {
+		// oldText = newText;
+		//
+		// wvDescription.loadDataWithBaseURL(null, newText, "text/html",
+		// "utf-8", null);
+		// }
 
-			wvDescription.loadDataWithBaseURL(null, newText, "text/html",
-					"utf-8", null);
-		}
+		tvLocationName.setText("" + game.hero.getLocation().getName());
+
+		tvToxicty.setText("" + game.hero.toxicity + "%");
+		tvFacing.setText("" + game.hero.direction.prettyName);
+		tvMoney.setText("" + game.hero.getMaterialWorth() + "$");
+		tvTemperature.setText("" + game.station.hullTemperature + "C");
+		tvTime.setText("" + game.getFormatedElapsedTime());
+		tvCapacity.setText("" + game.getCollectedItems().length + "/" + Astronaut.INVENTORY_LIMIT );
 
 	}
 
@@ -388,6 +421,13 @@ public class ManageInventoryFragment extends Fragment implements
 			break;
 		case R.id.btnInfo:
 			showInfoDialog();
+			break;
+		case R.id.btnLocationInfo:
+
+			FragmentManager fm = getFragmentManager();
+			LocationInfoDialogFragment showItemStatsFragment = new LocationInfoDialogFragment();
+			showItemStatsFragment.show(fm, "fragment_location_dialog");
+
 			break;
 		case R.id.btnInfoToCollect:
 			showInfoToCollectDialog();

@@ -130,6 +130,9 @@ public class Derelict2DApplication extends Application implements
 
 			resManager.putGraphic("logo_inkscape",
 					SVGParsingUtils.readSVG(openAsset("logo_inkscape.svg")));
+			
+			resManager.putGraphic("beer",
+					SVGParsingUtils.readSVG(openAsset("beer.svg")));
 
 			for (int c = 0; c < 32; ++c) {
 

@@ -140,9 +140,10 @@
 
                             <TextView
                                 android:id="@+id/textView3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:layout_marginLeft="20dp"
+                                android:gravity="center_vertical"
                                 android:text="(no cheating!)"
                                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -151,6 +152,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/llInkscape"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" >
 
@@ -167,6 +169,36 @@
                             android:text="Made with Inkscape"
                             android:textAppearance="?android:attr/textAppearanceLarge" />
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llBeer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <br.odb.gamelib.android.GameView
+                            android:id="@+id/gvBeer"
+                            android:layout_width="96dp"
+                            android:layout_height="96dp" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="Buy me a beer!"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:gravity="center_vertical"
+                            android:text="(please?)"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </LinearLayout>
