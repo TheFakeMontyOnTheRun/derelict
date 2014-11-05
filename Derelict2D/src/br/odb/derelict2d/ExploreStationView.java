@@ -29,9 +29,9 @@ public class ExploreStationView extends PointerNodeSelectableScrollableView {
 		super(context, attrs);
 	}
 
-	public void setSnapshot(DerelictGame game, AssetManager resManager) {
+	public void setSnapshot(DerelictGame game, AssetManager resManager, boolean showText ) {
 
-		DisplayList node = adapter.parse(game, resManager);
+		DisplayList node = adapter.parse(game, resManager, showText);
 
 		super.setSelectedItem(node
 				.getElementById("SVGRenderingNode_heroGraphic"));

@@ -16,6 +16,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,7 +39,7 @@ import br.odb.utils.Direction;
 import br.odb.utils.Utils;
 
 public class ExploreStationFragment extends Fragment implements
-		GameUpdateDelegate, OnClickListener, OnItemSelectedListener {
+		GameUpdateDelegate, OnClickListener, OnItemSelectedListener, OnCheckedChangeListener {
 
 	EditText edtOutput;
 	EditText edtEntry;
@@ -48,7 +51,8 @@ public class ExploreStationFragment extends Fragment implements
 	private MediaPlayer fiveSteps;
 	private MediaPlayer ding;
 	private AssetManager resManager;
-
+	CheckBox chkShowPlaceNames;
+	
 	SVGGraphic stationGraphics;
 	private GameView gvMove;
 
@@ -64,7 +68,10 @@ public class ExploreStationFragment extends Fragment implements
 		spnDirections = (Spinner) toReturn.findViewById(R.id.spnDirection);
 		spnDirections.setOnItemSelectedListener(this);
 		gvMove = (GameView) toReturn.findViewById(R.id.gvMove);
+		chkShowPlaceNames = (CheckBox) toReturn.findViewById(R.id.chkShowPlaceNames );
 		gvMove.setOnClickListener(this);
+		
+		chkShowPlaceNames.setOnCheckedChangeListener( this );
 
 		toReturn.post(new Runnable() {
 			@Override
@@ -152,7 +159,7 @@ public class ExploreStationFragment extends Fragment implements
 
 		if (gameView != null && currentLevel != null && resManager != null) {
 
-			gameView.setSnapshot(game, resManager);
+			gameView.setSnapshot(game, resManager, chkShowPlaceNames.isChecked() );
 
 			ArrayList<Item> tmp = new ArrayList<Item>();
 
@@ -204,5 +211,10 @@ public class ExploreStationFragment extends Fragment implements
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
+	}
+
+	@Override
+	public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+		update();		
 	}
 }

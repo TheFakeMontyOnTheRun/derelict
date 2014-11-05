@@ -162,9 +162,9 @@ public class Derelict2DApplication extends Application implements
 		resManager.addResId("blowtorch-used", R.raw.blowtorchuse);
 		resManager.addResId("shot", R.raw.shot);
 
-		resManager.addResId("coughf", R.raw.coughf);
+		resManager.addResId("coughf", R.raw.coughm);
 		resManager.addResId("coughm", R.raw.coughm);
-		resManager.addResId("coughdeathf", R.raw.coughdeathf);
+		resManager.addResId("coughdeathf", R.raw.coughdeathm);
 		resManager.addResId("coughdeathm", R.raw.coughdeathm);
 
 		startNewGame();

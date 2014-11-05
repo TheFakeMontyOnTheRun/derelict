@@ -5,6 +5,13 @@
     android:background="@color/derelict_background_empty"
     android:orientation="vertical" >
 
+    <CheckBox
+        android:id="@+id/chkShowPlaceNames"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#999"
+        android:text="Show place names" />
+
     <br.odb.derelict2d.ExploreStationView
         android:id="@+id/overviewMap"
         android:layout_width="match_parent"
