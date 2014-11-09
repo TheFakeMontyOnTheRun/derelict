@@ -12,5 +12,6 @@
     <string name="title_activity_show_how_to_play">How to play</string>
     <string name="title_activity_show_credits">ShowCreditsActivity</string>
     <string name="title_activity_derelict2_d">Explore the Totautis Station</string>
+    <string name="title_activity_make_notes">MakeNotesActivity</string>
 
 </resources>

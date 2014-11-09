@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -15,16 +14,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 import br.odb.derelict.core.DerelictGame;
-import br.odb.derelict.core.items.Book;
 import br.odb.derelict2d.game.GameLevel;
 import br.odb.gameapp.GameUpdateDelegate;
 import br.odb.gamelib.android.AndroidUtils;
@@ -39,11 +34,12 @@ import br.odb.utils.Direction;
 import br.odb.utils.Utils;
 
 public class ExploreStationFragment extends Fragment implements
-		GameUpdateDelegate, OnClickListener, OnItemSelectedListener, OnCheckedChangeListener {
+		GameUpdateDelegate, OnClickListener, OnItemSelectedListener,
+		OnCheckedChangeListener {
 
 	EditText edtOutput;
 	EditText edtEntry;
-	Button btnSend;
+
 	ExploreStationView gameView;
 	private Spinner spnDirections;
 	private GameLevel currentLevel;
@@ -52,7 +48,7 @@ public class ExploreStationFragment extends Fragment implements
 	private MediaPlayer ding;
 	private AssetManager resManager;
 	CheckBox chkShowPlaceNames;
-	
+
 	SVGGraphic stationGraphics;
 	private GameView gvMove;
 
@@ -63,15 +59,15 @@ public class ExploreStationFragment extends Fragment implements
 		View toReturn = inflater.inflate(R.layout.fragment_explore_station,
 				container, false);
 
-		btnSend = (Button) toReturn.findViewById(R.id.btnSend);
 		gameView = (ExploreStationView) toReturn.findViewById(R.id.overviewMap);
 		spnDirections = (Spinner) toReturn.findViewById(R.id.spnDirection);
 		spnDirections.setOnItemSelectedListener(this);
 		gvMove = (GameView) toReturn.findViewById(R.id.gvMove);
-		chkShowPlaceNames = (CheckBox) toReturn.findViewById(R.id.chkShowPlaceNames );
+		chkShowPlaceNames = (CheckBox) toReturn
+				.findViewById(R.id.chkShowPlaceNames);
 		gvMove.setOnClickListener(this);
-		
-		chkShowPlaceNames.setOnCheckedChangeListener( this );
+
+		chkShowPlaceNames.setOnCheckedChangeListener(this);
 
 		toReturn.post(new Runnable() {
 			@Override
@@ -159,7 +155,8 @@ public class ExploreStationFragment extends Fragment implements
 
 		if (gameView != null && currentLevel != null && resManager != null) {
 
-			gameView.setSnapshot(game, resManager, chkShowPlaceNames.isChecked() );
+			gameView.setSnapshot(game, resManager,
+					chkShowPlaceNames.isChecked());
 
 			ArrayList<Item> tmp = new ArrayList<Item>();
 
@@ -215,6 +212,6 @@ public class ExploreStationFragment extends Fragment implements
 
 	@Override
 	public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-		update();		
+		update();
 	}
 }

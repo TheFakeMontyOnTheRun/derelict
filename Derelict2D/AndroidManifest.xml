@@ -10,10 +10,10 @@
 
     <application
         android:name="br.odb.derelict2d.Derelict2DApplication"
+        android:allowBackup="false"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:allowBackup="false"
-        android:hardwareAccelerated="true" 
         android:theme="@style/AppTheme" >
         <activity
             android:name="br.odb.derelict2d.RootGameMenuActivity"
@@ -65,6 +65,7 @@
             android:name="br.odb.derelict2d.Derelict2DActivity"
             android:label="@string/title_activity_derelict2_d" >
         </activity>
+
     </application>
 
 </manifest>

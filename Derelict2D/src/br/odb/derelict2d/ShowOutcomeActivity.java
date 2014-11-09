@@ -1,12 +1,11 @@
 package br.odb.derelict2d;
 
-import br.odb.gamelib.android.AndroidUtils;
-import br.odb.gamelib.android.GameView;
+import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
 import android.widget.TextView;
+import br.odb.gamelib.android.AndroidUtils;
+import br.odb.gamelib.android.GameView;
 
 public class ShowOutcomeActivity extends Activity {
 
@@ -49,12 +48,4 @@ public class ShowOutcomeActivity extends Activity {
 		}
 		super.onDestroy();
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.show_outcome, menu);
-		return true;
-	}
-
 }

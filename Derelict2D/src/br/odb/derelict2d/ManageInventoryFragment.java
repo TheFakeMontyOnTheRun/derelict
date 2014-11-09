@@ -12,8 +12,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.webkit.WebView;
-import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
@@ -52,6 +50,7 @@ public class ManageInventoryFragment extends Fragment implements
 	HorizontalScrollView hsvCollected;
 	HorizontalScrollView lvLocationItems;
 	Button btnLocationInfo;
+	Button btnMakeNotes;
 	TextView tvLocationName;
 
 	TextView tvToxicty;
@@ -90,6 +89,8 @@ public class ManageInventoryFragment extends Fragment implements
 		btnInfo = (Button) toReturn.findViewById(R.id.btnInfo);
 		btnInfoToCollect = (Button) toReturn
 				.findViewById(R.id.btnInfoToCollect);
+		btnMakeNotes = (Button) toReturn.findViewById( R.id.btnMakeNotes );
+		btnMakeNotes.setOnClickListener( this );
 		btnInfo.setOnClickListener(this);
 		btnInfoToCollect.setOnClickListener(this);
 
@@ -338,18 +339,6 @@ public class ManageInventoryFragment extends Fragment implements
 			gvPick.setAlpha(0.5f);
 		}
 
-		String desc = game.getTextOutput().replaceAll("\n", "<br/>");
-
-		String newText = "<html><body bgcolor = '#0D0' >" + desc
-				+ "</body></html>";
-
-		// if (!newText.equals(oldText)) {
-		// oldText = newText;
-		//
-		// wvDescription.loadDataWithBaseURL(null, newText, "text/html",
-		// "utf-8", null);
-		// }
-
 		tvLocationName.setText("" + game.hero.getLocation().getName());
 
 		tvToxicty.setText("" + game.hero.toxicity + "%");
@@ -422,6 +411,9 @@ public class ManageInventoryFragment extends Fragment implements
 		case R.id.btnInfo:
 			showInfoDialog();
 			break;
+		case R.id.btnMakeNotes:
+			showMakeNotesDialog();
+			break;
 		case R.id.btnLocationInfo:
 
 			FragmentManager fm = getFragmentManager();
@@ -453,6 +445,7 @@ public class ManageInventoryFragment extends Fragment implements
 			((ExploreStationActivity) getActivity()).update();
 		}
 	}
+
 
 	private String getCurrentLocationItemName() {
 		if (selectedLocationItem != null) {
@@ -494,6 +487,12 @@ public class ManageInventoryFragment extends Fragment implements
 		showItemStatsFragment.show(fm, "show_item_stats_layout");
 	}
 
+	private void showMakeNotesDialog() {
+ 		FragmentManager fm = getFragmentManager();
+		MakeNotesDialog makeNotesDialog = new MakeNotesDialog();
+		makeNotesDialog.show(fm, "activity_make_notes");
+	}
+	
 	private void showInfoDialog() {
 
 		if (selectedCollectedItem == null) {
