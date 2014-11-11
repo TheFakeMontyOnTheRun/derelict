@@ -18,8 +18,8 @@ import br.odb.derelict.core.DerelictGame;
 public class MakeNotesDialog extends DialogFragment implements OnClickListener, OnItemSelectedListener {
 
 	
-	final ArrayList< String > notes = new ArrayList< String >();
-//	private Derelict2DApplication game;
+	ArrayList< String > notes;
+	private Derelict2DApplication game;
 	private EditText edtNote;
 	private Spinner spnNotes;
 
@@ -30,10 +30,9 @@ public class MakeNotesDialog extends DialogFragment implements OnClickListener, 
 		View view = inflater.inflate(R.layout.activity_make_notes,
 				container, true);
 		
-//		game = ((Derelict2DApplication) getActivity().getApplication());
+		game = ((Derelict2DApplication) getActivity().getApplication());
+		notes = game.notes;
 		
-		notes.add( "New note" );
-		notes.add( DerelictGame.GAME_STORY1 + DerelictGame.GAME_STORY2 );
 		
 		edtNote = (EditText) view.findViewById( R.id.edtNote );
 		edtNote.setText( notes.get( 1 ) );
@@ -64,7 +63,7 @@ public class MakeNotesDialog extends DialogFragment implements OnClickListener, 
 				break;
 			case R.id.btnDeleteNote:
 
-				if ( spnNotes.getSelectedItemPosition() > 0 ) {					
+				if ( spnNotes.getSelectedItemPosition() > 1 ) {					
 					notes.remove( spnNotes.getSelectedItem() );
 				}
 				break;
