@@ -3,6 +3,7 @@ package br.odb.derelict2d;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 import android.app.Application;
 import android.content.Context;
@@ -17,6 +18,7 @@ public class Derelict2DApplication extends Application implements
 
 	public DerelictGame game;
 	private AssetManager resManager;
+	final ArrayList< String > notes = new ArrayList< String >();
 
 	@Override
 	public void onCreate() {
@@ -173,6 +175,11 @@ public class Derelict2DApplication extends Application implements
 	}
 
 	public void startNewGame() {
+		notes.clear();
+		notes.add( "New note" );
+		notes.add( DerelictGame.GAME_STORY1 + DerelictGame.GAME_STORY2 );
+
+		
 		game = new DerelictGame();
 		game.setAppName("DERELICT - THE GRAPHICAL ADVENTURE")
 				.setAuthorName("Daniel Monteiro")
