@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="37.687344"
-   height="32.928841"
+   width="32"
+   height="32"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9943 custom"
@@ -22,16 +22,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6"
-     inkscape:cx="-26.665408"
-     inkscape:cy="20.228494"
+     inkscape:zoom="22.4"
+     inkscape:cx="4.4271146"
+     inkscape:cy="24.342645"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1855"
-     inkscape:window-height="1036"
+     inkscape:window-height="1035"
      inkscape:window-x="248"
-     inkscape:window-y="178"
+     inkscape:window-y="23"
      inkscape:window-maximized="0"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -56,25 +56,17 @@
   <g
      id="layer1"
      inkscape:groupmode="layer"
-     inkscape:label="Layer 1"
-     transform="translate(-0.19034031,-0.21933596)">
-    <rect
-       y="0.21933596"
-       x="0.19034031"
-       height="32.928841"
-       width="37.687344"
-       id="rect2993"
-       style="fill:#666666;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+     inkscape:label="Layer 1">
     <path
        inkscape:connector-curvature="0"
        id="path2997"
-       d="M 33.496561,10.215874 C 28.188905,26.420756 11.949812,26.483932 6.0248346,22.207718 4.9691146,13.383449 21.269396,6.4742926 33.496561,10.215874 z"
+       d="M 30.84414,10.000319 C 25.536484,26.205201 9.2973918,26.268377 3.3724144,21.992163 2.3166944,13.167894 18.616975,6.2587378 30.84414,10.000319 z"
        style="opacity:0.32568808;fill:#00ff00;stroke:none"
        sodipodi:nodetypes="ccc" />
     <path
        inkscape:connector-curvature="0"
        id="path2995"
-       d="M 12.662164,17.286942 11.020666,19.938592 13.546047,21.075014 27.688183,14.509022 28.066991,12.488717 25.162802,12.867524 12.662164,17.286942"
+       d="M 10.009743,17.071387 8.3682458,19.723037 10.893626,20.859459 25.035762,14.293467 25.41457,12.273162 22.510381,12.651969 10.009743,17.071387"
        style="fill:#008000;stroke:none" />
   </g>
 </svg>

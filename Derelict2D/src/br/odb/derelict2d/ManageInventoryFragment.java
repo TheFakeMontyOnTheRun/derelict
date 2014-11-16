@@ -6,6 +6,7 @@ import java.util.HashMap;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -242,10 +243,12 @@ public class ManageInventoryFragment extends Fragment implements
 
 		for (int c = 0; c < vg.getChildCount(); ++c) {
 			vg.getChildAt(c).setAlpha(1.0f);
+			vg.getChildAt(c).setBackgroundColor( Color.GRAY );
 		}
 
 		if (selectedLocationItem != null) {
 			viewForItem.get(selectedLocationItem).setAlpha(0.75f);
+			viewForItem.get(selectedLocationItem).setBackgroundColor( Color.TRANSPARENT );
 		}
 
 		llCollectedItems.removeAllViews();
@@ -288,10 +291,12 @@ public class ManageInventoryFragment extends Fragment implements
 		vg = llCollectedItems;
 		for (int c = 0; c < vg.getChildCount(); ++c) {
 			vg.getChildAt(c).setAlpha(1.0f);
+			vg.getChildAt(c).setBackgroundColor( Color.GRAY );
 		}
 
 		if (selectedCollectedItem != null) {
 			viewForItem.get(selectedCollectedItem).setAlpha(0.75f);
+			viewForItem.get(selectedCollectedItem).setBackgroundColor( Color.TRANSPARENT );
 		}
 
 		updateWidgets();

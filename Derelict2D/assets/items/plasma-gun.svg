@@ -24,14 +24,14 @@
      inkscape:pageshadow="2"
      inkscape:zoom="4"
      inkscape:cx="40.222463"
-     inkscape:cy="28.49885"
+     inkscape:cy="58.49885"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1860"
-     inkscape:window-height="1036"
+     inkscape:window-height="1035"
      inkscape:window-x="60"
-     inkscape:window-y="22"
+     inkscape:window-y="23"
      inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -54,22 +54,7 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-0.00625587,-0.00752234)">
-    <rect
-       y="0.0075223446"
-       x="0.0062558651"
-       height="128"
-       width="128"
-       id="rect3120"
-       style="opacity:0.71100913;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
-    <rect
-       style="fill:#666666;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       id="rect2993"
-       width="127.77782"
-       height="127.80236"
-       x="0.048603043"
-       y="0.039373383" />
+     id="layer1">
     <path
        sodipodi:nodetypes="cccccccccccccccscccccc"
        inkscape:connector-curvature="0"

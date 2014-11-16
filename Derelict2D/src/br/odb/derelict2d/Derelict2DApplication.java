@@ -77,6 +77,8 @@ public class Derelict2DApplication extends Application implements
 
 			resManager.putGraphic("magboots",
 					SVGParsingUtils.readSVG(openAsset("items/magboots.svg")));
+			resManager.putGraphic("selection",
+					SVGParsingUtils.readSVG(openAsset("items/selection.svg")));
 			
 			resManager
 					.putGraphic("metal-plate", SVGParsingUtils
