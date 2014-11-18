@@ -1,6 +1,7 @@
 package br.odb.derelict2d;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -48,7 +49,10 @@ public class ExploreStationFragment extends Fragment implements
 	private MediaPlayer ding;
 	private AssetManager resManager;
 	CheckBox chkShowPlaceNames;
-
+	
+	//Playing low here:
+	final HashMap< String, String > locationPrettyNames = new HashMap<String, String>();
+	
 	SVGGraphic stationGraphics;
 	private GameView gvMove;
 
@@ -119,7 +123,7 @@ public class ExploreStationFragment extends Fragment implements
 
 				String locationName = (String) spnDirections.getSelectedItem();
 
-				locationName = locationName.toLowerCase().replace(' ', ' ');
+				locationName = locationPrettyNames.get( locationName );
 
 				d = l.getConnectionDirectionForLocation(game.station
 						.getLocation(locationName));
@@ -168,11 +172,12 @@ public class ExploreStationFragment extends Fragment implements
 
 			String[] locations = game.getConnectionNames();
 
+			String newString;
+			
 			for (int c = 0; c < locations.length; ++c) {
-
-				locations[c] = locations[c].substring(0, 1).toUpperCase()
-						+ locations[c].substring(1);
-				locations[c] = locations[c].replace('-', ' ');
+				newString = ( locations[c].substring(0, 1).toUpperCase() + locations[c].substring(1).toLowerCase() ).replace('-', ' ');
+				locationPrettyNames.put( newString, locations[c] );
+				locations[c] = newString;
 			}
 
 			ArrayAdapter<String> adapter;
