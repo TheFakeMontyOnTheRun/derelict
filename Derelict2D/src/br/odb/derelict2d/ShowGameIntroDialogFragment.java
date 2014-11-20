@@ -46,7 +46,7 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 	
 	
 
-	private void updateDescription( int storyPoint ) {
+	private void updateDescription( final int storyPoint ) {
 		
 		wvStory.getSettings().setJavaScriptEnabled(false);
 		wvStory.loadDataWithBaseURL(null, "<html><body bgcolor = '#0D0' >"
@@ -62,8 +62,10 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 		}
 
 		
+				
 		((ExploreStationActivity) getActivity()).stopTalking();		
 		((ExploreStationActivity) getActivity()).say( storyBits[ storyPoint ] );
+		
 		btNextFinish.setText( buttonTitles[ storyPoint ] );
 	}
 
