@@ -49,10 +49,10 @@ public class ExploreStationFragment extends Fragment implements
 	private MediaPlayer ding;
 	private AssetManager resManager;
 	CheckBox chkShowPlaceNames;
-	
-	//Playing low here:
-	final HashMap< String, String > locationPrettyNames = new HashMap<String, String>();
-	
+
+	// Playing low here:
+	final HashMap<String, String> locationPrettyNames = new HashMap<String, String>();
+
 	SVGGraphic stationGraphics;
 	private GameView gvMove;
 
@@ -123,7 +123,7 @@ public class ExploreStationFragment extends Fragment implements
 
 				String locationName = (String) spnDirections.getSelectedItem();
 
-				locationName = locationPrettyNames.get( locationName );
+				locationName = locationPrettyNames.get(locationName);
 
 				d = l.getConnectionDirectionForLocation(game.station
 						.getLocation(locationName));
@@ -138,6 +138,8 @@ public class ExploreStationFragment extends Fragment implements
 						fiveSteps.start();
 					}
 				}
+				
+				((ExploreStationActivity) getActivity()).say(locationName);
 			} catch (InvalidSlotException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -173,10 +175,10 @@ public class ExploreStationFragment extends Fragment implements
 			String[] locations = game.getConnectionNames();
 
 			String newString;
-			
+
 			for (int c = 0; c < locations.length; ++c) {
-				newString = ( locations[c].substring(0, 1).toUpperCase() + locations[c].substring(1).toLowerCase() ).replace('-', ' ');
-				locationPrettyNames.put( newString, locations[c] );
+				newString =  capitalizeString( locations[c].replace('-', ' ') );
+				locationPrettyNames.put(newString, locations[c]);
 				locations[c] = newString;
 			}
 
@@ -198,14 +200,30 @@ public class ExploreStationFragment extends Fragment implements
 
 	}
 
+	//http://stackoverflow.com/questions/1892765/capitalize-first-char-of-each-word-in-a-string-java served as a basis...
+	public static String capitalizeString(String string) {
+		
+		StringBuilder sb = new StringBuilder();
+		String[] tokens = string.split( "[ ]+" );
+		
+		for ( String token : tokens ) {
+			sb.append( token.substring(0, 1).toUpperCase() + token.substring(1) );
+			sb.append( " " );
+		}
+
+		return sb.toString().trim();
+	}
+
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View v, int arg2, long arg3) {
 
 		try {
+			String locationName = (String) spnDirections.getSelectedItem();
 			game.hero.direction = game.hero.getLocation()
 					.getConnectionDirectionForLocation(
-							game.station.getLocation((String) spnDirections
-									.getSelectedItem()));
+							game.station.getLocation(locationName));
+
+			((ExploreStationActivity) getActivity()).say(locationName);
 		} catch (Exception e) {
 			// We simply bail out. It's not a big deal...
 		}

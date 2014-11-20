@@ -12,7 +12,7 @@ public class AtmospherePurifier extends ActiveItem {
 	public AtmospherePurifier() {
 		super( SUIT_NAME ); 
 		
-		setDescription( "atmosphere purifier - makes sure the air entering your gear is the best. Or how that was, 50 years ago, when this was manufactured.");
+		setDescription( "makes sure the air entering your gear is the best. Or how that was, 50 years ago, when this was manufactured.");
 	}
 	
 	@Override

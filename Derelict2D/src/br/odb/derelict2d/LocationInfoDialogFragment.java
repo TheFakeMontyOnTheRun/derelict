@@ -47,6 +47,9 @@ public class LocationInfoDialogFragment extends DialogFragment {
 		
 		AndroidUtils.initImage(gvPlaceView, "logo", ((Derelict2DApplication) getActivity()
 				.getApplication()).getAssetManager());
+		
+		((ExploreStationActivity) getActivity()).say( title + ": " + game.getTextOutput() );
+		
 		return view;
 	}
 	

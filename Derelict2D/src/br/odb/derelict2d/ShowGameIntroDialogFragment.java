@@ -39,7 +39,6 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 		
 		getDialog().setTitle( "..And so, here we go..." );
 		storyBits = args.getString("desc").split( "\n\n\n"  );
-		
 		updateDescription( 0 );
 
 		return view;
@@ -62,6 +61,9 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 			gvIntroComics.setVisibility( View.INVISIBLE );
 		}
 
+		
+		((ExploreStationActivity) getActivity()).stopTalking();		
+		((ExploreStationActivity) getActivity()).say( storyBits[ storyPoint ] );
 		btNextFinish.setText( buttonTitles[ storyPoint ] );
 	}
 

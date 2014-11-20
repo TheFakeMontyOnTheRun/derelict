@@ -37,7 +37,7 @@ public class ShowItemStatsDialogFragment extends DialogFragment implements
 		String title = args.getString("name").substring(0, 1).toUpperCase() + args.getString("name").substring(1);
 		
 		getDialog().setTitle( title.replace( '-', ' ' ) );
-		updateDescription(args.getString("desc"));
+		updateDescription( title, args.getString("desc"));
 
 		return view;
 	}
@@ -48,11 +48,12 @@ public class ShowItemStatsDialogFragment extends DialogFragment implements
 		super.onStart();
 	}
 
-	private void updateDescription(String desc) {
+	private void updateDescription(String title, String desc) {
 		desc = desc.replaceAll("\n", "<br/>");
 		wvStats.getSettings().setJavaScriptEnabled(false);
 		wvStats.loadDataWithBaseURL(null, "<html><body bgcolor = '#0D0' >"
 				+ desc + "</body></html>", "text/html", "utf-8", null);
+		((ExploreStationActivity) getActivity()).say( title + ": " + desc);
 
 	}
 
@@ -61,6 +62,7 @@ public class ShowItemStatsDialogFragment extends DialogFragment implements
 		switch (v.getId()) {
 		case R.id.btnCloseItemStat:
 			dismiss();
+			((ExploreStationActivity) getActivity()).stopTalking();
 			break;
 		}
 	}

@@ -57,7 +57,17 @@ public class ExploreStationActivity extends Activity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		Intent intent;
+		intent = getIntent();
 
+		String hasSpeech = intent.getExtras().getString("speech");
+		String hasSound = intent.getExtras().getString("hasSound");
+		
+		if (hasSpeech != null && hasSpeech.equals("y")) {
+			tts = new TextToSpeech(this, this);
+		}
+		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -83,12 +93,9 @@ public class ExploreStationActivity extends Activity implements
 
 		DificultyLevel level;
 
-		Intent intent;
-		intent = getIntent();
+
 
 		level = DificultyLevel.values()[intent.getExtras().getInt("aid")];
-		String hasSpeech = intent.getExtras().getString("speech");
-		String hasSound = intent.getExtras().getString("hasSound");
 
 		for (String cmd : level.aid) {
 			game.sendData(cmd);
@@ -96,9 +103,7 @@ public class ExploreStationActivity extends Activity implements
 
 		shouldPlaySound = (hasSound != null && hasSound.equals("y"));
 
-		if (hasSpeech != null && hasSpeech.equals("y")) {
-			tts = new TextToSpeech(this, this);
-		}
+
 
 		if (shouldPlaySound) {
 			playerSound = MediaPlayer.create(this, R.raw.playersounds);
@@ -187,10 +192,6 @@ public class ExploreStationActivity extends Activity implements
 		msg = msg.substring(0, 1).toUpperCase() + msg.substring(1);
 
 		Toast.makeText(this, msg.replace('-', ' '), Toast.LENGTH_SHORT).show();
-
-		if (tts != null) {
-			tts.speak(msg, TextToSpeech.QUEUE_FLUSH, null);
-		}
 	}
 
 	@Override
@@ -225,23 +226,12 @@ public class ExploreStationActivity extends Activity implements
 	}
 
 	@Override
-	public void printNormal(String string) {
-
-		if (tts != null) {
-			tts.speak(string, TextToSpeech.QUEUE_FLUSH, null);
-		}
-	}
-
-	@Override
 	public void alert(String string) {
 
 		string = string.substring(0, 1).toUpperCase() + string.substring(1);
 
 		Toast.makeText(this, string.replace('-', ' '), Toast.LENGTH_SHORT).show();
-		
-		if (tts != null) {
-			tts.speak(string, TextToSpeech.QUEUE_FLUSH, null);
-		}
+		say( string );
 	}
 
 	@Override
@@ -409,6 +399,12 @@ public class ExploreStationActivity extends Activity implements
 		dialog.setArguments(args);
 		dialog.show(fm, "fragment_info_dialog");
 	}
+	
+	public void say( String text ) {
+		if (tts != null) {
+			tts.speak( text, TextToSpeech.QUEUE_FLUSH, null);
+		}
+	}
 
 	private void showInfoDialog() {
 
@@ -419,5 +415,17 @@ public class ExploreStationActivity extends Activity implements
 				+ DerelictGame.GAME_STORY2 + "\n\n\n" + DerelictGame.GAME_RULES);
 		gameIntro.setArguments(args);
 		gameIntro.show(fm, "show_game_intro");
+	}
+
+	@Override
+	public void printNormal(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void stopTalking() {
+		if (tts != null) {
+			tts.stop();
+		}		
 	}
 }
