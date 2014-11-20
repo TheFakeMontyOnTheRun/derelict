@@ -71,6 +71,7 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 
 	@Override
 	public void onClick(View v) {
+		((ExploreStationActivity) getActivity()).stopTalking();		
 		
 		if ( ++currentStoryPoint >= storyBits.length ) {
 			
