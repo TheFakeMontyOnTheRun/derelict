@@ -13,7 +13,6 @@ import br.odb.gamelib.android.GameView;
 public class LocationInfoDialogFragment extends DialogFragment {
 
 	private WebView wvStats;
-	private GameView gvPlaceView;
 	DerelictGame game;
 	
 	
@@ -25,7 +24,6 @@ public class LocationInfoDialogFragment extends DialogFragment {
 				container, true);
 		
 		wvStats = (WebView) view.findViewById(R.id.wvDescription);
-		gvPlaceView = (GameView) view.findViewById(R.id.gvLocationView);
 		
 		
 		game = ((Derelict2DApplication) this.getActivity().getApplication()).game;
@@ -44,10 +42,7 @@ public class LocationInfoDialogFragment extends DialogFragment {
 		wvStats.loadDataWithBaseURL(null, newText, "text/html",
 					"utf-8", null);
 		
-		
-		AndroidUtils.initImage(gvPlaceView, "logo", ((Derelict2DApplication) getActivity()
-				.getApplication()).getAssetManager());
-		
+	
 		((ExploreStationActivity) getActivity()).say( title + ": " + game.getTextOutput() );
 		
 		return view;

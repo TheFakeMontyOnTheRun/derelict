@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0F0"
+        android:background="#555"
         android:padding="5dp" >
 
         <TextView
@@ -17,7 +17,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.95"
-            android:background="#0F0"
             android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#000" />
@@ -33,14 +32,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Notes" />
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="2" >
-
 
         <LinearLayout
             android:layout_width="0dp"
@@ -90,19 +87,20 @@
                 android:layout_height="wrap_content"
                 android:text="Capacity"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#0F0"
             android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/txtTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -110,6 +108,7 @@
                 android:id="@+id/txtTemperature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -117,6 +116,7 @@
                 android:id="@+id/txtMoney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -124,6 +124,7 @@
                 android:id="@+id/txtFacing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -131,6 +132,7 @@
                 android:id="@+id/txtToxicity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -138,17 +140,16 @@
                 android:id="@+id/txtCapacity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-		android:layout_weight="1"
+        android:layout_weight="1"
         android:background="#777" >
 
         <TextView
@@ -172,7 +173,6 @@
                 android:layout_height="fill_parent"
                 android:background="#800080"
                 android:orientation="horizontal" >
-
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -182,7 +182,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Info" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -207,11 +206,10 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Use With"
                 android:gravity="center_horizontal"
+                android:text="Use With"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#FFF" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -234,7 +232,6 @@
                 android:text="Toggle"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#FFF" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -257,7 +254,6 @@
                 android:text="Pick"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#FFF" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -280,7 +276,6 @@
                 android:text="Drop"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#FFF" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -303,7 +298,6 @@
                 android:text="Use"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#FFF" />
-
         </LinearLayout>
     </LinearLayout>
 
@@ -334,7 +328,6 @@
                 android:layout_height="fill_parent"
                 android:background="#ffcc00"
                 android:orientation="horizontal" >
-
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -344,7 +337,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Info" />
-
     </LinearLayout>
 
 </LinearLayout>

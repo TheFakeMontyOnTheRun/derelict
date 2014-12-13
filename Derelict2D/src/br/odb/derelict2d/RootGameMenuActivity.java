@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
@@ -25,19 +26,21 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 	enum DificultyLevel {
 		EASY("Easy: still figuring out what this is all about",
 				"You will have SOME help", new String[] { "pick magboots",
-						"toggle magboots", "pick plasma-gun" }), NORMAL(
+						"toggle magboots", "pick plasma-gun" }, 250 ), NORMAL(
 				"Normal: players that read", "Are you ready, pal!?",
-				new String[] { "pick magboots" }), HARD("Hard: the real deal",
-				"GET LAMP", new String[] {});
+				new String[] { "pick magboots" }, 500 ), HARD("Hard: the real deal",
+				"GET LAMP", new String[] {}, 1500 );
 
 		public final String name;
 		public final String description;
+		public final int defaultPenaultyTime;
 		public final String[] aid;
 
-		DificultyLevel(String name, String description, String[] aid) {
+		DificultyLevel(String name, String description, String[] aid, int penaltyTime ) {
 			this.name = name;
 			this.description = description;
 			this.aid = aid;
+			this.defaultPenaultyTime = penaltyTime;
 		}
 
 		@Override
@@ -76,6 +79,8 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 		gvGithub = (GameView) findViewById(R.id.gvLogoGithub);
 		gvBeer = (GameView) findViewById(R.id.gvBeer);
 		findViewById(R.id.llGithub).setOnTouchListener( this );
+		findViewById(R.id.llBeer).setOnTouchListener( this );
+		findViewById(R.id.llInkscape).setOnTouchListener( this );
 
 		spnLevel.setAdapter(new ArrayAdapter<DificultyLevel>(this,
 				android.R.layout.simple_spinner_item, DificultyLevel.values()));
@@ -182,12 +187,19 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 
 	@Override
 	public boolean onTouch(View v, MotionEvent arg1) {
+		Intent i;
 		
 		switch ( v.getId() ) {
-		case R.id.gvBeer:
+		case R.id.llBeer:
+			Toast.makeText( this, "Soon! Still have some things to sort out.", Toast.LENGTH_LONG ).show();
 			break;
-		case R.id.gvLogoGithub:
-			Intent i = new Intent(Intent.ACTION_VIEW, 
+		case R.id.llInkscape:
+			i = new Intent(Intent.ACTION_VIEW, 
+					Uri.parse("https://inkscape.org/"));
+			startActivity(i);
+			break;
+		case R.id.llGithub:
+			i = new Intent(Intent.ACTION_VIEW, 
 					Uri.parse("https://github.com/TheFakeMontyOnTheRun/derelict"));
 			startActivity(i);
 			break;

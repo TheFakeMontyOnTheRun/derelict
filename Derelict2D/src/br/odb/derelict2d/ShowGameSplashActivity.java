@@ -5,8 +5,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gamerendering.rendering.DisplayList;
@@ -21,6 +24,8 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 	private MediaPlayer theme;
 	GameView gvSplash;
 	GameView gvLogo;
+	private Button playBtn;
+	private boolean gameLoaded;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -28,11 +33,16 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_game_splash);
 
-		findViewById(R.id.btnPlay).setOnClickListener(this);
-
+		playBtn = (Button) findViewById(R.id.btnPlay);
+		
+		gameLoaded = false;
 		gvSplash = (GameView) findViewById(R.id.gvSplash);
 		gvLogo = (GameView) findViewById(R.id.gvLogo);
 
+		gvSplash.setVisibility( View.INVISIBLE );
+		gvLogo.setVisibility( View.INVISIBLE );
+		
+		
 		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.GINGERBREAD) {
 			getWindow().getDecorView().setSystemUiVisibility(
 					View.SYSTEM_UI_FLAG_LOW_PROFILE);
@@ -42,14 +52,29 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
-
-		initImage();
-		gvSplash.postInvalidate();
-		gvLogo.postInvalidate();
+		
+		final Handler handler = new Handler();
+		handler.postDelayed(new Runnable() {
+		  @Override
+		  public void run() {
+			  initImage();
+				gvSplash.postInvalidate();
+				gvLogo.postInvalidate();
+				
+				gvSplash.setVisibility( View.VISIBLE );
+				gvLogo.setVisibility( View.VISIBLE );
+				
+				playBtn.setText( "Play" );
+				playBtn.setOnClickListener( ShowGameSplashActivity.this);
+		  }
+		}, 10);
+		
+		
+		
 	}
 
 	void initImage() {
-
+		((Derelict2DApplication) getApplication()).loadAssets();
 		DisplayList dl = new DisplayList("dl");
 		AssetManager resManager = ((Derelict2DApplication) getApplication())
 				.getAssetManager();
@@ -130,6 +155,7 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 
 	@Override
 	public void onClick(View v) {
+		
 		// gvSplash.invalidate();
 		if (theme != null) {
 

@@ -51,7 +51,8 @@ public class ExploreStationActivity extends Activity implements
 	AssetManager resManager;
 	MediaPlayer playerSound;
 	private long lastTimeCough = -1;
-
+	DificultyLevel level;
+	
 	// MediaPlayer music;
 
 	@Override
@@ -90,10 +91,6 @@ public class ExploreStationActivity extends Activity implements
 		game.hero.setGender(Math.random() > 0.5 ? "f" : "m");
 
 		currentLevel = new Derelict2DTotautisSpaceStation(game.station, this);
-
-		DificultyLevel level;
-
-
 
 		level = DificultyLevel.values()[intent.getExtras().getInt("aid")];
 
@@ -257,6 +254,8 @@ public class ExploreStationActivity extends Activity implements
 			playMedia("cough" + game.hero.getGender(), "*cough*");
 			lastTimeCough = game.station.elapsedTime;
 		}
+		
+		game.station.update( level.defaultPenaultyTime );
 
 		for (GameUpdateDelegate gup : updateDelegates) {
 			gup.update();

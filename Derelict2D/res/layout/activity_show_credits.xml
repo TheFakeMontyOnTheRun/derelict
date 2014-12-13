@@ -33,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#999"
+                android:id="@+id/llDaniel"
                 android:orientation="horizontal" >
 
                 <ImageView
@@ -50,10 +51,10 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="Daniel Monteiro - That&apos;s me! The programmer. I&apos;ve been trying to create this for quite some time! Tap this square for more info on my other games (and to check out the Derelict online highscores too!)"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
-
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llPaulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
@@ -73,10 +74,10 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="Paulo Nideck kindly providede me with the Derelict theme song. Tap this square to reach his languages course"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
-
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llCindy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
@@ -95,10 +96,10 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="Cindy Dalfovo helped-me develop the concept (previously developed in many botched ways). She&apos;s also a photographer. You can reach her by tapping this square."
                     android:textAppearance="?android:attr/textAppearanceLarge" />
-
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llPedro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
@@ -117,10 +118,39 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="Pedro Fernandes gave numerous tips on the game look and UX. Without him, this would be a messy, ugly, thing. He&apos;s a great designer! You can reach him by tapping this square as well."
                     android:textAppearance="?android:attr/textAppearanceLarge" />
-
             </LinearLayout>
-        </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/llAdrian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="300dp"
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/adrian" />
+
+                <TextView
+                    android:id="@+id/txtAdrian"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:background="#999"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Adrian is a old friend that helped me in a numerous ways to make this game A LOT BETTER! He's the head at the Aiyra Game Studio."
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/derelict_foreground"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="I (Daniel) would also like to thank my good friends Carlos Muniz, Marcos Cortes and Renan Moura."
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

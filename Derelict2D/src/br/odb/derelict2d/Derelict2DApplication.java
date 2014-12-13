@@ -23,7 +23,9 @@ public class Derelict2DApplication extends Application implements
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		
+	}
+	
+	public void loadAssets() {
 
 
 		// StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()

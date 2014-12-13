@@ -731,7 +731,7 @@ public class DerelictGame extends ConsoleApplication {
 
 		output += "\n" + hero.toString();
 
-		if (((int) station.getAstronaut().toxicity) % 20 == 1) {
+		if (((int) station.getAstronaut().toxicity) % 20 == 3) {
 			output += ("*cough*");
 		}
 
