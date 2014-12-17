@@ -190,7 +190,7 @@
                             android:textAppearance="?android:attr/textAppearanceLarge" />
 
                         <TextView
-                            android:id="@+id/textView3"
+                            android:id="@+id/txtPlease"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="20dp"

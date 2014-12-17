@@ -128,6 +128,7 @@ public class ExploreStationFragment extends Fragment implements
 				d = l.getConnectionDirectionForLocation(game.station
 						.getLocation(locationName));
 				game.sendData("move " + d);
+				game.station.update( 10000 );
 
 				if (d == Direction.CEILING || d == Direction.FLOOR) {
 					if (ding != null) {

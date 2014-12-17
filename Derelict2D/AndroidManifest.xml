@@ -7,6 +7,12 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="21" />
+    
+    <supports-screens android:smallScreens="false"
+                  android:normalScreens="false"
+                  android:largeScreens="true"
+                  android:xlargeScreens="true"
+		/>
 
     <application
         android:name="br.odb.derelict2d.Derelict2DApplication"
