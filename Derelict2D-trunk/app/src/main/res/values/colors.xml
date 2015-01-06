@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="derelict_foreground">#A6B06F</color>
+    <color name="derelict_background">#545C28</color>
+    <color name="derelict_background_empty">#001D40</color>
+</resources>

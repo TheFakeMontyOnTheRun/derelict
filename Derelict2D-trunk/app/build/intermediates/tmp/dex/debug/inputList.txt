@@ -1,0 +1,9 @@
+/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/classes/debug
+/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/derelict2d-core-java-1.0-SNAPSHOT-f2d1c7084f4b9da7cf06621996f6fae5796908e4.jar
+/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/libstrip-1.0-SNAPSHOT-916091ca454eac3303b9079de061cc9bb787e739.jar
+/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/gameapp-1.0-SNAPSHOT-46064481cc0e690810d945f6fd63454ebe73163e.jar
+/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/gamerendering-1.0-SNAPSHOT-8c9e64292a71119f4f44283dda7831930ce0ba1a.jar
+/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/gameworld-1.0-SNAPSHOT-292c4ba9b357032f36fdf74688830ef57ba50624.jar
+/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/gameutils-1.0-SNAPSHOT-9a86ba34e1d0afa1c055fb5eb8c3feb833b7aabf.jar
+/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/libsvg-1.0-SNAPSHOT-bd0434af4db968fbda7ac19c2853fd2f23659148.jar
+/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/derelict-core-java-1.0-SNAPSHOT-7532bbf0e071778e3e35c396622d8c752d3d6a91.jar

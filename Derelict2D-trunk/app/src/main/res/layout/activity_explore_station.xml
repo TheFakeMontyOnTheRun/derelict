@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/derelict_background_empty"
+    android:orientation="horizontal"
+    android:padding="0dip"
+    tools:context=".ExploreStationActivity" >
+
+    <fragment
+        android:id="@+id/explore_station_fragment"
+        android:name="br.odb.derelict2d.ExploreStationFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_explore_station" />
+
+    <fragment
+        android:id="@+id/manage_inventory_fragment"
+        android:name="br.odb.derelict2d.ManageInventoryFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/activity_manage_inventory" />
+</LinearLayout>

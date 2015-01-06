@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.odb.derelict2d"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+    
+    <supports-screens android:smallScreens="false"
+                  android:normalScreens="false"
+                  android:largeScreens="true"
+                  android:xlargeScreens="true"
+		/>
+
+    <application
+        android:name="br.odb.derelict2d.Derelict2DApplication"
+        android:allowBackup="false"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="br.odb.derelict2d.RootGameMenuActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="br.odb.derelict1d.Derelict1DActivity"
+            android:label="@string/title_activity_derelict1_d"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="br.odb.derelict2d.ExploreStationActivity"
+            android:label="@string/title_activity_explore_station"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="br.odb.derelict2d.ManageInventoryActivity"
+            android:label="@string/title_activity_manage_inventory"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="br.odb.derelict2d.ShowGameSplashActivity"
+            android:label="@string/title_activity_show_game_splash"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="br.odb.derelict2d.ShowOutcomeActivity"
+            android:label="@string/title_activity_show_outcome"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="br.odb.derelict2d.ShowHowToPlayActivity"
+            android:label="@string/title_activity_show_how_to_play" >
+        </activity>
+        <activity
+            android:name="br.odb.derelict2d.ShowCreditsActivity"
+            android:label="@string/title_activity_show_credits" >
+        </activity>
+        <activity
+            android:name="br.odb.derelict2d.Derelict2DActivity"
+            android:label="@string/title_activity_derelict2_d" >
+        </activity>
+
+    </application>
+
+</manifest>
