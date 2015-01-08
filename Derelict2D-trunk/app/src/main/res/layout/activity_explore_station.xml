@@ -12,7 +12,7 @@
         android:name="br.odb.derelict2d.ExploreStationFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="3"
         tools:layout="@layout/fragment_explore_station" />
 
     <fragment
@@ -20,6 +20,6 @@
         android:name="br.odb.derelict2d.ManageInventoryFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="4"
         tools:layout="@layout/activity_manage_inventory" />
 </LinearLayout>

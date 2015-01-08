@@ -18,7 +18,8 @@
             android:layout_height="match_parent"
             android:layout_weight="0.95"
             android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_horizontal|center_vertical"
             android:textColor="#000" />
 
         <Button
@@ -37,7 +38,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="2" >
+        android:layout_weight="0" >
 
         <LinearLayout
             android:layout_width="0dp"
@@ -154,17 +155,18 @@
 
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="Collected Item:" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Collected:" />
 
         <HorizontalScrollView
             android:id="@+id/lvCollected"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="5"
+            android:layout_weight="10"
             android:background="#222" >
 
             <LinearLayout
@@ -178,9 +180,9 @@
 
         <Button
             android:id="@+id/btnInfo"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Info" />
     </LinearLayout>
 
@@ -207,7 +209,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Use With"
+                android:text="Use On"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#FFF" />
         </LinearLayout>
@@ -309,17 +311,18 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="Object in location:" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="In location:" />
 
         <HorizontalScrollView
             android:id="@+id/lvLocationItems"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="5"
+            android:layout_weight="10"
             android:background="#222" >
 
             <LinearLayout
@@ -333,9 +336,9 @@
 
         <Button
             android:id="@+id/btnInfoToCollect"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Info" />
     </LinearLayout>
 

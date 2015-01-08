@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#999"
+    android:orientation="vertical" >
+
+    <br.odb.gamelib.android.GameView
+        android:id="@+id/gvItemView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#555"
+        android:layout_weight="1" />
+
+    <WebView
+        android:id="@+id/wvStats"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/btnCloseItemStat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Close" />
+
+</LinearLayout><!-- From: file:/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/src/main/res/layout-normal/show_item_stats_layout.xml -->
