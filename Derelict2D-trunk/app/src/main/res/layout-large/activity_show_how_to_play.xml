@@ -1,0 +1,232 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/derelict_background_empty"
+    android:orientation="vertical"
+    tools:context=".ShowHowToPlayActivity" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/derelict_background" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="@color/derelict_foreground"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:text="How to play Derelict:"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:text="(Scroll to make sure you read everything)"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/derelict_background"
+                    android:orientation="vertical" >
+
+                    <br.odb.gamelib.android.GameView
+                        android:id="@+id/gvHowToPlayHero"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="right"                        
+                        android:layout_weight="1"
+                        android:background="#888" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="This is your place in the situation map" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="This is how objects are represented in the map" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/derelict_background"
+                    android:orientation="vertical" >
+
+                    <br.odb.gamelib.android.GameView
+                        android:id="@+id/gvHowToPlayItem"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="left"                        
+                        android:layout_weight="1"
+                        android:background="#888" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/derelict_background" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <br.odb.gamelib.android.GameView
+                        android:id="@+id/gvHowToPlayPick"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="right"                        
+                        android:layout_weight="1"
+                        android:background="#888" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/TextView03"
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:background="@color/derelict_foreground"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="This will allow you to pick an object" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/TextView08"
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="This allows you to use an object you hold" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/derelict_background"
+                    android:orientation="vertical" >
+
+                    <br.odb.gamelib.android.GameView
+                        android:id="@+id/gvHowToPlayUse"
+                        android:layout_width="200dp"
+                        android:layout_gravity="left"                        
+                        android:layout_height="200dp"
+                        android:layout_weight="1"
+                        android:background="#888" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/derelict_background" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/derelict_background"
+                    android:orientation="vertical" >
+
+                    <br.odb.gamelib.android.GameView
+                        android:id="@+id/gvHowToPlayUseWith"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="right"                        
+                        android:layout_weight="1"
+                        android:background="#888" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/TextView07"
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:background="@color/derelict_foreground"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="This will allow you to use an object you hold into an object in the environment" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/TextView06"
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="This will toggle an object between active and inactive state" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/derelict_background"
+                    android:orientation="vertical" >
+
+                    <br.odb.gamelib.android.GameView
+                        android:id="@+id/gvHowToPlayToggle"
+                        android:layout_width="200dp"
+                        android:layout_gravity="left"
+                        android:layout_height="200dp"
+                        android:layout_weight="1"
+                        android:background="#888" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/derelict_background" >
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

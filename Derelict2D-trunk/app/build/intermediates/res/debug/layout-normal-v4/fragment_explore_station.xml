@@ -10,7 +10,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#999"
-        android:text="Show place names" />
+        android:gravity="center"
+        android:text="Place names" />
 
     <br.odb.derelict2d.ExploreStationView
         android:id="@+id/overviewMap"
