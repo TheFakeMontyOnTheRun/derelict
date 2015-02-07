@@ -89,7 +89,7 @@
      inkscape:connector-curvature="0"
      style="fill:#008000;stroke:none"
      d="M 358.93357,111.07011 411.19978,111.07011 411.19978,63.633191 358.93357,63.633191 358.93357,111.07011"
-     id="elevator-shaft-3" />
+     id="elevator-level-3" />
   <path
      inkscape:connector-curvature="0"
      style="fill:#806600;stroke:none"
@@ -202,7 +202,7 @@
      inkscape:connector-curvature="0"
      style="opacity:0.40366971;fill:#00ffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
      d="M 366.54828,74.900093 402.80897,74.900093 402.80897,101.70147 366.54828,101.70147 z"
-     id="elevator-shaft-3-hatch" />
+     id="elevator-level-3-hatch" />
   <path
      inkscape:connector-curvature="0"
      id="lab 1-walls"

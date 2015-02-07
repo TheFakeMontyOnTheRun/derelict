@@ -25,13 +25,6 @@
         </dependency>
 
         <dependency>
-            <groupId>br.odb.derelict</groupId>
-            <artifactId>derelict2d-core-java</artifactId>
-            <version>1.0-SNAPSHOT</version>
-     
-        </dependency>
-
-        <dependency>
             <groupId>br.odb</groupId>
             <artifactId>gameutils</artifactId>
             <version>1.0-SNAPSHOT</version>
@@ -66,7 +59,11 @@
             <artifactId>gamerendering</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>derelict2d-core-java</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

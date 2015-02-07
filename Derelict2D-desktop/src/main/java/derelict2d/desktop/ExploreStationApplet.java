@@ -30,6 +30,7 @@ import java.util.logging.Logger;
  * @author monty
  */
 public class ExploreStationApplet extends javax.swing.JApplet implements FileServerDelegate {
+
     DerelictGraphicsAdapter adapter = new DerelictGraphicsAdapter();
     private DerelictGame game;
     private AssetManager resManager;
@@ -74,9 +75,9 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
                     initComponents();
                 }
             });
-        } catch (InterruptedException ex ) {
+        } catch (InterruptedException ex) {
             ex.printStackTrace();
-        } catch ( InvocationTargetException ex ) {
+        } catch (InvocationTargetException ex) {
             ex.printStackTrace();
         }
 
@@ -84,92 +85,147 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
                 .setLicenseName("3-Clause BSD").setReleaseYear(2014);
 
         resManager = new AssetManager();
-        
-        game.setApplicationClient(new SwingTextClientAdapter(txtOutput, resManager ) );
+
+        game.setApplicationClient(new SwingTextClientAdapter(txtOutput, resManager));
 
         try {
+
+            resManager.putGraphic("floor1", SVGParsingUtils
+                    .readSVG(openAsset("overview-map/floor1.svg")));
+            resManager.putGraphic("floor2", SVGParsingUtils
+                    .readSVG(openAsset("overview-map/floor2.svg")));
+            resManager.putGraphic("floor3", SVGParsingUtils
+                    .readSVG(openAsset("overview-map/floor3.svg")));
+
+            resManager.putGraphic("backdrop", SVGParsingUtils
+                    .readSVG(openAsset("overview-map/backdrop.svg")));
+
+            resManager.putGraphic("heroGraphic", SVGParsingUtils
+                    .readSVG(openAsset("overview-map/astronaut-icon.svg")));
+            resManager.putGraphic("blowtorch",
+                    SVGParsingUtils.readSVG(openAsset("items/blowtorch.svg")));
+            resManager.putGraphic("bomb-remote-controller", SVGParsingUtils
+                    .readSVG(openAsset("items/bomb-remote-controller.svg")));
+            resManager.putGraphic("book",
+                    SVGParsingUtils.readSVG(openAsset("items/book.svg")));
+            resManager.putGraphic("comm-system", SVGParsingUtils
+                    .readSVG(openAsset("items/comm-system.svg")));
+            resManager.putGraphic("atmosphere-purifier", SVGParsingUtils
+                    .readSVG(openAsset("items/atmosphere-purifier.svg")));
+            resManager.putGraphic("keycard-for-high-rank", SVGParsingUtils
+                    .readSVG(openAsset("items/keycard-for-high-rank.svg")));
+            resManager.putGraphic("keycard-for-root-access", SVGParsingUtils
+                    .readSVG(openAsset("items/keycard-for-lab-access.svg")));
+            resManager.putGraphic("keycard-for-low-rank", SVGParsingUtils
+                    .readSVG(openAsset("items/keycard-for-low-rank.svg")));
+            resManager.putGraphic("lab-equipment", SVGParsingUtils
+                    .readSVG(openAsset("items/lab-equipment.svg")));
+
+            resManager.putGraphic("electric-experiment", SVGParsingUtils
+                    .readSVG(openAsset("items/lab-equipment.svg")));
+
+            resManager.putGraphic("magboots",
+                    SVGParsingUtils.readSVG(openAsset("items/magboots.svg")));
+            resManager.putGraphic("metal-plate", SVGParsingUtils
+                    .readSVG(openAsset("items/metal-plate.svg")));
+			resManager
+			.putGraphic("metal-scrap", SVGParsingUtils
+					.readSVG(openAsset("items/metal-plate.svg")));
+			resManager
+			.putGraphic("metal-sheet", SVGParsingUtils
+					.readSVG(openAsset("items/metal-plate.svg")));            
             
-
-			resManager.putGraphic("floor1", SVGParsingUtils
-					.readSVG(openAsset("overview-map/floor1.svg")));
-			resManager.putGraphic("floor2", SVGParsingUtils
-					.readSVG(openAsset("overview-map/floor2.svg")));
-			resManager.putGraphic("floor3", SVGParsingUtils
-					.readSVG(openAsset("overview-map/floor3.svg")));
-                        
-			resManager.putGraphic("backdrop", SVGParsingUtils
-					.readSVG(openAsset("overview-map/backdrop.svg")));
-                        
-			resManager.putGraphic("heroGraphic", SVGParsingUtils
-					.readSVG(openAsset("overview-map/astronaut-icon.svg")));
-			resManager.putGraphic("blowtorch",
-					SVGParsingUtils.readSVG(openAsset("items/blowtorch.svg")));
-			resManager.putGraphic("bomb-remote-controller", SVGParsingUtils
-					.readSVG(openAsset("items/bomb-remote-controller.svg")));
-			resManager.putGraphic("book",
-					SVGParsingUtils.readSVG(openAsset("items/book.svg")));
-			resManager.putGraphic("comm-system", SVGParsingUtils
-							.readSVG(openAsset("items/comm-system.svg")));
-			resManager.putGraphic("atmosphere-purifier", SVGParsingUtils
-					.readSVG(openAsset("items/atmosphere-purifier.svg")));
-			resManager.putGraphic("keycard-for-high-rank", SVGParsingUtils
-					.readSVG(openAsset("items/keycard-for-high-rank.svg")));
-			resManager.putGraphic("keycard-for-root-access", SVGParsingUtils
-					.readSVG(openAsset("items/keycard-for-lab-access.svg")));
-			resManager.putGraphic("keycard-for-low-rank", SVGParsingUtils
-					.readSVG(openAsset("items/keycard-for-low-rank.svg")));
-			resManager.putGraphic("lab-equipment", SVGParsingUtils
-					.readSVG(openAsset("items/lab-equipment.svg")));
-                        
-			resManager.putGraphic("electric-experiment", SVGParsingUtils
-					.readSVG(openAsset("items/lab-equipment.svg")));
-                        
-			resManager.putGraphic("magboots",
-					SVGParsingUtils.readSVG(openAsset("items/magboots.svg")));
-			resManager.putGraphic("metal-plate", SVGParsingUtils
-							.readSVG(openAsset("items/metal-plate.svg")));
-			resManager.putGraphic("plasma-gun",
-					SVGParsingUtils.readSVG(openAsset("items/plasma-gun.svg")));
-			resManager.putGraphic("plasma-pellet", SVGParsingUtils
-					.readSVG(openAsset("items/plasma-pellet.svg")));
-			resManager.putGraphic("plastic-pipes", SVGParsingUtils
-					.readSVG(openAsset("items/plastic-pipes.svg")));
-			resManager.putGraphic("time-bomb",
-					SVGParsingUtils.readSVG(openAsset("items/time-bomb.svg")));
-			resManager.putGraphic("computer-stand", SVGParsingUtils
-					.readSVG(openAsset("items/computer-stand.svg")));
-			resManager.putGraphic("ship-ignition-key", SVGParsingUtils
-					.readSVG(openAsset("items/ship-ignition-key.svg")));
-
-
+            resManager.putGraphic("plasma-gun",
+                    SVGParsingUtils.readSVG(openAsset("items/plasma-gun.svg")));
+            resManager.putGraphic("plasma-pellet", SVGParsingUtils
+                    .readSVG(openAsset("items/plasma-pellet.svg")));
+            resManager.putGraphic("plastic-pipes", SVGParsingUtils
+                    .readSVG(openAsset("items/plastic-pipes.svg")));
+            resManager.putGraphic("time-bomb",
+                    SVGParsingUtils.readSVG(openAsset("items/time-bomb.svg")));
+            resManager.putGraphic("computer-stand", SVGParsingUtils
+                    .readSVG(openAsset("items/computer-stand.svg")));
+            resManager.putGraphic("ship-ignition-key", SVGParsingUtils
+                    .readSVG(openAsset("items/ship-ignition-key.svg")));
 
             playerSound = newAudioClip(getClass().getResource("/playersounds.wav"));
             fiveStep = newAudioClip(getClass().getResource("/fivesteps.wav"));
             ding = newAudioClip(getClass().getResource("/ding.wav"));
 
-            resManager.registerMediaPlayer( "pick", new SwingMediaPlayer( newAudioClip(getClass().getResource("/pick.wav") ) ) );
-            resManager.registerMediaPlayer( "drop", new SwingMediaPlayer( newAudioClip(getClass().getResource("/drop.wav") ) ) );
-            resManager.registerMediaPlayer( "bonk", new SwingMediaPlayer( newAudioClip(getClass().getResource("/bonk.wav") ) ) );            
-            resManager.registerMediaPlayer( "spooky1", new SwingMediaPlayer( newAudioClip(getClass().getResource("/spooky1.wav") )  ) );
-            resManager.registerMediaPlayer( "spooky2", new SwingMediaPlayer( newAudioClip(getClass().getResource("/spooky2.wav") )  ) );
-            resManager.registerMediaPlayer( "spooky3", new SwingMediaPlayer( newAudioClip(getClass().getResource("/spooky3.wav") )  ) );                        
-            resManager.registerMediaPlayer( "click", new SwingMediaPlayer( newAudioClip(getClass().getResource("/click.wav") )  ) );
-            resManager.registerMediaPlayer( "blowtorch-turned-on", new SwingMediaPlayer( newAudioClip(getClass().getResource("/blowtorchon.wav") )  ) );
-       //     resManager.registerMediaPlayer( "blowtorch-turned-off", new SwingMediaPlayer( newAudioClip(getClass().getResource("/blowtorchoff.wav") )  ) );
-            resManager.registerMediaPlayer( "blowtorch-used", new SwingMediaPlayer( newAudioClip(getClass().getResource("/blowtorchuse.wav") )  ) );
-            resManager.registerMediaPlayer( "shot", new SwingMediaPlayer( newAudioClip(getClass().getResource("/shot.wav") )  ) );            
-            resManager.registerMediaPlayer( "magbootson", new SwingMediaPlayer( newAudioClip(getClass().getResource("/magbootson.wav") )  ) );
-            resManager.registerMediaPlayer( "magbootsoff", new SwingMediaPlayer( newAudioClip(getClass().getResource("/magbootsoff.wav") )  ) );
-            resManager.registerMediaPlayer( "magbootsused", new SwingMediaPlayer( newAudioClip(getClass().getResource("/magbootsused.wav") )  ) );            
+            resManager.registerMediaPlayer("pick", new SwingMediaPlayer(newAudioClip(getClass().getResource("/pick.wav"))));
+            resManager.registerMediaPlayer("drop", new SwingMediaPlayer(newAudioClip(getClass().getResource("/drop.wav"))));
+            resManager.registerMediaPlayer("bonk", new SwingMediaPlayer(newAudioClip(getClass().getResource("/bonk.wav"))));
+            resManager.registerMediaPlayer("spooky1", new SwingMediaPlayer(newAudioClip(getClass().getResource("/spooky1.wav"))));
+            resManager.registerMediaPlayer("spooky2", new SwingMediaPlayer(newAudioClip(getClass().getResource("/spooky2.wav"))));
+            resManager.registerMediaPlayer("spooky3", new SwingMediaPlayer(newAudioClip(getClass().getResource("/spooky3.wav"))));
+            resManager.registerMediaPlayer("click", new SwingMediaPlayer(newAudioClip(getClass().getResource("/click.wav"))));
+            resManager.registerMediaPlayer("blowtorch-turned-on", new SwingMediaPlayer(newAudioClip(getClass().getResource("/blowtorchon.wav"))));
+//            resManager.registerMediaPlayer( "blowtorch-turned-off", new SwingMediaPlayer( newAudioClip(getClass().getResource("/blowtorchoff.wav") )  ) );
+            resManager.registerMediaPlayer("blowtorch-used", new SwingMediaPlayer(newAudioClip(getClass().getResource("/blowtorchuse.wav"))));
+            resManager.registerMediaPlayer("shot", new SwingMediaPlayer(newAudioClip(getClass().getResource("/shot.wav"))));
+            resManager.registerMediaPlayer("magbootson", new SwingMediaPlayer(newAudioClip(getClass().getResource("/magbootson.wav"))));
+            resManager.registerMediaPlayer("magbootsoff", new SwingMediaPlayer(newAudioClip(getClass().getResource("/magbootsoff.wav"))));
+            resManager.registerMediaPlayer("magbootsused", new SwingMediaPlayer(newAudioClip(getClass().getResource("/magbootsused.wav"))));
+
+            resManager.registerMediaPlayer("atmosphereon", new SwingMediaPlayer(newAudioClip(getClass().getResource("/atmosphereon.wav"))));
+            resManager.registerMediaPlayer("atmosphereoff", new SwingMediaPlayer(newAudioClip(getClass().getResource("/atmosphereoff.wav"))));
+            resManager.registerMediaPlayer("coughf", new SwingMediaPlayer(newAudioClip(getClass().getResource("/coughf.wav"))));
+            resManager.registerMediaPlayer("coughm", new SwingMediaPlayer(newAudioClip(getClass().getResource("/coughm.wav"))));
+            resManager.registerMediaPlayer("coughdeathf", new SwingMediaPlayer(newAudioClip(getClass().getResource("/coughdeathf.wav"))));
+            resManager.registerMediaPlayer("coughdeathm", new SwingMediaPlayer(newAudioClip(getClass().getResource("/coughdeathm.wav"))));
+
+            resManager
+                    .putGraphic("icon-move", SVGParsingUtils
+                            .readSVG(openAsset("action-icons/move.svg")));
+            resManager
+                    .putGraphic("icon-turn", SVGParsingUtils
+                            .readSVG(openAsset("action-icons/turn.svg")));
+            resManager
+                    .putGraphic("icon-pick", SVGParsingUtils
+                            .readSVG(openAsset("action-icons/pick.svg")));
+            resManager.putGraphic("icon-use-with", SVGParsingUtils
+                    .readSVG(openAsset("action-icons/useWith.svg")));
+            resManager.putGraphic("icon-use",
+                    SVGParsingUtils.readSVG(openAsset("action-icons/use.svg")));
+            resManager
+                    .putGraphic("icon-drop", SVGParsingUtils
+                            .readSVG(openAsset("action-icons/drop.svg")));
+
+            resManager.putGraphic("icon-toggle", SVGParsingUtils
+                    .readSVG(openAsset("action-icons/toggle.svg")));
+
+            resManager.putGraphic("intro-comics0",
+                    SVGParsingUtils.readSVG(openAsset("chapters/intro1.svg")));
+            resManager.putGraphic("intro-comics1",
+                    SVGParsingUtils.readSVG(openAsset("chapters/intro2.svg")));
+            resManager.putGraphic("intro-comics2",
+                    SVGParsingUtils.readSVG(openAsset("chapters/intro3.svg")));
+
+            resManager.putGraphic("logo_github",
+                    SVGParsingUtils.readSVG(openAsset("logo_github.svg")));
+
+            resManager.putGraphic("logo_inkscape",
+                    SVGParsingUtils.readSVG(openAsset("logo_inkscape.svg")));
+
+            resManager.putGraphic("beer",
+                    SVGParsingUtils.readSVG(openAsset("beer.svg")));
+
+            for (int c = 0; c < 32; ++c) {
+
+                resManager.putGraphic(
+                        "ending" + c,
+                        SVGParsingUtils.readSVG(openAsset("chapters/ending" + c
+                                        + ".svg")));
+            }
         } catch (IOException ex) {
             Logger.getLogger(ExploreStationApplet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
-
         cmbDirection.setModel(new javax.swing.DefaultComboBoxModel(Direction.values()));
         setGameSnapshot(game);
-        game.sendData("");
+        game.sendData("pick all");
+        game.sendData("toggle atmosphere-purifier");
+        game.sendData("toggle magboots");
         updateGameState();
         //playerSound.loop();
     }
@@ -183,19 +239,26 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton3 = new javax.swing.JButton();
         cmdGo = new javax.swing.JButton();
         cmbLocations = new javax.swing.JComboBox();
         cmbLoot = new javax.swing.JComboBox();
         cmdPick = new javax.swing.JButton();
         cmbInventory = new javax.swing.JComboBox();
-        cmbActions = new javax.swing.JComboBox();
-        cmdDoIt = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         pnlExploreStationView = new derelict2d.desktop.ExploreStationJPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtOutput = new javax.swing.JTextArea();
         cmbDirection = new javax.swing.JComboBox();
-        cmdSaveLog = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        cmdUse = new javax.swing.JButton();
+        cmdUseWith = new javax.swing.JButton();
+        cmdDrop = new javax.swing.JButton();
+        cmdToggle = new javax.swing.JButton();
+        lblPlaceName = new javax.swing.JLabel();
+
+        jButton3.setText("jButton1");
 
         cmdGo.setText("Go");
         cmdGo.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +271,7 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
 
         cmbLoot.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cmdPick.setText(">");
+        cmdPick.setText("Pick");
         cmdPick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdPickActionPerformed(evt);
@@ -216,15 +279,6 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
         });
 
         cmbInventory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cmbActions.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Use", "Use With", "Toggle" }));
-
-        cmdDoIt.setText("Do it!");
-        cmdDoIt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdDoItActionPerformed(evt);
-            }
-        });
 
         jSplitPane1.setResizeWeight(0.5);
 
@@ -238,11 +292,11 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
         pnlExploreStationView.setLayout(pnlExploreStationViewLayout);
         pnlExploreStationViewLayout.setHorizontalGroup(
             pnlExploreStationViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 551, Short.MAX_VALUE)
+            .addGap(0, 606, Short.MAX_VALUE)
         );
         pnlExploreStationViewLayout.setVerticalGroup(
             pnlExploreStationViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGap(0, 599, Short.MAX_VALUE)
         );
 
         jSplitPane1.setLeftComponent(pnlExploreStationView);
@@ -261,110 +315,100 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
             }
         });
 
-        cmdSaveLog.setText("save log");
-        cmdSaveLog.addActionListener(new java.awt.event.ActionListener() {
+        cmdUse.setText("Use");
+        cmdUse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdSaveLogActionPerformed(evt);
+                cmdUseActionPerformed(evt);
             }
         });
+
+        cmdUseWith.setText("Use with");
+        cmdUseWith.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdUseWithActionPerformed(evt);
+            }
+        });
+
+        cmdDrop.setText("Drop");
+        cmdDrop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdDropActionPerformed(evt);
+            }
+        });
+
+        cmdToggle.setText("Toggle");
+        cmdToggle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdToggleActionPerformed(evt);
+            }
+        });
+
+        lblPlaceName.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblPlaceName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 905, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(cmbLoot, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdPick)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbActions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(cmdDoIt))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSplitPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbLocations, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbDirection, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmdGo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmdSaveLog)))
-                .addContainerGap())
+                    .addComponent(cmbLocations, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbDirection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbInventory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(cmdUse)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdUseWith)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdToggle)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdPick)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdDrop))
+                            .addComponent(cmbLoot, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(cmdGo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbLoot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmdPick)
-                    .addComponent(cmbInventory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbActions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmdDoIt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSplitPane1)
+                .addComponent(lblPlaceName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdGo)
-                    .addComponent(cmbLocations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbDirection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmdSaveLog)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cmbInventory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmdUse)
+                            .addComponent(cmdUseWith)
+                            .addComponent(cmdPick)
+                            .addComponent(cmdDrop)
+                            .addComponent(cmdToggle))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbLoot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbLocations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbDirection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmdGo)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cmdPickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdPickActionPerformed
-
-        game.getClient().clear();
-
-        if (cmbLoot.getModel().getSize() <= 0) {
-            return;
-        }
-
-        String line = "pick " + game.getCollectableItems()[ cmbLoot.getSelectedIndex()].getName();
-
-        game.sendData(line);
-        this.updateGameState();
-    }//GEN-LAST:event_cmdPickActionPerformed
-
-    private void cmdDoItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDoItActionPerformed
-
-        game.getClient().clear();
-
-        String line;
-        String actionName = (String) cmbActions.getSelectedItem();
-        String operand = "";
-        int operandsTakenSoFar = 0;
-        String operand2 = "";
-        UserCommandLineAction action;
-        action = (UserCommandLineAction) game.getAvailableCommands()[ cmbActions.getSelectedIndex()];
-
-        if (cmbInventory.getModel().getSize() > 0 && action.requiredOperands() > operandsTakenSoFar) {
-            operand = game.getCollectedItems()[ cmbInventory.getSelectedIndex()].getName();
-            ++operandsTakenSoFar;
-        }
-
-
-        if (cmbLoot.getModel().getSize() > 0 && action.requiredOperands() > operandsTakenSoFar) {
-            operand2 = game.getCollectableItems()[ cmbLoot.getSelectedIndex()].getName();
-            ++operandsTakenSoFar;
-        }
-
-
-        line = actionName + " " + operand2 + " " + operand;
-        System.out.println(">" + line);
-        game.sendData(line);
-        
-        if ( game.getClient().isConnected() ) {
-            this.updateGameState();
-            pnlExploreStationView.repaint();
-        }
-    }//GEN-LAST:event_cmdDoItActionPerformed
 
     private void cmdGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGoActionPerformed
 
@@ -372,7 +416,6 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
         Location l;
 
         game.getClient().clear();
-
 
         try {
             l = game.station.getLocation((String) cmbLocations.getSelectedItem());
@@ -387,7 +430,7 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
                 }
 
             }
-        } catch (InvalidLocationException e ) {
+        } catch (InvalidLocationException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (InvalidSlotException ex) {
@@ -419,34 +462,92 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
         updateGameState();
     }//GEN-LAST:event_cmbDirectionItemStateChanged
 
-    private void cmdSaveLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSaveLogActionPerformed
-        OutputStream os = null;
-        try {
-            os = this.openAsOutputStream("log.txt");
-            os.write(((SwingTextClientAdapter) game.getClient()).log.getBytes());
-        } catch (IOException ex) {
-            Logger.getLogger(ExploreStationApplet.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                os.close();
-            } catch (IOException ex) {
-                Logger.getLogger(ExploreStationApplet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    private void performAction(String actionName, String operand, String operand2) {
+        game.getClient().clear();
+
+        String line;
+        line = actionName + " " + operand2 + " " + operand;
+        System.out.println(">" + line);
+        game.sendData(line);
+        updateGameState();
+    }
+
+    private void cmdPickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdPickActionPerformed
+
+        String operand = "";
+
+        if (game.getCollectableItems().length > 0) {
+            operand = game.getCollectableItems()[ cmbLoot.getSelectedIndex()].getName();
         }
 
-    }//GEN-LAST:event_cmdSaveLogActionPerformed
+        performAction("pick", "", operand);
+    }//GEN-LAST:event_cmdPickActionPerformed
+
+    private void cmdDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDropActionPerformed
+
+        String operand = "";
+
+        if (game.getCollectedItems().length > 0) {
+            operand = game.getCollectedItems()[ cmbInventory.getSelectedIndex()].getName();
+        }
+
+        performAction("drop", operand, "");
+    }//GEN-LAST:event_cmdDropActionPerformed
+
+    private void cmdUseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdUseActionPerformed
+
+        String operand = "";
+
+        if (game.getCollectedItems().length > 0) {
+            operand = game.getCollectedItems()[ cmbInventory.getSelectedIndex()].getName();
+        }
+
+        performAction("use", operand, "");
+    }//GEN-LAST:event_cmdUseActionPerformed
+
+    private void cmdUseWithActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdUseWithActionPerformed
+        String operand2 = "";
+
+        if (game.getCollectableItems().length > 0) {
+            operand2 = game.getCollectableItems()[ cmbLoot.getSelectedIndex()].getName();
+        }
+
+        String operand = "";
+
+        if (game.getCollectedItems().length > 0) {
+            operand = game.getCollectedItems()[ cmbInventory.getSelectedIndex()].getName();
+        }
+
+        performAction("useWith", operand, operand2);
+    }//GEN-LAST:event_cmdUseWithActionPerformed
+
+    private void cmdToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdToggleActionPerformed
+        String operand = "";
+
+        if (game.getCollectedItems().length > 0) {
+            operand = game.getCollectedItems()[ cmbInventory.getSelectedIndex()].getName();
+        }
+
+        performAction("toggle", operand, "");
+    }//GEN-LAST:event_cmdToggleActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox cmbActions;
     private javax.swing.JComboBox cmbDirection;
     private javax.swing.JComboBox cmbInventory;
     private javax.swing.JComboBox cmbLocations;
     private javax.swing.JComboBox cmbLoot;
-    private javax.swing.JButton cmdDoIt;
+    private javax.swing.JButton cmdDrop;
     private javax.swing.JButton cmdGo;
     private javax.swing.JButton cmdPick;
-    private javax.swing.JButton cmdSaveLog;
+    private javax.swing.JButton cmdToggle;
+    private javax.swing.JButton cmdUse;
+    private javax.swing.JButton cmdUseWith;
+    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblPlaceName;
     private derelict2d.desktop.ExploreStationJPanel pnlExploreStationView;
     private javax.swing.JTextArea txtOutput;
     // End of variables declaration//GEN-END:variables
@@ -458,22 +559,19 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
 
     void updateGameState() {
 
-
-        cmbActions.setModel(new javax.swing.DefaultComboBoxModel(game.getAvailableCommandNames()));
         cmbLocations.setModel(new javax.swing.DefaultComboBoxModel(game.getConnectionNames()));
         cmbLoot.setModel(new javax.swing.DefaultComboBoxModel(game.getCollectableItemNames()));
         cmbInventory.setModel(new javax.swing.DefaultComboBoxModel(game.getCollectedItemNames()));
-
 
         node = adapter.parse(game, resManager, false);
         pnlExploreStationView.setSelectedItem(node.getElementById("SVGRenderingNode_heroGraphic"));
         pnlExploreStationView.setRenderingContent(node);
         pnlExploreStationView.repaint();
-        this.txtOutput.setText( game.getTextOutput() );
-        
-        if ( !game.checkGameContinuityConditions() ) {
-            
-            System.exit( 0 );
+        this.txtOutput.setText(game.getTextOutput());
+        this.lblPlaceName.setText( game.hero.getLocation().getName() );
+        if (!game.checkGameContinuityConditions()) {
+
+            System.exit(0);
         }
     }
 

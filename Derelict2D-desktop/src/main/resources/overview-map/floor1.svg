@@ -176,7 +176,7 @@
      inkscape:connector-curvature="0"
      style="fill:#008000;stroke:none"
      d="M 136.28412,72.082887 L 199.87874,72.082887 L 199.87874,16.04294 L 136.28412,16.04294 L 136.28412,72.082887"
-     id="elevator-shaft-1" />
+     id="elevator-level-1" />
   <path
      inkscape:connector-curvature="0"
      style="fill:#4fa308;stroke:none"
@@ -774,7 +774,7 @@
      sodipodi:nodetypes="cccccccc" />
   <rect
      style="fill:#88aa00;fill-opacity:1;fill-rule:nonzero;stroke:none"
-     id="elevator-shaft-1-entrance"
+     id="elevator-level-1-entrance"
      width="44.53759"
      height="37.048965"
      x="145.4369"

@@ -53,6 +53,9 @@ public class SwingCanvasRenderingContext extends RenderingContext {
         GeneralPath path = new GeneralPath();
 
         Vec2 point = c.controlPoints.get(0);
+        Vec2 origin = bounds.p0.add(this.currentOrigin);
+        float diffX = 0;
+        float diffY = 0;
 
         graphics.setColor(SwingUtils.getSwingColor(c.color));
 
@@ -65,11 +68,24 @@ public class SwingCanvasRenderingContext extends RenderingContext {
 
         for (int i = 0; i < c.npoints; ++i) {
 
-            path.lineTo(c.xpoints[ i] + currentOrigin.x, c.ypoints[ i] + currentOrigin.y);
+            if (c.controlPoints.get(i).isValid()) {
 
-            if (style != null) {
-                xpoints[ i] = (int) c.xpoints[ i];
-                ypoints[ i] = (int) c.ypoints[ i];
+                Vec2 control = c.controlPoints.get(i);
+                path.curveTo( origin.x + (c.xpoints[ i]) - diffX, 
+                            origin.y + c.ypoints[ i] - diffY, 
+                            origin.x + control.x,
+                        origin.y + control.y - diffY, 
+                        origin.x + (c.xpoints[ i + 1]) - diffX, 
+                        origin.y + c.ypoints[ i + 1] - diffY);
+                ++i;
+
+            } else {
+                path.lineTo(c.xpoints[ i] + currentOrigin.x, c.ypoints[ i] + currentOrigin.y);
+
+                if (style != null) {
+                    xpoints[ i] = (int) c.xpoints[ i];
+                    ypoints[ i] = (int) c.ypoints[ i];
+                }
             }
         }
 
@@ -79,7 +95,6 @@ public class SwingCanvasRenderingContext extends RenderingContext {
 
         graphics.setColor(SwingUtils.getSwingColor(Color.getColorFromHTMLColor("#000000")));
 
-        
         if (style != null) {
             ((Graphics2D) graphics).drawPolyline(xpoints, ypoints, c.npoints);
         }
@@ -113,6 +128,12 @@ public class SwingCanvasRenderingContext extends RenderingContext {
 
     @Override
     public void drawLine(Vec2 p0, Vec2 p1) {
-        graphics.drawLine( ( int )p0.x, ( int )p0.y, ( int )p1.x, ( int )p1.y );
+        graphics.drawLine((int) p0.x, (int) p0.y, (int) p1.x, (int) p1.y);
+    }
+
+    @Override
+    public void drawText(Vec2 p0, String content, Color color, int fontSize) {
+        graphics.drawString(content, (int) p0.x, (int) p0.y);
+
     }
 }

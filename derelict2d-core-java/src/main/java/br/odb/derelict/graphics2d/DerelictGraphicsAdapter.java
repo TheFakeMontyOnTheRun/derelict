@@ -59,109 +59,123 @@ public class DerelictGraphicsAdapter {
 		for (ColoredPolygon cp : stationGraphics.shapes) {
 
 			try {
-				location = station.getLocation(cp.id);
-			} catch (InvalidLocationException e1) {
-				continue;
-			}
+				System.out.println( "location: " + cp.id  );
+				
+				try {
+					
+					location = station.getLocation(cp.id);
+				} catch ( Exception e ) {
+					continue;
+				}
+				
+				if (!location.hasBeenExplored
+						&& !location.hasExploredNeighbour()) {
+					continue;
+				}
 
-			if (!location.hasBeenExplored && !location.hasExploredNeighbour()) {
-				continue;
-			}
-
-			if (cache.containsKey(cp.id)) {
-				newNode = cache.get(cp.id);
-			} else {
-
-				newNode = new SVGRenderingNode(new SVGGraphic(
-						stationGraphics.getShapesStartingWith(cp.id)), cp.id);
-				cache.put(cp.id, newNode);
-			}
-
-			nodes.add(newNode);
-
-			ColoredPolygon active;
-
-			for (Item i : location.getCollectableItems()) {
-
-				offset += 10;
-
-				if (cache.containsKey(i.getName())) {
-					item = cache.get(i.getName());
+				if (cache.containsKey(cp.id)) {
+					newNode = cache.get(cp.id);
 				} else {
 
-					item = new SVGRenderingNode(resManager.getGraphics(
-							i.getName()).scaleTo(32, 32), i.getName());
-					cache.put(i.getName(), item);
+					newNode = new SVGRenderingNode(new SVGGraphic(
+							stationGraphics.getShapesStartingWith(cp.id)),
+							cp.id);
+					cache.put(cp.id, newNode);
 				}
 
-				if (i instanceof ActiveItem) {
+				nodes.add(newNode);
 
-					// System.out.println("is " + i.getName() + " active?");
+				ColoredPolygon active;
 
-					active = ((SVGRenderingNode) item).graphic
-							.getShapeById("active");
+				for (Item i : location.getCollectableItems()) {
 
-					// System.out.println("active is " + active);
+					System.out.println("object" + i.getName() );
+					
+					offset += 10;
 
-					if (active != null) {
-						// System.out.println("active");
-						active.visible = ((ActiveItem) i).isActive();
-						// System.out.println("caught");
+					if (cache.containsKey(i.getName())) {
+						item = cache.get(i.getName());
+					} else {
+
+						item = new SVGRenderingNode(resManager.getGraphics(
+								i.getName()).scaleTo(32, 32), i.getName());
+						cache.put(i.getName(), item);
 					}
 
-				}
+					if (i instanceof ActiveItem) {
 
-				nodes.add(item);
-				item.translate
-						.set(cp.getCenter().add(new Vec2(offset, offset)));
-			}
-			if (showText) {
+						// System.out.println("is " + i.getName() + " active?");
 
-				Color c = new Color(255, 255, 255, 196);
-				TextNode textNode = new TextNode(cp.id + "_label", (cp.id
-						.substring(0, 1).toUpperCase() + cp.id.substring(1)),
-						c, 25);
+						active = ((SVGRenderingNode) item).graphic
+								.getShapeById("active");
 
-				Vec2 textPosition = new Vec2();
-				textPosition.y = cp.getCenter().y;
-				//
-				// for ( int v = 0; v < cp.npoints; ++v ) {
-				//
-				// if ( textPosition.y < cp.ypoints[ v ] ) {
-				// textPosition.y = cp.ypoints[ v ] + 35;
-				// }
-				// }
-				//
-				textPosition.x = cp.getCenter().x;
+						// System.out.println("active is " + active);
 
-				textNode.translate.set(textPosition);
-				nodes.add(textNode);
-			}
-
-			offset = 0;
-
-			if (station.getAstronaut().getLocation().getName().equals(cp.id)) {
-				heroNode.translate.set(cp.getCenter());
-			}
-
-			try {
-				PlasmaGun plasmaGun = (PlasmaGun) station.getItem("plasma-gun");
-
-				for (PlasmaPellet pp : plasmaGun.firedPellets) {
-					if (pp.location == location && !pp.isDepleted()) {
-						item = new SVGRenderingNode(
-								resManager.getGraphics("plasma-pellet"),
-								"plasma-pellet");
-						nodes.add(item);
-						item.translate.set(cp.getCenter().add(
-								new Vec2(offset, offset)));
+						if (active != null) {
+							// System.out.println("active");
+							active.visible = ((ActiveItem) i).isActive();
+							// System.out.println("caught");
+						}
 
 					}
+
+					nodes.add(item);
+					item.translate.set(cp.getCenter().add(
+							new Vec2(offset, offset)));
+				}
+				if (showText) {
+
+					Color c = new Color(255, 255, 255, 196);
+					TextNode textNode = new TextNode(cp.id + "_label",
+							(cp.id.substring(0, 1).toUpperCase() + cp.id
+									.substring(1)), c, 25);
+
+					Vec2 textPosition = new Vec2();
+					textPosition.y = cp.getCenter().y;
+					//
+					// for ( int v = 0; v < cp.npoints; ++v ) {
+					//
+					// if ( textPosition.y < cp.ypoints[ v ] ) {
+					// textPosition.y = cp.ypoints[ v ] + 35;
+					// }
+					// }
+					//
+					textPosition.x = cp.getCenter().x;
+
+					textNode.translate.set(textPosition);
+					nodes.add(textNode);
 				}
 
-			} catch (ItemNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				offset = 0;
+
+				if (station.getAstronaut().getLocation().getName()
+						.equals(cp.id)) {
+					heroNode.translate.set(cp.getCenter());
+				}
+
+				try {
+					PlasmaGun plasmaGun = (PlasmaGun) station
+							.getItem("plasma-gun");
+
+					for (PlasmaPellet pp : plasmaGun.firedPellets) {
+						if (pp.location == location && !pp.isDepleted()) {
+							item = new SVGRenderingNode(
+									resManager.getGraphics("plasma-pellet"),
+									"plasma-pellet");
+							nodes.add(item);
+							item.translate.set(cp.getCenter().add(
+									new Vec2(offset, offset)));
+
+						}
+					}
+
+				} catch (ItemNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (Exception e1) {
+				e1.printStackTrace();
+				continue;
 			}
 		}
 
