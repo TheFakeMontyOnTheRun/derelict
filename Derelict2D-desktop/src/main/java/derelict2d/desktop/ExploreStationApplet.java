@@ -3,13 +3,17 @@ package derelict2d.desktop;
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict.graphics2d.DerelictGraphicsAdapter;
 import br.odb.gameapp.UserCommandLineAction;
+import br.odb.gamelib.swing.GameView;
 import br.odb.gamelib.swing.SwingMediaPlayer;
 import br.odb.gamelib.swing.SwingTextClientAdapter;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gamerendering.rendering.DisplayList;
+import br.odb.gamerendering.rendering.RenderingNode;
+import br.odb.gamerendering.rendering.SVGRenderingNode;
 import br.odb.gameworld.Location;
 import br.odb.gameworld.exceptions.InvalidLocationException;
 import br.odb.gameworld.exceptions.InvalidSlotException;
+import br.odb.gameworld.exceptions.ItemNotFoundException;
 import br.odb.libsvg.SVGParsingUtils;
 import br.odb.utils.Direction;
 import br.odb.utils.FileServerDelegate;
@@ -209,6 +213,10 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
 
             resManager.putGraphic("beer",
                     SVGParsingUtils.readSVG(openAsset("beer.svg")));
+            
+            resManager.putGraphic("dummy-item",
+                    SVGParsingUtils.readSVG(openAsset("items/dummy-item.svg")));
+            
 
             for (int c = 0; c < 32; ++c) {
 
@@ -223,9 +231,13 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
 
         cmbDirection.setModel(new javax.swing.DefaultComboBoxModel(Direction.values()));
         setGameSnapshot(game);
-        game.sendData("pick all");
-        game.sendData("toggle atmosphere-purifier");
-        game.sendData("toggle magboots");
+//        game.sendData("pick all");
+//        game.sendData("toggle atmosphere-purifier");
+//        game.sendData("toggle magboots");
+        
+        this.gvCollectedItem.setDefaultRenderingNode( getGraphicFor( "dummy-item", sizeFor( gvCollectedItem ) ) );
+        this.gvPlaceItem.setDefaultRenderingNode( getGraphicFor( "dummy-item", sizeFor( gvPlaceItem ) ) );        
+        
         updateGameState();
         //playerSound.loop();
     }
@@ -244,19 +256,24 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
         cmbLocations = new javax.swing.JComboBox();
         cmbLoot = new javax.swing.JComboBox();
         cmdPick = new javax.swing.JButton();
-        cmbInventory = new javax.swing.JComboBox();
         jSplitPane1 = new javax.swing.JSplitPane();
         pnlExploreStationView = new derelict2d.desktop.ExploreStationJPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtOutput = new javax.swing.JTextArea();
         cmbDirection = new javax.swing.JComboBox();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
         cmdUse = new javax.swing.JButton();
         cmdUseWith = new javax.swing.JButton();
         cmdDrop = new javax.swing.JButton();
+        cmbInventory = new javax.swing.JComboBox();
         cmdToggle = new javax.swing.JButton();
         lblPlaceName = new javax.swing.JLabel();
+        canvas1 = new java.awt.Canvas();
+        gvCollectedItem = new br.odb.gamelib.swing.GameView();
+        gvPlaceItem = new br.odb.gamelib.swing.GameView();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtCollectedItem = new javax.swing.JTextPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtItemInPlace = new javax.swing.JTextPane();
 
         jButton3.setText("jButton1");
 
@@ -270,6 +287,11 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
         cmbLocations.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cmbLoot.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbLoot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbLootActionPerformed(evt);
+            }
+        });
 
         cmdPick.setText("Pick");
         cmdPick.addActionListener(new java.awt.event.ActionListener() {
@@ -277,8 +299,6 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
                 cmdPickActionPerformed(evt);
             }
         });
-
-        cmbInventory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jSplitPane1.setResizeWeight(0.5);
 
@@ -292,11 +312,11 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
         pnlExploreStationView.setLayout(pnlExploreStationViewLayout);
         pnlExploreStationViewLayout.setHorizontalGroup(
             pnlExploreStationViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 606, Short.MAX_VALUE)
+            .addGap(0, 531, Short.MAX_VALUE)
         );
         pnlExploreStationViewLayout.setVerticalGroup(
             pnlExploreStationViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 599, Short.MAX_VALUE)
+            .addGap(0, 613, Short.MAX_VALUE)
         );
 
         jSplitPane1.setLeftComponent(pnlExploreStationView);
@@ -336,6 +356,13 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
             }
         });
 
+        cmbInventory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbInventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbInventoryActionPerformed(evt);
+            }
+        });
+
         cmdToggle.setText("Toggle");
         cmdToggle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,67 +372,113 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
 
         lblPlaceName.setText("jLabel1");
 
+        javax.swing.GroupLayout gvCollectedItemLayout = new javax.swing.GroupLayout(gvCollectedItem);
+        gvCollectedItem.setLayout(gvCollectedItemLayout);
+        gvCollectedItemLayout.setHorizontalGroup(
+            gvCollectedItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        gvCollectedItemLayout.setVerticalGroup(
+            gvCollectedItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout gvPlaceItemLayout = new javax.swing.GroupLayout(gvPlaceItem);
+        gvPlaceItem.setLayout(gvPlaceItemLayout);
+        gvPlaceItemLayout.setHorizontalGroup(
+            gvPlaceItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 222, Short.MAX_VALUE)
+        );
+        gvPlaceItemLayout.setVerticalGroup(
+            gvPlaceItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jScrollPane4.setViewportView(txtCollectedItem);
+
+        jScrollPane5.setViewportView(txtItemInPlace);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblPlaceName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 905, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbLocations, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbDirection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbInventory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(cmdUse)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmdUseWith)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmdToggle)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmdPick)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmdDrop))
-                            .addComponent(cmbLoot, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(cmdGo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(gvPlaceItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane5))
+                                    .addComponent(cmbLocations, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbDirection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(456, 456, 456)
+                                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cmdUse)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cmdUseWith)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cmdToggle)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cmdPick)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cmdDrop))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(gvCollectedItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(cmdGo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(cmbLoot, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbInventory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblPlaceName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblPlaceName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cmbInventory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(gvCollectedItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmdUse)
                             .addComponent(cmdUseWith)
+                            .addComponent(cmdToggle)
                             .addComponent(cmdPick)
-                            .addComponent(cmdDrop)
-                            .addComponent(cmdToggle))
+                            .addComponent(cmdDrop))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbLoot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(gvPlaceItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbLocations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbDirection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdGo)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(cmdGo))
+                    .addComponent(jSplitPane1))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -443,15 +516,6 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
     }//GEN-LAST:event_cmdGoActionPerformed
 
     private void pnlExploreStationViewMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlExploreStationViewMouseDragged
-        Vec2 v = new Vec2(evt.getX(), evt.getY());
-
-        pnlExploreStationView.accScroll.x += (v.x - pnlExploreStationView.lastTouchPosition.x);
-        pnlExploreStationView.accScroll.y += (v.y - pnlExploreStationView.lastTouchPosition.y);
-
-        pnlExploreStationView.lastTouchPosition.x = (int) v.x;
-        pnlExploreStationView.lastTouchPosition.y = (int) v.y;
-
-        pnlExploreStationView.repaint();
     }//GEN-LAST:event_pnlExploreStationViewMouseDragged
 
     private void cmbDirectionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbDirectionItemStateChanged
@@ -531,7 +595,16 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
         performAction("toggle", operand, "");
     }//GEN-LAST:event_cmdToggleActionPerformed
 
+    private void cmbInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbInventoryActionPerformed
+        updateItemsPanels();
+    }//GEN-LAST:event_cmbInventoryActionPerformed
+
+    private void cmbLootActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLootActionPerformed
+        updateItemsPanels();
+    }//GEN-LAST:event_cmbLootActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Canvas canvas1;
     private javax.swing.JComboBox cmbDirection;
     private javax.swing.JComboBox cmbInventory;
     private javax.swing.JComboBox cmbLocations;
@@ -542,19 +615,44 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
     private javax.swing.JButton cmdToggle;
     private javax.swing.JButton cmdUse;
     private javax.swing.JButton cmdUseWith;
+    private br.odb.gamelib.swing.GameView gvCollectedItem;
+    private br.odb.gamelib.swing.GameView gvPlaceItem;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblPlaceName;
     private derelict2d.desktop.ExploreStationJPanel pnlExploreStationView;
+    private javax.swing.JTextPane txtCollectedItem;
+    private javax.swing.JTextPane txtItemInPlace;
     private javax.swing.JTextArea txtOutput;
     // End of variables declaration//GEN-END:variables
 
     void setGameSnapshot(DerelictGame derelictGame) {
 
         this.game = derelictGame;
+    }
+    
+    DisplayList getGraphicFor( String name, int size ) {
+        RenderingNode item;
+        DisplayList individualLists;
+        
+        item = new SVGRenderingNode(resManager.getGraphics( name ).scaleTo( size, size ), name );
+        individualLists = new DisplayList( name );
+        individualLists.setItems( new RenderingNode[] { item } );
+        return individualLists;
+    }
+    
+    int sizeFor( GameView gv ) {
+        
+        int smaller = gv.getWidth();
+        
+        if ( gv.getHeight() < smaller ) {
+            smaller = gv.getHeight();
+        }       
+        
+        return smaller;
     }
 
     void updateGameState() {
@@ -569,9 +667,43 @@ public class ExploreStationApplet extends javax.swing.JApplet implements FileSer
         pnlExploreStationView.repaint();
         this.txtOutput.setText(game.getTextOutput());
         this.lblPlaceName.setText( game.hero.getLocation().getName() );
+        
+        updateItemsPanels();    
+        
         if (!game.checkGameContinuityConditions()) {
-
             System.exit(0);
+        }
+        
+        repaint();
+    }
+    
+    public void updateItemsPanels() {
+        
+        
+        if ( game.getCollectedItems().length > 0 ) {
+            try {
+                String itemName = game.getCollectedItems()[ cmbInventory.getSelectedIndex()].getName();
+                this.gvCollectedItem.setRenderingContent( getGraphicFor( itemName, sizeFor( gvCollectedItem ) ) );
+                this.txtCollectedItem.setText( game.station.getItem( itemName ).getDescription() );
+            } catch (ItemNotFoundException ex) {
+                Logger.getLogger(ExploreStationApplet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            this.txtCollectedItem.setText( "" );
+            this.gvCollectedItem.setRenderingContent( null );
+        }
+        
+        if ( game.getCollectableItems().length >0 ) {
+            try {
+                String itemName = game.getCollectableItems()[ cmbLoot.getSelectedIndex()].getName();
+                this.gvPlaceItem.setRenderingContent( getGraphicFor( itemName, sizeFor( gvPlaceItem ) ) );
+                this.txtItemInPlace.setText( game.station.getItem( itemName ).getDescription() );
+            } catch (ItemNotFoundException ex) {
+                Logger.getLogger(ExploreStationApplet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            this.gvPlaceItem.setRenderingContent( null );
+            this.txtItemInPlace.setText( "" );
         }
     }
 
