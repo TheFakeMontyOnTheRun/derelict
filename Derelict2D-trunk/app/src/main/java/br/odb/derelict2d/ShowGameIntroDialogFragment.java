@@ -1,7 +1,10 @@
 package br.odb.derelict2d;
 
 import android.app.DialogFragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,7 +23,7 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 	private Button btNextFinish;
 	String [] storyBits;
 	String [] buttonTitles = { "Next", "Next", "Dismiss" };
-	String [] imagePath = { "intro-comics0", "intro-comics1", "intro-comics2" };
+	String [] imagePath = { "intro-comics2", "intro-comics2", "intro-comics2" };
 	int currentStoryPoint = 0;
 
 	@Override
@@ -40,14 +43,21 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 		
 		getDialog().setTitle( "..And so, here we go..." );
 		storyBits = args.getString("desc").split( "\n\n\n"  );
-		updateDescription( 0 );
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    updateDescription(0);
+                                }
+                            }, 100 );
+
 
 		return view;
 	}
-	
-	
 
-	private void updateDescription( final int storyPoint ) {
+
+    public void updateDescription( final int storyPoint ) {
 		
 		wvStory.getSettings().setJavaScriptEnabled(false);
 		wvStory.loadDataWithBaseURL(null, "<html><body bgcolor = '#0D0' >"
@@ -64,7 +74,7 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 
 		
 				
-		((ExploreStationActivity) getActivity()).stopTalking();		
+		((ExploreStationActivity) getActivity()).stopTalking();
 		((ExploreStationActivity) getActivity()).say( storyBits[ storyPoint ] );
 		
 		btNextFinish.setText( buttonTitles[ storyPoint ] );
@@ -72,7 +82,7 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 
 	@Override
 	public void onClick(View v) {
-		((ExploreStationActivity) getActivity()).stopTalking();		
+		((ExploreStationActivity) getActivity()).stopTalking();
 		
 		if ( ++currentStoryPoint >= storyBits.length ) {
 			

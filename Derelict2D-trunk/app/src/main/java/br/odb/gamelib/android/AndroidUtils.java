@@ -30,8 +30,12 @@ public class AndroidUtils {
 		
 		return androidRect;
 	}
-	
-	public static void initImage(GameView gv, String graphicPath, AssetManager resManager ) {
+
+    public static void initImage(GameView gv, String graphicPath, AssetManager resManager  ) {
+        initImageScaled( gv, graphicPath, resManager, 1.0f, 1.0f );
+    }
+
+	public static void initImageScaled(GameView gv, String graphicPath, AssetManager resManager, float scaleX, float scaleY ) {
 
 		DisplayList dl = new DisplayList("dl");
 
@@ -57,7 +61,7 @@ public class AndroidUtils {
 				}
 			}
 
-		graphic = graphic.scale( scale, scale );
+		graphic = graphic.scale( scale * scaleX, scale * scaleY );
 		
 		
 		
@@ -65,6 +69,12 @@ public class AndroidUtils {
 				+ graphicPath);
 
 		dl.setItems(new RenderingNode[] { node });
+
+        Rect rect = graphic.makeBounds();
+
+        node.translate.set(( gv.getWidth() - rect.getDX()) / 2.0f,
+                ( gv.getHeight() - rect.getDY()) / 2.0f);
+
 		gv.setRenderingContent(dl);
 		gv.updater.setRunning( false );
 		gv.postInvalidate();

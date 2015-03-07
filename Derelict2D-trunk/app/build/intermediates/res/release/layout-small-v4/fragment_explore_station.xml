@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/derelict_background_empty"
+    android:orientation="vertical" >
+
+    <CheckBox
+        android:id="@+id/chkShowPlaceNames"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#999"
+        android:gravity="center"
+        android:text="Place names" />
+
+    <br.odb.derelict2d.ExploreStationView
+        android:id="@+id/overviewMap"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#800080"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+         >
+
+        <Spinner
+            android:id="@+id/spnDirection"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:background="#0F0" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <br.odb.gamelib.android.GameView
+                    android:id="@+id/gvMove"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvGo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom|center_horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignRight="@+id/gvMove"
+                    android:text="Go"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#FFF" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/src/main/res/layout-small/fragment_explore_station.xml -->

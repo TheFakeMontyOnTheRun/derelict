@@ -2,15 +2,24 @@ package br.odb.derelict2d;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import java.io.ObjectInputStream;
+import java.util.List;
+
+import br.odb.derelict.core.DerelictGame;
+import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
+import br.odb.gamelib.android.geometry.GLES1TriangleFactory;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gamerendering.rendering.DisplayList;
 import br.odb.gamerendering.rendering.RenderingNode;
@@ -18,6 +27,7 @@ import br.odb.gamerendering.rendering.SVGRenderingNode;
 import br.odb.libsvg.SVGGraphic;
 import br.odb.utils.Rect;
 import br.odb.utils.math.Vec2;
+import br.odb.utils.math.Vec3;
 
 public class ShowGameSplashActivity extends Activity implements OnClickListener {
 
@@ -25,7 +35,6 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 	GameView gvSplash;
 	GameView gvLogo;
 	private Button playBtn;
-	private boolean gameLoaded;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -35,13 +44,12 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 
 		playBtn = (Button) findViewById(R.id.btnPlay);
 		
-		gameLoaded = false;
 		gvSplash = (GameView) findViewById(R.id.gvSplash);
 		gvLogo = (GameView) findViewById(R.id.gvLogo);
 
 		gvSplash.setVisibility( View.INVISIBLE );
 		gvLogo.setVisibility( View.INVISIBLE );
-		
+
 		
 		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.GINGERBREAD) {
 			getWindow().getDecorView().setSystemUiVisibility(
@@ -49,96 +57,62 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 		}
 	}
 
+    void startLoading() {
+
+        new Thread(  new Runnable() {
+            @Override
+            public void run() {
+
+                ((Derelict2DApplication) getApplication()).loadAssets();
+
+                runOnUiThread( new Runnable() {
+
+                    @Override
+                    public void run() {
+                        initImage();
+                        gvSplash.postInvalidate();
+                        gvLogo.postInvalidate();
+
+                        gvSplash.setVisibility( View.VISIBLE );
+                        gvLogo.setVisibility( View.VISIBLE );
+
+                        playBtn.setText( "Play" );
+                        playBtn.setOnClickListener( ShowGameSplashActivity.this);
+                    }
+                });
+            }
+        }).start();
+    }
+
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
-		super.onWindowFocusChanged(hasFocus);
-		
-		final Handler handler = new Handler();
-		handler.postDelayed(new Runnable() {
-		  @Override
-		  public void run() {
-			  initImage();
-				gvSplash.postInvalidate();
-				gvLogo.postInvalidate();
-				
-				gvSplash.setVisibility( View.VISIBLE );
-				gvLogo.setVisibility( View.VISIBLE );
-				
-				playBtn.setText( "Play" );
-				playBtn.setOnClickListener( ShowGameSplashActivity.this);
-		  }
-		}, 10);
-		
-		
-		
-	}
+        super.onWindowFocusChanged(hasFocus);
+
+        startLoading();
+
+        if (theme == null
+                && ((Derelict2DApplication) getApplication()).mayEnableSound()) {
+            theme = MediaPlayer.create(this, R.raw.derelicttheme);
+            theme.setLooping(true);
+            theme.start();
+        }
+    }
 
 	void initImage() {
-		((Derelict2DApplication) getApplication()).loadAssets();
-		DisplayList dl = new DisplayList("dl");
-		AssetManager resManager = ((Derelict2DApplication) getApplication())
-				.getAssetManager();
 
-		SVGGraphic graphic = resManager.getGraphics("title");
-		SVGGraphic logo = resManager.getGraphics("logo");
-		Rect rect;
-		float scale = 1;
-		Vec2 trans = new Vec2();
+        Derelict2DApplication app = ((Derelict2DApplication) getApplication());
 
-		if (gvSplash.getWidth() > 0 && gvSplash.getHeight() > 0) {
-
-			Rect bound = graphic.makeBounds();
-
-			// não me interessa a parte acima da "página".
-			float newWidth = bound.p1.x;
-			float newHeight = bound.p1.y;
-
-			if (newWidth > newHeight) {
-				scale = gvSplash.getWidth() / newWidth;
-				trans.y = (gvLogo.getHeight() - (bound.p1.y * scale)) / 2.0f;
-			} else {
-				scale = gvSplash.getHeight() / newHeight;
-				trans.x = (gvLogo.getWidth() - (bound.p1.x * scale)) / 2.0f;
-			}
-		}
-
-		graphic = graphic.scale(scale, scale);
-		logo = logo.scale(2.0f * scale, 2.0f * scale);
-		SVGRenderingNode node = new SVGRenderingNode(graphic, "title");
-		SVGRenderingNode node2 = new SVGRenderingNode(logo, "logo");
-		node.translate.set(trans);
-
-		rect = logo.makeBounds();
-		node2.translate.set((gvLogo.getWidth() - rect.getDX()) / 2.0f,
-				(gvLogo.getHeight() - rect.getDY()) / 2.0f);
-
-		dl.setItems(new RenderingNode[] { node });
-
-		gvSplash.setRenderingContent(dl);
-
-		if (theme == null
-				&& ((Derelict2DApplication) getApplication()).mayEnableSound()) {
-			theme = MediaPlayer.create(this, R.raw.derelicttheme);
-			theme.setLooping(true);
-			theme.start();
-		}
-
-		dl = new DisplayList("dl");
-		dl.setItems(new RenderingNode[] { node2 });
-		gvLogo.setRenderingContent(dl);
-
-		gvSplash.postInvalidate();
+        AndroidUtils.initImageScaled(gvLogo, "logo", app.getAssetManager(), 0.5f, 0.5f);
+        AndroidUtils.initImage(gvSplash, "title", app.getAssetManager());
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
 		finish();
 	}
 
 	@Override
 	protected void onPause() {
 		if (theme != null) {
-
 			theme.stop();
 		}
 		super.onPause();
@@ -156,9 +130,7 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 	@Override
 	public void onClick(View v) {
 		
-		// gvSplash.invalidate();
 		if (theme != null) {
-
 			theme.stop();
 		}
 

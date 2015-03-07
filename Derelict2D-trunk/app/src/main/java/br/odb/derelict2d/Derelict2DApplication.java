@@ -1,6 +1,7 @@
 package br.odb.derelict2d;
 
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
@@ -17,8 +18,8 @@ import br.odb.utils.FileServerDelegate;
 public class Derelict2DApplication extends Application implements
 		FileServerDelegate {
 
-	public DerelictGame game;
-	private AssetManager resManager;
+	volatile public DerelictGame game;
+	final private AssetManager resManager = new AssetManager();
 	final ArrayList< String > notes = new ArrayList< String >();
 
 	@Override
@@ -33,8 +34,6 @@ public class Derelict2DApplication extends Application implements
 		// .detectAll().penaltyLog().penaltyDeath().build());
 		// StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll()
 		// .penaltyLog().penaltyDeath().build());
-
-		resManager = new AssetManager();
 		try {
 
 			resManager.putGraphic("floor1", SVGParsingUtils
