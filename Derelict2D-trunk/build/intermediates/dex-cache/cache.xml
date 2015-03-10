@@ -6,56 +6,56 @@
         jumboMode="false"
         revision="21.1.1"
         sha1="6653b69d777fa9d40cdc0156d97cc29f90922df1">
-        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/release/gamerendering-1.0-SNAPSHOT-8c9e64292a71119f4f44283dda7831930ce0ba1a.jar" />
+        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/gamerendering-1.0-SNAPSHOT-8c9e64292a71119f4f44283dda7831930ce0ba1a.jar" />
     </item>
     <item
         jar="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/libs/derelict-core-java-1.0-SNAPSHOT.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="8570d7a9fcf08697a08d9fb092b6ba11c972e7ce">
-        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/release/derelict-core-java-1.0-SNAPSHOT-7532bbf0e071778e3e35c396622d8c752d3d6a91.jar" />
+        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/derelict-core-java-1.0-SNAPSHOT-7532bbf0e071778e3e35c396622d8c752d3d6a91.jar" />
     </item>
     <item
         jar="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/libs/gameapp-1.0-SNAPSHOT.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="b1f37fdd3f9a80ed9d5676f0d3f73169552546ce">
-        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/release/gameapp-1.0-SNAPSHOT-46064481cc0e690810d945f6fd63454ebe73163e.jar" />
+        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/gameapp-1.0-SNAPSHOT-46064481cc0e690810d945f6fd63454ebe73163e.jar" />
     </item>
     <item
         jar="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/libs/libsvg-1.0-SNAPSHOT.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="296d3495d4f518362284fac05d2124ff36e8f470">
-        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/release/libsvg-1.0-SNAPSHOT-bd0434af4db968fbda7ac19c2853fd2f23659148.jar" />
+        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/libsvg-1.0-SNAPSHOT-bd0434af4db968fbda7ac19c2853fd2f23659148.jar" />
     </item>
     <item
         jar="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/libs/derelict2d-core-java-1.0-SNAPSHOT.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="d5c3ad3b02d9582bf9ccd114bc5eb61706029214">
-        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/release/derelict2d-core-java-1.0-SNAPSHOT-f2d1c7084f4b9da7cf06621996f6fae5796908e4.jar" />
+        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/derelict2d-core-java-1.0-SNAPSHOT-f2d1c7084f4b9da7cf06621996f6fae5796908e4.jar" />
     </item>
     <item
         jar="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/libs/libstrip-1.0-SNAPSHOT.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="350e1750575c1fe524649659aff8b25befa0d435">
-        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/release/libstrip-1.0-SNAPSHOT-916091ca454eac3303b9079de061cc9bb787e739.jar" />
+        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/libstrip-1.0-SNAPSHOT-916091ca454eac3303b9079de061cc9bb787e739.jar" />
     </item>
     <item
         jar="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/libs/gameutils-1.0-SNAPSHOT.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="20f4a2c2bcc831d0614f16bcb05ab1fd47215f77">
-        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/release/gameutils-1.0-SNAPSHOT-9a86ba34e1d0afa1c055fb5eb8c3feb833b7aabf.jar" />
+        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/gameutils-1.0-SNAPSHOT-9a86ba34e1d0afa1c055fb5eb8c3feb833b7aabf.jar" />
     </item>
     <item
         jar="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/libs/gameworld-1.0-SNAPSHOT.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="0d520682c254c24ff27e4a9b34a570c95bc93591">
-        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/release/gameworld-1.0-SNAPSHOT-292c4ba9b357032f36fdf74688830ef57ba50624.jar" />
+        <dex dex="/Users/monty/gitcenter/derelict/Derelict2D-trunk/app/build/intermediates/pre-dexed/debug/gameworld-1.0-SNAPSHOT-292c4ba9b357032f36fdf74688830ef57ba50624.jar" />
     </item>
 
 </items>

@@ -91,7 +91,7 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 		}
 
 		path.reset();
-		
+
 		path.moveTo((origin.x + pol.xpoints[0]), origin.y + pol.ypoints[0]);
 
 		for (int c = 0; c < pol.npoints; ++c) {
@@ -136,13 +136,13 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 
 
 			Gradient g0 = gradients.get(pol.gradient);
-			
+
 			if ( gradientsCache .containsKey( g0 ) ) {
 				lg = gradientsCache.get( g0 );
 			} else {
 				Color color1;
 				Color color2;
-				
+
 
 				if (g0.stops[0].color == null) {
 
@@ -160,7 +160,6 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 				color2 = g0.stops[1].color;
 
 				if (pol.color != null) {
-
 					color1.a = ((int) ((color1.a / 255.0f) * (pol.color.a / 255.0f) * 255));
 					color2.a = ((int) ((color2.a / 255.0f) * (pol.color.a / 255.0f) * 255));
 				}
@@ -168,9 +167,9 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 				lg = new LinearGradient(g0.x1, g0.y1, g0.x2, g0.y2,
 						color1.getARGBColor(), color2.getARGBColor(),
 						Shader.TileMode.CLAMP);
-				
+
 				gradientsCache.put( g0, lg );
-			}			
+			}
 
 
 			paint.setShader(lg);
@@ -185,7 +184,7 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 		} else {
 			paint.setColor(0xFF000000);
 		}
-		
+
 
 		canvas.drawPath(path, paint);
 

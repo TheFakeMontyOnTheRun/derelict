@@ -136,7 +136,7 @@ public class ExploreStationFragment extends Fragment implements
 						ding.start();
 					}
 				} else {
-					if (fiveSteps != null) {
+					if ( l != game.hero.getLocation() && fiveSteps != null) {
 						fiveSteps.start();
 					}
 				}

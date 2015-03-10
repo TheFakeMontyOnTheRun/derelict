@@ -63,7 +63,7 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
             @Override
             public void run() {
 
-                ((Derelict2DApplication) getApplication()).loadAssets();
+              //  ((Derelict2DApplication) getApplication()).loadAssets();
 
                 runOnUiThread( new Runnable() {
 
