@@ -3,6 +3,7 @@ package br.odb.derelict2d;
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.StrictMode;
 import android.util.Log;
 
 import java.io.IOException;
@@ -25,15 +26,16 @@ public class Derelict2DApplication extends Application implements
 	@Override
 	public void onCreate() {
 		super.onCreate();
+        loadAssets();
 	}
 	
 	public void loadAssets() {
 
 
 		// StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-		// .detectAll().penaltyLog().penaltyDeath().build());
+        //         .detectAll().penaltyLog().penaltyDeath().build());
 		// StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll()
-		// .penaltyLog().penaltyDeath().build());
+        //         .penaltyLog().penaltyDeath().build());
 		try {
 
 			resManager.putGraphic("floor1", SVGParsingUtils
@@ -126,10 +128,6 @@ public class Derelict2DApplication extends Application implements
 			resManager.putGraphic("icon-toggle", SVGParsingUtils
 					.readSVG(openAsset("action-icons/toggle.svg")));
 
-			resManager.putGraphic("intro-comics0",
-					SVGParsingUtils.readSVG(openAsset("chapters/intro1.svg")));
-			resManager.putGraphic("intro-comics1",
-					SVGParsingUtils.readSVG(openAsset("chapters/intro2.svg")));
 			resManager.putGraphic("intro-comics2",
 					SVGParsingUtils.readSVG(openAsset("chapters/intro3.svg")));
 
@@ -142,13 +140,6 @@ public class Derelict2DApplication extends Application implements
 			resManager.putGraphic("beer",
 					SVGParsingUtils.readSVG(openAsset("beer.svg")));
 
-			for (int c = 0; c < 32; ++c) {
-
-				resManager.putGraphic(
-						"ending" + c,
-						SVGParsingUtils.readSVG(openAsset("chapters/ending" + c
-								+ ".svg")));
-			}
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -170,9 +161,7 @@ public class Derelict2DApplication extends Application implements
 		resManager.addResId("blowtorch-used", R.raw.blowtorchuse);
 		resManager.addResId("shot", R.raw.shot);
 
-		resManager.addResId("coughf", R.raw.coughm);
 		resManager.addResId("coughm", R.raw.coughm);
-		resManager.addResId("coughdeathf", R.raw.coughdeathm);
 		resManager.addResId("coughdeathm", R.raw.coughdeathm);
 
 		startNewGame();
