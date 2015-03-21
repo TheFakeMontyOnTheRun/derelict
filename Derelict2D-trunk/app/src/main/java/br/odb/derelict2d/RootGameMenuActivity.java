@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import br.odb.derelict2d.game.PlayTextVersionActivity;
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
@@ -25,12 +26,13 @@ import br.odb.utils.math.Vec2;
 public class RootGameMenuActivity extends Activity implements OnClickListener, OnTouchListener {
 
 	enum DificultyLevel {
+        TEXT_VERSION( "Text version", "Get ready to type!", new String[] {}, 1500),
 		EASY("Easy: still figuring out what this is all about",
 				"You will have SOME help", new String[] { "pick magboots",
 						"toggle magboots", "pick plasma-gun" }, 250 ), NORMAL(
 				"Normal: players that read", "Are you ready, pal!?",
 				new String[] { "pick magboots" }, 500 ), HARD("Hard: the real deal",
-				"GET LAMP", new String[] {}, 1500 );
+				"GET LAMP", new String[] {}, 1250 );
 
 		public final String name;
 		public final String description;
@@ -85,7 +87,7 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 
 		spnLevel.setAdapter(new ArrayAdapter<DificultyLevel>(this,
 				android.R.layout.simple_spinner_item, DificultyLevel.values()));
-		spnLevel.setSelection(2);
+		spnLevel.setSelection(3);
 	}
 
 	GameView gvSplash;
@@ -162,10 +164,18 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 		//
 		// break;
 		case R.id.btnExploreStation:
-			((Derelict2DApplication) this.getApplication()).startNewGame();
-			intent = new Intent(getBaseContext(), ExploreStationActivity.class);
-			intent.putExtras(bundle);
-			startActivityForResult(intent, 1);
+
+            ((Derelict2DApplication) this.getApplication()).startNewGame();
+
+            if ( ((DificultyLevel) spnLevel.getSelectedItem()) == DificultyLevel.TEXT_VERSION ) {
+                intent = new Intent(getBaseContext(), PlayTextVersionActivity.class);
+            } else {
+                intent = new Intent(getBaseContext(), ExploreStationActivity.class);
+            }
+
+            intent.putExtras(bundle);
+            startActivityForResult(intent, 1);
+
 			break;
 
 		case R.id.btnHowToPlay:

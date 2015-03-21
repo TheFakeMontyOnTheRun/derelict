@@ -89,7 +89,7 @@ public class ExploreStationActivity extends Activity implements
 		game.createDefaultClient();
 		game.setGameUpdateDelegate(this);
 
-		game.hero.setGender(Math.random() > 0.5 ? "f" : "m");
+		game.hero.setGender( "m" );
 
 		currentLevel = new Derelict2DTotautisSpaceStation(game.station, this);
 

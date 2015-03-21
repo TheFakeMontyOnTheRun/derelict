@@ -8,21 +8,28 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="21" />
 
+    <android:uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
     <application
-        android:name="br.odb.derelict2d.Derelict2DApplication"
+        android:name=".Derelict2DApplication"
         android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="br.odb.derelict2d.RootGameMenuActivity"
+            android:name=".RootGameMenuActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
         </activity>
-
         <activity
-            android:name="br.odb.derelict2d.ExploreStationActivity"
+            android:name=".ExploreStationActivity"
             android:label="@string/title_activity_explore_station"
             android:screenOrientation="landscape" >
             <intent-filter>
@@ -30,12 +37,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.odb.derelict2d.ManageInventoryActivity"
+            android:name=".ManageInventoryActivity"
             android:label="@string/title_activity_manage_inventory"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="br.odb.derelict2d.ShowGameSplashActivity"
+            android:name=".ShowGameSplashActivity"
             android:label="@string/title_activity_show_game_splash"
             android:screenOrientation="landscape" >
             <intent-filter>
@@ -45,19 +52,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.odb.derelict2d.ShowOutcomeActivity"
+            android:name=".ShowOutcomeActivity"
             android:label="@string/title_activity_show_outcome"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="br.odb.derelict2d.ShowHowToPlayActivity"
+            android:name=".ShowHowToPlayActivity"
             android:label="@string/title_activity_show_how_to_play" >
         </activity>
         <activity
-            android:name="br.odb.derelict2d.ShowCreditsActivity"
+            android:name=".ShowCreditsActivity"
             android:label="@string/title_activity_show_credits" >
         </activity>
-
+        <activity
+            android:name=".game.PlayTextVersionActivity"
+            android:label="@string/title_activity_play_text_version" >
+        </activity>
     </application>
 
 </manifest>

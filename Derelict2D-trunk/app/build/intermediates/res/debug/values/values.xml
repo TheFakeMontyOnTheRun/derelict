@@ -19,6 +19,7 @@
     <string name="title_activity_explore_station">Explore the station</string>
     <string name="title_activity_make_notes">MakeNotesActivity</string>
     <string name="title_activity_manage_inventory">Manager you inventory</string>
+    <string name="title_activity_play_text_version">Derelict - the text adventure</string>
     <string name="title_activity_show_credits">ShowCreditsActivity</string>
     <string name="title_activity_show_game_splash">Derelict</string>
     <string name="title_activity_show_how_to_play">How to play</string>

@@ -249,7 +249,7 @@ public class ManageInventoryFragment extends Fragment implements
 
 		if (selectedLocationItem != null) {
 			viewForItem.get(selectedLocationItem).setAlpha(0.75f);
-			viewForItem.get(selectedLocationItem).setBackgroundColor( Color.MAGENTA );
+			viewForItem.get(selectedLocationItem).setBackgroundColor( Color.YELLOW );
 		}
 
 		llCollectedItems.removeAllViews();
@@ -297,7 +297,7 @@ public class ManageInventoryFragment extends Fragment implements
 
 		if (selectedCollectedItem != null) {
 			viewForItem.get(selectedCollectedItem).setAlpha(0.75f);
-			viewForItem.get(selectedCollectedItem).setBackgroundColor( Color.YELLOW );
+			viewForItem.get(selectedCollectedItem).setBackgroundColor( Color.MAGENTA );
 		}
 
 		updateWidgets();

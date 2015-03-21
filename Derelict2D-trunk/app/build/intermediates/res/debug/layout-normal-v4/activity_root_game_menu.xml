@@ -161,7 +161,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#77999999"
                 android:orientation="vertical" >
 
@@ -178,10 +178,15 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Read the game texts to me (speech synthesis)" />
-
-
-
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.98"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dl" />
 
         </LinearLayout>
 

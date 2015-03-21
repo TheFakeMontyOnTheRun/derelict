@@ -14,7 +14,7 @@ public class UseWithCommand extends DerelictUserCommandLineAction {
 	public void run(Place level, CharacterActor actor, String operand,
 			ApplicationClient client) throws ItemNotFoundException {
 
-		String[] tokens = operand.trim().split( "[ ]+" );
+		String[] tokens = operand.trim().split( "[ ]+" ); 
 		Astronaut hero = (Astronaut) actor;
 
 		try {

@@ -13,5 +13,6 @@
     <string name="title_activity_show_credits">ShowCreditsActivity</string>
     <string name="title_activity_derelict2_d">Explore the Totautis Station</string>
     <string name="title_activity_make_notes">MakeNotesActivity</string>
+    <string name="title_activity_play_text_version">Derelict - the text adventure</string>
 
 </resources>
