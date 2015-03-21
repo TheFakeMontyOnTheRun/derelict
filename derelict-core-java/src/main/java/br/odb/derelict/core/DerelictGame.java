@@ -30,7 +30,6 @@ import br.odb.gameworld.exceptions.InventoryManipulationException;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
 import br.odb.utils.ScheduledEvent;
-import br.odb.utils.Utils;
 
 public class DerelictGame extends ConsoleApplication {
 
@@ -497,7 +496,7 @@ public class DerelictGame extends ConsoleApplication {
 
 		super.onDataEntered(entry);
 
-		String[] tokens = Utils.tokenize(entry.trim(), " ");
+		String[] tokens = entry.trim().split( "[ ]+" );
 		String operator = tokens[0];
 		String operand = entry.replace(operator, "").trim();
 

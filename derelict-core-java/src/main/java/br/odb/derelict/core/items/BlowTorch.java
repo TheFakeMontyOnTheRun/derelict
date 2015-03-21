@@ -4,7 +4,6 @@ import br.odb.gameworld.ActiveItem;
 import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
-import br.odb.utils.Utils;
 
 public class BlowTorch extends ActiveItem implements Toxic, Destructive {
 

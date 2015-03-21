@@ -7,7 +7,6 @@ import br.odb.gameworld.Item;
 import br.odb.gameworld.Place;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
-import br.odb.utils.Utils;
 
 public class UseWithCommand extends DerelictUserCommandLineAction {
 
@@ -15,7 +14,7 @@ public class UseWithCommand extends DerelictUserCommandLineAction {
 	public void run(Place level, CharacterActor actor, String operand,
 			ApplicationClient client) throws ItemNotFoundException {
 
-		String[] tokens = Utils.tokenize( operand.trim(), " " ); 
+		String[] tokens = operand.trim().split( "[ ]+" );
 		Astronaut hero = (Astronaut) actor;
 
 		try {

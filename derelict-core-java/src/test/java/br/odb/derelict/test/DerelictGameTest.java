@@ -35,7 +35,56 @@ public class DerelictGameTest {
 	DummyApplicationClient client;
 
 	@Test
-	public final void checkPrintPreamble() {
+	public final void testProperEnding() {
+		DummyApplicationClient dgc = new DummyApplicationClient();
+		DerelictGame game0;
+
+		dgc.buffer = "";
+		game0 = new DerelictGame();
+		game0.setApplicationClient(dgc);
+		Assert.assertTrue( game0.checkGameContinuityConditions() );
+		
+		game0.sendData( "pick all" );
+		game0.sendData( "toggle atmosphere-purifier" );
+		game0.sendData( "toggle magboots" );
+		game0.sendData( "move n" );
+		game0.sendData( "move n" );
+		game0.sendData( "move n" );
+		game0.sendData( "move d" );
+		game0.sendData( "move s" );
+		game0.sendData( "move e" );
+		game0.sendData( "useWith plastic-pipes magboots" );
+		game0.sendData( "pick keycard-for-root-access" );
+		game0.sendData( "move w" );
+		game0.sendData( "move n" );
+		game0.sendData( "move d" );
+		game0.sendData( "move s" );
+		game0.sendData( "move e" );
+		game0.sendData( "toggle time-bomb" );
+		game0.sendData( "drop time-bomb" );
+		game0.sendData( "move w" );
+		game0.sendData( "move n" );
+		game0.sendData( "move u" );
+		game0.sendData( "move u" );
+		game0.sendData( "move s" );
+		game0.sendData( "move s" );
+		game0.sendData( "move s" );
+		
+		game0.endGameListener = new DerelictGame.EndGameListener() {
+			public void onGameEnd(int ending) {
+				Assert.assertEquals( 16, ending );
+			}
+		};
+		
+		
+		game0.sendData( "toggle ship-ignition-key" );
+		
+		Assert.assertFalse( game0.checkGameContinuityConditions() );
+	}
+	
+	
+	@Test
+	public final void textPrintPreamble() {
 
 		DummyApplicationClient dgc = new DummyApplicationClient();
 		DerelictGame game0;
