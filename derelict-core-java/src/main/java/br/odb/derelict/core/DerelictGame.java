@@ -74,7 +74,7 @@ public class DerelictGame extends ConsoleApplication {
 			+ Astronaut.INVENTORY_LIMIT
 			+ " objects at once. The more you have, the slower you move (it gets hard to pass through doors). \n "
 			+ "And of course, you must either carry the object or leave it at your ship for it to count as salvage.";
-	public static final String GAME_STORY1 = "I'm space junker. There is no day I curse more this fate.\n What else can I say? They can't stand me anymore. They keep saying that if you are not happy, you go looking for something else.\n Now it seems almost like a revenge. Lucas had to warn me so late about the misscalculation?!\n I only got some 15 minutes or so to do this one. It is my stuff in the line and I might lose my license.\n At least he had the decency to warn me about some possible gas leakage\n and the lack of artificial gravity (not invented by then, it seems). Hope this blowtorch is enough to cut this old metal. And that I'm all alone in here...";
+	public static final String GAME_STORY1 = "I'm a space junker. There is no day I curse more this fate.\n What else can I say? They can't stand me anymore. They keep saying that if you are not happy, you go looking for something else.\n Now it seems almost like a revenge. Lucas had to warn me so late about the misscalculation?!\n I only got some 15 minutes or so to do this one. It is my stuff in the line and I might lose my license.\n At least he had the decency to warn me about some possible gas leakage\n and the lack of artificial gravity (not invented by then, it seems). Hope this blowtorch is enough to cut this old metal. And that I'm all alone in here...";
 	public static final String GAME_STORY2 = "I must admit: I love going through other people's stuff.\nI see whole lives unfolding in front of me. Almost like a diorama or a shrine. And I tend to keep the best stuff to myself, \ndespite what it might worth. And then, blowing up the station - almost like a special burial.\n I'm doing this people a favor. I tend to uncover the mysteries they never could in life, \nsimply by going through other people's stuff. It's a requiem.";
 
 	// .alert("The station orbit finally decayed.\nThankfully, you were in your ship and was able to escape. Too bad you lost your license.");
@@ -84,7 +84,7 @@ public class DerelictGame extends ConsoleApplication {
 	// .alert("You did it! You blew the station! Too bad you were still inside it...");
 	// .alert("You failed to blow the station. But you managed to blow yourself pretty well. At least, you don't have to worry about the loss of your license.");
 	static {
-		finalMessage[0] = " ...But yeah, you lost your license. And a few people are probably dead, from the enormous space station falling over their head.";
+		finalMessage[0] = " ...But yeah, you lost your license. And a few people are probably dead, from the enormous space station falling over their heads.";
 		finalMessage[1] = " The station orbit finally decayed.\nThankfully, you were in your ship and was able to escape. Too bad you lost your license. ";
 		finalMessage[2] = " The station orbit finally decayed.\nAnd you were still inside it... ";
 		finalMessage[3] = " Forgot something? You had a mission! Pfff...hopeless... ";
@@ -161,9 +161,7 @@ public class DerelictGame extends ConsoleApplication {
 
 			bombAtShip = (timeBomb.location == BOHR || timeBomb.location == DAEDALUS);
 			astroAtShip = (DAEDALUS == astronautPlacement || BOHR == astronautPlacement);
-			stationDecayed = station.isOrbitDecayed()
-					|| (!bombArmed && DAEDALUS.operative)
-					|| (shipKeyActive && astroAtShip);
+			stationDecayed = station.isOrbitDecayed();
 			astroAtSamePlaceAsBomb = (astronautPlacement == timeBomb.location);
 			bombAtTarget = (timeBomb.location == lab2);
 			astroAtTarget = (astronautPlacement == lab2);

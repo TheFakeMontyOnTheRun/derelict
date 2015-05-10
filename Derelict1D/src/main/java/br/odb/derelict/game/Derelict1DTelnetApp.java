@@ -17,8 +17,8 @@ public class Derelict1DTelnetApp {
 	 */
 	public static void main(String[] args) {
 
-		new DerelictGame().setApplicationClient(new TelnetClientServer())
+		new Thread( new DerelictGame().setApplicationClient(new TelnetClientServer())
 				.setAppName("DERELICT1D").setAuthorName("Daniel Monteiro")
-				.setLicenseName("3-Clause BSD").setReleaseYear(2014).start();
+				.setLicenseName("3-Clause BSD").setReleaseYear(2014) ).start();
 	}
 }

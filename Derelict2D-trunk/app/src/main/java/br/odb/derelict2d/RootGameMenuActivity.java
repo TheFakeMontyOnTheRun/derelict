@@ -4,13 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 import br.odb.derelict2d.game.PlayTextVersionActivity;
 import br.odb.gamelib.android.AndroidUtils;
@@ -23,9 +27,14 @@ import br.odb.libsvg.SVGGraphic;
 import br.odb.utils.Rect;
 import br.odb.utils.math.Vec2;
 
-public class RootGameMenuActivity extends Activity implements OnClickListener, OnTouchListener {
+public class RootGameMenuActivity extends Activity implements OnClickListener, OnTouchListener, CompoundButton.OnCheckedChangeListener {
 
-	enum DificultyLevel {
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        ((Derelict2DApplication) getApplication()).toggleSpeech();
+    }
+
+    enum DificultyLevel {
         TEXT_VERSION( "Text version", "Get ready to type!", new String[] {}, 1500),
 		EASY("Easy: still figuring out what this is all about",
 				"You will have SOME help", new String[] { "pick magboots",
@@ -75,8 +84,12 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 		chkSound = (android.widget.CheckBox) findViewById(R.id.chkSound);
 		chkSpeech = (android.widget.CheckBox) findViewById(R.id.chkSpeech);
 
+        chkSpeech.setOnCheckedChangeListener( this );
+
 		chkSound.setChecked(((Derelict2DApplication) getApplication())
 				.mayEnableSound());
+
+
 		gvSplash = (GameView) findViewById(R.id.gvbg);
 		gvLogoInkscape = (GameView) findViewById(R.id.gvLogoInkscape);
 		gvGithub = (GameView) findViewById(R.id.gvLogoGithub);

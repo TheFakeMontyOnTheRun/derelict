@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.text.InputType;
 import android.util.Log;
@@ -38,7 +39,7 @@ import br.odb.utils.FileServerDelegate;
 //Here's the model - just a small view glue allowed
 public class ExploreStationActivity extends Activity implements
 		FileServerDelegate, ApplicationClient, GameUpdateDelegate,
-		DerelictGame.EndGameListener, TextToSpeech.OnInitListener,
+		DerelictGame.EndGameListener,
 		OnClickListener {
 
 	public TextToSpeech tts;
@@ -59,7 +60,7 @@ public class ExploreStationActivity extends Activity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		Intent intent;
 		intent = getIntent();
 
@@ -67,7 +68,7 @@ public class ExploreStationActivity extends Activity implements
 		String hasSound = intent.getExtras().getString("hasSound");
 		
 		if (hasSpeech != null && hasSpeech.equals("y")) {
-			tts = new TextToSpeech(this, this);
+			tts = ((Derelict2DApplication) getApplication()).tts;
 		}
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -190,6 +191,7 @@ public class ExploreStationActivity extends Activity implements
 		msg = msg.substring(0, 1).toUpperCase() + msg.substring(1);
 
 		Toast.makeText(this, msg.replace('-', ' '), Toast.LENGTH_SHORT).show();
+        say( msg );
 	}
 
 	@Override
@@ -318,18 +320,6 @@ public class ExploreStationActivity extends Activity implements
 	}
 
 	@Override
-	public void onInit(int code) {
-		if (code == TextToSpeech.SUCCESS) {
-			tts.setLanguage(Locale.getDefault());
-			game.showUI();
-		} else {
-			tts = null;
-			Toast.makeText(this, "Failed to initialize TTS engine.",
-					Toast.LENGTH_SHORT).show();
-		}
-	}
-
-	@Override
 	public int chooseOption(String arg0, String[] arg1) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -348,14 +338,14 @@ public class ExploreStationActivity extends Activity implements
 	}
 
 	@Override
-	public void printError(String arg0) {
-		// TODO Auto-generated method stub
+	public void printError(String s) {
+        say( s );
 
 	}
 
 	@Override
-	public void printVerbose(String arg0) {
-		// TODO Auto-generated method stub
+	public void printVerbose(String s) {
+        say( s );
 
 	}
 
@@ -408,19 +398,28 @@ public class ExploreStationActivity extends Activity implements
 
 	private void showInfoDialog() {
 
-		FragmentManager fm = getFragmentManager();
-		ShowGameIntroDialogFragment gameIntro = new ShowGameIntroDialogFragment();
+		final FragmentManager fm = getFragmentManager();
+		final ShowGameIntroDialogFragment gameIntro = new ShowGameIntroDialogFragment();
 		Bundle args = new Bundle();
 		args.putString("desc", DerelictGame.GAME_STORY1 + "\n\n\n"
 				+ DerelictGame.GAME_STORY2 + "\n\n\n" + DerelictGame.GAME_RULES);
 		gameIntro.setArguments(args);
-		gameIntro.show(fm, "show_game_intro");
+
+        if (tts != null) {
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    gameIntro.show(fm, "show_game_intro");
+                }
+            }, 100 );
+        } else {
+            gameIntro.show(fm, "show_game_intro");
+        }
 	}
 
 	@Override
-	public void printNormal(String arg0) {
-		// TODO Auto-generated method stub
-		
+	public void printNormal(String s) {
 	}
 
 	public void stopTalking() {

@@ -36,6 +36,12 @@ public class DaedalusSpaceShip extends Spaceship {
 		}
 
 
+		@Override
+		public ActiveItem toggle() {
+			turnKey();
+			return super.toggle();
+		}
+		
 
 		private void turnKey() {
 			if ( carrier.getLocation() instanceof DaedalusSpaceShip ) {

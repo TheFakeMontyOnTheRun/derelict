@@ -4,12 +4,15 @@ import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.StrictMode;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import br.odb.derelict.core.DerelictGame;
 import br.odb.gamerendering.rendering.AssetManager;
@@ -17,13 +20,14 @@ import br.odb.libsvg.SVGParsingUtils;
 import br.odb.utils.FileServerDelegate;
 
 public class Derelict2DApplication extends Application implements
-		FileServerDelegate {
+		FileServerDelegate, TextToSpeech.OnInitListener {
 
 	volatile public DerelictGame game;
 	final private AssetManager resManager = new AssetManager();
 	final ArrayList< String > notes = new ArrayList< String >();
+    public TextToSpeech tts;
 
-	@Override
+    @Override
 	public void onCreate() {
 		super.onCreate();
         loadAssets();
@@ -222,4 +226,32 @@ public class Derelict2DApplication extends Application implements
 			return false;
 		}
 	}
+
+    public void toggleSpeech() {
+
+        if ( tts == null ) {
+            tts = new TextToSpeech(this, this);
+            Toast.makeText(this, "Text-To-Speech enabled. Please wait for spoken confirmation to enter game.",
+                    Toast.LENGTH_SHORT).show();
+
+        } else {
+            tts = null;
+            Toast.makeText(this, "Text-To-Speech disabled.",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onInit(int code ) {
+        if (code == TextToSpeech.SUCCESS) {
+            tts.setLanguage(Locale.getDefault());
+            Toast.makeText(this, "Text-To-Speech working!.",
+                    Toast.LENGTH_SHORT).show();
+            tts.speak( "Text-To-Speech working!", TextToSpeech.QUEUE_FLUSH, null );
+        } else {
+            tts = null;
+            Toast.makeText(this, "Failed to initialize TTS engine.",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
 }
