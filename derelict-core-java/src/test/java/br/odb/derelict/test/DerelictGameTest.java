@@ -1133,7 +1133,7 @@ public class DerelictGameTest {
 	@Test
 	public final void testLog() {
 		DerelictGame game = new DerelictGame();
-		game.start();		
+		new Thread( game ).start(); //Such horrid thing to do		
 		DummyApplicationClient dac = new DummyApplicationClient();
 		game.setApplicationClient( dac );
 		Assert.assertTrue( dac.buffer.length() == 0 );
@@ -1146,7 +1146,7 @@ public class DerelictGameTest {
 		DerelictGame game = new DerelictGame();
 		DummyApplicationClient dac = new DummyApplicationClient();
 		game.setApplicationClient( dac );
-		game.start();
+		new Thread( game ).start(); //I dislike this incredibly.
 
 		game.sendData( null );
 		game.sendData( "" );

@@ -24,7 +24,7 @@ public class TimeBomb extends ActiveItem implements Updatable {
 
 		if (location != null) {
 
-			((TotautisSpaceStation) this.location.place).destroyed = true;
+			((TotautisSpaceStation) this.location.getPlace()).destroyed = true;
 		}
 	}
 	
