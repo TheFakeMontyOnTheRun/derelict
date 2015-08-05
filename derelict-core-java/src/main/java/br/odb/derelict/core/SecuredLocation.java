@@ -25,9 +25,10 @@ public class SecuredLocation extends Location {
 
 	public Location setConnected(Direction slot, Location location,
 			Clearance clearance) {
-
-		connections[slot.ordinal()] = location;
-		door[slot.ordinal()] = new SecuredDoor(clearance);
+		
+		
+		getConnections()[slot.ordinal()] = location;
+		getDoors()[slot.ordinal()] = new SecuredDoor(clearance);
 
 		return this;
 	}
@@ -37,9 +38,9 @@ public class SecuredLocation extends Location {
 
 		for (Direction d : Direction.values()) {
 
-			if (door[d.ordinal()] != null) {
+			if (getDoors()[d.ordinal()] != null) {
 
-				door[d.ordinal()] = new SecuredDoor(rank);
+				getDoors()[d.ordinal()] = new SecuredDoor(rank);
 			}
 		}
 	}

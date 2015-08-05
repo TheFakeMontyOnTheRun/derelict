@@ -42,7 +42,7 @@ public class DerelictGame extends ConsoleApplication {
 		String visitedLocationsList = "";
 
 		for (Location l : station.getLocations()) {
-			if (l.hasBeenExplored && hero.getLocation() != l) {
+			if (l.getHasBeenExplored() && hero.getLocation() != l) {
 				visitedLocationsList += ", " + l.getName();
 			}
 		}
