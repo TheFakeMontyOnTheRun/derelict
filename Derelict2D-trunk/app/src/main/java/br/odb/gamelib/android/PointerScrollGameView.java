@@ -4,8 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-
-import br.odb.utils.math.Vec2;
+import br.odb.gameutils.math.Vec2;
 
 public class PointerScrollGameView extends GameView {
 	private Vec2 cameraScroll;

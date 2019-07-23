@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.odb.derelict2d;
 
 import android.app.Activity;
@@ -23,8 +20,7 @@ import java.util.ArrayList;
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict.core.commands.DerelictUserMetaCommandLineAction;
 import br.odb.derelict.core.commands.DerelictUserMoveCommandLineAction;
-import br.odb.gameapp.GameUpdateDelegate;
-import br.odb.gameapp.UserCommandLineAction;
+import br.odb.gameapp.command.UserCommandLineAction;
 import br.odb.gameworld.Item;
 
 /**
@@ -39,7 +35,7 @@ private Spinner spnLocationItems;
 private Spinner spnActions;
 
 private WebView wvDescription;
-Button btnDo;
+private Button btnDo;
 private Button btnInfo;
 
 @Override
@@ -48,16 +44,16 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	View toReturn = inflater.inflate(R.layout.activity_manage_inventory,
 			container, false);
 
-	spnCollectedItems = (Spinner) toReturn.findViewById(R.id.spnCollected);
-	spnLocationItems = (Spinner) toReturn
+	spnCollectedItems = toReturn.findViewById(R.id.spnCollected);
+	spnLocationItems = toReturn
 			.findViewById(R.id.spnLocationItems);
-	spnActions = (Spinner) toReturn.findViewById(R.id.spnActions);
+	spnActions = toReturn.findViewById(R.id.spnActions);
 	spnActions.setOnItemSelectedListener(this);
-	wvDescription = (WebView) toReturn.findViewById(R.id.wvDescription);
+	wvDescription = toReturn.findViewById(R.id.wvDescription);
 
 
-	btnDo = (Button) toReturn.findViewById(R.id.btnDo);
-	btnInfo = (Button) toReturn.findViewById(R.id.btnInfo );
+	btnDo = toReturn.findViewById(R.id.btnDo);
+	btnInfo = toReturn.findViewById(R.id.btnInfo );
 	btnDo.setOnClickListener(this);
 	btnInfo.setOnClickListener(this);
 	buildCommandList();
@@ -76,7 +72,7 @@ public void onAttach(Activity activity) {
 private void buildCommandList() {
 	UserCommandLineAction[] cmds = game.getAvailableCommands();
 
-	ArrayList<UserCommandLineAction> cmdsFiltered = new ArrayList<UserCommandLineAction>();
+	ArrayList<UserCommandLineAction> cmdsFiltered = new ArrayList<>();
 
 	for (UserCommandLineAction ucmd : cmds) {
 		if (!(ucmd instanceof DerelictUserMetaCommandLineAction || ucmd instanceof DerelictUserMoveCommandLineAction)) {
@@ -84,7 +80,7 @@ private void buildCommandList() {
 		}
 	}
 
-	spnActions.setAdapter(new ArrayAdapter<UserCommandLineAction>(
+	spnActions.setAdapter(new ArrayAdapter<>(
 			getActivity(), android.R.layout.simple_spinner_item,
 			cmdsFiltered));
 }
@@ -92,14 +88,14 @@ private void buildCommandList() {
 @Override
 public void update() {
 
-	ArrayList< Item > tmp = new ArrayList< Item >();
+	ArrayList< Item > tmp = new ArrayList<>();
 	
 	
 	for ( Item i : game.getCollectableItems() ) {
 		tmp.add( 0, i );
 	}
 	
-	Item[] items = tmp.toArray( new Item[ tmp.size() ] );
+	Item[] items = tmp.toArray(new Item[0]);
 	
 	setListFor( spnLocationItems, items );
 	setListFor( spnCollectedItems, game.getCollectedItems() );
@@ -113,8 +109,8 @@ private void setListFor(Spinner widget, Item[] itemList ) {
 
 	previousSelection = (Item) widget.getSelectedItem();
 
-	widget.setAdapter(new ArrayAdapter<Item>(getActivity(),
-			android.R.layout.simple_spinner_item, itemList ));
+	widget.setAdapter(new ArrayAdapter<>(getActivity(),
+			android.R.layout.simple_spinner_item, itemList));
 
 	for ( int c = 0; c < widget.getCount(); ++c ) {
 		if ( previousSelection == widget.getItemAtPosition( c ) ) {

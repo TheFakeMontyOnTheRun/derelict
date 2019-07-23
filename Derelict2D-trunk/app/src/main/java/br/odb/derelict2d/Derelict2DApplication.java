@@ -1,9 +1,7 @@
 package br.odb.derelict2d;
 
 import android.app.Application;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.StrictMode;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.widget.Toast;
@@ -15,16 +13,16 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import br.odb.derelict.core.DerelictGame;
+import br.odb.gameapp.FileServerDelegate;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.libsvg.SVGParsingUtils;
-import br.odb.utils.FileServerDelegate;
 
 public class Derelict2DApplication extends Application implements
 		FileServerDelegate, TextToSpeech.OnInitListener {
 
 	volatile public DerelictGame game;
 	final private AssetManager resManager = new AssetManager();
-	final ArrayList< String > notes = new ArrayList< String >();
+	final ArrayList< String > notes = new ArrayList<>();
     public TextToSpeech tts;
 
     @Override
@@ -33,7 +31,7 @@ public class Derelict2DApplication extends Application implements
         loadAssets();
 	}
 	
-	public void loadAssets() {
+	private void loadAssets() {
 
 
 		// StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
@@ -193,7 +191,7 @@ public class Derelict2DApplication extends Application implements
 	}
 
 	@Override
-	public InputStream openAsset(int resId) throws IOException {
+	public InputStream openAsset(int resId) {
 		return getResources().openRawResource(resId);
 	}
 
@@ -203,7 +201,7 @@ public class Derelict2DApplication extends Application implements
 	}
 
 	@Override
-	public OutputStream openAsOutputStream(String filename) throws IOException {
+	public OutputStream openAsOutputStream(String filename) {
 		return null;
 	}
 

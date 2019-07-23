@@ -23,8 +23,7 @@ import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict.core.commands.DerelictUserMetaCommandLineAction;
 import br.odb.derelict.core.commands.DerelictUserMoveCommandLineAction;
 import br.odb.derelict.core.items.Book;
-import br.odb.gameapp.GameUpdateDelegate;
-import br.odb.gameapp.UserCommandLineAction;
+import br.odb.gameapp.command.UserCommandLineAction;
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.DisplayList;
@@ -37,33 +36,33 @@ public class ManageInventoryFragment extends Fragment implements
 		GameUpdateDelegate, OnClickListener {
 
 	private DerelictGame game;
-	GameView gvPick;
-	GameView gvUseWith;
-	GameView gvUse;
-	GameView gvDrop;
-	GameView gvToggle;
+	private GameView gvPick;
+	private GameView gvUseWith;
+	private GameView gvUse;
+	private GameView gvDrop;
+	private GameView gvToggle;
 	// private WebView wvDescription;
 	private Button btnInfo;
 	private Button btnInfoToCollect;
-	Item selectedCollectedItem;
-	Item selectedLocationItem;
-	LinearLayout llCollectedItems;
-	LinearLayout llLocationItems;
-	HorizontalScrollView hsvCollected;
-	HorizontalScrollView lvLocationItems;
-	Button btnLocationInfo;
-	Button btnMakeNotes;
-	TextView tvLocationName;
+	private Item selectedCollectedItem;
+	private Item selectedLocationItem;
+	private LinearLayout llCollectedItems;
+	private LinearLayout llLocationItems;
+	private HorizontalScrollView hsvCollected;
+	private HorizontalScrollView lvLocationItems;
+	private Button btnLocationInfo;
+	private Button btnMakeNotes;
+	private TextView tvLocationName;
 
-	TextView tvToxicty;
+	private TextView tvToxicty;
 	TextView tvFloor;
-	TextView tvFacing;
-	TextView tvMoney;
-	TextView tvTemperature;
-	TextView tvTime;
+	private TextView tvFacing;
+	private TextView tvMoney;
+	private TextView tvTemperature;
+	private TextView tvTime;
 
-	final HashMap<GameView, Item> itemForView = new HashMap<GameView, Item>();
-	final HashMap<Item, GameView> viewForItem = new HashMap<Item, GameView>();
+	private final HashMap<GameView, Item> itemForView = new HashMap<>();
+	private final HashMap<Item, GameView> viewForItem = new HashMap<>();
 
 	String oldText;
 	private TextView tvCapacity;
@@ -75,32 +74,32 @@ public class ManageInventoryFragment extends Fragment implements
 		final View toReturn = inflater.inflate(
 				R.layout.activity_manage_inventory, container, false);
 
-		llCollectedItems = (LinearLayout) toReturn
+		llCollectedItems = toReturn
 				.findViewById(R.id.llCollectedItems);
-		llLocationItems = (LinearLayout) toReturn
+		llLocationItems = toReturn
 				.findViewById(R.id.llLocationItems);
 
-		hsvCollected = (HorizontalScrollView) toReturn
+		hsvCollected = toReturn
 				.findViewById(R.id.lvCollected);
-		lvLocationItems = (HorizontalScrollView) toReturn
+		lvLocationItems = toReturn
 				.findViewById(R.id.lvLocationItems);
 
 		// wvDescription = (WebView) toReturn.findViewById(R.id.wvDescription);
 		// wvDescription.getSettings().setJavaScriptEnabled(false);
 
-		btnInfo = (Button) toReturn.findViewById(R.id.btnInfo);
-		btnInfoToCollect = (Button) toReturn
+		btnInfo = toReturn.findViewById(R.id.btnInfo);
+		btnInfoToCollect = toReturn
 				.findViewById(R.id.btnInfoToCollect);
-		btnMakeNotes = (Button) toReturn.findViewById( R.id.btnMakeNotes );
+		btnMakeNotes = toReturn.findViewById( R.id.btnMakeNotes );
 		btnMakeNotes.setOnClickListener( this );
 		btnInfo.setOnClickListener(this);
 		btnInfoToCollect.setOnClickListener(this);
 
-		gvPick = (GameView) toReturn.findViewById(R.id.gvPick);
-		gvUseWith = (GameView) toReturn.findViewById(R.id.gvUseWith);
-		gvUse = (GameView) toReturn.findViewById(R.id.gvUse);
-		gvDrop = (GameView) toReturn.findViewById(R.id.gvDrop);
-		gvToggle = (GameView) toReturn.findViewById(R.id.gvToggle);
+		gvPick = toReturn.findViewById(R.id.gvPick);
+		gvUseWith = toReturn.findViewById(R.id.gvUseWith);
+		gvUse = toReturn.findViewById(R.id.gvUse);
+		gvDrop = toReturn.findViewById(R.id.gvDrop);
+		gvToggle = toReturn.findViewById(R.id.gvToggle);
 
 		gvPick.setOnClickListener(this);
 		gvUseWith.setOnClickListener(this);
@@ -108,16 +107,16 @@ public class ManageInventoryFragment extends Fragment implements
 		gvDrop.setOnClickListener(this);
 		gvToggle.setOnClickListener(this);
 
-		tvLocationName = (TextView) toReturn.findViewById(R.id.tvLocationName);
-		btnLocationInfo = (Button) toReturn.findViewById(R.id.btnLocationInfo);
+		tvLocationName = toReturn.findViewById(R.id.tvLocationName);
+		btnLocationInfo = toReturn.findViewById(R.id.btnLocationInfo);
 		btnLocationInfo.setOnClickListener(this);
 
-		tvToxicty = (TextView) toReturn.findViewById(R.id.txtToxicity);
-		tvFacing = (TextView) toReturn.findViewById(R.id.txtFacing);
-		tvMoney = (TextView) toReturn.findViewById(R.id.txtMoney);
-		tvTemperature = (TextView) toReturn.findViewById(R.id.txtTemperature);
-		tvTime = (TextView) toReturn.findViewById(R.id.txtTime);
-		tvCapacity = (TextView) toReturn.findViewById(R.id.txtCapacity);
+		tvToxicty = toReturn.findViewById(R.id.txtToxicity);
+		tvFacing = toReturn.findViewById(R.id.txtFacing);
+		tvMoney = toReturn.findViewById(R.id.txtMoney);
+		tvTemperature = toReturn.findViewById(R.id.txtTemperature);
+		tvTime = toReturn.findViewById(R.id.txtTime);
+		tvCapacity = toReturn.findViewById(R.id.txtCapacity);
 
 		llCollectedItems.setOnClickListener(this);
 
@@ -153,7 +152,7 @@ public class ManageInventoryFragment extends Fragment implements
 		return toReturn;
 	}
 
-	public void scheduleUpdate(View view) {
+	private void scheduleUpdate(View view) {
 		view.post(new Runnable() {
 			@Override
 			public void run() {
@@ -173,7 +172,7 @@ public class ManageInventoryFragment extends Fragment implements
 	private void buildCommandList() {
 		UserCommandLineAction[] cmds = game.getAvailableCommands();
 
-		ArrayList<UserCommandLineAction> cmdsFiltered = new ArrayList<UserCommandLineAction>();
+		ArrayList<UserCommandLineAction> cmdsFiltered = new ArrayList<>();
 
 		for (UserCommandLineAction ucmd : cmds) {
 			if (!(ucmd instanceof DerelictUserMetaCommandLineAction || ucmd instanceof DerelictUserMoveCommandLineAction)) {
@@ -470,7 +469,7 @@ public class ManageInventoryFragment extends Fragment implements
 		}
 	}
 
-	public void showInfoToCollectDialog() {
+	private void showInfoToCollectDialog() {
 
 		if (selectedLocationItem == null) {
 			return;

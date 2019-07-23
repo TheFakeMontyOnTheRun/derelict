@@ -24,17 +24,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict2d.RootGameMenuActivity.DificultyLevel;
 import br.odb.derelict2d.game.Derelict2DTotautisSpaceStation;
 import br.odb.derelict2d.game.GameLevel;
 import br.odb.gameapp.ApplicationClient;
-import br.odb.gameapp.ConsoleApplication;
-import br.odb.gameapp.GameUpdateDelegate;
+import br.odb.gameapp.FileServerDelegate;
 import br.odb.gamerendering.rendering.AssetManager;
-import br.odb.utils.FileServerDelegate;
 
 //Here's the model - just a small view glue allowed
 public class ExploreStationActivity extends Activity implements
@@ -42,18 +39,18 @@ public class ExploreStationActivity extends Activity implements
 		DerelictGame.EndGameListener,
 		OnClickListener {
 
-	public TextToSpeech tts;
-	boolean shouldPlaySound;
+	private TextToSpeech tts;
+	private boolean shouldPlaySound;
 
-	ArrayList<GameUpdateDelegate> updateDelegates = new ArrayList<GameUpdateDelegate>();
-	HashMap<String, MediaPlayer> mediaPlayers = new HashMap<String, MediaPlayer>();
+	private final ArrayList<GameUpdateDelegate> updateDelegates = new ArrayList<>();
+	private final HashMap<String, MediaPlayer> mediaPlayers = new HashMap<>();
 
 	GameLevel currentLevel;
-	DerelictGame game;
+	private DerelictGame game;
 	AssetManager resManager;
-	MediaPlayer playerSound;
+	private MediaPlayer playerSound;
 	private long lastTimeCough = -1;
-	DificultyLevel level;
+	private DificultyLevel level;
 	
 	// MediaPlayer music;
 
@@ -87,9 +84,6 @@ public class ExploreStationActivity extends Activity implements
 
 		game = ((Derelict2DApplication) getApplication()).game;
 		game.endGameListener = this;
-		game.createDefaultClient();
-		game.setGameUpdateDelegate(this);
-
 		game.hero.setGender( "m" );
 
 		currentLevel = new Derelict2DTotautisSpaceStation(game.station, this);
@@ -181,7 +175,7 @@ public class ExploreStationActivity extends Activity implements
 	}
 
 	@Override
-	public InputStream openAsset(int resId) throws IOException {
+	public InputStream openAsset(int resId) {
 		return getResources().openRawResource(resId);
 	}
 
@@ -295,18 +289,8 @@ public class ExploreStationActivity extends Activity implements
 		finish();
 	}
 
-	@Override
-	public boolean isConnected() {
-		return this.isTaskRoot();
-	}
-
 	public void addUpdateListener(GameUpdateDelegate delegate) {
 		updateDelegates.add(delegate);
-	}
-
-	@Override
-	public String openHTTP(String url) {
-		return ConsoleApplication.defaultJavaHTTPGet(url, this);
 	}
 
 	@Override
@@ -323,12 +307,6 @@ public class ExploreStationActivity extends Activity implements
 	public int chooseOption(String arg0, String[] arg1) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -362,19 +340,7 @@ public class ExploreStationActivity extends Activity implements
 	}
 
 	@Override
-	public void setClientId(String arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void shortPause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public OutputStream openAsOutputStream(String arg0) throws IOException {
+	public OutputStream openAsOutputStream(String arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}

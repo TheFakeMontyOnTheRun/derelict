@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.odb.derelict2d;
 
 import android.content.Context;
@@ -20,7 +17,7 @@ import br.odb.gamerendering.rendering.DisplayList;
  */
 public class ExploreStationView extends PointerNodeSelectableScrollableView {
 
-	DerelictGraphicsAdapter adapter = new DerelictGraphicsAdapter();
+	private final DerelictGraphicsAdapter adapter = new DerelictGraphicsAdapter();
 	
 	public ExploreStationView(Context context) {
 		super(context);

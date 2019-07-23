@@ -16,11 +16,10 @@ import br.odb.derelict.core.commands.UseCommand;
 import br.odb.derelict.core.commands.UseWithCommand;
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gameapp.ConsoleApplication;
-import br.odb.gameapp.GameUpdateDelegate;
-import br.odb.gameapp.UserCommandLineAction;
+import br.odb.gameapp.FileServerDelegate;
+import br.odb.gameapp.command.UserCommandLineAction;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gameworld.Item;
-import br.odb.utils.FileServerDelegate;
 
 public class ManageInventoryActivity extends Activity implements ApplicationClient, GameUpdateDelegate, OnClickListener {
 
@@ -39,30 +38,25 @@ public class ManageInventoryActivity extends Activity implements ApplicationClie
 		
 		resManager = (( Derelict2DApplication)getApplication()).getAssetManager();
 				
-		spnCollectedItems = (Spinner) findViewById( R.id.spnCollected );
-		spnLocationItems = (Spinner) findViewById( R.id.spnLocationItems );
-		spnActions = (Spinner) findViewById( R.id.spnActions );
+		spnCollectedItems = findViewById( R.id.spnCollected );
+		spnLocationItems = findViewById( R.id.spnLocationItems );
+		spnActions = findViewById( R.id.spnActions );
 		findViewById( R.id.btnDo ).setOnClickListener( this );
 		
 		game = (( Derelict2DApplication)getApplication()).game;
 		game.setApplicationClient(this);
-		game.printPreamble().setGameUpdateDelegate(this).showUI();
+//		game.printPreamble().setGameUpdateDelegate(this).showUI();
 
 		update();
 	}
 
 	@Override
 	public void update() {
-		spnLocationItems.setAdapter( new ArrayAdapter<Item>( this, android.R.layout.simple_spinner_item, game.getCollectableItems() ) );
-		spnCollectedItems.setAdapter( new ArrayAdapter<Item>( this, android.R.layout.simple_spinner_item, game.getCollectedItems() ) );
-		spnActions.setAdapter( new ArrayAdapter<UserCommandLineAction>( this, android.R.layout.simple_spinner_item, game.getAvailableCommands() ) );		
+		spnLocationItems.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, game.getCollectableItems()) );
+		spnCollectedItems.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, game.getCollectedItems()) );
+		spnActions.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, game.getAvailableCommands()) );
 	}
 
-	@Override
-	public void setClientId(String id) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void printWarning(String msg) {
@@ -172,11 +166,6 @@ public class ManageInventoryActivity extends Activity implements ApplicationClie
 		MediaPlayer.create( this, resManager.getResIdForUri( uri ) ).start();		
 	}
 
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void sendQuit() {
@@ -184,20 +173,13 @@ public class ManageInventoryActivity extends Activity implements ApplicationClie
 		
 	}
 
-	@Override
 	public boolean isConnected() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
-	@Override
 	public String openHTTP(String url) {
 		return ConsoleApplication.defaultJavaHTTPGet( url, this );
 	}
 
-	@Override
-	public void shortPause() {
-		// TODO Auto-generated method stub
-		
-	}
 }

@@ -2,38 +2,21 @@ package br.odb.derelict2d;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import java.io.ObjectInputStream;
-import java.util.List;
-
-import br.odb.derelict.core.DerelictGame;
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
-import br.odb.gamelib.android.geometry.GLES1TriangleFactory;
-import br.odb.gamerendering.rendering.AssetManager;
-import br.odb.gamerendering.rendering.DisplayList;
-import br.odb.gamerendering.rendering.RenderingNode;
-import br.odb.gamerendering.rendering.SVGRenderingNode;
-import br.odb.libsvg.SVGGraphic;
-import br.odb.utils.Rect;
-import br.odb.utils.math.Vec2;
-import br.odb.utils.math.Vec3;
 
 public class ShowGameSplashActivity extends Activity implements OnClickListener {
 
 	private MediaPlayer theme;
-	GameView gvSplash;
-	GameView gvLogo;
+	private GameView gvSplash;
+	private GameView gvLogo;
 	private Button playBtn;
 
 	@SuppressLint("NewApi")
@@ -42,10 +25,10 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_game_splash);
 
-		playBtn = (Button) findViewById(R.id.btnPlay);
+		playBtn = findViewById(R.id.btnPlay);
 		
-		gvSplash = (GameView) findViewById(R.id.gvSplash);
-		gvLogo = (GameView) findViewById(R.id.gvLogo);
+		gvSplash = findViewById(R.id.gvSplash);
+		gvLogo = findViewById(R.id.gvLogo);
 
 		gvSplash.setVisibility( View.INVISIBLE );
 		gvLogo.setVisibility( View.INVISIBLE );
@@ -57,7 +40,7 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 		}
 	}
 
-    void startLoading() {
+    private void startLoading() {
 
         new Thread(  new Runnable() {
             @Override
@@ -98,11 +81,11 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
         }
     }
 
-	void initImage() {
+	private void initImage() {
 
         Derelict2DApplication app = ((Derelict2DApplication) getApplication());
 
-        AndroidUtils.initImageScaled(gvLogo, "logo", app.getAssetManager(), 0.5f, 0.5f);
+        AndroidUtils.initImage(gvLogo, "logo", app.getAssetManager());
         AndroidUtils.initImage(gvSplash, "title", app.getAssetManager());
 	}
 

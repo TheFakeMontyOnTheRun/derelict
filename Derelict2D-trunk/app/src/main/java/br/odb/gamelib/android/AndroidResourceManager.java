@@ -1,13 +1,9 @@
-/**
- * 
- */
 package br.odb.gamelib.android;
-
-import android.content.res.Resources;
-import android.graphics.BitmapFactory;
 
 import java.util.HashMap;
 
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import br.odb.gamerendering.rendering.RasterImage;
 
 /**
@@ -16,10 +12,10 @@ import br.odb.gamerendering.rendering.RasterImage;
  */
 public class AndroidResourceManager {
 
-	private static HashMap< Resources, AndroidResourceManager > instances = new HashMap<Resources, AndroidResourceManager>();
-	Resources res;
+	private static final HashMap< Resources, AndroidResourceManager > instances = new HashMap<>();
+	private final Resources res;
 	
-	public AndroidResourceManager(Resources res ) {
+	private AndroidResourceManager(Resources res) {
 		this.res = res;
 	}
 
@@ -44,24 +40,9 @@ public class AndroidResourceManager {
 		}
 	}
 
-	public RasterImage loadRasterImage(int resId) {
+	private RasterImage loadRasterImage(int resId) {
 
 		return new AndroidRasterImage( BitmapFactory.decodeResource( res, resId ) );
-	}
-
-	public void cleanupUnused() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void preloadAssets() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void unloadAll() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

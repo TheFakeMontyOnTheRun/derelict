@@ -26,8 +26,8 @@ public class ShowItemStatsDialogFragment extends DialogFragment implements
 				container, true);
 		
 		view.findViewById(R.id.btnCloseItemStat).setOnClickListener(this);
-		wvStats = (WebView) view.findViewById(R.id.wvStats);
-		gvItemView = (GameView) view.findViewById(R.id.gvItemView);
+		wvStats = view.findViewById(R.id.wvStats);
+		gvItemView = view.findViewById(R.id.gvItemView);
 		final Bundle args = getArguments();
         final String title = args.getString("name").substring(0, 1).toUpperCase() + args.getString("name").substring(1);
         getDialog().setTitle( title.replace( '-', ' ' ) );
@@ -43,17 +43,11 @@ public class ShowItemStatsDialogFragment extends DialogFragment implements
 
 		return view;
 	}
-	
-	@Override
-	public void onStart() {
-	
-		super.onStart();
-	}
 
 	private void updateDescription(String title, String desc, Bundle args ) {
 
-        AndroidUtils.initImageScaled(gvItemView, args.getString("image"), ((Derelict2DApplication) getActivity()
-                .getApplication()).getAssetManager(), 0.5f, 0.5f );
+        AndroidUtils.initImage(gvItemView, args.getString("image"), ((Derelict2DApplication) getActivity()
+                .getApplication()).getAssetManager());
 
         desc = desc.replaceAll("\n", "<br/>");
 		wvStats.getSettings().setJavaScriptEnabled(false);
@@ -65,11 +59,9 @@ public class ShowItemStatsDialogFragment extends DialogFragment implements
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btnCloseItemStat:
+		if (v.getId() == R.id.btnCloseItemStat) {
 			dismiss();
 			((ExploreStationActivity) getActivity()).stopTalking();
-			break;
 		}
 	}
 }

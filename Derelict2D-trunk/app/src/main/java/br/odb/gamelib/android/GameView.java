@@ -1,35 +1,34 @@
 package br.odb.gamelib.android;
 
+import java.util.List;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
-import java.util.List;
-
 import br.odb.gamerendering.rendering.DisplayList;
 import br.odb.gamerendering.rendering.GameRenderer;
 import br.odb.gamerendering.rendering.RenderingNode;
 import br.odb.gamerendering.rendering.SolidSquareRenderingNode;
-import br.odb.utils.Color;
-import br.odb.utils.Rect;
-import br.odb.utils.Updatable;
-import br.odb.utils.math.Vec2;
+import br.odb.gameutils.Color;
+import br.odb.gameutils.Rect;
+import br.odb.gameutils.Updatable;
+import br.odb.gameutils.math.Vec2;
 
 public class GameView extends View implements Updatable {
 
-	Paint paint = new Paint();
+	private final Paint paint = new Paint();
 
 	public class Updater implements Runnable {
 
-		GameView view;
+		final GameView view;
 		boolean stillRunning;
 
-		public long latency = 100;
+		final long latency = 100;
 
-		public Updater(GameView view) {
+		Updater(GameView view) {
 			this.stillRunning = false;
 			this.view = view;
 		}
@@ -67,8 +66,7 @@ public class GameView extends View implements Updatable {
 	private long renderingBudget;
 	private RenderingNode defaultRenderingNode;
 
-	private Thread updateThread;
-	public Updater updater;
+    public Updater updater;
 
 	public void update(long ms) {
 		if (renderingNode != null) {
@@ -95,7 +93,7 @@ public class GameView extends View implements Updatable {
 		init(context);
 	}
 
-	public void init(Context context) {
+	protected void init(Context context) {
 		this.requestFocus();
 		this.setFocusableInTouchMode(true);
 
@@ -108,12 +106,17 @@ public class GameView extends View implements Updatable {
 		renderingContext = new AndroidCanvasRenderingContext();
 		gameRenderer = new GameRenderer();
 		gameRenderer.setCurrentRenderingContext(renderingContext);
-		defaultRenderingNode = new SolidSquareRenderingNode(new Rect(10, 10,
-				100, 100), new Color(255, 0, 0));
+		
+		DisplayList dl = new DisplayList( "dl" );
+		dl.setItems( new RenderingNode[] { new SolidSquareRenderingNode(new Rect(10, 10, 100, 100), new Color(255, 0, 0)),
+                new SolidSquareRenderingNode(new Rect(110, 10, 100, 100), new Color(0, 255, 0)),
+                new SolidSquareRenderingNode(new Rect(210, 10, 100, 100), new Color(0, 0, 255))} );
+        defaultRenderingNode = dl;
+
 
 		updater = new Updater(this);
 		updater.setRunning(true);
-		updateThread = new Thread(updater);
+        Thread updateThread = new Thread(updater);
 		updateThread.start();
 
 	}
@@ -128,7 +131,7 @@ public class GameView extends View implements Updatable {
 		return renderingNode;
 	}
 
-	public void doDraw(Canvas canvas) {
+	void doDraw(Canvas canvas) {
 
 		long t0 = System.currentTimeMillis();
 		long tn = t0;
@@ -189,7 +192,7 @@ public class GameView extends View implements Updatable {
 		return null;
 	}
 
-	public void setAntiAliasing(boolean b) {
+	void setAntiAliasing(boolean b) {
 
 		boolean previous;
 

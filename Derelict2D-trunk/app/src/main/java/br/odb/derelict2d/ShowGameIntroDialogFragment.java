@@ -1,8 +1,6 @@
 package br.odb.derelict2d;
 
 import android.app.DialogFragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -21,10 +19,10 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 	private WebView wvStory;
 	private GameView gvIntroComics;
 	private Button btNextFinish;
-	String [] storyBits;
-	String [] buttonTitles = { "Next", "Next", "Dismiss" };
-	String [] imagePath = { "intro-comics2", "intro-comics2", "intro-comics2" };
-	int currentStoryPoint = 0;
+	private String [] storyBits;
+	private final String [] buttonTitles = { "Next", "Next", "Dismiss" };
+	private final String [] imagePath = { "intro-comics2", "intro-comics2", "intro-comics2" };
+	private int currentStoryPoint = 0;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,11 +31,11 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 		View view = inflater.inflate(R.layout.show_game_intro,
 				container, true);
 		
-		btNextFinish = (Button) view.findViewById(R.id.btnDismissStory);
+		btNextFinish = view.findViewById(R.id.btnDismissStory);
 		btNextFinish.setOnClickListener(this);
 		
-		wvStory = (WebView) view.findViewById(R.id.wvStory);
-		gvIntroComics = (GameView) view.findViewById(R.id.gvIntroComics);
+		wvStory = view.findViewById(R.id.wvStory);
+		gvIntroComics = view.findViewById(R.id.gvIntroComics);
 		Bundle args = getArguments();
 		
 		
@@ -57,7 +55,7 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
 	}
 
 
-    public void updateDescription( final int storyPoint ) {
+    private void updateDescription(final int storyPoint) {
 		
 		wvStory.getSettings().setJavaScriptEnabled(false);
 		wvStory.loadDataWithBaseURL(null, "<html><body bgcolor = '#0D0' >"

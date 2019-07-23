@@ -3,10 +3,9 @@ package br.odb.gamelib.android;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import br.odb.gameutils.math.Vec2;
 
-import br.odb.utils.math.Vec2;
-
-public class GestureManager implements OnTouchListener {
+class GestureManager implements OnTouchListener {
 	/**
 	 * 
 	 */
@@ -18,11 +17,11 @@ public class GestureManager implements OnTouchListener {
 	/**
 	 * 
 	 */
-	private Vec2 lastMove;
+	private final Vec2 lastMove;
 	/**
 	 * 
 	 */
-	private View parent;
+	private final View parent;
 	
 	// ------------------------------------------------------------------------------------------------------------
 		/**

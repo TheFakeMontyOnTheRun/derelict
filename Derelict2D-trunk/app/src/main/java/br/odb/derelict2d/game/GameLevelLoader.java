@@ -1,13 +1,12 @@
 package br.odb.derelict2d.game;
 
-import br.odb.utils.FileServerDelegate;
 
-public class GameLevelLoader {
+import br.odb.gameapp.FileServerDelegate;
 
-	public static GameLevel loadLevel(int currentLevel, FileServerDelegate delegate, GameLevelParser parser ) {
+class GameLevelLoader {
 
-		GameLevel toReturn = parser.getLevel( delegate );
+	static GameLevel loadLevel(int currentLevel, FileServerDelegate delegate, GameLevelParser parser) {
 
-		return toReturn;
+		return parser.getLevel( delegate );
 	}
 }

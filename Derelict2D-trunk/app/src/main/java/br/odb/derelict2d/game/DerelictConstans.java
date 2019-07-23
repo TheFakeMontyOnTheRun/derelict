@@ -1,6 +1,6 @@
 package br.odb.derelict2d.game;
 
-public class DerelictConstans {
+class DerelictConstans {
 
 	public static final short GRASS = 0;
 	public static final short BRICKS = 1;

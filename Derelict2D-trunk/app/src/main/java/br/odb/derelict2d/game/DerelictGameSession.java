@@ -1,76 +1,26 @@
-/**
- * 
- */
 package br.odb.derelict2d.game;
 
 import br.odb.derelict.core.locations.TotautisSpaceStation;
-import br.odb.gameapp.GameSession;
-import br.odb.gameapp.SaveStateNotFound;
 import br.odb.gameworld.Place;
 
 /**
  * @author monty
  *
  */
-public class DerelictGameSession extends GameSession {
-	int currentLevel;
-	int dificulty;
+public class DerelictGameSession  {
+	private int currentLevel;
+	private int dificulty;
 	
-	public DerelictGameSession() {
+	private DerelictGameSession(DerelictGameConfiguration derelictGameConfiguration) {
 		reset();
 	}
 	
-	public DerelictGameSession(
-			DerelictGameConfiguration derelictGameConfiguration) {
-		// TODO Auto-generated constructor stub
-	}
 
-	public void close() {
-		
-	}
-
-
-	@Override
-	public void reset() {
+	private void reset() {
 		currentLevel = 0;
 		dificulty = 0;		
 	}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void start() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void save() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void restore() throws SaveStateNotFound {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void clearSavedSession() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void stop() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public static DerelictGameSession startNewSession() {
 		return new DerelictGameSession( new DerelictGameConfiguration() );

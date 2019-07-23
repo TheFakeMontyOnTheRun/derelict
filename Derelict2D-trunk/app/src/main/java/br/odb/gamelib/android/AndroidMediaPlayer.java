@@ -1,20 +1,16 @@
-/**
- * 
- */
 package br.odb.gamelib.android;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-
 import br.odb.gameapp.AbstractMediaPlayer;
 
 /**
  * @author monty
  *
  */
-public class AndroidMediaPlayer extends AbstractMediaPlayer {
+class AndroidMediaPlayer extends AbstractMediaPlayer {
 
-	private MediaPlayer mp;
+	private final MediaPlayer mp;
 
 	/**
 	 * 
@@ -26,7 +22,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 	/* (non-Javadoc)
 	 * @see br.odb.gameapp.AbstractMediaPlayer#loop()
 	 */
-	@Override
+	
 	public void loop() {
 		mp.stop();
 		mp.setLooping( true );
@@ -36,7 +32,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 	/* (non-Javadoc)
 	 * @see br.odb.gameapp.AbstractMediaPlayer#play()
 	 */
-	@Override
+	
 	public void play() {
 		mp.start();
 	}
@@ -44,7 +40,7 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
 	/* (non-Javadoc)
 	 * @see br.odb.gameapp.AbstractMediaPlayer#stop()
 	 */
-	@Override
+	
 	public void stop() {
 		mp.stop();
 	}

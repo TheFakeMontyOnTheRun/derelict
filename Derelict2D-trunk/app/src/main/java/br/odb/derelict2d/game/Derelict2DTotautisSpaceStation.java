@@ -3,14 +3,14 @@ package br.odb.derelict2d.game;
 import java.io.IOException;
 
 import br.odb.derelict.core.locations.TotautisSpaceStation;
+import br.odb.gameapp.FileServerDelegate;
 import br.odb.libsvg.SVGGraphic;
 import br.odb.libsvg.SVGParsingUtils;
-import br.odb.utils.FileServerDelegate;
 
 public class Derelict2DTotautisSpaceStation extends GameLevel {
 
-	public TotautisSpaceStation station;
-	public SVGGraphic heroGraphic;
+	private final TotautisSpaceStation station;
+	private SVGGraphic heroGraphic;
 
 	public Derelict2DTotautisSpaceStation( FileServerDelegate delegate) {
 		this( new TotautisSpaceStation(), delegate );

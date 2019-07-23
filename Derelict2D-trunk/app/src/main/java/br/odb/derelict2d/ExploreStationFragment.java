@@ -23,7 +23,6 @@ import java.util.HashMap;
 
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict2d.game.GameLevel;
-import br.odb.gameapp.GameUpdateDelegate;
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
@@ -32,8 +31,8 @@ import br.odb.gameworld.Location;
 import br.odb.gameworld.exceptions.InvalidLocationException;
 import br.odb.gameworld.exceptions.InvalidSlotException;
 import br.odb.libsvg.SVGGraphic;
-import br.odb.utils.Direction;
-import br.odb.utils.Utils;
+import br.odb.gameutils.Direction;
+import br.odb.gameutils.Utils;
 
 public class ExploreStationFragment extends Fragment implements
 		GameUpdateDelegate, OnClickListener, OnItemSelectedListener,
@@ -42,17 +41,15 @@ public class ExploreStationFragment extends Fragment implements
 	EditText edtOutput;
 	EditText edtEntry;
 
-	ExploreStationView gameView;
+	private ExploreStationView gameView;
 	private Spinner spnDirections;
-	private GameLevel currentLevel;
-	DerelictGame game;
+	private DerelictGame game;
 	private MediaPlayer fiveSteps;
 	private MediaPlayer ding;
-	private AssetManager resManager;
-	CheckBox chkShowPlaceNames;
+	private CheckBox chkShowPlaceNames;
 
 	// Playing low here:
-	final HashMap<String, String> locationPrettyNames = new HashMap<String, String>();
+	private final HashMap<String, String> locationPrettyNames = new HashMap<>();
 
 	SVGGraphic stationGraphics;
 	private GameView gvMove;
@@ -64,11 +61,11 @@ public class ExploreStationFragment extends Fragment implements
 		View toReturn = inflater.inflate(R.layout.fragment_explore_station,
 				container, false);
 
-		gameView = (ExploreStationView) toReturn.findViewById(R.id.overviewMap);
-		spnDirections = (Spinner) toReturn.findViewById(R.id.spnDirection);
+		gameView = toReturn.findViewById(R.id.overviewMap);
+		spnDirections = toReturn.findViewById(R.id.spnDirection);
 		spnDirections.setOnItemSelectedListener(this);
-		gvMove = (GameView) toReturn.findViewById(R.id.gvMove);
-		chkShowPlaceNames = (CheckBox) toReturn
+		gvMove = toReturn.findViewById(R.id.gvMove);
+		chkShowPlaceNames = toReturn
 				.findViewById(R.id.chkShowPlaceNames);
 		gvMove.setOnClickListener(this);
 
@@ -114,9 +111,7 @@ public class ExploreStationFragment extends Fragment implements
 	@Override
 	public void onClick(View v) {
 
-		switch (v.getId()) {
-
-		case R.id.gvMove:
+		if (v.getId() == R.id.gvMove) {
 			Direction d;
 
 			Location l = game.hero.getLocation();
@@ -129,19 +124,19 @@ public class ExploreStationFragment extends Fragment implements
 				d = l.getConnectionDirectionForLocation(game.station
 						.getLocation(locationName));
 				game.sendData("move " + d);
-				game.station.update( 10000 );
+				game.station.update(10000);
 
 				if (d == Direction.CEILING || d == Direction.FLOOR) {
 					if (ding != null) {
 						ding.start();
 					}
 				} else {
-					if ( l != game.hero.getLocation() && fiveSteps != null) {
+					if (l != game.hero.getLocation() && fiveSteps != null) {
 						fiveSteps.start();
 					}
 				}
-				
-				((ExploreStationActivity) getActivity()).say( "moving to " + locationName);
+
+				((ExploreStationActivity) getActivity()).say("moving to " + locationName);
 			} catch (InvalidSlotException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -149,7 +144,6 @@ public class ExploreStationFragment extends Fragment implements
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			break;
 		}
 	}
 
@@ -158,21 +152,21 @@ public class ExploreStationFragment extends Fragment implements
 
 		ExploreStationActivity explore = (ExploreStationActivity) getActivity();
 
-		resManager = explore.resManager;
-		currentLevel = explore.currentLevel;
+		AssetManager resManager = explore.resManager;
+		GameLevel currentLevel = explore.currentLevel;
 
 		if (gameView != null && currentLevel != null && resManager != null) {
 
 			gameView.setSnapshot(game, resManager,
 					chkShowPlaceNames.isChecked());
 
-			ArrayList<Item> tmp = new ArrayList<Item>();
+			ArrayList<Item> tmp = new ArrayList<>();
 
 			for (Item i : game.getCollectableItems()) {
 				tmp.add(0, i);
 			}
 
-			Utils.reverseArray(game.getCollectableItems());
+			//Utils.reverseArray(game.getCollectableItems());
 
 			String[] locations = game.getConnectionNames();
 
@@ -185,7 +179,7 @@ public class ExploreStationFragment extends Fragment implements
 			}
 
 			ArrayAdapter<String> adapter;
-			adapter = new ArrayAdapter<String>(getActivity(),
+			adapter = new ArrayAdapter<>(getActivity(),
 					android.R.layout.simple_spinner_item, locations);
 
 			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -203,13 +197,13 @@ public class ExploreStationFragment extends Fragment implements
 	}
 
 	//http://stackoverflow.com/questions/1892765/capitalize-first-char-of-each-word-in-a-string-java served as a basis...
-	public static String capitalizeString(String string) {
+	private static String capitalizeString(String string) {
 		
 		StringBuilder sb = new StringBuilder();
 		String[] tokens = string.split( "[ ]+" );
 		
 		for ( String token : tokens ) {
-			sb.append( token.substring(0, 1).toUpperCase() + token.substring(1) );
+			sb.append(token.substring(0, 1).toUpperCase()).append(token.substring(1));
 			sb.append( " " );
 		}
 

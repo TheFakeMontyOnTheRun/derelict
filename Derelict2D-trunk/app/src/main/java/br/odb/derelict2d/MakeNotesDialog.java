@@ -17,8 +17,7 @@ import java.util.ArrayList;
 public class MakeNotesDialog extends DialogFragment implements OnClickListener, OnItemSelectedListener {
 
 	
-	ArrayList< String > notes;
-	private Derelict2DApplication game;
+	private ArrayList< String > notes;
 	private EditText edtNote;
 	private Spinner spnNotes;
 
@@ -28,22 +27,22 @@ public class MakeNotesDialog extends DialogFragment implements OnClickListener, 
 		
 		View view = inflater.inflate(R.layout.activity_make_notes,
 				container, true);
-		
-		game = ((Derelict2DApplication) getActivity().getApplication());
+
+		Derelict2DApplication game = ((Derelict2DApplication) getActivity().getApplication());
 		notes = game.notes;
 		
 		
-		edtNote = (EditText) view.findViewById( R.id.edtNote );
+		edtNote = view.findViewById( R.id.edtNote );
 		edtNote.setText( notes.get( 1 ) );
 
-		spnNotes = (Spinner) view.findViewById( R.id.spnNotes );
-		spnNotes.setAdapter( new ArrayAdapter< String >( getActivity(), android.R.layout.simple_spinner_item, notes ) );
+		spnNotes = view.findViewById( R.id.spnNotes );
+		spnNotes.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, notes) );
 		
 		spnNotes.setOnItemSelectedListener( this );
 		
-		view.findViewById( R.id.btnSaveNote ).setOnClickListener( this );;
-		view.findViewById( R.id.btnNewNote ).setOnClickListener( this );;
-		view.findViewById( R.id.btnDeleteNote ).setOnClickListener( this );;
+		view.findViewById( R.id.btnSaveNote ).setOnClickListener( this );
+		view.findViewById( R.id.btnNewNote ).setOnClickListener( this );
+		view.findViewById( R.id.btnDeleteNote ).setOnClickListener( this );
 		getDialog().setTitle( "Notes" );
 		
 		return view;
@@ -68,7 +67,7 @@ public class MakeNotesDialog extends DialogFragment implements OnClickListener, 
 				break;
 		}
 		
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>( getActivity(), android.R.layout.simple_spinner_item, notes );
+		ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, notes);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spnNotes.setAdapter( adapter );
 		

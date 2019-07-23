@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.odb.derelict2d;
 
 import android.content.Context;
@@ -9,7 +6,7 @@ import android.util.AttributeSet;
 
 import br.odb.derelict2d.game.DerelictGameSession;
 import br.odb.gamelib.android.GameView;
-import br.odb.utils.math.Vec2;
+import br.odb.gameutils.math.Vec2;
 
 /**
  * @author monty
@@ -49,12 +46,9 @@ public class DerelictGameView extends GameView {
 
 		init( context );
 	}
-	
 
-	public void setCurrentGameSession( DerelictGameSession session ) {
-	}
-	
-	@Override
+
+    @Override
 	protected void onDraw(Canvas canvas) {	
 		super.onDraw(canvas);	
 	}

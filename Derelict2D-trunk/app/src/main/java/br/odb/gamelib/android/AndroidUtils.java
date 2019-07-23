@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.odb.gamelib.android;
 
 import br.odb.gamerendering.rendering.AssetManager;
@@ -8,8 +5,8 @@ import br.odb.gamerendering.rendering.DisplayList;
 import br.odb.gamerendering.rendering.RenderingNode;
 import br.odb.gamerendering.rendering.SVGRenderingNode;
 import br.odb.libsvg.SVGGraphic;
-import br.odb.utils.Rect;
-import br.odb.utils.math.Vec2;
+import br.odb.gameutils.Rect;
+import br.odb.gameutils.math.Vec2;
 
 
 
@@ -30,57 +27,44 @@ public class AndroidUtils {
 		
 		return androidRect;
 	}
-
-    public static void initImage(GameView gv, String graphicPath, AssetManager resManager  ) {
-        initImageScaled( gv, graphicPath, resManager, 1.0f, 1.0f );
-    }
-
-	public static void initImageScaled(GameView gv, String graphicPath, AssetManager resManager, float scaleX, float scaleY ) {
+	
+	public static void initImage(GameView gv, String graphicPath, AssetManager resManager ) {
 
 		DisplayList dl = new DisplayList("dl");
 
 		SVGGraphic graphic = resManager.getGraphics(graphicPath);
 
-        synchronized ( graphic ) {
+		float scale = 1;
+		Vec2 trans = new Vec2();
 
-            float scale = 1;
-            Vec2 trans = new Vec2();
+			if ( gv.getWidth() > 0 && gv.getHeight() > 0) {
+				
+				Rect bound = graphic.makeBounds();
+				
+				// não me interessa a parte acima da "página".
+				float newWidth = bound.p1.x;
+				float newHeight = bound.p1.y;
+				
+				if (newWidth > newHeight) {
+					scale = gv.getWidth() / newWidth;
+					trans.y = (gv.getHeight() - (bound.p1.y * scale)) / 2.0f;
+				} else {
+					scale = gv.getHeight() / newHeight;
+					trans.x = (gv.getWidth() - (bound.p1.x * scale)) / 2.0f;
+				}
+			}
 
-            if ( gv.getWidth() > 0 && gv.getHeight() > 0) {
+		graphic = graphic.scale( scale, scale );
+		
+		
+		
+		SVGRenderingNode node = new SVGRenderingNode(graphic, "graphic_"
+				+ graphicPath);
 
-                Rect bound = graphic.makeBounds();
-
-                // não me interessa a parte acima da "página".
-                float newWidth = bound.p1.x;
-                float newHeight = bound.p1.y;
-
-                if (newWidth > newHeight) {
-                    scale = gv.getWidth() / newWidth;
-                    trans.y = (gv.getHeight() - (bound.p1.y * scale)) / 2.0f;
-                } else {
-                    scale = gv.getHeight() / newHeight;
-                    trans.x = (gv.getWidth() - (bound.p1.x * scale)) / 2.0f;
-                }
-            }
-
-            graphic = graphic.scale( scale * scaleX, scale * scaleY );
-
-
-
-            SVGRenderingNode node = new SVGRenderingNode(graphic, "graphic_"
-                    + graphicPath);
-
-            dl.setItems(new RenderingNode[] { node });
-
-            Rect rect = graphic.makeBounds();
-
-            node.translate.set(( gv.getWidth() - rect.getDX()) / 2.0f,
-                    ( gv.getHeight() - rect.getDY()) / 2.0f);
-
-            gv.setRenderingContent(dl);
-            gv.updater.setRunning( false );
-            gv.postInvalidate();
-        }
+		dl.setItems(new RenderingNode[] { node });
+		gv.setRenderingContent(dl);
+		gv.updater.setRunning( false );
+		gv.postInvalidate();
 	}
 	
 
@@ -103,17 +87,16 @@ public class AndroidUtils {
 
 		SVGGraphic graphic = resManager.getGraphics(graphicPath);
 
-        synchronized ( graphic ) {
-            graphic = graphic.scaleTo( width, height );
+		graphic = graphic.scaleTo( width, height );
+		
+		SVGRenderingNode node = new SVGRenderingNode(graphic, prefix
+				+ graphicPath);
 
-            SVGRenderingNode node = new SVGRenderingNode(graphic, prefix
-                    + graphicPath);
-
-            dl.setItems(new RenderingNode[] { node });
-            gv.setRenderingContent(dl);
-            gv.updater.setRunning( false );
-            gv.postInvalidate();
-        }
+		dl.setItems(new RenderingNode[] { node });
+		gv.setRenderingContent(dl);
+		gv.updater.setRunning( false );
+		gv.postInvalidate();
+		
 	}
 
 	public static void initImage(GameView gv, SVGGraphic graphic, String id ) {
@@ -121,11 +104,9 @@ public class AndroidUtils {
 
 		SVGRenderingNode node = new SVGRenderingNode(graphic, id );
 
-        synchronized ( node ) {
-            dl.setItems(new RenderingNode[] { node });
-            gv.setRenderingContent(dl);
-            gv.updater.setRunning( false );
-            gv.postInvalidate();
-        }
+		dl.setItems(new RenderingNode[] { node });
+		gv.setRenderingContent(dl);
+		gv.updater.setRunning( false );
+		gv.postInvalidate();		
 	}
 }

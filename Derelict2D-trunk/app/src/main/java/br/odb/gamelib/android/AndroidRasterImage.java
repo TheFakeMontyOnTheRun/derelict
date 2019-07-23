@@ -1,10 +1,6 @@
-/**
- * 
- */
 package br.odb.gamelib.android;
 
 import android.graphics.Bitmap;
-
 import br.odb.gamerendering.rendering.RasterImage;
 
 

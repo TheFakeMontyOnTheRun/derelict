@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "21.1.1"
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "br.odb.derelict2d"
         minSdkVersion 14
-        targetSdkVersion 21
+        targetSdkVersion 26
     }
 
     buildTypes {
@@ -17,15 +16,4 @@ android {
             zipAlignEnabled true
         }
     }
-}
-
-dependencies {
-    compile files('libs/derelict-core-java-1.0-SNAPSHOT.jar')
-    compile files('libs/derelict2d-core-java-1.0-SNAPSHOT.jar')
-    compile files('libs/gameapp-1.0-SNAPSHOT.jar')
-    compile files('libs/gamerendering-1.0-SNAPSHOT.jar')
-    compile files('libs/gameutils-1.0-SNAPSHOT.jar')
-    compile files('libs/gameworld-1.0-SNAPSHOT.jar')
-    compile files('libs/libstrip-1.0-SNAPSHOT.jar')
-    compile files('libs/libsvg-1.0-SNAPSHOT.jar')
 }

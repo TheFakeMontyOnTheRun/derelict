@@ -3,14 +3,13 @@ package br.odb.gamelib.android;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-
 import br.odb.gamerendering.rendering.RenderingNode;
-import br.odb.utils.math.Vec2;
+import br.odb.gameutils.math.Vec2;
 
 public class PointerNodeSelectableScrollableView extends PointerScrollGameView {
 
-	final Vec2 targetTranslate = new Vec2();
-	protected RenderingNode selectedItem;
+	private final Vec2 targetTranslate = new Vec2();
+	private RenderingNode selectedItem;
 	public boolean shouldFollowTarget;
 	
 

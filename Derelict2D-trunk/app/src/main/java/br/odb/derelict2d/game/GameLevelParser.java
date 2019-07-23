@@ -1,7 +1,8 @@
 package br.odb.derelict2d.game;
 
-import br.odb.utils.FileServerDelegate;
 
-public interface GameLevelParser {
+import br.odb.gameapp.FileServerDelegate;
+
+interface GameLevelParser {
 	GameLevel getLevel( FileServerDelegate delegate);
 }

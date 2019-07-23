@@ -11,12 +11,12 @@ import br.odb.gamerendering.rendering.DisplayList;
 import br.odb.gamerendering.rendering.RenderingNode;
 import br.odb.gamerendering.rendering.SVGRenderingNode;
 import br.odb.libsvg.SVGGraphic;
-import br.odb.utils.Rect;
-import br.odb.utils.math.Vec2;
+import br.odb.gameutils.Rect;
+import br.odb.gameutils.math.Vec2;
 
 public class ShowOutcomeActivity extends Activity {
 
-	MediaPlayer theme = null;
+	private MediaPlayer theme = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class ShowOutcomeActivity extends Activity {
 		float scale = 1;
 		Vec2 trans = new Vec2();
 
-		GameView gvSplash = (GameView) findViewById( R.id.gvGameLogoOutcome );
+		GameView gvSplash = findViewById( R.id.gvGameLogoOutcome );
 		
 		if (gvSplash.getWidth() > 0 && gvSplash.getHeight() > 0) {
 

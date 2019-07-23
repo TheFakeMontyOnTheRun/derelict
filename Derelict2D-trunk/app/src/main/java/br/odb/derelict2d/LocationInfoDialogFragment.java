@@ -11,8 +11,7 @@ import br.odb.derelict.core.DerelictGame;
 
 public class LocationInfoDialogFragment extends DialogFragment {
 
-	private WebView wvStats;
-	DerelictGame game;
+	private DerelictGame game;
 	
 	
 	@Override
@@ -21,8 +20,8 @@ public class LocationInfoDialogFragment extends DialogFragment {
 		
 		View view = inflater.inflate(R.layout.fragment_location_dialog,
 				container, true);
-		
-		wvStats = (WebView) view.findViewById(R.id.wvDescription);
+
+		WebView wvStats = view.findViewById(R.id.wvDescription);
 		
 		
 		game = ((Derelict2DApplication) this.getActivity().getApplication()).game;

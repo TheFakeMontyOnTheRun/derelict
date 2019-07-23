@@ -1,6 +1,6 @@
 package br.odb.derelict2d.game;
 
-import br.odb.utils.FileServerDelegate;
+import br.odb.gameapp.FileServerDelegate;
 
 public class DerelictLevelParser implements GameLevelParser {
 

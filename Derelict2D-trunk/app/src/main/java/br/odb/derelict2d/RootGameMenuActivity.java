@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,9 +13,6 @@ import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.Locale;
-
-import br.odb.derelict2d.game.PlayTextVersionActivity;
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
@@ -24,8 +20,8 @@ import br.odb.gamerendering.rendering.DisplayList;
 import br.odb.gamerendering.rendering.RenderingNode;
 import br.odb.gamerendering.rendering.SVGRenderingNode;
 import br.odb.libsvg.SVGGraphic;
-import br.odb.utils.Rect;
-import br.odb.utils.math.Vec2;
+import br.odb.gameutils.Rect;
+import br.odb.gameutils.math.Vec2;
 
 public class RootGameMenuActivity extends Activity implements OnClickListener, OnTouchListener, CompoundButton.OnCheckedChangeListener {
 
@@ -43,8 +39,8 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 				new String[] { "pick magboots" }, 500 ), HARD("Hard: the real deal",
 				"GET LAMP", new String[] {}, 1250 );
 
-		public final String name;
-		public final String description;
+		final String name;
+		final String description;
 		public final int defaultPenaultyTime;
 		public final String[] aid;
 
@@ -61,10 +57,9 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 		}
 	}
 
-	private Bundle bundle;
 	private android.widget.CheckBox chkSound;
 	private android.widget.CheckBox chkSpeech;
-	Spinner spnLevel;
+	private Spinner spnLevel;
 
 	private GameView gvLogoInkscape;
 	private GameView gvGithub;
@@ -80,9 +75,9 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 		findViewById(R.id.btnAbout).setOnClickListener(this);
 		findViewById(R.id.btnHowToPlay).setOnClickListener(this);
 
-		spnLevel = (Spinner) findViewById(R.id.spnLevel);
-		chkSound = (android.widget.CheckBox) findViewById(R.id.chkSound);
-		chkSpeech = (android.widget.CheckBox) findViewById(R.id.chkSpeech);
+		spnLevel = findViewById(R.id.spnLevel);
+		chkSound = findViewById(R.id.chkSound);
+		chkSpeech = findViewById(R.id.chkSpeech);
 
         chkSpeech.setOnCheckedChangeListener( this );
 
@@ -90,20 +85,20 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 				.mayEnableSound());
 
 
-		gvSplash = (GameView) findViewById(R.id.gvbg);
-		gvLogoInkscape = (GameView) findViewById(R.id.gvLogoInkscape);
-		gvGithub = (GameView) findViewById(R.id.gvLogoGithub);
-		gvBeer = (GameView) findViewById(R.id.gvBeer);
+		gvSplash = findViewById(R.id.gvbg);
+		gvLogoInkscape = findViewById(R.id.gvLogoInkscape);
+		gvGithub = findViewById(R.id.gvLogoGithub);
+		gvBeer = findViewById(R.id.gvBeer);
 		findViewById(R.id.llGithub).setOnTouchListener( this );
 		findViewById(R.id.llBeer).setOnTouchListener( this );
 		findViewById(R.id.llInkscape).setOnTouchListener( this );
 
-		spnLevel.setAdapter(new ArrayAdapter<DificultyLevel>(this,
+		spnLevel.setAdapter(new ArrayAdapter<>(this,
 				android.R.layout.simple_spinner_item, DificultyLevel.values()));
 		spnLevel.setSelection(3);
 	}
 
-	GameView gvSplash;
+	private GameView gvSplash;
 
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
@@ -119,7 +114,7 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 				((Derelict2DApplication) getApplication()).getAssetManager());
 	}
 
-	void initImage() {
+	private void initImage() {
 
 		DisplayList dl = new DisplayList("dl");
 		AssetManager resManager = ((Derelict2DApplication) getApplication())
@@ -160,7 +155,7 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 	@Override
 	public void onClick(View v) {
 		Intent intent;
-		bundle = new Bundle();
+		Bundle bundle = new Bundle();
 		bundle.putString("hasSound", chkSound.isChecked() ? "y" : "n");
 		bundle.putString("speech", chkSpeech.isChecked() ? "y" : "n");
 		bundle.putInt("aid",
@@ -180,11 +175,7 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
 
             ((Derelict2DApplication) this.getApplication()).startNewGame();
 
-            if ( ((DificultyLevel) spnLevel.getSelectedItem()) == DificultyLevel.TEXT_VERSION ) {
-                intent = new Intent(getBaseContext(), PlayTextVersionActivity.class);
-            } else {
-                intent = new Intent(getBaseContext(), ExploreStationActivity.class);
-            }
+            intent = new Intent(getBaseContext(), ExploreStationActivity.class);
 
             intent.putExtras(bundle);
             startActivityForResult(intent, 1);

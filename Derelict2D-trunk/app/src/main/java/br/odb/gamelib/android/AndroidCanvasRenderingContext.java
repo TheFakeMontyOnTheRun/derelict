@@ -1,7 +1,6 @@
-/**
- * 
- */
 package br.odb.gamelib.android;
+
+import java.util.HashMap;
 
 import android.graphics.Canvas;
 import android.graphics.LinearGradient;
@@ -11,17 +10,14 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Region;
 import android.graphics.Shader;
-
-import java.util.HashMap;
-
 import br.odb.gamerendering.rendering.RasterImage;
 import br.odb.gamerendering.rendering.RenderingContext;
 import br.odb.libsvg.ColoredPolygon;
 import br.odb.libsvg.SVGParsingUtils.Gradient;
 import br.odb.libsvg.SVGUtils;
-import br.odb.utils.Color;
-import br.odb.utils.Rect;
-import br.odb.utils.math.Vec2;
+import br.odb.gameutils.Color;
+import br.odb.gameutils.Rect;
+import br.odb.gameutils.math.Vec2;
 
 /**
  * @author monty
@@ -31,8 +27,8 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 
 	private Canvas canvas;
 	Paint paint;
-	private HashMap<Gradient, LinearGradient> gradientsCache = new HashMap<Gradient, LinearGradient>();
-	Path path = new Path();
+	private final HashMap<Gradient, LinearGradient> gradientsCache = new HashMap<>();
+	private final Path path = new Path();
 	
 	public void prepareWithCanvasAndPaint(Canvas canvas, Paint paint) {
 		this.canvas = canvas;
@@ -53,12 +49,6 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 		paint.setColor(color.getARGBColor());
 		paint.setAlpha((int) (currentAlpha * 255));
 		canvas.drawRect(androidRect, paint);
-	}
-
-	@Override
-	public void prepareForRendering() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -91,12 +81,12 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 		}
 
 		path.reset();
-
+		
 		path.moveTo((origin.x + pol.xpoints[0]), origin.y + pol.ypoints[0]);
 
 		for (int c = 0; c < pol.npoints; ++c) {
 
-			if ( pol.controlPoints.get(c).isValid() ) {
+			if (pol.controlPoints.get(c).isValid()) {
 
 				Vec2 control = pol.controlPoints.get(c);
 
@@ -136,13 +126,13 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 
 
 			Gradient g0 = gradients.get(pol.gradient);
-
+			
 			if ( gradientsCache .containsKey( g0 ) ) {
 				lg = gradientsCache.get( g0 );
 			} else {
 				Color color1;
 				Color color2;
-
+				
 
 				if (g0.stops[0].color == null) {
 
@@ -160,6 +150,7 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 				color2 = g0.stops[1].color;
 
 				if (pol.color != null) {
+
 					color1.a = ((int) ((color1.a / 255.0f) * (pol.color.a / 255.0f) * 255));
 					color2.a = ((int) ((color2.a / 255.0f) * (pol.color.a / 255.0f) * 255));
 				}
@@ -167,9 +158,9 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 				lg = new LinearGradient(g0.x1, g0.y1, g0.x2, g0.y2,
 						color1.getARGBColor(), color2.getARGBColor(),
 						Shader.TileMode.CLAMP);
-
+				
 				gradientsCache.put( g0, lg );
-			}
+			}			
 
 
 			paint.setShader(lg);
@@ -184,7 +175,7 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 		} else {
 			paint.setColor(0xFF000000);
 		}
-
+		
 
 		canvas.drawPath(path, paint);
 
@@ -244,8 +235,8 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
 
 		Matrix rotator = new Matrix();
 
-		rotator.postRotate(rotation, image.getWidth() / 2,
-				image.getHeight() / 2);
+		rotator.postRotate(rotation, image.getWidth() / 2.0f,
+				image.getHeight() / 2.0f);
 		rotator.postScale(scale.x, scale.y);
 		rotator.postTranslate(p0.x, p0.y);
 
