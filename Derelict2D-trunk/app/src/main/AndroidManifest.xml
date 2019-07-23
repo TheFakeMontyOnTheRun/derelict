@@ -4,14 +4,6 @@
     android:versionCode="5"
     android:versionName="1.2" >
 
-    <android:uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-
     <application
         android:name=".Derelict2DApplication"
         android:allowBackup="false"
@@ -59,10 +51,6 @@
         <activity
             android:name=".ShowCreditsActivity"
             android:label="@string/title_activity_show_credits" >
-        </activity>
-        <activity
-            android:name=".game.PlayTextVersionActivity"
-            android:label="@string/title_activity_play_text_version" >
         </activity>
     </application>
 

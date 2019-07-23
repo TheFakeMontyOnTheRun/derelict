@@ -15,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -26,211 +25,204 @@ import br.odb.derelict2d.game.GameLevel;
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
+import br.odb.gameutils.Direction;
+import br.odb.gameutils.Utils;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.Location;
 import br.odb.gameworld.exceptions.InvalidLocationException;
 import br.odb.gameworld.exceptions.InvalidSlotException;
-import br.odb.libsvg.SVGGraphic;
-import br.odb.gameutils.Direction;
-import br.odb.gameutils.Utils;
 
 public class ExploreStationFragment extends Fragment implements
-		GameUpdateDelegate, OnClickListener, OnItemSelectedListener,
-		OnCheckedChangeListener {
+        GameUpdateDelegate, OnClickListener, OnItemSelectedListener,
+        OnCheckedChangeListener {
 
-	EditText edtOutput;
-	EditText edtEntry;
+    private ExploreStationView gameView;
+    private Spinner spnDirections;
+    private DerelictGame game;
+    private MediaPlayer fiveSteps;
+    private MediaPlayer ding;
+    private CheckBox chkShowPlaceNames;
 
-	private ExploreStationView gameView;
-	private Spinner spnDirections;
-	private DerelictGame game;
-	private MediaPlayer fiveSteps;
-	private MediaPlayer ding;
-	private CheckBox chkShowPlaceNames;
+    private final HashMap<String, String> locationPrettyNames = new HashMap<>();
+    private GameView gvMove;
 
-	// Playing low here:
-	private final HashMap<String, String> locationPrettyNames = new HashMap<>();
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-	SVGGraphic stationGraphics;
-	private GameView gvMove;
+        View toReturn = inflater.inflate(R.layout.fragment_explore_station,
+                container, false);
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+        gameView = toReturn.findViewById(R.id.overviewMap);
+        spnDirections = toReturn.findViewById(R.id.spnDirection);
+        spnDirections.setOnItemSelectedListener(this);
+        gvMove = toReturn.findViewById(R.id.gvMove);
+        chkShowPlaceNames = toReturn
+                .findViewById(R.id.chkShowPlaceNames);
+        gvMove.setOnClickListener(this);
 
-		View toReturn = inflater.inflate(R.layout.fragment_explore_station,
-				container, false);
+        chkShowPlaceNames.setOnCheckedChangeListener(this);
 
-		gameView = toReturn.findViewById(R.id.overviewMap);
-		spnDirections = toReturn.findViewById(R.id.spnDirection);
-		spnDirections.setOnItemSelectedListener(this);
-		gvMove = toReturn.findViewById(R.id.gvMove);
-		chkShowPlaceNames = toReturn
-				.findViewById(R.id.chkShowPlaceNames);
-		gvMove.setOnClickListener(this);
+        toReturn.post(new Runnable() {
+            @Override
+            public void run() {
 
-		chkShowPlaceNames.setOnCheckedChangeListener(this);
+                Thread.yield();
 
-		toReturn.post(new Runnable() {
-			@Override
-			public void run() {
+                AndroidUtils
+                        .initImage(gvMove, "icon-move",
+                                ((Derelict2DApplication) getActivity()
+                                        .getApplication()).getAssetManager());
+            }
+        });
 
-				Thread.yield();
+        return toReturn;
+    }
 
-				AndroidUtils
-						.initImage(gvMove, "icon-move",
-								((Derelict2DApplication) getActivity()
-										.getApplication()).getAssetManager());
-			}
-		});
+    @Override
+    public void onAttach(Activity activity) {
 
-		return toReturn;
-	}
+        super.onAttach(activity);
 
-	@Override
-	public void onAttach(Activity activity) {
+        ExploreStationActivity explore = ((ExploreStationActivity) activity);
 
-		super.onAttach(activity);
+        game = ((Derelict2DApplication) activity.getApplication()).game;
+        explore.addUpdateListener(this);
 
-		ExploreStationActivity explore = ((ExploreStationActivity) activity);
+        String hasSound = getActivity().getIntent().getExtras()
+                .getString("hasSound");
 
-		game = ((Derelict2DApplication) activity.getApplication()).game;
-		explore.addUpdateListener(this);
+        if (hasSound != null && hasSound.equals("y")) {
 
-		String hasSound = getActivity().getIntent().getExtras()
-				.getString("hasSound");
+            fiveSteps = MediaPlayer.create(explore, R.raw.fivesteps);
+            ding = MediaPlayer.create(explore, R.raw.ding);
+        }
 
-		if (hasSound != null && hasSound.equals("y")) {
+    }
 
-			fiveSteps = MediaPlayer.create(explore, R.raw.fivesteps);
-			ding = MediaPlayer.create(explore, R.raw.ding);
-		}
+    @Override
+    public void onClick(View v) {
 
-	}
+        if (v.getId() == R.id.gvMove) {
+            Direction d;
 
-	@Override
-	public void onClick(View v) {
+            Location l = game.hero.getLocation();
+            try {
 
-		if (v.getId() == R.id.gvMove) {
-			Direction d;
+                String locationName = (String) spnDirections.getSelectedItem();
 
-			Location l = game.hero.getLocation();
-			try {
+                locationName = locationPrettyNames.get(locationName);
 
-				String locationName = (String) spnDirections.getSelectedItem();
+                d = l.getConnectionDirectionForLocation(game.station
+                        .getLocation(locationName));
+                game.sendData("move " + d);
+                game.station.update(10000);
 
-				locationName = locationPrettyNames.get(locationName);
+                if (d == Direction.CEILING || d == Direction.FLOOR) {
+                    if (ding != null) {
+                        ding.start();
+                    }
+                } else {
+                    if (l != game.hero.getLocation() && fiveSteps != null) {
+                        fiveSteps.start();
+                    }
+                }
 
-				d = l.getConnectionDirectionForLocation(game.station
-						.getLocation(locationName));
-				game.sendData("move " + d);
-				game.station.update(10000);
+                ((ExploreStationActivity) getActivity()).say("moving to " + locationName);
+            } catch (InvalidSlotException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (InvalidLocationException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
 
-				if (d == Direction.CEILING || d == Direction.FLOOR) {
-					if (ding != null) {
-						ding.start();
-					}
-				} else {
-					if (l != game.hero.getLocation() && fiveSteps != null) {
-						fiveSteps.start();
-					}
-				}
+    @Override
+    public void update() {
 
-				((ExploreStationActivity) getActivity()).say("moving to " + locationName);
-			} catch (InvalidSlotException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvalidLocationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
+        ExploreStationActivity explore = (ExploreStationActivity) getActivity();
 
-	@Override
-	public void update() {
+        AssetManager resManager = explore.resManager;
+        GameLevel currentLevel = explore.currentLevel;
 
-		ExploreStationActivity explore = (ExploreStationActivity) getActivity();
+        if (gameView != null && currentLevel != null && resManager != null) {
 
-		AssetManager resManager = explore.resManager;
-		GameLevel currentLevel = explore.currentLevel;
+            gameView.setSnapshot(game, resManager,
+                    chkShowPlaceNames.isChecked());
 
-		if (gameView != null && currentLevel != null && resManager != null) {
+            ArrayList<Item> tmp = new ArrayList<>();
 
-			gameView.setSnapshot(game, resManager,
-					chkShowPlaceNames.isChecked());
+            for (Item i : game.getCollectableItems()) {
+                tmp.add(0, i);
+            }
 
-			ArrayList<Item> tmp = new ArrayList<>();
+            //Utils.reverseArray(game.getCollectableItems());
 
-			for (Item i : game.getCollectableItems()) {
-				tmp.add(0, i);
-			}
+            String[] locations = game.getConnectionNames();
 
-			//Utils.reverseArray(game.getCollectableItems());
+            String newString;
 
-			String[] locations = game.getConnectionNames();
+            for (int c = 0; c < locations.length; ++c) {
+                newString = capitalizeString(locations[c].replace('-', ' '));
+                locationPrettyNames.put(newString, locations[c]);
+                locations[c] = newString;
+            }
 
-			String newString;
+            ArrayAdapter<String> adapter;
+            adapter = new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_spinner_item, locations);
 
-			for (int c = 0; c < locations.length; ++c) {
-				newString =  capitalizeString( locations[c].replace('-', ' ') );
-				locationPrettyNames.put(newString, locations[c]);
-				locations[c] = newString;
-			}
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-			ArrayAdapter<String> adapter;
-			adapter = new ArrayAdapter<>(getActivity(),
-					android.R.layout.simple_spinner_item, locations);
+            spnDirections.setAdapter(adapter);
 
-			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spnDirections.setSelection(0);
 
-			spnDirections.setAdapter(adapter);
+            gameView.setBackgroundColor(Color.argb(255,
+                    (int) Utils.clamp(game.station.hullTemperature, 0, 255), 0,
+                    64));
+            gameView.update(100);
+        }
 
-			spnDirections.setSelection(0);
+    }
 
-			gameView.setBackgroundColor(Color.argb(255,
-					(int) Utils.clamp(game.station.hullTemperature, 0, 255), 0,
-					64));
-			gameView.update(100);
-		}
+    //http://stackoverflow.com/questions/1892765/capitalize-first-char-of-each-word-in-a-string-java served as a basis...
+    private static String capitalizeString(String string) {
 
-	}
+        StringBuilder sb = new StringBuilder();
+        String[] tokens = string.split("[ ]+");
 
-	//http://stackoverflow.com/questions/1892765/capitalize-first-char-of-each-word-in-a-string-java served as a basis...
-	private static String capitalizeString(String string) {
-		
-		StringBuilder sb = new StringBuilder();
-		String[] tokens = string.split( "[ ]+" );
-		
-		for ( String token : tokens ) {
-			sb.append(token.substring(0, 1).toUpperCase()).append(token.substring(1));
-			sb.append( " " );
-		}
+        for (String token : tokens) {
+            sb.append(token.substring(0, 1).toUpperCase()).append(token.substring(1));
+            sb.append(" ");
+        }
 
-		return sb.toString().trim();
-	}
+        return sb.toString().trim();
+    }
 
-	@Override
-	public void onItemSelected(AdapterView<?> arg0, View v, int arg2, long arg3) {
+    @Override
+    public void onItemSelected(AdapterView<?> arg0, View v, int arg2, long arg3) {
 
-		try {
-			String locationName = (String) spnDirections.getSelectedItem();
-			game.hero.direction = game.hero.getLocation()
-					.getConnectionDirectionForLocation(
-							game.station.getLocation(locationName));
+        try {
+            String locationName = (String) spnDirections.getSelectedItem();
+            game.hero.direction = game.hero.getLocation()
+                    .getConnectionDirectionForLocation(
+                            game.station.getLocation(locationName));
 
-			((ExploreStationActivity) getActivity()).say(locationName + " selected" );
-		} catch (Exception e) {
-			// We simply bail out. It's not a big deal...
-		}
-	}
+            ((ExploreStationActivity) getActivity()).say(locationName + " selected");
+        } catch (Exception e) {
+            // We simply bail out. It's not a big deal...
+        }
+    }
 
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
-	}
+    @Override
+    public void onNothingSelected(AdapterView<?> arg0) {
+    }
 
-	@Override
-	public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-		update();
-	}
+    @Override
+    public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+        update();
+    }
 }

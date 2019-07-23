@@ -4,18 +4,17 @@ import br.odb.gameworld.Item;
 
 class ItemContainer extends Item {
 
-	Item contains;
+    Item contains;
 
-	ItemContainer(String name, Item contained) {
-		super(name);
-		// Reads like prose!
-		this.contains = contained;
-	}
+    ItemContainer(Item contained) {
+        super("plastic-pipes");
+        this.contains = contained;
+    }
 
-	void dropItem() {
-		if ( contains != null ) {			
-			location.addItem(contains);
-		}
-		contains = null;
-	}
+    void dropItem() {
+        if (contains != null) {
+            location.addItem(contains);
+        }
+        contains = null;
+    }
 }

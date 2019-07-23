@@ -4,15 +4,9 @@ import br.odb.gameworld.Location;
 
 public class Spaceship extends Location {
 
-	int crew;
+    public boolean operative;
 
-	float fuel;
-	float fuelCapacity;
-	public boolean operative;
-	float thrust;
-	float tonnage;
-
-	Spaceship(String shipName) {
-		super(shipName);
-	}
+    Spaceship(String shipName) {
+        super(shipName);
+    }
 }

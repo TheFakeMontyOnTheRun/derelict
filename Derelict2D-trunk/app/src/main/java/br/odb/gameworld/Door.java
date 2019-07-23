@@ -4,47 +4,30 @@ import br.odb.gameworld.exceptions.DoorActionException;
 
 public class Door implements Updatable {
 
-	private int timeoutForClosing;
-	private boolean open;
-	
-	public String getJSONState() {
-		String toReturn = "'door' : {";
-		toReturn += "'timeoutForClosing': '" + timeoutForClosing;
-		toReturn += "','open': '" + open;
-		toReturn += "'}";
-		return toReturn;
-	}
+    private boolean open;
 
-	public boolean isOpen() {
-		return open;
-	}
+    public boolean isOpen() {
+        return open;
+    }
 
-	public void doClose() {
-		open = false;
-	}
+    private void doOpen() {
+        open = true;
+    }
 
-	private void doOpen() {
-		open = true;
-	}
+    public Door() {
+        open = false;
 
-	public Door() {
-		open = false;
+    }
 
-	}
+    public void openFor(CharacterActor character) throws DoorActionException {
 
-	public boolean willOpenFor(CharacterActor character) {
-		return true;
-	}
+        doOpen();
+    }
 
-	public void openFor(CharacterActor character) throws DoorActionException {
+    @Override
+    public void update(long milisseconds) {
+        //TODO check for the idea of implementing the auto-closing mechanism here
+    }
 
-		doOpen();
-	}
 
-	@Override
-	public void update(long milisseconds) {
-		//TODO check for the idea of implementing the auto-closing mechanism here
-	}
-
-	
 }

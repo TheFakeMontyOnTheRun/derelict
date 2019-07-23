@@ -16,76 +16,76 @@ import java.util.ArrayList;
 
 public class MakeNotesDialog extends DialogFragment implements OnClickListener, OnItemSelectedListener {
 
-	
-	private ArrayList< String > notes;
-	private EditText edtNote;
-	private Spinner spnNotes;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		
-		View view = inflater.inflate(R.layout.activity_make_notes,
-				container, true);
+    private ArrayList<String> notes;
+    private EditText edtNote;
+    private Spinner spnNotes;
 
-		Derelict2DApplication game = ((Derelict2DApplication) getActivity().getApplication());
-		notes = game.notes;
-		
-		
-		edtNote = view.findViewById( R.id.edtNote );
-		edtNote.setText( notes.get( 1 ) );
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-		spnNotes = view.findViewById( R.id.spnNotes );
-		spnNotes.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, notes) );
-		
-		spnNotes.setOnItemSelectedListener( this );
-		
-		view.findViewById( R.id.btnSaveNote ).setOnClickListener( this );
-		view.findViewById( R.id.btnNewNote ).setOnClickListener( this );
-		view.findViewById( R.id.btnDeleteNote ).setOnClickListener( this );
-		getDialog().setTitle( "Notes" );
-		
-		return view;
-	}
+        View view = inflater.inflate(R.layout.activity_make_notes,
+                container, true);
 
-	@Override
-	public void onClick(View v) {
-		
-		switch ( v.getId() ) {
-			case R.id.btnSaveNote:
-				notes.add( edtNote.getText().toString() );
-				break;
-			case R.id.btnNewNote:
-				edtNote.setText( "" );
-				spnNotes.setSelection( 0 );
-				break;
-			case R.id.btnDeleteNote:
+        Derelict2DApplication game = ((Derelict2DApplication) getActivity().getApplication());
+        notes = game.notes;
 
-				if ( spnNotes.getSelectedItemPosition() > 1 ) {					
-					notes.remove( spnNotes.getSelectedItem() );
-				}
-				break;
-		}
-		
-		ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, notes);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spnNotes.setAdapter( adapter );
-		
-	}
 
-	@Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-			long arg3) {
-		
-		if ( spnNotes.getSelectedItemPosition() > 0 ) {			
-			edtNote.setText( notes.get( spnNotes.getSelectedItemPosition() ) );
-		} else {
-			edtNote.setText( "" );
-		}
-		
-	}
+        edtNote = view.findViewById(R.id.edtNote);
+        edtNote.setText(notes.get(1));
 
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
-	}
+        spnNotes = view.findViewById(R.id.spnNotes);
+        spnNotes.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, notes));
+
+        spnNotes.setOnItemSelectedListener(this);
+
+        view.findViewById(R.id.btnSaveNote).setOnClickListener(this);
+        view.findViewById(R.id.btnNewNote).setOnClickListener(this);
+        view.findViewById(R.id.btnDeleteNote).setOnClickListener(this);
+        getDialog().setTitle("Notes");
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.btnSaveNote:
+                notes.add(edtNote.getText().toString());
+                break;
+            case R.id.btnNewNote:
+                edtNote.setText("");
+                spnNotes.setSelection(0);
+                break;
+            case R.id.btnDeleteNote:
+
+                if (spnNotes.getSelectedItemPosition() > 1) {
+                    notes.remove(spnNotes.getSelectedItem());
+                }
+                break;
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, notes);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnNotes.setAdapter(adapter);
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+                               long arg3) {
+
+        if (spnNotes.getSelectedItemPosition() > 0) {
+            edtNote.setText(notes.get(spnNotes.getSelectedItemPosition()));
+        } else {
+            edtNote.setText("");
+        }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> arg0) {
+    }
 }

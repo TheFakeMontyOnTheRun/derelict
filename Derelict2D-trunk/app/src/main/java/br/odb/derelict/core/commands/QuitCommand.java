@@ -8,10 +8,9 @@ public class QuitCommand extends DerelictUserMetaCommandLineAction {
 
     @Override
     public void run(Place level, CharacterActor actor, String operand,
-            ApplicationClient client) {
+                    ApplicationClient client) {
 
         client.sendQuit();
-
     }
 
     @Override
@@ -23,9 +22,9 @@ public class QuitCommand extends DerelictUserMetaCommandLineAction {
     public String toString() {
         return "quit";
     }
-    
-	@Override
-	public String getDescription() {
-		return "- Quit the game and (if applicable) send highscore to the online leaderboard.";
-	}
+
+    @Override
+    public String getDescription() {
+        return "- Quit the game and (if applicable) send highscore to the online leaderboard.";
+    }
 }

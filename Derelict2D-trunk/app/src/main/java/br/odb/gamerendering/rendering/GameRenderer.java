@@ -1,56 +1,56 @@
 package br.odb.gamerendering.rendering;
 
 public class GameRenderer {
-	//TODO: render subnodes recursively
-	private DisplayList currentDisplayList;
-	private int currentItem;
-	private int jobSize;
+    //TODO: render subnodes recursively
+    private DisplayList currentDisplayList;
+    private int currentItem;
+    private int jobSize;
 
-	private RenderingContext currentRenderingContext;
+    private RenderingContext currentRenderingContext;
 
-	public void startRendering(DisplayList displayList) {
-		this.currentDisplayList = displayList;
-		this.jobSize = displayList.length();
-		this.currentItem = 0;
-	}
+    public void startRendering(DisplayList displayList) {
+        this.currentDisplayList = displayList;
+        this.jobSize = displayList.length();
+        this.currentItem = 0;
+    }
 
-	public boolean hasJobs() {
-		if (currentDisplayList == null)
-			return false;
-		else {
-			return currentItem < jobSize;
-		}
-	}
+    public boolean hasJobs() {
+        if (currentDisplayList == null)
+            return false;
+        else {
+            return currentItem < jobSize;
+        }
+    }
 
-	public void renderNext() {
-		renderNode(currentDisplayList.items[currentItem]);
-		++currentItem;
-	}
+    public void renderNext() {
+        renderNode(currentDisplayList.items[currentItem]);
+        ++currentItem;
+    }
 
-	public void resetRenderingContext() {
-		currentItem = 0;
-		jobSize = 0;
-		currentDisplayList = null;
-	}
+    public void resetRenderingContext() {
+        currentItem = 0;
+        jobSize = 0;
+        currentDisplayList = null;
+    }
 
-	public void renderNode(RenderingNode node) {
-		
-		if ( !node.isVisible() ) {
-			return;
-		}
+    public void renderNode(RenderingNode node) {
 
-		float previousAlpha = currentRenderingContext.getCurrentAlpha();
+        if (!node.isVisible()) {
+            return;
+        }
 
-		currentRenderingContext.currentOrigin.addTo(node.translate);
-		currentRenderingContext.setCurrentAlpha(node.alpha * previousAlpha);
-		node.render(currentRenderingContext);
-		currentRenderingContext.currentOrigin.addTo(node.translate.negated());
+        float previousAlpha = currentRenderingContext.getCurrentAlpha();
 
-		currentRenderingContext.setCurrentAlpha(previousAlpha);
-	}
+        currentRenderingContext.currentOrigin.addTo(node.translate);
+        currentRenderingContext.setCurrentAlpha(node.alpha * previousAlpha);
+        node.render(currentRenderingContext);
+        currentRenderingContext.currentOrigin.addTo(node.translate.negated());
 
-	public void setCurrentRenderingContext(RenderingContext renderingContext) {
+        currentRenderingContext.setCurrentAlpha(previousAlpha);
+    }
 
-		this.currentRenderingContext = renderingContext;
-	}
+    public void setCurrentRenderingContext(RenderingContext renderingContext) {
+
+        this.currentRenderingContext = renderingContext;
+    }
 }

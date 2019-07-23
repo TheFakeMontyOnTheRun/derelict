@@ -2,30 +2,18 @@ package br.odb.gameapp;
 
 /**
  * @author monty
- * 
  */
 public interface ApplicationClient {
-	void printWarning(String msg);
 
-	void printError(String msg);
+    void printVerbose(String msg);
 
-	void printVerbose(String msg);
+    int chooseOption(String question, String[] options);
 
-	String requestFilenameForSave();
+    void printNormal(String string);
 
-	String requestFilenameForOpen();
+    void alert(String string);
 
-	String getInput(String msg);
+    void playMedia(String uri, String alt);
 
-	int chooseOption(String question, String[] options);
-
-	FileServerDelegate getFileServer();
-
-	void printNormal(String string);
-
-	void alert(String string);
-
-	void playMedia(String uri, String alt);
-
-	void sendQuit();
+    void sendQuit();
 }

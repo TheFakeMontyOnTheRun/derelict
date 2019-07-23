@@ -10,41 +10,41 @@ import br.odb.gameworld.exceptions.ItemNotFoundException;
 
 public class UseWithCommand extends DerelictUserCommandLineAction {
 
-	@Override
-	public void run(Place level, CharacterActor actor, String operand,
-			ApplicationClient client) throws ItemNotFoundException {
+    @Override
+    public void run(Place level, CharacterActor actor, String operand,
+                    ApplicationClient client) throws ItemNotFoundException {
 
-		String[] tokens = operand.trim().split( "[ ]+" ); 
-		Astronaut hero = (Astronaut) actor;
+        String[] tokens = operand.trim().split("[ ]+");
+        Astronaut hero = (Astronaut) actor;
 
-		try {
-			Item item1 = hero.getItem(tokens[1]);
-			Item item2 = hero.getLocation().getItem(tokens[0]);
-			item2.useWith( item1 );
-			client.alert( "item " + tokens[1] + " used on item " + tokens[0] );
-			
-			client.playMedia( item1.getUseItemSound(), "*click*" );
-			client.playMedia( item2.getUsedOnSound(), "*click*" );
-			
-		} catch (ItemActionNotSupportedException e) {
-			client.alert( "item " + tokens[1] + " cannot be used on item " + tokens[0] );
-		}
-	}
+        try {
+            Item item1 = hero.getItem(tokens[1]);
+            Item item2 = hero.getLocation().getItem(tokens[0]);
+            item2.useWith(item1);
+            client.alert("item " + tokens[1] + " used on item " + tokens[0]);
 
-	@Override
-	public String toString() {
+            client.playMedia(item1.getUseItemSound(), "*click*");
+            client.playMedia(item2.getUsedOnSound(), "*click*");
 
-		return "useWith"; 
-	}
+        } catch (ItemActionNotSupportedException e) {
+            client.alert("item " + tokens[1] + " cannot be used on item " + tokens[0]);
+        }
+    }
+
+    @Override
+    public String toString() {
+
+        return "useWith";
+    }
 
     @Override
     public int requiredOperands() {
         return 2;
-    }       
-  
-	@Override
-	public String getDescription() {
-		return "<object name present on current room> <currently held object name> - apply the latter object into the former, if possible.";
-	}
-    
+    }
+
+    @Override
+    public String getDescription() {
+        return "<object name present on current room> <currently held object name> - apply the latter object into the former, if possible.";
+    }
+
 }

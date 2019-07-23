@@ -1,210 +1,121 @@
 package br.odb.libsvg;
 
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import br.odb.libsvg.SVGParsingUtils.Gradient;
 import br.odb.gameutils.Rect;
 import br.odb.gameutils.math.Vec2;
+import br.odb.libsvg.SVGParsingUtils.Gradient;
 
 public class SVGGraphic {
 
-	public ColoredPolygon[] shapes;
-	public final HashMap<String, Gradient> gradients = new HashMap<>();
-	
-	
-	public static SVGGraphic fromBinary( String path ) {
-		SVGGraphic toReturn = new SVGGraphic();
-		
-		ArrayList<ColoredPolygon> pols = new ArrayList<>();
-		ColoredPolygon pol;
-		int size;
-		
-		FileInputStream fis;
-		try {
-			fis = new FileInputStream( path );
-			DataInputStream dis = new DataInputStream( fis );
-			
-			size = dis.readInt();
-			
-			for (int c = 0; c < size; ++c) {
-				pol = new ColoredPolygon();
-				pol.readEdges( fis );
-				
-				if ( pol.npoints == 0 ) {
-					continue;
-				}
-					
-				pol.id = "shape" + c;
-				
-				pols.add( pol );
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		toReturn.fromArrayList( pols );
-		
-		return toReturn;
-	}
+    public ColoredPolygon[] shapes;
+    public final HashMap<String, Gradient> gradients = new HashMap<>();
 
-	public SVGGraphic(ColoredPolygon[] shapes) {
-		this.shapes = shapes;
-	}
+    public SVGGraphic(ColoredPolygon[] shapes) {
+        this.shapes = shapes;
+    }
 
-	public SVGGraphic(SVGGraphic other) {
-		this(other.shapes, other.gradients);
-	}
+    SVGGraphic() {
+    }
 
-	private SVGGraphic(ColoredPolygon[] shapes,
-					   HashMap<String, Gradient> gradients) {
-		this.shapes = shapes;
+    public ColoredPolygon[] getShapesStartingWith(String prefix) {
+        ArrayList<ColoredPolygon> tmp = new ArrayList<>();
 
-		for (String key : gradients.keySet()) {
-			this.gradients.put(key, new Gradient(gradients.get(key)));
-		}
-	}
+        for (ColoredPolygon cp : shapes) {
+            if (cp.id.startsWith(prefix)) {
+                tmp.add(cp);
+            }
+        }
+        return tmp.toArray(new ColoredPolygon[1]);
+    }
 
-	SVGGraphic() {
+    public ColoredPolygon getShapeById(String name) {
 
-	}
+        for (ColoredPolygon s : shapes) {
+            if (s.id.equals(name)) {
+                return s;
+            }
+        }
 
-	public ColoredPolygon[] getShapesStartingWith(String prefix) {
-		ArrayList<ColoredPolygon> tmp = new ArrayList<>();
+        return null;
+    }
 
-		for (ColoredPolygon cp : shapes) {
-			if (cp.id.startsWith(prefix)) {
-				tmp.add(cp);
-			}
-		}
-		return tmp.toArray(new ColoredPolygon[1]);
-	}
+    public SVGGraphic scaleTo(float width, float height) {
 
-	public void fromArrayList(ArrayList<ColoredPolygon> origin) {
-		shapes = new ColoredPolygon[origin.size()];
-		origin.toArray(shapes);
-	}
+        Rect bound = makeBounds();
 
-	public ColoredPolygon getShapeById(String name) {
+        float newWidth = bound.p1.x;
+        float newHeight = bound.p1.y;
 
-		for (ColoredPolygon s : shapes) {
-			if (s.id.equals(name)) {
-				return s;
-			}
-		}
+        float scaleX = width / newWidth;
+        float scaleY = height / newHeight;
 
-		return null;
-	}
+        return scale(scaleX, scaleY);
+    }
 
-	// public ArrayList<SVGShape> polys = new ArrayList<SVGShape>();
-	//
-	//
-	// public String toString() {
-	// String svgFile = "<? XML ?>\n";
-	//
-	// svgFile += "<SVG>\n";
-	// svgFile += "</SVG>\n";
-	//
-	// return svgFile;
-	// }
-	//
-	// public int getTotalShapes() {
-	// return polys.size();
-	// }
-	//
-	// public SVGShape getShape(int c) {
-	// return polys.get( c );
-	// }
-	//
-	// public void addShape(SVGShape svgShape) {
-	// polys.add( svgShape );
-	// }
+    public SVGGraphic scale(float width, float height) {
 
-	public SVGGraphic scaleTo(float width, float height) {
+        SVGGraphic toReturn = new SVGGraphic();
+        ArrayList<ColoredPolygon> cps = new ArrayList<>();
 
-		Rect bound = makeBounds();
+        for (ColoredPolygon cp : this.shapes) {
 
-		float newWidth = bound.p1.x;
-		float newHeight = bound.p1.y;
+            cps.add(cp.scale(width, height));
+        }
 
-		float scaleX = width / newWidth;
-		float scaleY = height / newHeight;
+        toReturn.shapes = cps.toArray(new ColoredPolygon[1]);
 
-		return scale(scaleX, scaleY);
-	}
+        for (String key : gradients.keySet()) {
+            toReturn.gradients.put(key, gradients.get(key));
+        }
 
-	public SVGGraphic scale(float width, float height) {
+        return toReturn;
+    }
 
-		SVGGraphic toReturn = new SVGGraphic();
-		ArrayList<ColoredPolygon> cps = new ArrayList<>();
+    public Rect makeBounds() {
+        return makeBounds(new Vec2(0, 0));
+    }
 
-		for (ColoredPolygon cp : this.shapes) {
+    private Rect makeBounds(Vec2 translate) {
+        float x, y;
+        Rect rect = new Rect();
 
-			cps.add(cp.scale(width, height));
-		}
+        rect.p0.x = Integer.MAX_VALUE;
+        rect.p0.y = Integer.MAX_VALUE;
 
-		toReturn.shapes = cps.toArray(new ColoredPolygon[1]);
+        for (ColoredPolygon cp : shapes) {
+            if (cp.xpoints != null && cp.ypoints != null) {
 
-		for (String key : gradients.keySet()) {
-			toReturn.gradients.put(key, gradients.get(key));
-		}
+                for (float aX : cp.xpoints) {
 
-		return toReturn;
-	}
+                    x = aX + translate.x;
 
-	public Rect makeBounds() {
-		return makeBounds(new Vec2(0, 0));
-	}
+                    if (x < rect.p0.x) {
+                        rect.p0.x = x;
+                    }
 
-	private Rect makeBounds(Vec2 translate) {
-		float x, y;
-		Rect rect = new Rect();
+                    if (x > rect.p1.x) {
+                        rect.p1.x = x;
+                    }
+                }
 
-		rect.p0.x = Integer.MAX_VALUE;
-		rect.p0.y = Integer.MAX_VALUE;
+                for (float aY : cp.ypoints) {
 
-		for (ColoredPolygon cp : shapes) {
-			if (cp.xpoints != null && cp.ypoints != null) {
+                    y = aY + translate.y;
 
-				for (float aX : cp.xpoints) {
+                    if (y < rect.p0.y) {
+                        rect.p0.y = y;
+                    }
 
-					x = aX + translate.x;
-
-					if (x < rect.p0.x) {
-						rect.p0.x = x;
-					}
-
-					if (x > rect.p1.x) {
-						rect.p1.x = x;
-					}
-				}
-
-				for (float aY : cp.ypoints) {
-
-					y = aY + translate.y;
-
-					if (y < rect.p0.y) {
-						rect.p0.y = y;
-					}
-
-					if (y > rect.p1.y) {
-						rect.p1.y = y;
-					}
-				}
-			} else {
-				System.err.println("Path has no elements: " + cp.id);
-			}
-		}
-
-		return rect;
-	}
-
+                    if (y > rect.p1.y) {
+                        rect.p1.y = y;
+                    }
+                }
+            } else {
+                System.err.println("Path has no elements: " + cp.id);
+            }
+        }
+        return rect;
+    }
 }

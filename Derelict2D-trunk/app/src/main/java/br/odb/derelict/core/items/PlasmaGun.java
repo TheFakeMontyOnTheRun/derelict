@@ -10,120 +10,102 @@ import br.odb.gameworld.Item;
 import br.odb.gameworld.Location;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 
-/**
- * @author monty
- * 
- */
 public class PlasmaGun extends ActiveItem implements Destructive {
 
-	private static final String CLANK_SOUND = "clank";
-	private static final String SHOT_SOUND = "shot";
-	public static final String NAME = "plasma-gun";
-	private int ammo;
-	public final ArrayList<PlasmaPellet> firedPellets = new ArrayList<>();
+    private static final String CLANK_SOUND = "clank";
+    private static final String SHOT_SOUND = "shot";
+    private static final String NAME = "plasma-gun";
+    private int ammo;
+    public final ArrayList<PlasmaPellet> firedPellets = new ArrayList<>();
 
-	
-	
-	public PlasmaGun(int initialAmmo) {
-		super( NAME ); 
+    public PlasmaGun(int initialAmmo) {
+        super(NAME);
 
-		ammo = initialAmmo;
-		weight = 10.0f;
-		updateAmmoStatus();
-	}
-	
-	@Override
-	public void update(long milisseconds) {
-		
-		ArrayList<PlasmaPellet> toDelete = new ArrayList<>();
-		
-		for( PlasmaPellet pp : firedPellets ) {
-			if ( !pp.isDepleted() ) {
-				pp.update( milisseconds );
-			} else {
-				toDelete.add( pp );
-			}
-		}
-		
-		for ( PlasmaPellet pp : toDelete ) {
-			firedPellets.remove( pp );
-		}
-	}
-	
-	@Override
-	public String getUseItemSound() {
-	
-		return isActive() ? SHOT_SOUND : CLANK_SOUND;
-	}
+        ammo = initialAmmo;
+        weight = 10.0f;
+        updateAmmoStatus();
+    }
 
-	public int getAmmo() {
-		return ammo;
-	}
+    @Override
+    public void update(long milisseconds) {
 
-	private boolean performShooting() {
-		if ( isActive() ) {
-			
-			--ammo;
-			updateAmmoStatus();
-			
-			return true;
-		}
-		
-		return false;
-	}
+        ArrayList<PlasmaPellet> toDelete = new ArrayList<>();
 
-	/* (non-Javadoc)
-	 * @see br.odb.gamelib.gameworld.Item#use(br.odb.gamelib.gameworld.CharacterActor)
-	 */
-	@Override
-	public void use(CharacterActor user) throws ItemActionNotSupportedException {
+        for (PlasmaPellet pp : firedPellets) {
+            if (!pp.isDepleted()) {
+                pp.update(milisseconds);
+            } else {
+                toDelete.add(pp);
+            }
+        }
 
-		if ( isActive() ) {
-			
-			super.use(user);
-			shootDirection( ( (Astronaut) user ).direction, user.getLocation() );
-		} else {
-			throw new ItemActionNotSupportedException( "It's inactive!" );
-		}
-	}
+        for (PlasmaPellet pp : toDelete) {
+            firedPellets.remove(pp);
+        }
+    }
 
-	public PlasmaPellet shootDirection(Direction d, Location place) {
-		
-		PlasmaPellet pellet = null;
-		
-		if ( performShooting() ) {
-			
-			pellet = new PlasmaPellet(d, place);
-			firedPellets .add( pellet );
-		}
-		return pellet;
-	}
+    @Override
+    public String getUseItemSound() {
 
-	private void updateAmmoStatus() {
+        return isActive() ? SHOT_SOUND : CLANK_SOUND;
+    }
 
-		if (ammo < 0) {
-			ammo = 0;
-		}
+    private boolean performShooting() {
+        if (isActive()) {
 
-		setIsDepleted(ammo <= 0);
-		setDescription( "A mostly harmless gun. Useful for heating surfaces and light defense. (ammo: " 
-				+ ammo + ")." ); 
-	}
+            --ammo;
+            updateAmmoStatus();
 
-	@Override
-	public void wasUsedOn(Item item1) throws ItemActionNotSupportedException {
+            return true;
+        }
 
-		if (isDepleted() || !isActive() ) {
-			return;
-		}
+        return false;
+    }
 
-		super.wasUsedOn(item1);
+    @Override
+    public void use(CharacterActor user) throws ItemActionNotSupportedException {
 
-		performShooting();
-	}
+        if (isActive()) {
 
-	@Override
-	public float getDestructivePower() {
-		return 35;
-	}
+            super.use(user);
+            shootDirection(((Astronaut) user).direction, user.getLocation());
+        } else {
+            throw new ItemActionNotSupportedException("It's inactive!");
+        }
+    }
+
+    private PlasmaPellet shootDirection(Direction d, Location place) {
+
+        PlasmaPellet pellet = null;
+
+        if (performShooting()) {
+
+            pellet = new PlasmaPellet(d, place);
+            firedPellets.add(pellet);
+        }
+        return pellet;
+    }
+
+    private void updateAmmoStatus() {
+
+        if (ammo < 0) {
+            ammo = 0;
+        }
+
+        setIsDepleted(ammo <= 0);
+        setDescription("A mostly harmless gun. Useful for heating surfaces and light defense. (ammo: "
+                + ammo + ").");
+    }
+
+    @Override
+    public void wasUsedOn(Item item1) throws ItemActionNotSupportedException {
+
+        if (isDepleted() || !isActive()) {
+            return;
+        }
+
+        super.wasUsedOn(item1);
+
+        performShooting();
+    }
 }

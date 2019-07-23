@@ -8,189 +8,141 @@ import br.odb.gameworld.exceptions.ItemNotFoundException;
 
 public class CharacterActor implements Updatable {
 
-	private final HashMap<String, Item> items = new HashMap<>();
-	private final String name;
-	private final Kind kind;
-	private Location location;
-	private boolean alive = true;
+    private final HashMap<String, Item> items = new HashMap<>();
+    private final String name;
+    private final Kind kind;
+    private Location location;
 
-	public void setIsAlive( boolean alive ) {
-		this.alive = alive;
-	}
-	
-	public boolean isAlive() {
-		return alive;
-	}
-	
-	public String getJSONState() {
-		StringBuilder toReturn = new StringBuilder("'" + name + "': {");
-		
-		if ( items.size() > 0 ) {
-			
-			toReturn.append("'items': [ ");
-			
-			for ( Item i : items.values() ) {
-				toReturn.append(i).append(",");
-			}
-			toReturn.append(" ] ");
-		}
-		
-		toReturn.append(kind.getJSONState());
-		toReturn.append("}");
-		return toReturn.toString();
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#hashCode()
+     */
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
-	
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((kind == null) ? 0 : kind.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((kind == null) ? 0 : kind.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof CharacterActor)) {
-			return false;
-		}
-		CharacterActor other = (CharacterActor) obj;
-		if (kind == null) {
-			if (other.kind != null) {
-				return false;
-			}
-		} else if (!kind.equals(other.kind)) {
-			return false;
-		}
-		if (location == null) {
-			if (other.location != null) {
-				return false;
-			}
-		} else if (!location.equals(other.location)) {
-			return false;
-		}
-		if (name == null) {
-			return other.name == null;
-		} else return name.equals(other.name);
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
 
-	@Override
-	public void update(long milisseconds) {
-		for (Item i : items.values()) {
-			i.update(milisseconds);
-		}
-	}
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof CharacterActor)) {
+            return false;
+        }
+        CharacterActor other = (CharacterActor) obj;
+        if (kind == null) {
+            if (other.kind != null) {
+                return false;
+            }
+        } else if (!kind.equals(other.kind)) {
+            return false;
+        }
+        if (location == null) {
+            if (other.location != null) {
+                return false;
+            }
+        } else if (!location.equals(other.location)) {
+            return false;
+        }
+        if (name == null) {
+            return other.name == null;
+        } else return name.equals(other.name);
+    }
 
-	public Item[] getItems() {
-		return items.values().toArray(new Item[0]);
-	}
+    @Override
+    public void update(long milisseconds) {
+        for (Item i : items.values()) {
+            i.update(milisseconds);
+        }
+    }
 
-	public CharacterActor(String name, Kind kind) {
-		this.name = name;
-		this.kind = kind;
-	}
+    public Item[] getItems() {
+        return items.values().toArray(new Item[0]);
+    }
 
-	public Location getLocation() {
-		return location;
-	}
+    public CharacterActor(String name, Kind kind) {
+        this.name = name;
+        this.kind = kind;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Location getLocation() {
+        return location;
+    }
 
-	public void setLocation(Location l) {
-		this.location = l;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Item getItem(String itemName) throws ItemNotFoundException {
+    public void setLocation(Location l) {
+        this.location = l;
+    }
 
-		if (!items.containsKey(itemName)) {
-			throw new ItemNotFoundException();
-		}
+    public Item getItem(String itemName) throws ItemNotFoundException {
 
-		return items.get(itemName);
-	}
+        if (!items.containsKey(itemName)) {
+            throw new ItemNotFoundException();
+        }
 
-	public float getCargoWeight() {
+        return items.get(itemName);
+    }
 
-		float sum = 0.0f;
+    public void addItem(String name, Item item)
+            throws InventoryManipulationException {
 
-		for (Item i : this.items.values()) {
-			sum += i.weight;
-		}
+        if (items.containsKey(name)) {
+            throw new InventoryManipulationException("GENERAL ERROR@CharacterActor.addItem()");
+        }
 
-		return sum;
-	}
-	
-	public void addItem( Item item ) throws InventoryManipulationException {
-		addItem( item.getName(), item );
-	}
+        item.carrier = this;
+        items.put(name, item);
+    }
 
+    public void removeItem(Item item) {
+        items.remove(item.getName());
+    }
 
-	public void addItem(String name, Item item)
-			throws InventoryManipulationException {
+    public boolean isMovable() {
+        return true;
+    }
 
-		if (items.containsKey(name)) {
-			throw new InventoryManipulationException( "GENERAL ERROR@CharacterActor.addItem()");
-		}
+    public ActiveItem toggleItem(String name) throws ItemActionNotSupportedException,
+            ItemNotFoundException {
 
-		item.carrier = this;
-		items.put(name, item);
-	}
+        Item item = getItem(name);
 
-	public void removeItem(Item item) {
-		items.remove(item.getName());
-	}
+        if (!(item instanceof ActiveItem)) {
+            throw new ItemActionNotSupportedException(Item.TOGGLE_DENIAL_MESSAGE);
+        }
 
-	public boolean isMovable() {
-		return true;
-	}
+        ((ActiveItem) item).toggle();
 
-	public ActiveItem toggleItem(String name) throws ItemActionNotSupportedException,
-			ItemNotFoundException {
+        return (ActiveItem) item;
+    }
 
-		Item item = getItem(name);
+    public Item useItem(String entry) throws ItemNotFoundException, ItemActionNotSupportedException {
 
-		if (!(item instanceof ActiveItem)) {
-			throw new ItemActionNotSupportedException( Item.TOGGLE_DENIAL_MESSAGE );
-		}
+        Item item = getItem(entry);
 
-		((ActiveItem) item).toggle();
-		
-		return (ActiveItem) item; 
-	}
+        item.use(this);
 
-	public Item useItem(String entry) throws ItemNotFoundException, ItemActionNotSupportedException {
+        if (item.isDepleted()) {
+            removeItem(item);
+        }
 
-		Item item = getItem(entry);
-		
-		item.use(this);
-
-		if (item.isDepleted()) {
-			removeItem(item);
-		}
-		
-		return item;
-	}
-
-	public boolean hasItem(String name) {
-		return items.containsKey(name);
-	}
-
+        return item;
+    }
 }

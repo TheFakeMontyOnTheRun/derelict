@@ -10,88 +10,88 @@ import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gamerendering.rendering.DisplayList;
 import br.odb.gamerendering.rendering.RenderingNode;
 import br.odb.gamerendering.rendering.SVGRenderingNode;
-import br.odb.libsvg.SVGGraphic;
 import br.odb.gameutils.Rect;
 import br.odb.gameutils.math.Vec2;
+import br.odb.libsvg.SVGGraphic;
 
 public class ShowOutcomeActivity extends Activity {
 
-	private MediaPlayer theme = null;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_show_outcome);
-		
-		( ( TextView ) findViewById( R.id.txtOutcome ) ).setText( getIntent().getExtras().getString( "outcome" ) );
-		
-		if (theme == null
-				&& ((Derelict2DApplication) getApplication()).mayEnableSound()) {
-			theme = MediaPlayer.create(this, R.raw.derelicttheme);
-			theme.setLooping(true);
-			theme.start();
-		}		
-	}
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
-		DisplayList dl = new DisplayList("dl");
-		AssetManager resManager = ((Derelict2DApplication) getApplication())
-				.getAssetManager();
+    private MediaPlayer theme = null;
 
-		SVGGraphic graphic = resManager.getGraphics("logo");
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_show_outcome);
 
-		float scale = 1;
-		Vec2 trans = new Vec2();
+        ((TextView) findViewById(R.id.txtOutcome)).setText(getIntent().getExtras().getString("outcome"));
 
-		GameView gvSplash = findViewById( R.id.gvGameLogoOutcome );
-		
-		if (gvSplash.getWidth() > 0 && gvSplash.getHeight() > 0) {
+        if (theme == null
+                && ((Derelict2DApplication) getApplication()).mayEnableSound()) {
+            theme = MediaPlayer.create(this, R.raw.derelicttheme);
+            theme.setLooping(true);
+            theme.start();
+        }
+    }
 
-			Rect bound = graphic.makeBounds();
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-			// não me interessa a parte acima da "página".
-			float newWidth = bound.p1.x;
-			float newHeight = bound.p1.y;
+        DisplayList dl = new DisplayList("dl");
+        AssetManager resManager = ((Derelict2DApplication) getApplication())
+                .getAssetManager();
 
-			if (newWidth > newHeight) {
-				scale = gvSplash.getWidth() / newWidth;
-				trans.y = (gvSplash.getHeight() - (bound.p1.y * scale)) / 2.0f;
-			} else {
-				scale = gvSplash.getHeight() / newHeight;
-				trans.x = (gvSplash.getWidth() - (bound.p1.x * scale)) / 2.0f;
-			}
-		}
+        SVGGraphic graphic = resManager.getGraphics("logo");
 
-		graphic = graphic.scale(scale, scale);
-		SVGRenderingNode node = new SVGRenderingNode(graphic, "title");
-		node.translate.set(trans);
+        float scale = 1;
+        Vec2 trans = new Vec2();
 
-		
-		dl .setItems(new RenderingNode[] { node });
+        GameView gvSplash = findViewById(R.id.gvGameLogoOutcome);
 
-		gvSplash.setRenderingContent(dl);
-		gvSplash.postInvalidate();		
-				
-	}
-	
-	@Override
-	protected void onPause() {
-		if (theme != null) {
+        if (gvSplash.getWidth() > 0 && gvSplash.getHeight() > 0) {
 
-			theme.stop();
-		}
-		super.onPause();
-	}
+            Rect bound = graphic.makeBounds();
 
-	@Override
-	protected void onDestroy() {
-		if (theme != null) {
+            // não me interessa a parte acima da "página".
+            float newWidth = bound.p1.x;
+            float newHeight = bound.p1.y;
 
-			theme.stop();
-		}
-		super.onDestroy();
-	}
+            if (newWidth > newHeight) {
+                scale = gvSplash.getWidth() / newWidth;
+                trans.y = (gvSplash.getHeight() - (bound.p1.y * scale)) / 2.0f;
+            } else {
+                scale = gvSplash.getHeight() / newHeight;
+                trans.x = (gvSplash.getWidth() - (bound.p1.x * scale)) / 2.0f;
+            }
+        }
+
+        graphic = graphic.scale(scale, scale);
+        SVGRenderingNode node = new SVGRenderingNode(graphic, "title");
+        node.translate.set(trans);
+
+
+        dl.setItems(new RenderingNode[]{node});
+
+        gvSplash.setRenderingContent(dl);
+        gvSplash.postInvalidate();
+
+    }
+
+    @Override
+    protected void onPause() {
+        if (theme != null) {
+
+            theme.stop();
+        }
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (theme != null) {
+
+            theme.stop();
+        }
+        super.onDestroy();
+    }
 }

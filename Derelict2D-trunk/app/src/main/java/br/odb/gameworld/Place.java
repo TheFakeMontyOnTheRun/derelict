@@ -3,265 +3,231 @@ package br.odb.gameworld;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import br.odb.gameutils.Direction;
 import br.odb.gameworld.exceptions.DoorActionException;
 import br.odb.gameworld.exceptions.InvalidCharacterHandlingException;
 import br.odb.gameworld.exceptions.InvalidLocationException;
 import br.odb.gameworld.exceptions.InvalidSlotException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
-import br.odb.gameutils.Direction;
-//import br.odb.gameutils.ScheduledEvent;
 
 public class Place extends Level implements Updatable {
 
-	final private HashMap<String, Location> locations;
-	final private HashMap<String, CharacterActor> characters;
-//	private ArrayList<ScheduledEvent> scheduledEvents = new ArrayList<ScheduledEvent>();
+    final private HashMap<String, Location> locations;
+    final private HashMap<String, CharacterActor> characters;
 
-	protected Place() {
-		locations = new HashMap<>();
-		characters = new HashMap<>();
+    protected Place() {
+        locations = new HashMap<>();
+        characters = new HashMap<>();
 
-	}
+    }
 
-	public String getJSONState() {
-		
-		StringBuilder toReturn = new StringBuilder("{");
-		
-		toReturn.append("'locations':[");
-		
-		for ( Location l : locations.values() ) {
-			toReturn.append(l.getJSONState()).append(",");
-		}
-		
-		toReturn.append("]}");
-		
-		return toReturn.toString();
-	}
-	
-	public Location[] getLocations() {
+    public Location[] getLocations() {
 
-		return this.locations.values().toArray(
-				new Location[0]);
-	}
+        return this.locations.values().toArray(
+                new Location[0]);
+    }
 
-	public CharacterActor[] getCharacters() {
+    public Location addLocation(Location location) {
+        return addLocation(location.getName(), location);
+    }
 
-		return this.characters.values().toArray(
-				new CharacterActor[0]);
-	}
+    public void moveCharacter(String charName, String placeName)
+            throws CharacterIsNotMovableException, InvalidLocationException,
+            InvalidSlotException, DoorActionException {
 
-	public Location addLocation(Location location) {
-		return addLocation(location.getName(), location);
-	}
+        Direction d;
+        CharacterActor character = getCharacter(charName);
 
-	public void moveCharacter(String charName, String placeName)
-			throws CharacterIsNotMovableException, InvalidLocationException,
-			InvalidSlotException, DoorActionException {
+        if (!character.isMovable()) {
+            throw new CharacterIsNotMovableException("As you try to move, you only float up and down. Perhaps you need some special boots?");
+        }
 
-		Direction d;
-		CharacterActor character = getCharacter(charName);
+        Location origin = character.getLocation();
+        Location destination = getLocation(placeName);
 
-		if (!character.isMovable()) {
-			throw new CharacterIsNotMovableException( "As you try to move, you only float up and down. Perhaps you need some special boots?" );
-		}
+        if (origin == null || destination == null) {
+            throw new InvalidLocationException();
+        }
 
-		Location origin = character.getLocation();
-		Location destination = getLocation(placeName);
+        d = origin.getConnectionDirectionForLocation(destination);
 
-		if (origin == null || destination == null) {
-			throw new InvalidLocationException();
-		}
+        if (d == null) {
+            throw new InvalidSlotException();
+        }
 
-		d = origin.getConnectionDirectionForLocation(destination);
+        Door door = origin.getDoor(d);
+        door.openFor(character);
 
-		if (d == null) {
-			throw new InvalidSlotException();
-		}
+        origin.removeCharacter(character);
+        destination.addCharacter(character);
+    }
 
-		Door door = origin.getDoor(d);
-		door.openFor(character);
+    private Location addLocation(String name, Location location) {
+        locations.put(name, location);
+        location.setPlace(this);
+        return location;
+    }
 
-		origin.removeCharacter(character);
-		destination.addCharacter(character);
-	}
+    protected CharacterActor addCharacter(String key,
+                                          CharacterActor charInstance)
+            throws InvalidCharacterHandlingException {
 
-	private Location addLocation(String name, Location location) {
-		locations.put(name, location);
-		location.setPlace( this );
-		return location;
-	}
+        if (characters.containsKey(key)) {
+            throw new InvalidCharacterHandlingException();
+        }
 
-	protected CharacterActor addCharacter(String key,
-			CharacterActor charInstance)
-			throws InvalidCharacterHandlingException {
+        characters.put(key, charInstance);
 
-		if (characters.containsKey(key)) {
-			throw new InvalidCharacterHandlingException();
-		}
+        return charInstance;
+    }
 
-		characters.put(key, charInstance);
+    public CharacterActor addNewCharacter(String name, String kind)
+            throws InvalidCharacterHandlingException {
+        return addCharacter(name, new CharacterActor(name, new Kind(kind)));
+    }
 
-		return charInstance;
-	}
+    public Location addNewLocation(String name) {
+        Location location = new Location(name);
+        addLocation(name, location);
+        return location;
+    }
 
-	public CharacterActor addNewCharacter(String name, String kind)
-			throws InvalidCharacterHandlingException {
-		return addCharacter(name, new CharacterActor(name, new Kind(kind)));
-	}
+    public Location getLocation(String name) throws InvalidLocationException {
 
-	public Location addNewLocation(String name) {
-		Location location = new Location(name);
-		addLocation(name, location);
-		return location;
-	}
+        if (name == null || !locations.containsKey(name)) {
+            throw new InvalidLocationException();
+        }
 
-	public Location getLocation(String name) throws InvalidLocationException {
+        return locations.get(name);
+    }
 
-		if (name == null || !locations.containsKey(name)) {
-			throw new InvalidLocationException();
-		}
+    public CharacterActor getCharacter(String name) {
+        return characters.get(name);
+    }
 
-		return locations.get(name);
-	}
+    public void moveCharacter(String name, Direction d)
+            throws CharacterIsNotMovableException, InvalidLocationException,
+            InvalidSlotException, DoorActionException {
+        CharacterActor character = getCharacter(name);
 
-	public CharacterActor getCharacter(String name) {
-		return characters.get(name);
-	}
+        if (character.getLocation().getConnections()[d.ordinal()] == null) {
+            throw new InvalidSlotException();
+        }
 
-	public void moveCharacter(String name, Direction d)
-			throws CharacterIsNotMovableException, InvalidLocationException,
-			InvalidSlotException, DoorActionException {
-		CharacterActor character = getCharacter(name);
+        moveCharacter(name,
+                character.getLocation().getConnections()[d.ordinal()].getName());
+    }
 
-		if (character.getLocation().getConnections()[d.ordinal()] == null) {
-			throw new InvalidSlotException();
-		}
+    @Override
+    public void update(long milisseconds) {
 
-		moveCharacter(name,
-				character.getLocation().getConnections()[d.ordinal()].getName());
-	}
+        for (Location l : locations.values()) {
+            l.update(milisseconds);
+        }
+    }
 
-	@Override
-	public void update(long milisseconds) {
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((characters == null) ? 0 : characters.hashCode());
+        result = prime * result
+                + ((locations == null) ? 0 : locations.hashCode());
+        return result;
+    }
 
-		for (Location l : locations.values()) {
-			l.update(milisseconds);
-		}
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Place)) {
+            return false;
+        }
+        Place other = (Place) obj;
 
-//		for (ScheduledEvent se : scheduledEvents) {
-//
-//			se.timeToGoOff -= milisseconds;
-//
-//			if (se.timeToGoOff <= 0) {
-//
-//				scheduledEvents.remove(se);
-//				se.run();
-//			}
-//		}
-	}
+        if (locations == null) {
+            return other.locations == null;
+        } else {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((characters == null) ? 0 : characters.hashCode());
-		result = prime * result
-				+ ((locations == null) ? 0 : locations.hashCode());
-		return result;
-	}
+            for (Location l : locations.values()) {
+                if (l != null && !other.locations.containsKey(l.getName())) {
+                    return false;
+                }
+            }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof Place)) {
-			return false;
-		}
-		Place other = (Place) obj;
+            for (Location l : other.locations.values()) {
+                if (!locations.containsKey(l.getName())) {
+                    return false;
+                }
+            }
 
-		if (locations == null) {
-			return other.locations == null;
-		} else {
+            for (Location l : locations.values()) {
+                for (Location o : l.getConnections()) {
+                    if (o != null) {
 
-			for (Location l : locations.values()) {
-				if (l != null && !other.locations.containsKey(l.getName())) {
-					return false;
-				}
-			}
+                        ArrayList<String> others = new ArrayList<>();
 
-			for (Location l : other.locations.values()) {
-				if (!locations.containsKey(l.getName())) {
-					return false;
-				}
-			}
+                        try {
+                            for (Location l2 : other.getLocation(l.getName()).getConnections()) {
+                                if (l2 != null) {
+                                    others.add(l2.getName());
+                                }
+                            }
+                        } catch (InvalidLocationException ignored) {
+                        }
 
-			for (Location l : locations.values()) {
-				for (Location o : l.getConnections()) {
-					if (o != null) {
+                        if (!others.contains(o.getName())) {
 
-						ArrayList<String> others = new ArrayList<>();
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
 
-						try {
-							for (Location l2 : other.getLocation(l.getName()).getConnections()) {
-								if (l2 != null) {
-									others.add(l2.getName());
-								}
-							}
-						} catch (InvalidLocationException ignored){
-						}
+        // for (Item i : this.getItems()) {
+        // try {
+        // other.getItem(i.name);
+        // } catch (ItemNotFoundException e) {
+        // return false;
+        // }
+        // }
 
-						if (!others.contains(o.getName())) {
+        return true;
+    }
 
-							return false;
-						}
-					}
-				}
-			}
-		}
+    public Item getItem(String name) throws ItemNotFoundException {
 
-		// for (Item i : this.getItems()) {
-		// try {
-		// other.getItem(i.name);
-		// } catch (ItemNotFoundException e) {
-		// return false;
-		// }
-		// }
+        for (Location l : locations.values()) {
+            try {
+                return l.getItem(name);
+            } catch (ItemNotFoundException e) {
+                // do nothing
+            }
+        }
 
-		return true;
-	}
-
-	public Item getItem(String name) throws ItemNotFoundException {
-
-		for (Location l : locations.values()) {
-			try {
-				return l.getItem(name);
-			} catch (ItemNotFoundException e) {
-				// do nothing
-			}
-		}
-
-		for (CharacterActor ca : characters.values()) {
-			try {
-				return ca.getItem(name);
-			} catch (ItemNotFoundException e) {
-				// do nothing
-			}
-		}
-		throw new ItemNotFoundException();
-	}
+        for (CharacterActor ca : characters.values()) {
+            try {
+                return ca.getItem(name);
+            } catch (ItemNotFoundException e) {
+                // do nothing
+            }
+        }
+        throw new ItemNotFoundException();
+    }
 }

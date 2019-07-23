@@ -5,25 +5,25 @@ import br.odb.gameworld.Door;
 import br.odb.gameworld.exceptions.DoorActionException;
 
 public class SecuredDoor extends Door {
-	private final br.odb.derelict.core.Clearance clearance;
+    private final br.odb.derelict.core.Clearance clearance;
 
-	public SecuredDoor(Clearance clearance) {
-		super();
-		this.clearance = clearance;
-	}
+    public SecuredDoor(Clearance clearance) {
+        super();
+        this.clearance = clearance;
+    }
 
-	@Override
-	public void openFor(CharacterActor character) throws DoorActionException {
+    @Override
+    public void openFor(CharacterActor character) throws DoorActionException {
 
-		if (!willOpenFor((Astronaut) character)) {
-			throw new ClearanceException();
-		}
+        if (!willOpenFor((Astronaut) character)) {
+            throw new ClearanceException();
+        }
 
-		super.openFor(character);
-	}
+        super.openFor(character);
+    }
 
-	private boolean willOpenFor(Astronaut character) {
-		return (character.getClearance().ordinal() >= clearance.ordinal());
-	}
+    private boolean willOpenFor(Astronaut character) {
+        return (character.getClearance().ordinal() >= clearance.ordinal());
+    }
 
 }

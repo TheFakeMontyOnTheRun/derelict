@@ -2,50 +2,42 @@ package br.odb.gameworld;
 
 public class ActiveItem extends Item {
 
-	private boolean active;
-	
-	public String getTurnOnSound() {
-		return "click";
-	}
-	
-	public String getTurnOffSound() {
-		return "click";
-	}
-	
+    private boolean active;
 
-	
+    public String getTurnOnSound() {
+        return "click";
+    }
 
-	protected ActiveItem(String name) {
-		super(name);
+    public String getTurnOffSound() {
+        return "click";
+    }
 
-		active = false;
-	}
+    protected ActiveItem(String name) {
+        super(name);
 
-	public boolean isActive() {
-		return active;
-	}
+        active = false;
+    }
 
-	public void setActive(boolean newState) {
-		active = newState;
-	}
+    public boolean isActive() {
+        return active;
+    }
 
-	public ActiveItem activate() {
-		active = true;
-		return this;
-	}
+    public void setActive(boolean newState) {
+        active = newState;
+    }
 
-	public ActiveItem deactivate() {
-		active = false;
-		return this;
-	}
+    public ActiveItem activate() {
+        active = true;
+        return this;
+    }
 
-	@Override
-	public String toString() {
-		return (active ? "(active)" : "(inactive)") + super.toString();
-	}
+    @Override
+    public String toString() {
+        return (active ? "(active)" : "(inactive)") + super.toString();
+    }
 
-	public ActiveItem toggle() {
-		active = !active;
-		return this;
-	}
+    public ActiveItem toggle() {
+        active = !active;
+        return this;
+    }
 }

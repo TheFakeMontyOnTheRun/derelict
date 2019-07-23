@@ -7,33 +7,26 @@ import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 public class Pipe extends ItemContainer {
 
 
-	public Pipe(Item contained) {
-		super("plastic-pipes", contained ); 
-		
-		setDescription( "Just a regular pipe, taking something somewhere." ); 
+    public Pipe(Item contained) {
+        super(contained);
 
-		setPickable(false);
-	}
-	
-	@Override
-	public void use(CharacterActor user) throws ItemActionNotSupportedException {
-		throw new ItemActionNotSupportedException( "Can't do it!" );
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see br.odb.gamelib.gameworld.Item#useWith(br.odb.gamelib.gameworld.Item)
-	 */
-	@Override
-	public void useWith(Item item1) throws ItemActionNotSupportedException {
-		
+        setDescription("Just a regular pipe, taking something somewhere.");
 
-		if (item1 instanceof Destructive
-				|| ((item1 instanceof MagnecticActive) && (contains instanceof MagnecticActive))) {
-			dropItem();
-		} else {
-			super.useWith(item1);	
-		}
-	}
+        setPickable(false);
+    }
+
+    @Override
+    public void use(CharacterActor user) throws ItemActionNotSupportedException {
+        throw new ItemActionNotSupportedException("Can't do it!");
+    }
+
+    @Override
+    public void useWith(Item item1) throws ItemActionNotSupportedException {
+        if (item1 instanceof Destructive
+                || ((item1 instanceof MagnecticActive) && (contains instanceof MagnecticActive))) {
+            dropItem();
+        } else {
+            super.useWith(item1);
+        }
+    }
 }

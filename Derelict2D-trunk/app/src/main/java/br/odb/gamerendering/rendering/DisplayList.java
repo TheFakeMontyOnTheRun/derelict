@@ -1,56 +1,56 @@
 package br.odb.gamerendering.rendering;
 
 public class DisplayList extends RenderingNode {
-	RenderingNode[] items;
-	
-	public RenderingNode[] getItems() {
-		return items;
-	}
+    RenderingNode[] items;
 
-	public DisplayList(String id) {
-		super(id);
-	}
-	
-	@Override
-	public void update(long ms) {
-	
-		super.update( ms );
-		
-		for ( RenderingNode rn : items ) {
-			rn.update( ms );
-		}
-	}
+    public RenderingNode[] getItems() {
+        return items;
+    }
 
-	public int length() {
+    public DisplayList(String id) {
+        super(id);
+    }
 
-		if (items != null)
-			return items.length;
-		else
-			return 0;
-	}
+    @Override
+    public void update(long ms) {
 
-	public void setItems(RenderingNode[] items) {
-		this.items = items;
-	}
+        super.update(ms);
 
-	public RenderingNode getElementById(String id) {
+        for (RenderingNode rn : items) {
+            rn.update(ms);
+        }
+    }
 
-		for (RenderingNode rn : items) {
-			if (rn.getId().equals(id)) {
-				return rn;
-			}
-		}
+    public int length() {
 
-		return null;
-	}
+        if (items != null)
+            return items.length;
+        else
+            return 0;
+    }
 
-	@Override
-	public void render(RenderingContext rc) {
+    public void setItems(RenderingNode[] items) {
+        this.items = items;
+    }
 
-		if (items != null) {
-			for (RenderingNode rn : items) {
-				rn.render(rc);
-			}
-		}
-	}
+    public RenderingNode getElementById(String id) {
+
+        for (RenderingNode rn : items) {
+            if (rn.getId().equals(id)) {
+                return rn;
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public void render(RenderingContext rc) {
+
+        if (items != null) {
+            for (RenderingNode rn : items) {
+                rn.render(rc);
+            }
+        }
+    }
 }

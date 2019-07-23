@@ -8,33 +8,33 @@ import br.odb.gameworld.Place;
 
 public class ItemsCommand extends DerelictUserMetaCommandLineAction {
 
-	@Override
-	public void run(Place level, CharacterActor actor, String operand,
-			ApplicationClient client) {
+    @Override
+    public void run(Place level, CharacterActor actor, String operand,
+                    ApplicationClient client) {
 
-		Astronaut hero = (Astronaut) actor;
+        Astronaut hero = (Astronaut) actor;
 
-		client.printNormal("\ninventory:"); 
+        client.printNormal("\ninventory:");
 
-		for (Item i : hero.getItems()) {
-			client.printNormal("- "+ i); 
-		}
-		client.printNormal("end of inventory\n"); 
-	}
+        for (Item i : hero.getItems()) {
+            client.printNormal("- " + i);
+        }
+        client.printNormal("end of inventory\n");
+    }
 
-	@Override
-	public String toString() {
-		return "items"; 
-	}
+    @Override
+    public String toString() {
+        return "items";
+    }
 
     @Override
     public int requiredOperands() {
         return 0;
     }
-        
-	@Override
-	public String getDescription() {
-		return "- list all items currently held.";
-	}
+
+    @Override
+    public String getDescription() {
+        return "- list all items currently held.";
+    }
 
 }
