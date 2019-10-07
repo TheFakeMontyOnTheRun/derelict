@@ -24,3 +24,8 @@ derelict-core-java/target/maven-archiver/pom.properties
 derelict2d-core-java/.classpath
 
 derelict2d-core-java/.project
+
+Derelict2D-trunk/.idea
+Derelict2D-trunk/.gradle
+Derelict2D-trunk/app/build
+*.iml
