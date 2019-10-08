@@ -21,8 +21,6 @@ import java.util.HashMap;
 
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict2d.RootGameMenuActivity.DificultyLevel;
-import br.odb.derelict2d.game.Derelict2DTotautisSpaceStation;
-import br.odb.derelict2d.game.GameLevel;
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gameapp.FileServerDelegate;
 import br.odb.gamerendering.rendering.AssetManager;
@@ -39,7 +37,6 @@ public class ExploreStationActivity extends Activity implements
     private final ArrayList<GameUpdateDelegate> updateDelegates = new ArrayList<>();
     private final HashMap<String, MediaPlayer> mediaPlayers = new HashMap<>();
 
-    GameLevel currentLevel;
     private DerelictGame game;
     AssetManager resManager;
     private MediaPlayer playerSound;
@@ -77,8 +74,6 @@ public class ExploreStationActivity extends Activity implements
         game = ((Derelict2DApplication) getApplication()).game;
         game.endGameListener = this;
         game.hero.setGender("m");
-
-        currentLevel = new Derelict2DTotautisSpaceStation(game.station, this);
 
         level = DificultyLevel.values()[intent.getExtras().getInt("aid")];
 

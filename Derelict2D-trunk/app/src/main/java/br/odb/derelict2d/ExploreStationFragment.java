@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import br.odb.derelict.core.DerelictGame;
-import br.odb.derelict2d.game.GameLevel;
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
@@ -145,9 +144,8 @@ public class ExploreStationFragment extends Fragment implements
         ExploreStationActivity explore = (ExploreStationActivity) getActivity();
 
         AssetManager resManager = explore.resManager;
-        GameLevel currentLevel = explore.currentLevel;
 
-        if (gameView != null && currentLevel != null && resManager != null) {
+        if (gameView != null && resManager != null) {
 
             gameView.setSnapshot(game, resManager,
                     chkShowPlaceNames.isChecked());

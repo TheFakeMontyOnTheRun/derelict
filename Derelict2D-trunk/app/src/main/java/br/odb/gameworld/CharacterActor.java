@@ -2,6 +2,7 @@ package br.odb.gameworld;
 
 import java.util.HashMap;
 
+import br.odb.gameutils.Updatable;
 import br.odb.gameworld.exceptions.InventoryManipulationException;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
@@ -10,7 +11,6 @@ public class CharacterActor implements Updatable {
 
     private final HashMap<String, Item> items = new HashMap<>();
     private final String name;
-    private final Kind kind;
     private Location location;
 
     /*
@@ -22,7 +22,6 @@ public class CharacterActor implements Updatable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((kind == null) ? 0 : kind.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
@@ -44,13 +43,6 @@ public class CharacterActor implements Updatable {
             return false;
         }
         CharacterActor other = (CharacterActor) obj;
-        if (kind == null) {
-            if (other.kind != null) {
-                return false;
-            }
-        } else if (!kind.equals(other.kind)) {
-            return false;
-        }
         if (location == null) {
             if (other.location != null) {
                 return false;
@@ -74,9 +66,8 @@ public class CharacterActor implements Updatable {
         return items.values().toArray(new Item[0]);
     }
 
-    public CharacterActor(String name, Kind kind) {
+    public CharacterActor(String name) {
         this.name = name;
-        this.kind = kind;
     }
 
     public Location getLocation() {

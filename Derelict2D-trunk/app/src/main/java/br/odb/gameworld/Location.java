@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import br.odb.gameutils.Direction;
+import br.odb.gameutils.Updatable;
 import br.odb.gameworld.exceptions.InvalidSlotException;
 import br.odb.gameworld.exceptions.InventoryManipulationException;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;

@@ -8,7 +8,6 @@ import br.odb.gameutils.Direction;
 import br.odb.gameworld.ActiveItem;
 import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Item;
-import br.odb.gameworld.Kind;
 import br.odb.gameworld.exceptions.InventoryManipulationException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
 
@@ -20,13 +19,13 @@ public class Astronaut extends CharacterActor {
     public Direction direction = Direction.N;
 
     public Astronaut() {
-        super("hero", new Kind("hero"));
+        super("hero");
 
         init("M");
     }
 
     public Astronaut(String name, String gender) {
-        super(name, new Kind("hero"));
+        super(name);
 
         init(gender);
     }

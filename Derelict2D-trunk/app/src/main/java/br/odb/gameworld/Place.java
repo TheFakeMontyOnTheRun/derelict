@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import br.odb.gameutils.Direction;
+import br.odb.gameutils.Updatable;
 import br.odb.gameworld.exceptions.DoorActionException;
 import br.odb.gameworld.exceptions.InvalidCharacterHandlingException;
 import br.odb.gameworld.exceptions.InvalidLocationException;
 import br.odb.gameworld.exceptions.InvalidSlotException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
 
-public class Place extends Level implements Updatable {
+public class Place implements Updatable {
 
     final private HashMap<String, Location> locations;
     final private HashMap<String, CharacterActor> characters;
@@ -83,7 +84,7 @@ public class Place extends Level implements Updatable {
 
     public CharacterActor addNewCharacter(String name, String kind)
             throws InvalidCharacterHandlingException {
-        return addCharacter(name, new CharacterActor(name, new Kind(kind)));
+        return addCharacter(name, new CharacterActor(name));
     }
 
     public Location addNewLocation(String name) {
