@@ -139,8 +139,6 @@ public class ExploreStationFragment extends Fragment implements
                         fiveSteps.start();
                     }
                 }
-
-                ((ExploreStationActivity) getActivity()).say("moving to " + locationName);
             } catch (InvalidSlotException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -208,8 +206,6 @@ public class ExploreStationFragment extends Fragment implements
             game.hero.direction = game.hero.getLocation()
                     .getConnectionDirectionForLocation(
                             game.station.getLocation(locationName));
-
-            ((ExploreStationActivity) getActivity()).say(locationName + " selected");
         } catch (Exception e) {
             // We simply bail out. It's not a big deal...
         }

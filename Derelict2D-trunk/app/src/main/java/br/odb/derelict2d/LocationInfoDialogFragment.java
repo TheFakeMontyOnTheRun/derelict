@@ -38,9 +38,6 @@ public class LocationInfoDialogFragment extends DialogFragment {
         wvStats.loadDataWithBaseURL(null, newText, "text/html",
                 "utf-8", null);
 
-
-        ((ExploreStationActivity) getActivity()).say(title + ": " + game.getTextOutput());
-
         return view;
     }
 

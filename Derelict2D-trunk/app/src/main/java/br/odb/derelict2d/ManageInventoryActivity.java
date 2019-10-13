@@ -98,16 +98,6 @@ public class ManageInventoryActivity extends Activity implements ApplicationClie
     }
 
     @Override
-    public void printVerbose(String msg) {
-
-    }
-
-    @Override
-    public int chooseOption(String question, String[] options) {
-        return 0;
-    }
-
-    @Override
     public void printNormal(String string) {
 
     }

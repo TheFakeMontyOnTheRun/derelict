@@ -82,11 +82,6 @@ public class Place implements Updatable {
         return charInstance;
     }
 
-    public CharacterActor addNewCharacter(String name, String kind)
-            throws InvalidCharacterHandlingException {
-        return addCharacter(name, new CharacterActor(name));
-    }
-
     public Location addNewLocation(String name) {
         Location location = new Location(name);
         addLocation(name, location);

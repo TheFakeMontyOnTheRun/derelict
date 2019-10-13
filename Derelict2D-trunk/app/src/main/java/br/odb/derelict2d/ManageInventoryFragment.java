@@ -37,7 +37,6 @@ public class ManageInventoryFragment extends Fragment implements
 
     private final HashMap<GameView, Item> itemForView = new HashMap<>();
     private final HashMap<Item, GameView> viewForItem = new HashMap<>();
-    TextView tvFloor;
     private DerelictGame game;
     private GameView gvPick;
     private GameView gvUseWith;
@@ -69,11 +68,6 @@ public class ManageInventoryFragment extends Fragment implements
                 .findViewById(R.id.llCollectedItems);
         llLocationItems = toReturn
                 .findViewById(R.id.llLocationItems);
-
-        HorizontalScrollView hsvCollected = toReturn
-                .findViewById(R.id.lvCollected);
-        HorizontalScrollView lvLocationItems = toReturn
-                .findViewById(R.id.lvLocationItems);
 
         btnInfo = toReturn.findViewById(R.id.btnInfo);
         btnInfoToCollect = toReturn

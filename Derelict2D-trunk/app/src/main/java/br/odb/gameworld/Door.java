@@ -12,10 +12,6 @@ public class Door implements Updatable {
 
     }
 
-    public boolean isOpen() {
-        return open;
-    }
-
     private void doOpen() {
         open = true;
     }

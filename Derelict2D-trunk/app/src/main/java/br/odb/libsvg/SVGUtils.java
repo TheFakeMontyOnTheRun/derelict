@@ -16,7 +16,7 @@ public class SVGUtils {
     private static final char PATHCMD_RELATIVE_CURVE = 'c';
     private static final char PATHCMD_RELATIVE_END = 'z';
 
-    public static ColoredPolygon parseD(String attribute, int width, int height) {
+    public static ColoredPolygon parseD(String attribute) {
 
         char[] tokens = {PATHCMD_ABSOLUTE_LINE, PATHCMD_ABSOLUTE_MOVE,
                 PATHCMD_RELATIVE_END, PATHCMD_ABSOLUTE_END, ' ',

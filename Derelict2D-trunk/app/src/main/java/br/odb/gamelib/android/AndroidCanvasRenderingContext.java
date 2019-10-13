@@ -171,11 +171,6 @@ public class AndroidCanvasRenderingContext extends RenderingContext {
         }
     }
 
-    public void setClipRect(Rect bounds) {
-        android.graphics.Rect rect = AndroidUtils.toAndroidRect(bounds);
-        canvas.clipRect(rect, Region.Op.REPLACE);
-    }
-
     @Override
     public void setCurrentAlpha(float f) {
         super.setCurrentAlpha(f);

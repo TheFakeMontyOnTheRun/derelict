@@ -22,20 +22,13 @@ import br.odb.gameutils.Rect;
 import br.odb.gameutils.math.Vec2;
 import br.odb.libsvg.SVGGraphic;
 
-public class RootGameMenuActivity extends Activity implements OnClickListener, OnTouchListener, CompoundButton.OnCheckedChangeListener {
+public class RootGameMenuActivity extends Activity implements OnClickListener, OnTouchListener {
 
     private android.widget.CheckBox chkSound;
-    private android.widget.CheckBox chkSpeech;
-    private Spinner spnLevel;
     private GameView gvLogoInkscape;
     private GameView gvGithub;
     private GameView gvBeer;
     private GameView gvSplash;
-
-    @Override
-    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        ((Derelict2DApplication) getApplication()).toggleSpeech();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +40,6 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
         findViewById(R.id.btnHowToPlay).setOnClickListener(this);
 
         chkSound = findViewById(R.id.chkSound);
-        chkSpeech = findViewById(R.id.chkSpeech);
-
-        chkSpeech.setOnCheckedChangeListener(this);
 
         chkSound.setChecked(((Derelict2DApplication) getApplication())
                 .mayEnableSound());
@@ -121,7 +111,6 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
         Intent intent;
         Bundle bundle = new Bundle();
         bundle.putString("hasSound", chkSound.isChecked() ? "y" : "n");
-        bundle.putString("speech", chkSpeech.isChecked() ? "y" : "n");
 
         switch (v.getId()) {
 

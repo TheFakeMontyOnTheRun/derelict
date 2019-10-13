@@ -108,10 +108,6 @@ public abstract class ConsoleApplication {
         showUI();
     }
 
-    protected List<String> getCommandHistory() {
-        return cmdHistory;
-    }
-
     public UserCommandLineAction[] getAvailableCommands() {
         return commands.values().toArray(new UserCommandLineAction[]{});
     }

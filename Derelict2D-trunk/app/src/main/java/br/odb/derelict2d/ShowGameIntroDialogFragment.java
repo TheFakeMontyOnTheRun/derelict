@@ -71,16 +71,11 @@ public class ShowGameIntroDialogFragment extends DialogFragment implements
         }
 
 
-        ((ExploreStationActivity) getActivity()).stopTalking();
-        ((ExploreStationActivity) getActivity()).say(storyBits[storyPoint]);
-
         btNextFinish.setText(buttonTitles[storyPoint]);
     }
 
     @Override
     public void onClick(View v) {
-        ((ExploreStationActivity) getActivity()).stopTalking();
-
         if (++currentStoryPoint >= storyBits.length) {
 
             dismiss();

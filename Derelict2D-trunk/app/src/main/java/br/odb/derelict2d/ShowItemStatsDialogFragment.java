@@ -53,15 +53,12 @@ public class ShowItemStatsDialogFragment extends DialogFragment implements
         wvStats.getSettings().setJavaScriptEnabled(false);
         wvStats.loadDataWithBaseURL(null, "<html><body bgcolor = '#0D0' >"
                 + desc + "</body></html>", "text/html", "utf-8", null);
-        ((ExploreStationActivity) getActivity()).say(title + ": " + desc);
-
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnCloseItemStat) {
             dismiss();
-            ((ExploreStationActivity) getActivity()).stopTalking();
         }
     }
 }

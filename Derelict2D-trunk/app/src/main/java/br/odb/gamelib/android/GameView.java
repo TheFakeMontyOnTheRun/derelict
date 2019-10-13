@@ -28,19 +28,19 @@ public class GameView extends View implements Updatable {
     public GameView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
-        init(context);
+        init();
     }
 
     public GameView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        init(context);
+        init();
     }
 
     public GameView(Context context) {
         super(context);
 
-        init(context);
+        init();
     }
 
     @Override
@@ -58,7 +58,7 @@ public class GameView extends View implements Updatable {
         }
     }
 
-    private void init(Context context) {
+    private void init() {
         this.requestFocus();
         this.setFocusableInTouchMode(true);
 

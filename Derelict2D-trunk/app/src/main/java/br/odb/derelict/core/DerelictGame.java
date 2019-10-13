@@ -526,29 +526,6 @@ public class DerelictGame extends ConsoleApplication {
         return super.showUI();
     }
 
-    private void askForReplay() {
-
-        if (getClient()
-                .chooseOption(
-                        "Do you want a replay?",
-                        new String[]{
-                                "Yes, please. Show me the story I just went through. I love my left profile on the screen.",
-                                "No, thank you. But perhaps a cup of tea, later on?"}) == 1) {
-
-            initGame();
-
-            setShouldSaveHistory();
-            replayMode = true;
-
-            getClient().printVerbose("Replay comencing now");
-
-            for (String cmd : getCommandHistory()) {
-                getClient().printVerbose("entered: " + cmd);
-                sendData(cmd);
-            }
-        }
-    }
-
     public String getTextOutput() {
 
         String output = "Mission status:\nTime elapsed: "

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -14,8 +13,6 @@ import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -31,7 +28,6 @@ public class ExploreStationActivity extends Activity implements
     private final ArrayList<GameUpdateDelegate> updateDelegates = new ArrayList<>();
     private final HashMap<String, MediaPlayer> mediaPlayers = new HashMap<>();
     AssetManager resManager;
-    private TextToSpeech tts;
     private boolean shouldPlaySound;
     private DerelictGame game;
     private MediaPlayer playerSound;
@@ -44,12 +40,7 @@ public class ExploreStationActivity extends Activity implements
         Intent intent;
         intent = getIntent();
 
-        String hasSpeech = intent.getExtras().getString("speech");
         String hasSound = intent.getExtras().getString("hasSound");
-
-        if (hasSpeech != null && hasSpeech.equals("y")) {
-            tts = ((Derelict2DApplication) getApplication()).tts;
-        }
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -135,10 +126,6 @@ public class ExploreStationActivity extends Activity implements
             playerSound.stop();
         }
 
-        if (tts != null) {
-            tts.stop();
-        }
-
         super.onDestroy();
     }
 
@@ -148,7 +135,6 @@ public class ExploreStationActivity extends Activity implements
         string = string.substring(0, 1).toUpperCase() + string.substring(1);
 
         Toast.makeText(this, string.replace('-', ' '), Toast.LENGTH_SHORT).show();
-        say(string);
     }
 
     @Override
@@ -156,11 +142,6 @@ public class ExploreStationActivity extends Activity implements
         super.onActivityResult(requestCode, resultCode, data);
 
         finish();
-    }
-
-    public InputStream openAsset(String filename) throws IOException {
-
-        return getAssets().open(filename);
     }
 
     @Override
@@ -220,18 +201,6 @@ public class ExploreStationActivity extends Activity implements
     }
 
     @Override
-    public int chooseOption(String arg0, String[] arg1) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public void printVerbose(String s) {
-        say(s);
-
-    }
-
-    @Override
     public void onClick(View v) {
         FragmentManager fm = getFragmentManager();
         InfoDialog dialog = new InfoDialog();
@@ -240,12 +209,6 @@ public class ExploreStationActivity extends Activity implements
         // args.putString("desc", item.getDescription());
         dialog.setArguments(args);
         dialog.show(fm, "fragment_info_dialog");
-    }
-
-    public void say(String text) {
-        if (tts != null) {
-            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-        }
     }
 
     private void showInfoDialog() {
@@ -257,26 +220,10 @@ public class ExploreStationActivity extends Activity implements
                 + DerelictGame.GAME_STORY2 + "\n\n\n" + DerelictGame.GAME_RULES);
         gameIntro.setArguments(args);
 
-        if (tts != null) {
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    gameIntro.show(fm, "show_game_intro");
-                }
-            }, 100);
-        } else {
-            gameIntro.show(fm, "show_game_intro");
-        }
+        gameIntro.show(fm, "show_game_intro");
     }
 
     @Override
     public void printNormal(String s) {
-    }
-
-    public void stopTalking() {
-        if (tts != null) {
-            tts.stop();
-        }
     }
 }

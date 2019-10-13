@@ -227,7 +227,7 @@ public final class SVGParsingUtils {
 
     private static ColoredPolygon parsePath(String nodeValue, String style) {
 
-        ColoredPolygon pol = SVGUtils.parseD(nodeValue, 800, 480);
+        ColoredPolygon pol = SVGUtils.parseD(nodeValue);
         pol.color = SVGUtils.parseColorFromStyle(style);
         pol.originalStyle = style;
 

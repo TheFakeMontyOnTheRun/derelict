@@ -2,7 +2,6 @@ package br.odb.derelict2d;
 
 import android.app.Application;
 import android.content.Context;
-import android.speech.tts.TextToSpeech;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -14,13 +13,11 @@ import br.odb.derelict.core.DerelictGame;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.libsvg.SVGParsingUtils;
 
-public class Derelict2DApplication extends Application implements
-        TextToSpeech.OnInitListener {
+public class Derelict2DApplication extends Application  {
 
     final ArrayList<String> notes = new ArrayList<>();
     final private AssetManager resManager = new AssetManager();
     volatile public DerelictGame game;
-    public TextToSpeech tts;
 
     @Override
     public void onCreate() {
@@ -183,41 +180,12 @@ public class Derelict2DApplication extends Application implements
         android.media.AudioManager am = (android.media.AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         switch (am.getRingerMode()) {
-            case android.media.AudioManager.RINGER_MODE_SILENT:
-            case android.media.AudioManager.RINGER_MODE_VIBRATE:
-                return false;
             case android.media.AudioManager.RINGER_MODE_NORMAL:
                 return true;
+            case android.media.AudioManager.RINGER_MODE_SILENT:
+            case android.media.AudioManager.RINGER_MODE_VIBRATE:
             default:
                 return false;
-        }
-    }
-
-    public void toggleSpeech() {
-
-        if (tts == null) {
-            tts = new TextToSpeech(this, this);
-            Toast.makeText(this, "Text-To-Speech enabled. Please wait for spoken confirmation to enter game.",
-                    Toast.LENGTH_SHORT).show();
-
-        } else {
-            tts = null;
-            Toast.makeText(this, "Text-To-Speech disabled.",
-                    Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void onInit(int code) {
-        if (code == TextToSpeech.SUCCESS) {
-            tts.setLanguage(Locale.getDefault());
-            Toast.makeText(this, "Text-To-Speech working!.",
-                    Toast.LENGTH_SHORT).show();
-            tts.speak("Text-To-Speech working!", TextToSpeech.QUEUE_FLUSH, null);
-        } else {
-            tts = null;
-            Toast.makeText(this, "Failed to initialize TTS engine.",
-                    Toast.LENGTH_SHORT).show();
         }
     }
 }
