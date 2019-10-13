@@ -49,7 +49,6 @@ public class DerelictGraphicsAdapter {
 				System.out.println("location: " + cp.id);
 
 				try {
-
 					location = station.getLocation(cp.id);
 				} catch (Exception e) {
 					continue;

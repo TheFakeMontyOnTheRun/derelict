@@ -458,6 +458,7 @@ public class DerelictGame extends ConsoleApplication {
 
 					if (cmd.requiredOperands() <= tokens.length - 1) {
 						cmd.run(this, operand);
+						getClient().update();
 					} else {
 						getClient().alert(
 								"This command requires "

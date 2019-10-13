@@ -7,4 +7,6 @@ public interface ApplicationClient {
 	void playMedia(String uri, String alt);
 
 	void sendQuit();
+
+	void update();
 }

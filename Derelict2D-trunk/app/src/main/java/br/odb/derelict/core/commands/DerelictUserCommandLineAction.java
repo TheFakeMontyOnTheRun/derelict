@@ -21,6 +21,7 @@ public abstract class DerelictUserCommandLineAction extends
 		ApplicationClient client = game.getClient();
 
 		run(place, actor, operand, client);
+
 	}
 
 
