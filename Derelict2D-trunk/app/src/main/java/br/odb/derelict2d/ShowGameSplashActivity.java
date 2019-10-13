@@ -1,13 +1,12 @@
 package br.odb.derelict2d;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.CheckBox;
 
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
@@ -17,21 +16,29 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 	private MediaPlayer theme;
 	private GameView gvSplash;
 	private GameView gvLogo;
-	private Button playBtn;
+	private CheckBox chkSound;
 
-	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.activity_show_game_splash);
 
-		playBtn = findViewById(R.id.btnPlay);
+		chkSound = findViewById(R.id.chkSound);
+
+		chkSound.setChecked(((Derelict2DApplication) getApplication())
+				.mayEnableSound());
+
 
 		gvSplash = findViewById(R.id.gvSplash);
 		gvLogo = findViewById(R.id.gvLogo);
 
 		gvSplash.setVisibility(View.INVISIBLE);
 		gvLogo.setVisibility(View.INVISIBLE);
+
+		findViewById(R.id.btnExploreStation).setOnClickListener(this);
+		findViewById(R.id.btnAbout).setOnClickListener(this);
+		findViewById(R.id.btnHowToPlay).setOnClickListener(this);
 
 		getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 	}
@@ -52,9 +59,6 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 
 						gvSplash.setVisibility(View.VISIBLE);
 						gvLogo.setVisibility(View.VISIBLE);
-
-						playBtn.setText("Play");
-						playBtn.setOnClickListener(ShowGameSplashActivity.this);
 					}
 				});
 			}
@@ -98,7 +102,6 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 	@Override
 	protected void onDestroy() {
 		if (theme != null) {
-
 			theme.stop();
 		}
 		super.onDestroy();
@@ -111,7 +114,27 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 			theme.stop();
 		}
 
-		Intent intent = new Intent(this, RootGameMenuActivity.class);
-		this.startActivityForResult(intent, 1);
+		Intent intent;
+		Bundle bundle = new Bundle();
+		bundle.putString("hasSound", chkSound.isChecked() ? "y" : "n");
+
+		switch (v.getId()) {
+
+			case R.id.btnExploreStation:
+				((Derelict2DApplication) this.getApplication()).startNewGame();
+				intent = new Intent(this, ExploreStationActivity.class);
+				intent.putExtras(bundle);
+				startActivity(intent);
+				break;
+
+			case R.id.btnHowToPlay:
+				intent = new Intent(this, ShowHowToPlayActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.btnAbout:
+				intent = new Intent(this, ShowCreditsActivity.class);
+				startActivity(intent);
+				break;
+		}
 	}
 }

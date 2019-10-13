@@ -12,11 +12,6 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".RootGameMenuActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape" >
-        </activity>
-        <activity
             android:name=".ExploreStationActivity"
             android:label="@string/title_activity_explore_station"
             android:screenOrientation="landscape" >

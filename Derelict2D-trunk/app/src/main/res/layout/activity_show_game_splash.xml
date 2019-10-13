@@ -62,11 +62,30 @@
                     android:text="An Open Source Space-Adventure by Daniel Monteiro" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnPlay"
+            <CheckBox
+                android:id="@+id/chkSound"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Loading...please wait" />
+                android:text="Sound enabled" />
+
+            <Button
+                android:id="@+id/btnExploreStation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start Game" />
+
+            <Button
+                android:id="@+id/btnHowToPlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="How to Play" />
+
+            <Button
+                android:id="@+id/btnAbout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About this game" />
+
 
         </LinearLayout>
 

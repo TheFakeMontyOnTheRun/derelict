@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.accessibility.AccessibilityEvent;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -36,12 +35,8 @@ public class ExploreStationActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		Intent intent;
-		intent = getIntent();
-
-		String hasSound = intent.getExtras().getString("hasSound");
-
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -49,6 +44,9 @@ public class ExploreStationActivity extends Activity implements
 
 		getWindow().getDecorView().setSystemUiVisibility(
 				View.SYSTEM_UI_FLAG_LOW_PROFILE);
+
+		Intent intent = getIntent();
+		String hasSound = intent.getExtras().getString("hasSound");
 
 		resManager = ((Derelict2DApplication) getApplication())
 				.getAssetManager();
@@ -59,10 +57,8 @@ public class ExploreStationActivity extends Activity implements
 
 		shouldPlaySound = (hasSound != null && hasSound.equals("y"));
 
-
 		if (shouldPlaySound) {
 			playerSound = MediaPlayer.create(this, R.raw.playersounds);
-			// music = MediaPlayer.create(this, R.raw.ravelbolero);
 		}
 
 		game.setApplicationClient(this);
@@ -72,21 +68,7 @@ public class ExploreStationActivity extends Activity implements
 	}
 
 	@Override
-	public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
-
-		event.getText().add(game.getTextOutput());
-
-		return true;
-	}
-
-	@Override
 	protected void onPause() {
-
-		// if (music != null) {
-		//
-		// music.pause();
-		// }
-
 		if (playerSound != null) {
 
 			playerSound.pause();
@@ -99,8 +81,6 @@ public class ExploreStationActivity extends Activity implements
 	protected void onResume() {
 
 		if (shouldPlaySound) {
-
-			// music.start();
 			playerSound.start();
 			playerSound.setLooping(true);
 		}
@@ -113,13 +93,7 @@ public class ExploreStationActivity extends Activity implements
 	@Override
 	protected void onDestroy() {
 
-		// if (music != null) {
-		//
-		// music.stop();
-		// }
-
 		if (playerSound != null) {
-
 			playerSound.stop();
 		}
 
@@ -202,8 +176,6 @@ public class ExploreStationActivity extends Activity implements
 		FragmentManager fm = getFragmentManager();
 		InfoDialog dialog = new InfoDialog();
 		Bundle args = new Bundle();
-		// args.putString("name", item.getName());
-		// args.putString("desc", item.getDescription());
 		dialog.setArguments(args);
 		dialog.show(fm, "fragment_info_dialog");
 	}

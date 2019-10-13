@@ -145,7 +145,6 @@ public class Derelict2DApplication extends Application {
 		resManager.addResId("blowtorch-turned-on", R.raw.blowtorchon);
 		resManager.addResId("blowtorch-used", R.raw.blowtorchuse);
 		resManager.addResId("shot", R.raw.shot);
-
 		resManager.addResId("coughm", R.raw.coughm);
 		resManager.addResId("coughdeathm", R.raw.coughdeathm);
 
