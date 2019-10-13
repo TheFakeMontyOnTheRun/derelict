@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import br.odb.derelict.core.DerelictGame;
-import br.odb.derelict2d.RootGameMenuActivity.DificultyLevel;
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gameapp.FileServerDelegate;
 import br.odb.gamerendering.rendering.AssetManager;
@@ -41,7 +40,6 @@ public class ExploreStationActivity extends Activity implements
     AssetManager resManager;
     private MediaPlayer playerSound;
     private long lastTimeCough = -1;
-    private DificultyLevel level;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,12 +72,6 @@ public class ExploreStationActivity extends Activity implements
         game = ((Derelict2DApplication) getApplication()).game;
         game.endGameListener = this;
         game.hero.setGender("m");
-
-        level = DificultyLevel.values()[intent.getExtras().getInt("aid")];
-
-        for (String cmd : level.aid) {
-            game.sendData(cmd);
-        }
 
         shouldPlaySound = (hasSound != null && hasSound.equals("y"));
 
@@ -187,7 +179,7 @@ public class ExploreStationActivity extends Activity implements
             lastTimeCough = game.station.elapsedTime;
         }
 
-        game.station.update(level.defaultPenaultyTime);
+        game.station.update(1250);
 
         for (GameUpdateDelegate gup : updateDelegates) {
             gup.update();

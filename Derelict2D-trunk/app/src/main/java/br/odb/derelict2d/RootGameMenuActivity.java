@@ -30,33 +30,6 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
         ((Derelict2DApplication) getApplication()).toggleSpeech();
     }
 
-    enum DificultyLevel {
-        TEXT_VERSION("Text version", "Get ready to type!", new String[]{}, 1500),
-        EASY("Easy: still figuring out what this is all about",
-                "You will have SOME help", new String[]{"pick magboots",
-                "toggle magboots", "pick plasma-gun"}, 250), NORMAL(
-                "Normal: players that read", "Are you ready, pal!?",
-                new String[]{"pick magboots"}, 500), HARD("Hard: the real deal",
-                "GET LAMP", new String[]{}, 1250);
-
-        final String name;
-        final String description;
-        public final int defaultPenaultyTime;
-        public final String[] aid;
-
-        DificultyLevel(String name, String description, String[] aid, int penaltyTime) {
-            this.name = name;
-            this.description = description;
-            this.aid = aid;
-            this.defaultPenaultyTime = penaltyTime;
-        }
-
-        @Override
-        public String toString() {
-            return name + " (" + description + ")";
-        }
-    }
-
     private android.widget.CheckBox chkSound;
     private android.widget.CheckBox chkSpeech;
     private Spinner spnLevel;
@@ -71,11 +44,9 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
         setContentView(R.layout.activity_root_game_menu);
 
         findViewById(R.id.btnExploreStation).setOnClickListener(this);
-        // findViewById(R.id.btnExploreStation3D).setOnClickListener(this);
         findViewById(R.id.btnAbout).setOnClickListener(this);
         findViewById(R.id.btnHowToPlay).setOnClickListener(this);
 
-        spnLevel = findViewById(R.id.spnLevel);
         chkSound = findViewById(R.id.chkSound);
         chkSpeech = findViewById(R.id.chkSpeech);
 
@@ -92,10 +63,6 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
         findViewById(R.id.llGithub).setOnTouchListener(this);
         findViewById(R.id.llBeer).setOnTouchListener(this);
         findViewById(R.id.llInkscape).setOnTouchListener(this);
-
-        spnLevel.setAdapter(new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, DificultyLevel.values()));
-        spnLevel.setSelection(3);
     }
 
     private GameView gvSplash;
@@ -158,8 +125,6 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
         Bundle bundle = new Bundle();
         bundle.putString("hasSound", chkSound.isChecked() ? "y" : "n");
         bundle.putString("speech", chkSpeech.isChecked() ? "y" : "n");
-        bundle.putInt("aid",
-                ((DificultyLevel) spnLevel.getSelectedItem()).ordinal());
 
         switch (v.getId()) {
 

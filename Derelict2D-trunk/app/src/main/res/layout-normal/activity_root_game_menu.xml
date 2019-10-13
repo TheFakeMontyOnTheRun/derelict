@@ -150,13 +150,6 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="About this game" />
 
-
-
-                <Spinner
-                    android:id="@+id/spnLevel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
             </LinearLayout>
 
             <LinearLayout

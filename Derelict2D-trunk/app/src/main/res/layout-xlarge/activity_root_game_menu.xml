@@ -84,11 +84,6 @@
                     android:layout_height="wrap_content"
                     android:text="Difficulty:" />
 
-                <Spinner
-                    android:id="@+id/spnLevel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
             </LinearLayout>
 
             <LinearLayout

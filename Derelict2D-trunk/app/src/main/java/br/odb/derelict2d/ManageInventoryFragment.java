@@ -477,7 +477,7 @@ public class ManageInventoryFragment extends Fragment implements
         showItemStatsFragment.setArguments(args);
         showItemStatsFragment.show(fm, "show_item_stats_layout");
     }
-    
+
     private void showInfoDialog() {
 
         if (selectedCollectedItem == null) {
