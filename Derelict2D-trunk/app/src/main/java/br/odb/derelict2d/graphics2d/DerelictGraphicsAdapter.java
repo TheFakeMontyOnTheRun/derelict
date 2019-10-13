@@ -1,4 +1,4 @@
-package br.odb.derelict.graphics2d;
+package br.odb.derelict2d.graphics2d;
 
 import java.util.ArrayList;
 import java.util.HashMap;

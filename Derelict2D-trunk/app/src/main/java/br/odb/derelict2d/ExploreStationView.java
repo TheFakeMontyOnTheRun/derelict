@@ -7,7 +7,7 @@ import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 
 import br.odb.derelict.core.DerelictGame;
-import br.odb.derelict.graphics2d.DerelictGraphicsAdapter;
+import br.odb.derelict2d.graphics2d.DerelictGraphicsAdapter;
 import br.odb.gamelib.android.PointerNodeSelectableScrollableView;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gamerendering.rendering.DisplayList;
