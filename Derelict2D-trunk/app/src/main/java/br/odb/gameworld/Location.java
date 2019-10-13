@@ -31,13 +31,6 @@ public class Location implements Updatable {
     @Override
     public void update(long milisseconds) {
 
-        for (Door d : door) {
-            if (d != null) {
-
-                d.update(milisseconds);
-            }
-        }
-
         for (Item i : items) {
             i.update(milisseconds);
         }

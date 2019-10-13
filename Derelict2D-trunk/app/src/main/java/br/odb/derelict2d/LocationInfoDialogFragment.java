@@ -11,7 +11,6 @@ import br.odb.derelict.core.DerelictGame;
 
 public class LocationInfoDialogFragment extends DialogFragment {
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,5 +39,4 @@ public class LocationInfoDialogFragment extends DialogFragment {
 
         return view;
     }
-
 }

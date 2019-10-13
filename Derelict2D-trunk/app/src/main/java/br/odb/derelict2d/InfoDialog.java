@@ -211,5 +211,4 @@ public class InfoDialog extends DialogFragment implements GameUpdateDelegate, On
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
     }
-
 }

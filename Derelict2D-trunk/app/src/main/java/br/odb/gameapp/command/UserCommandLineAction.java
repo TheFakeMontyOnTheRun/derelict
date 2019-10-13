@@ -12,10 +12,5 @@ public abstract class UserCommandLineAction {
 
     public abstract int requiredOperands();
 
-    public String getHelp() {
-
-        return ">" + toString() + " : " + getDescription() + " " + "" + "(" + requiredOperands() + ");";
-    }
-
     protected abstract String getDescription();
 }

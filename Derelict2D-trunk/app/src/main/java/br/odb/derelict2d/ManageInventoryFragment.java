@@ -14,15 +14,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import br.odb.derelict.core.Astronaut;
 import br.odb.derelict.core.DerelictGame;
-import br.odb.derelict.core.commands.DerelictUserMetaCommandLineAction;
-import br.odb.derelict.core.commands.DerelictUserMoveCommandLineAction;
 import br.odb.derelict.core.items.Book;
-import br.odb.gameapp.command.UserCommandLineAction;
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.DisplayList;
@@ -412,7 +408,6 @@ public class ManageInventoryFragment extends Fragment implements
                 ((ExploreStationActivity) getActivity()).update();
         }
     }
-
 
     private String getCurrentLocationItemName() {
         if (selectedLocationItem != null) {

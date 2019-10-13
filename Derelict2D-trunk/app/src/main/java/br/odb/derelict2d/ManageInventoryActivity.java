@@ -107,10 +107,7 @@ public class ManageInventoryActivity extends Activity implements ApplicationClie
         MediaPlayer.create(this, resManager.getResIdForUri(uri)).start();
     }
 
-
     @Override
     public void sendQuit() {
-        // TODO Auto-generated method stub
-
     }
 }

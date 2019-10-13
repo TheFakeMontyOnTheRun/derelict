@@ -23,7 +23,6 @@ public class Place implements Updatable {
     }
 
     public Location[] getLocations() {
-
         return this.locations.values().toArray(
                 new Location[0]);
     }

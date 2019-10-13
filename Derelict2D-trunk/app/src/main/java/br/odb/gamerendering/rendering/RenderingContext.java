@@ -19,7 +19,6 @@ public abstract class RenderingContext {
                                             String style, HashMap<String, Gradient> gradients);
 
     public float getCurrentAlpha() {
-
         return currentAlpha;
     }
 

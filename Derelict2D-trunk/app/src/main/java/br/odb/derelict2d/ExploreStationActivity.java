@@ -47,8 +47,6 @@ public class ExploreStationActivity extends Activity implements
 
         setContentView(R.layout.activity_explore_station);
 
-        // findViewById(R.id.btnInfo).setOnClickListener(this);
-
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LOW_PROFILE);
 

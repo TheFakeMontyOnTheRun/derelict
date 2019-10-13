@@ -5,7 +5,6 @@ import android.content.Context;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 import br.odb.derelict.core.DerelictGame;
 import br.odb.gamerendering.rendering.AssetManager;

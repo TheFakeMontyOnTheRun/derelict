@@ -16,10 +16,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import br.odb.gameutils.Color;
 
 public final class SVGParsingUtils {
-
-    /**
-     *
-     */
+    
     public static SVGGraphic readSVG(InputStream is) {
 
         float x = 0;
@@ -265,11 +262,6 @@ public final class SVGParsingUtils {
         int index;
 
         GradientStop() {
-        }
-
-        GradientStop(GradientStop gradientStop) {
-            this.index = gradientStop.index;
-            this.style = gradientStop.style;
         }
     }
 }

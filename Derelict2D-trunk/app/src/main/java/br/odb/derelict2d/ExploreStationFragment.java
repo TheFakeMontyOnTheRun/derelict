@@ -17,7 +17,6 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import br.odb.derelict.core.DerelictGame;
@@ -26,7 +25,6 @@ import br.odb.gamelib.android.GameView;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gameutils.Direction;
 import br.odb.gameutils.Utils;
-import br.odb.gameworld.Item;
 import br.odb.gameworld.Location;
 import br.odb.gameworld.exceptions.InvalidLocationException;
 import br.odb.gameworld.exceptions.InvalidSlotException;

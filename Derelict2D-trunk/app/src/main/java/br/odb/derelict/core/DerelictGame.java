@@ -79,7 +79,6 @@ public class DerelictGame extends ConsoleApplication {
     public EndGameListener endGameListener;
     public Astronaut hero;
     public TotautisSpaceStation station;
-    private boolean replayMode;
 
     private boolean checkGameContinuityConditions() {
 
@@ -455,7 +454,7 @@ public class DerelictGame extends ConsoleApplication {
 
             if (cmd != null) {
 
-                if (!(replayMode && cmd instanceof DerelictUserMetaCommandLineAction)) {
+                if (!(cmd instanceof DerelictUserMetaCommandLineAction)) {
 
                     if (cmd.requiredOperands() <= tokens.length - 1) {
                         cmd.run(this, operand);
