@@ -9,7 +9,6 @@ public abstract class RenderingNode implements Updatable {
     final public Vec2 translate = new Vec2(0.0f, 0.0f);
     public final float alpha = 1.0f;
     final Rect bounds = new Rect();
-    private final boolean visible = true;
     private final String id;
 
     RenderingNode(String id) {
@@ -25,7 +24,7 @@ public abstract class RenderingNode implements Updatable {
     }
 
     public boolean isVisible() {
-        return visible;
+        return true;
     }
 
     @Override

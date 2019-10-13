@@ -69,8 +69,8 @@ public class Place implements Updatable {
         return location;
     }
 
-    protected CharacterActor addCharacter(String key,
-                                          CharacterActor charInstance)
+    protected void addCharacter(String key,
+                                CharacterActor charInstance)
             throws InvalidCharacterHandlingException {
 
         if (characters.containsKey(key)) {
@@ -79,7 +79,6 @@ public class Place implements Updatable {
 
         characters.put(key, charInstance);
 
-        return charInstance;
     }
 
     public Location addNewLocation(String name) {

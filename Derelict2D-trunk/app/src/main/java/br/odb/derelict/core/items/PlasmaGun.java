@@ -74,16 +74,15 @@ public class PlasmaGun extends ActiveItem implements Destructive {
         }
     }
 
-    private PlasmaPellet shootDirection(Direction d, Location place) {
+    private void shootDirection(Direction d, Location place) {
 
-        PlasmaPellet pellet = null;
+        PlasmaPellet pellet;
 
         if (performShooting()) {
 
             pellet = new PlasmaPellet(d, place);
             firedPellets.add(pellet);
         }
-        return pellet;
     }
 
     private void updateAmmoStatus() {

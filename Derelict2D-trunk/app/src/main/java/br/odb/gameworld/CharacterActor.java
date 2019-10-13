@@ -19,7 +19,7 @@ public class CharacterActor implements Updatable {
      * @see java.lang.Object#hashCode()
      */
 
-    public CharacterActor(String name) {
+    protected CharacterActor(String name) {
         this.name = name;
     }
 

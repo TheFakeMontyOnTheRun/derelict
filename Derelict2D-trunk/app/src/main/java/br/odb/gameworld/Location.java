@@ -19,7 +19,6 @@ public class Location implements Updatable {
     private final Location[] connections;
     private final List<CharacterActor> characters = new ArrayList<>();
     public boolean hasBeenExplored;
-    private String[] material = new String[Direction.values().length];
     private Place place;
     private String description;
     private String floorId;
@@ -27,7 +26,6 @@ public class Location implements Updatable {
     public Location(String name) {
         this.name = name;
         connections = new Location[6];
-        material = new String[6];
     }
 
     @Override
@@ -124,7 +122,6 @@ public class Location implements Updatable {
         result = prime * result
                 + ((description == null) ? 0 : description.hashCode());
         result = prime * result + Arrays.hashCode(door);
-        result = prime * result + Arrays.hashCode(material);
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
@@ -157,9 +154,6 @@ public class Location implements Updatable {
             return false;
         }
         if (!Arrays.equals(door, other.door)) {
-            return false;
-        }
-        if (!Arrays.equals(material, other.material)) {
             return false;
         }
         if (name == null) {

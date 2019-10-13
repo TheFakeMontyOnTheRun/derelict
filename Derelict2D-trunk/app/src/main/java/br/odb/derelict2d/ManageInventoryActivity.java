@@ -98,11 +98,6 @@ public class ManageInventoryActivity extends Activity implements ApplicationClie
     }
 
     @Override
-    public void printNormal(String string) {
-
-    }
-
-    @Override
     public void alert(String string) {
 
     }

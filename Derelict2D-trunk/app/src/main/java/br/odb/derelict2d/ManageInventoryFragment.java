@@ -11,7 +11,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -100,8 +99,6 @@ public class ManageInventoryFragment extends Fragment implements
 
         llCollectedItems.setOnClickListener(this);
 
-        buildCommandList();
-
         toReturn.post(new Runnable() {
             @Override
             public void run() {
@@ -147,18 +144,6 @@ public class ManageInventoryFragment extends Fragment implements
 
         game = ((Derelict2DApplication) this.getActivity().getApplication()).game;
         ((ExploreStationActivity) activity).addUpdateListener(this);
-    }
-
-    private void buildCommandList() {
-        UserCommandLineAction[] cmds = game.getAvailableCommands();
-
-        ArrayList<UserCommandLineAction> cmdsFiltered = new ArrayList<>();
-
-        for (UserCommandLineAction ucmd : cmds) {
-            if (!(ucmd instanceof DerelictUserMetaCommandLineAction || ucmd instanceof DerelictUserMoveCommandLineAction)) {
-                cmdsFiltered.add(ucmd);
-            }
-        }
     }
 
     @Override

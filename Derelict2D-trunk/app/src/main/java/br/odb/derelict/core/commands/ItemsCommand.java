@@ -3,7 +3,6 @@ package br.odb.derelict.core.commands;
 import br.odb.derelict.core.Astronaut;
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gameworld.CharacterActor;
-import br.odb.gameworld.Item;
 import br.odb.gameworld.Place;
 
 public class ItemsCommand extends DerelictUserMetaCommandLineAction {
@@ -13,13 +12,6 @@ public class ItemsCommand extends DerelictUserMetaCommandLineAction {
                     ApplicationClient client) {
 
         Astronaut hero = (Astronaut) actor;
-
-        client.printNormal("\ninventory:");
-
-        for (Item i : hero.getItems()) {
-            client.printNormal("- " + i);
-        }
-        client.printNormal("end of inventory\n");
     }
 
     @Override

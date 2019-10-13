@@ -5,7 +5,6 @@ import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
-import android.graphics.Region;
 import android.graphics.Shader;
 
 import java.util.HashMap;

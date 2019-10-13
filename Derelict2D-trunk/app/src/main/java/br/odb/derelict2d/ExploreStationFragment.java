@@ -162,14 +162,6 @@ public class ExploreStationFragment extends Fragment implements
             gameView.setSnapshot(game, resManager,
                     chkShowPlaceNames.isChecked());
 
-            ArrayList<Item> tmp = new ArrayList<>();
-
-            for (Item i : game.getCollectableItems()) {
-                tmp.add(0, i);
-            }
-
-            //Utils.reverseArray(game.getCollectableItems());
-
             String[] locations = game.getConnectionNames();
 
             String newString;

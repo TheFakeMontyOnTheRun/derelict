@@ -492,39 +492,6 @@ public class DerelictGame extends ConsoleApplication {
                 && checkGameContinuityConditions();
     }
 
-    @Override
-    public void printPreamble() {
-
-        super.printPreamble();
-        getClient().printNormal("intro:");
-        getClient().printNormal(GAME_STORY1);
-        getClient().printNormal("");
-        getClient().printNormal(GAME_STORY2);
-        getClient().printNormal("");
-        getClient().printNormal(
-                "Ok, enough rambling. It's junk time.\nAvailable commands:");
-
-        for (String ucla : getCommandList().keySet()) {
-            getClient().printNormal(
-                    " * "
-                            + ucla
-                            + " "
-                            + getCommandList().get(
-                            ucla).getHelp());
-        }
-
-        getClient().printNormal("");
-        getClient().printNormal(GAME_RULES);
-        getClient().printNormal("");
-
-    }
-
-    @Override
-    public ConsoleApplication showUI() {
-        getClient().printNormal(getTextOutput());
-
-        return super.showUI();
-    }
 
     public String getTextOutput() {
 

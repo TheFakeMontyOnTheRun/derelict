@@ -8,8 +8,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.widget.CompoundButton;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import br.odb.gamelib.android.AndroidUtils;

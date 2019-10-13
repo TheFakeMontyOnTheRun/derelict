@@ -2,12 +2,10 @@ package br.odb.derelict2d;
 
 import android.app.Application;
 import android.content.Context;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Locale;
 
 import br.odb.derelict.core.DerelictGame;
 import br.odb.gamerendering.rendering.AssetManager;
@@ -15,7 +13,6 @@ import br.odb.libsvg.SVGParsingUtils;
 
 public class Derelict2DApplication extends Application  {
 
-    final ArrayList<String> notes = new ArrayList<>();
     final private AssetManager resManager = new AssetManager();
     volatile public DerelictGame game;
 
@@ -157,22 +154,15 @@ public class Derelict2DApplication extends Application  {
     }
 
     public void startNewGame() {
-        notes.clear();
-        notes.add("New note");
-        notes.add(DerelictGame.GAME_STORY1 + DerelictGame.GAME_STORY2);
-
-
         game = new DerelictGame();
-        game.setAppName("DERELICT - THE GRAPHICAL ADVENTURE")
-                .setAuthorName("Daniel Monteiro")
-                .setLicenseName("3-Clause BSD").setReleaseYear(2014).init();
+        game.init();
     }
 
     public AssetManager getAssetManager() {
         return resManager;
     }
 
-    public InputStream openAsset(String filename) throws IOException {
+    private InputStream openAsset(String filename) throws IOException {
         return getAssets().open(filename);
     }
 
