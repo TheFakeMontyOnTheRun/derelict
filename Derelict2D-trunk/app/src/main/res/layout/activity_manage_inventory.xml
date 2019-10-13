@@ -28,11 +28,6 @@
             android:layout_height="wrap_content"
             android:text="Info" />
 
-        <Button
-            android:id="@+id/btnMakeNotes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Notes" />
 
     </LinearLayout>
 

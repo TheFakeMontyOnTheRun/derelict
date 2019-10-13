@@ -81,8 +81,6 @@ public class ManageInventoryFragment extends Fragment implements
         btnInfo = toReturn.findViewById(R.id.btnInfo);
         btnInfoToCollect = toReturn
                 .findViewById(R.id.btnInfoToCollect);
-        Button btnMakeNotes = toReturn.findViewById(R.id.btnMakeNotes);
-        btnMakeNotes.setOnClickListener(this);
         btnInfo.setOnClickListener(this);
         btnInfoToCollect.setOnClickListener(this);
 
@@ -407,9 +405,6 @@ public class ManageInventoryFragment extends Fragment implements
             case R.id.btnInfo:
                 showInfoDialog();
                 break;
-            case R.id.btnMakeNotes:
-                showMakeNotesDialog();
-                break;
             case R.id.btnLocationInfo:
 
                 FragmentManager fm = getFragmentManager();
@@ -482,13 +477,7 @@ public class ManageInventoryFragment extends Fragment implements
         showItemStatsFragment.setArguments(args);
         showItemStatsFragment.show(fm, "show_item_stats_layout");
     }
-
-    private void showMakeNotesDialog() {
-        FragmentManager fm = getFragmentManager();
-        MakeNotesDialog makeNotesDialog = new MakeNotesDialog();
-        makeNotesDialog.show(fm, "activity_make_notes");
-    }
-
+    
     private void showInfoDialog() {
 
         if (selectedCollectedItem == null) {
