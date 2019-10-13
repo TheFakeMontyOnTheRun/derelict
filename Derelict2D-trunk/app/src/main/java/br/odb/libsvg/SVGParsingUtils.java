@@ -15,9 +15,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import br.odb.gameutils.Color;
 
-/**
- * @author monty
- */
 public final class SVGParsingUtils {
 
     /**
@@ -246,6 +243,7 @@ public final class SVGParsingUtils {
         public float y2;
         String id;
         String link;
+
         Gradient() {
         }
 
@@ -265,8 +263,10 @@ public final class SVGParsingUtils {
         public String style;
         public Color color;
         int index;
+
         GradientStop() {
         }
+
         GradientStop(GradientStop gradientStop) {
             this.index = gradientStop.index;
             this.style = gradientStop.style;

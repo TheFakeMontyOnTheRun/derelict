@@ -1,8 +1,5 @@
 package br.odb.gameapp;
 
-/**
- * @author monty
- */
 public interface ApplicationClient {
 
     void printVerbose(String msg);

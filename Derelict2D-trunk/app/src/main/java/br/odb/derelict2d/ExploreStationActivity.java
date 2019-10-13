@@ -24,7 +24,6 @@ import br.odb.gameapp.ApplicationClient;
 import br.odb.gameapp.FileServerDelegate;
 import br.odb.gamerendering.rendering.AssetManager;
 
-//Here's the model - just a small view glue allowed
 public class ExploreStationActivity extends Activity implements
         FileServerDelegate, ApplicationClient, GameUpdateDelegate,
         DerelictGame.EndGameListener,

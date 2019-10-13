@@ -201,14 +201,6 @@ public class Place implements Updatable {
             }
         }
 
-        // for (Item i : this.getItems()) {
-        // try {
-        // other.getItem(i.name);
-        // } catch (ItemNotFoundException e) {
-        // return false;
-        // }
-        // }
-
         return true;
     }
 

@@ -11,9 +11,6 @@ import br.odb.gameworld.exceptions.InventoryManipulationException;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 import br.odb.gameworld.exceptions.ItemNotFoundException;
 
-/**
- * @author monty
- */
 public class Location implements Updatable {
 
     private final Door[] door = new Door[Direction.values().length];
@@ -26,6 +23,7 @@ public class Location implements Updatable {
     private Place place;
     private String description;
     private String floorId;
+
     public Location(String name) {
         this.name = name;
         connections = new Location[6];

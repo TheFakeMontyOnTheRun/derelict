@@ -2,9 +2,6 @@ package br.odb.gameutils;
 
 import br.odb.gameutils.math.Vec2;
 
-/**
- * @author monty
- */
 public class Rect {
 
     public final Vec2 p0 = new Vec2();

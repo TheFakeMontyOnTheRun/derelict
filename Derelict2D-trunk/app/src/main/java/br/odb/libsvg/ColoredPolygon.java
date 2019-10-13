@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import br.odb.gameutils.Color;
 import br.odb.gameutils.math.Vec2;
 
-/**
- * @author Daniel "Monty" Monteiro
- */
 public class ColoredPolygon {
 
     final public ArrayList<Vec2> controlPoints = new ArrayList<>();

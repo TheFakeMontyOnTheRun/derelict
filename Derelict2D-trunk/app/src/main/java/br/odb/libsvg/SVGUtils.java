@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import br.odb.gameutils.Color;
 import br.odb.gameutils.math.Vec2;
 
-/**
- * @author Daniel "Monty" Monteiro
- */
 public class SVGUtils {
 
     private static final char PATHCMD_ABSOLUTE_MOVE = 'M';

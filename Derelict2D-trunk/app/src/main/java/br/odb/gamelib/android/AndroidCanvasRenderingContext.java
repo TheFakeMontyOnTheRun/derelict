@@ -18,9 +18,6 @@ import br.odb.libsvg.ColoredPolygon;
 import br.odb.libsvg.SVGParsingUtils.Gradient;
 import br.odb.libsvg.SVGUtils;
 
-/**
- * @author monty
- */
 public class AndroidCanvasRenderingContext extends RenderingContext {
 
     private final HashMap<Gradient, LinearGradient> gradientsCache = new HashMap<>();

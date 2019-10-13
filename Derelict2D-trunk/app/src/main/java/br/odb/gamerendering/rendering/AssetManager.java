@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.odb.gamerendering.rendering;
 
 import java.util.HashMap;
@@ -9,9 +5,6 @@ import java.util.HashMap;
 import br.odb.libsvg.SVGGraphic;
 
 
-/**
- * @author monty
- */
 public class AssetManager {
 
     private final HashMap<String, SVGGraphic> graphics;

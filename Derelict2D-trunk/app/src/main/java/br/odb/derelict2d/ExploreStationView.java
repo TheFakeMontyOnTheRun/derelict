@@ -12,9 +12,6 @@ import br.odb.gamelib.android.PointerNodeSelectableScrollableView;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.gamerendering.rendering.DisplayList;
 
-/**
- * @author monty Here is the view - no model allowed!
- */
 public class ExploreStationView extends PointerNodeSelectableScrollableView {
 
     private final DerelictGraphicsAdapter adapter = new DerelictGraphicsAdapter();

@@ -24,6 +24,7 @@ public class GameView extends View implements Updatable {
     volatile private DisplayList renderingNode;
     private long renderingBudget;
     private RenderingNode defaultRenderingNode;
+
     public GameView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 

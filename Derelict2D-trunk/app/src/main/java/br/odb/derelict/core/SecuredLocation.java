@@ -3,9 +3,6 @@ package br.odb.derelict.core;
 import br.odb.gameutils.Direction;
 import br.odb.gameworld.Location;
 
-/**
- * @author monty
- */
 public class SecuredLocation extends Location {
 
     private final Clearance rank = Clearance.DEFAULT_CLEARANCE;

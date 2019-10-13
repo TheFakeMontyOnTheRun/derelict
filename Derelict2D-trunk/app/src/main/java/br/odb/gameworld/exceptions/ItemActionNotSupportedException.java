@@ -1,14 +1,7 @@
 package br.odb.gameworld.exceptions;
 
-/**
- * @author monty
- */
 public class ItemActionNotSupportedException extends Exception {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = -8145183890225876860L;
     private final String message;
 
 
@@ -16,12 +9,8 @@ public class ItemActionNotSupportedException extends Exception {
         this.message = msg;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Throwable#toString()
-     */
     @Override
     public String toString() {
         return this.message;
     }
-
 }

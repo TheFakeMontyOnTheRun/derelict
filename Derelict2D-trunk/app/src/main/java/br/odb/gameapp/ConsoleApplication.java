@@ -8,7 +8,6 @@ import br.odb.gameapp.command.UserCommandLineAction;
 
 public abstract class ConsoleApplication {
 
-
     private final HashMap<String, UserCommandLineAction> commands = new HashMap<>();
     private final ArrayList<String> cmdHistory = new ArrayList<>();
     public boolean continueRunning;
