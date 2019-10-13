@@ -21,11 +21,10 @@ import java.util.HashMap;
 
 import br.odb.derelict.core.DerelictGame;
 import br.odb.gameapp.ApplicationClient;
-import br.odb.gameapp.FileServerDelegate;
 import br.odb.gamerendering.rendering.AssetManager;
 
 public class ExploreStationActivity extends Activity implements
-        FileServerDelegate, ApplicationClient, GameUpdateDelegate,
+        ApplicationClient, GameUpdateDelegate,
         DerelictGame.EndGameListener,
         OnClickListener {
 
@@ -159,7 +158,6 @@ public class ExploreStationActivity extends Activity implements
         finish();
     }
 
-    @Override
     public InputStream openAsset(String filename) throws IOException {
 
         return getAssets().open(filename);

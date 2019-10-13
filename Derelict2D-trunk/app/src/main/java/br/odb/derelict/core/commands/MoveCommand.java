@@ -30,8 +30,6 @@ public class MoveCommand extends DerelictUserMoveCommandLineAction {
             hero.direction = d;
         } else if (hero.getLocation().hasConnection(operand)) {
             station.moveCharacter(hero.getName(), operand);
-//			d = hero.getLocation().getConnectionDirectionForLocation( station.getLocation( operand ) );
-//			hero.direction = d;
         } else {
             throw new InvalidLocationException();
         }

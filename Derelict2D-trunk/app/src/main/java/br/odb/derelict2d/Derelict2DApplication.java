@@ -11,12 +11,11 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import br.odb.derelict.core.DerelictGame;
-import br.odb.gameapp.FileServerDelegate;
 import br.odb.gamerendering.rendering.AssetManager;
 import br.odb.libsvg.SVGParsingUtils;
 
 public class Derelict2DApplication extends Application implements
-        FileServerDelegate, TextToSpeech.OnInitListener {
+        TextToSpeech.OnInitListener {
 
     final ArrayList<String> notes = new ArrayList<>();
     final private AssetManager resManager = new AssetManager();
@@ -176,7 +175,6 @@ public class Derelict2DApplication extends Application implements
         return resManager;
     }
 
-    @Override
     public InputStream openAsset(String filename) throws IOException {
         return getAssets().open(filename);
     }
