@@ -135,6 +135,7 @@ public class ExploreStationFragment extends Fragment implements
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+            update();
         }
     }
 
