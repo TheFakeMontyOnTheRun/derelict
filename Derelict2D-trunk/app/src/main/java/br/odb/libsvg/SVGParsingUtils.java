@@ -9,6 +9,7 @@ import org.w3c.dom.NodeList;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -16,252 +17,252 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import br.odb.gameutils.Color;
 
 public final class SVGParsingUtils {
-    
-    public static SVGGraphic readSVG(InputStream is) {
 
-        float x = 0;
-        float y = 0;
-        float width = 0;
-        float height = 0;
-        ArrayList<ColoredPolygon> instance = new ArrayList<>();
-        SVGGraphic toReturn = new SVGGraphic();
+	public static SVGGraphic readSVG(InputStream is) {
 
-        try {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse(is);
-            doc.getDocumentElement().normalize();
-            Color color;
-            ColoredPolygon p = null;
-            NodeList nodeLst;
-            String style;
-            nodeLst = doc.getElementsByTagName("*");
+		float x = 0;
+		float y = 0;
+		float width = 0;
+		float height = 0;
+		ArrayList<ColoredPolygon> instance = new ArrayList<>();
+		SVGGraphic toReturn = new SVGGraphic();
 
-            for (int s = 0; s < nodeLst.getLength(); s++) {
+		try {
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse(is);
+			doc.getDocumentElement().normalize();
+			Color color;
+			ColoredPolygon p = null;
+			NodeList nodeLst;
+			String style;
+			nodeLst = doc.getElementsByTagName("*");
 
-                Node fstNode = nodeLst.item(s);
+			for (int s = 0; s < nodeLst.getLength(); s++) {
 
-                color = null;
+				Node fstNode = nodeLst.item(s);
 
-                if (fstNode != null) {
+				color = null;
 
-                    if (fstNode.getNodeType() == Node.ELEMENT_NODE
-                            && (fstNode.getNodeName().equalsIgnoreCase("path")
-                            || fstNode.getNodeName().equalsIgnoreCase(
-                            "rect") || fstNode.getNodeName()
-                            .equalsIgnoreCase("linearGradient")
+				if (fstNode != null) {
 
-                    )) {
+					if (fstNode.getNodeType() == Node.ELEMENT_NODE
+							&& (fstNode.getNodeName().equalsIgnoreCase("path")
+							|| fstNode.getNodeName().equalsIgnoreCase(
+							"rect") || fstNode.getNodeName()
+							.equalsIgnoreCase("linearGradient")
 
-                        Element fstElmnt = (Element) fstNode;
-                        style = fstElmnt.getAttribute("style");
+					)) {
 
-                        if (style != null && style.length() > 0)
-                            color = SVGUtils.parseColorFromStyle(fstElmnt
-                                    .getAttribute("style"));
+						Element fstElmnt = (Element) fstNode;
+						style = fstElmnt.getAttribute("style");
 
-                        if (color == null)
-                            color = new Color(0xFF000000);
+						if (style != null && style.length() > 0)
+							color = SVGUtils.parseColorFromStyle(fstElmnt
+									.getAttribute("style"));
 
-                        if (fstNode.getNodeName().equalsIgnoreCase("path")) {
+						if (color == null)
+							color = new Color(0xFF000000);
 
-                            String d = null;
+						if (fstNode.getNodeName().equalsIgnoreCase("path")) {
 
-                            NamedNodeMap properties = fstElmnt.getAttributes();
+							String d = null;
 
-                            for (int j = 0; j < properties.getLength(); j++) {
-                                Node property = properties.item(j);
-                                String name = property.getNodeName();
+							NamedNodeMap properties = fstElmnt.getAttributes();
 
-                                if (name.equalsIgnoreCase("d")) {
-                                    d = property.getNodeValue();
-                                }
+							for (int j = 0; j < properties.getLength(); j++) {
+								Node property = properties.item(j);
+								String name = property.getNodeName();
 
-                                if (name.equalsIgnoreCase("style")) {
-                                    style = property.getNodeValue();
-                                }
-                            }
+								if (name.equalsIgnoreCase("d")) {
+									d = property.getNodeValue();
+								}
 
-                            p = parsePath(d, style);
+								if (name.equalsIgnoreCase("style")) {
+									style = property.getNodeValue();
+								}
+							}
 
-                        } else if (fstNode.getNodeName().equalsIgnoreCase(
-                                "rect")) {
-                            p = new ColoredPolygon();
+							p = parsePath(d, style);
 
-                            if (fstElmnt.getAttribute("x").length() > 0)
-                                x = Float
-                                        .parseFloat(fstElmnt.getAttribute("x"));
+						} else if (fstNode.getNodeName().equalsIgnoreCase(
+								"rect")) {
+							p = new ColoredPolygon();
 
-                            if (fstElmnt.getAttribute("y").length() > 0)
-                                y = Float
-                                        .parseFloat(fstElmnt.getAttribute("y"));
+							if (fstElmnt.getAttribute("x").length() > 0)
+								x = Float
+										.parseFloat(fstElmnt.getAttribute("x"));
 
-                            if (fstElmnt.getAttribute("width").length() > 0)
-                                width = Float.parseFloat(fstElmnt
-                                        .getAttribute("width"));
+							if (fstElmnt.getAttribute("y").length() > 0)
+								y = Float
+										.parseFloat(fstElmnt.getAttribute("y"));
 
-                            if (fstElmnt.getAttribute("height").length() > 0)
-                                height = Float.parseFloat(fstElmnt
-                                        .getAttribute("height"));
+							if (fstElmnt.getAttribute("width").length() > 0)
+								width = Float.parseFloat(fstElmnt
+										.getAttribute("width"));
 
-                            p.addPoint(x, y);
-                            p.addPoint(x + width, y);
-                            p.addPoint(x + width, y + height);
-                            p.addPoint(x, y + height);
-                        } else if (fstNode.getNodeName().equalsIgnoreCase(
-                                "linearGradient")) {
+							if (fstElmnt.getAttribute("height").length() > 0)
+								height = Float.parseFloat(fstElmnt
+										.getAttribute("height"));
 
-                            NodeList nl = fstNode.getChildNodes();
-                            Node stop;
-                            HashMap<Integer, GradientStop> stops = new HashMap<>();
-                            NamedNodeMap data = fstNode.getAttributes();
+							p.addPoint(x, y);
+							p.addPoint(x + width, y);
+							p.addPoint(x + width, y + height);
+							p.addPoint(x, y + height);
+						} else if (fstNode.getNodeName().equalsIgnoreCase(
+								"linearGradient")) {
 
-                            Gradient g = new Gradient();
-                            g.id = data.getNamedItem("id").getNodeValue();
+							NodeList nl = fstNode.getChildNodes();
+							Node stop;
+							Map<Integer, GradientStop> stops = new HashMap<>();
+							NamedNodeMap data = fstNode.getAttributes();
 
-                            if (data.getNamedItem("xlink:href") != null) {
+							Gradient g = new Gradient();
+							g.id = data.getNamedItem("id").getNodeValue();
 
-                                // 0:#
-                                g.link = data.getNamedItem("xlink:href")
-                                        .getNodeValue().substring(1);
-                            }
+							if (data.getNamedItem("xlink:href") != null) {
 
-                            if (data.getNamedItem("x1") != null) {
+								// 0:#
+								g.link = data.getNamedItem("xlink:href")
+										.getNodeValue().substring(1);
+							}
 
-                                g.x1 = Float.parseFloat(data.getNamedItem("x1")
-                                        .getNodeValue());
-                            }
+							if (data.getNamedItem("x1") != null) {
 
-                            if (data.getNamedItem("y1") != null) {
+								g.x1 = Float.parseFloat(data.getNamedItem("x1")
+										.getNodeValue());
+							}
 
-                                g.y1 = Float.parseFloat(data.getNamedItem("y1")
-                                        .getNodeValue());
-                            }
+							if (data.getNamedItem("y1") != null) {
 
-                            if (data.getNamedItem("x2") != null) {
+								g.y1 = Float.parseFloat(data.getNamedItem("y1")
+										.getNodeValue());
+							}
 
-                                g.x2 = Float.parseFloat(data.getNamedItem("x2")
-                                        .getNodeValue());
-                            }
+							if (data.getNamedItem("x2") != null) {
 
-                            if (data.getNamedItem("y2") != null) {
+								g.x2 = Float.parseFloat(data.getNamedItem("x2")
+										.getNodeValue());
+							}
 
-                                g.y2 = Float.parseFloat(data.getNamedItem("y2")
-                                        .getNodeValue());
-                            }
+							if (data.getNamedItem("y2") != null) {
 
-                            for (int c = 0; c < nl.getLength(); ++c) {
+								g.y2 = Float.parseFloat(data.getNamedItem("y2")
+										.getNodeValue());
+							}
 
-                                stop = nl.item(c);
-                                if (stop.getNodeName().equalsIgnoreCase("stop")) {
+							for (int c = 0; c < nl.getLength(); ++c) {
 
-                                    NamedNodeMap attr = stop.getAttributes();
+								stop = nl.item(c);
+								if (stop.getNodeName().equalsIgnoreCase("stop")) {
 
-                                    GradientStop gs = new GradientStop();
-                                    attr.getNamedItem("id").getNodeValue();
-                                    gs.index = Integer.parseInt(attr
-                                            .getNamedItem("offset")
-                                            .getNodeValue());
-                                    gs.style = attr.getNamedItem("style")
-                                            .getNodeValue();
-                                    stops.put(gs.index, gs);
-                                }
-                            }
+									NamedNodeMap attr = stop.getAttributes();
 
-                            if (stops.size() > 0) {
+									GradientStop gs = new GradientStop();
+									attr.getNamedItem("id").getNodeValue();
+									gs.index = Integer.parseInt(attr
+											.getNamedItem("offset")
+											.getNodeValue());
+									gs.style = attr.getNamedItem("style")
+											.getNodeValue();
+									stops.put(gs.index, gs);
+								}
+							}
 
-                                g.stops = new GradientStop[stops.size()];
+							if (stops.size() > 0) {
 
-                                for (int c = 0; c < stops.size(); ++c) {
+								g.stops = new GradientStop[stops.size()];
 
-                                    g.stops[c] = stops.get(c);
-                                }
+								for (int c = 0; c < stops.size(); ++c) {
 
-                                stops.clear();
-                            }
+									g.stops[c] = stops.get(c);
+								}
 
-                            toReturn.gradients.put(g.id, g);
-                        }
+								stops.clear();
+							}
 
-                        if (p != null) {
+							toReturn.gradients.put(g.id, g);
+						}
 
-                            if (fstElmnt != null) {
+						if (p != null) {
 
-                                if (fstElmnt.hasAttribute("z"))
-                                    p.z = (int) Float.parseFloat(fstElmnt
-                                            .getAttribute("z"));
+							if (fstElmnt != null) {
 
-                                if (fstElmnt.hasAttribute("id"))
-                                    p.id = fstElmnt.getAttribute("id");
-                            }
+								if (fstElmnt.hasAttribute("z"))
+									p.z = (int) Float.parseFloat(fstElmnt
+											.getAttribute("z"));
 
-                            p.color = color;
-                            p.originalStyle = fstElmnt.getAttribute("style");
-                            instance.add(p);
-                        }
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+								if (fstElmnt.hasAttribute("id"))
+									p.id = fstElmnt.getAttribute("id");
+							}
 
-        toReturn.shapes = new ColoredPolygon[instance.size()];
-        instance.toArray(toReturn.shapes);
+							p.color = color;
+							p.originalStyle = fstElmnt.getAttribute("style");
+							instance.add(p);
+						}
+					}
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 
-        consolidateGradients(toReturn);
+		toReturn.shapes = new ColoredPolygon[instance.size()];
+		instance.toArray(toReturn.shapes);
 
-        return toReturn;
-    }
+		consolidateGradients(toReturn);
 
-    private static void consolidateGradients(SVGGraphic graphic) {
-        for (Gradient g : graphic.gradients.values()) {
-            if (g.link != null) {
-                g.copy(graphic.gradients);
-            }
-        }
-    }
+		return toReturn;
+	}
 
-    private static ColoredPolygon parsePath(String nodeValue, String style) {
+	private static void consolidateGradients(SVGGraphic graphic) {
+		for (Gradient g : graphic.gradients.values()) {
+			if (g.link != null) {
+				g.copy(graphic.gradients);
+			}
+		}
+	}
 
-        ColoredPolygon pol = SVGUtils.parseD(nodeValue);
-        pol.color = SVGUtils.parseColorFromStyle(style);
-        pol.originalStyle = style;
+	private static ColoredPolygon parsePath(String nodeValue, String style) {
 
-        return pol;
-    }
+		ColoredPolygon pol = SVGUtils.parseD(nodeValue);
+		pol.color = SVGUtils.parseColorFromStyle(style);
+		pol.originalStyle = style;
 
-    public static final class Gradient {
+		return pol;
+	}
 
-        public GradientStop[] stops;
-        public float x1;
-        public float x2;
-        public float y1;
-        public float y2;
-        String id;
-        String link;
+	public static final class Gradient {
 
-        Gradient() {
-        }
+		public GradientStop[] stops;
+		public float x1;
+		public float x2;
+		public float y1;
+		public float y2;
+		String id;
+		String link;
 
-        void copy(HashMap<String, Gradient> gradients) {
+		Gradient() {
+		}
 
-            if (gradients.get(link).link != null) {
-                gradients.get(link).copy(gradients);
-            }
+		void copy(HashMap<String, Gradient> gradients) {
 
-            stops = gradients.get(link).stops;
-        }
+			if (gradients.get(link).link != null) {
+				gradients.get(link).copy(gradients);
+			}
 
-    }
+			stops = gradients.get(link).stops;
+		}
 
-    public static final class GradientStop {
+	}
 
-        public String style;
-        public Color color;
-        int index;
+	public static final class GradientStop {
 
-        GradientStop() {
-        }
-    }
+		public String style;
+		public Color color;
+		int index;
+
+		GradientStop() {
+		}
+	}
 }

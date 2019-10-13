@@ -2,15 +2,15 @@ package br.odb.gameworld.exceptions;
 
 public class ItemActionNotSupportedException extends Exception {
 
-    private final String message;
+	private final String message;
 
 
-    public ItemActionNotSupportedException(String msg) {
-        this.message = msg;
-    }
+	public ItemActionNotSupportedException(String msg) {
+		this.message = msg;
+	}
 
-    @Override
-    public String toString() {
-        return this.message;
-    }
+	@Override
+	public String toString() {
+		return this.message;
+	}
 }

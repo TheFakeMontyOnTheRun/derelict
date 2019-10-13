@@ -6,24 +6,24 @@ import br.odb.gameworld.Place;
 
 public class ItemsCommand extends DerelictUserMetaCommandLineAction {
 
-    @Override
-    public void run(Place level, CharacterActor actor, String operand,
-                    ApplicationClient client) {
-    }
+	@Override
+	public void run(Place level, CharacterActor actor, String operand,
+					ApplicationClient client) {
+	}
 
-    @Override
-    public String toString() {
-        return "items";
-    }
+	@Override
+	public String toString() {
+		return "items";
+	}
 
-    @Override
-    public int requiredOperands() {
-        return 0;
-    }
+	@Override
+	public int requiredOperands() {
+		return 0;
+	}
 
-    @Override
-    public String getDescription() {
-        return "- list all items currently held.";
-    }
+	@Override
+	public String getDescription() {
+		return "- list all items currently held.";
+	}
 
 }

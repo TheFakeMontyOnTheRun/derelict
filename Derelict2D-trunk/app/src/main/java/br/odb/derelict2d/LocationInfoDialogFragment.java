@@ -11,32 +11,32 @@ import br.odb.derelict.core.DerelictGame;
 
 public class LocationInfoDialogFragment extends DialogFragment {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_location_dialog,
-                container, true);
+		View view = inflater.inflate(R.layout.fragment_location_dialog,
+				container, true);
 
-        WebView wvStats = view.findViewById(R.id.wvDescription);
-
-
-        DerelictGame game = ((Derelict2DApplication) this.getActivity().getApplication()).game;
-
-        String locationName = game.hero.getLocation().getName();
-        String title = locationName.substring(0, 1).toUpperCase() + locationName.substring(1);
-
-        getDialog().setTitle(title.replace('-', ' '));
-
-        String desc = game.getTextOutput().replaceAll("\n", "<br/>");
-
-        String newText = "<html><body bgcolor = '#0D0' >" + desc
-                + "</body></html>";
+		WebView wvStats = view.findViewById(R.id.wvDescription);
 
 
-        wvStats.loadDataWithBaseURL(null, newText, "text/html",
-                "utf-8", null);
+		DerelictGame game = ((Derelict2DApplication) this.getActivity().getApplication()).game;
 
-        return view;
-    }
+		String locationName = game.hero.getLocation().getName();
+		String title = locationName.substring(0, 1).toUpperCase() + locationName.substring(1);
+
+		getDialog().setTitle(title.replace('-', ' '));
+
+		String desc = game.getTextOutput().replaceAll("\n", "<br/>");
+
+		String newText = "<html><body bgcolor = '#0D0' >" + desc
+				+ "</body></html>";
+
+
+		wvStats.loadDataWithBaseURL(null, newText, "text/html",
+				"utf-8", null);
+
+		return view;
+	}
 }

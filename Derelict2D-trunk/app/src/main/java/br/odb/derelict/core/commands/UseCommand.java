@@ -10,29 +10,29 @@ import br.odb.gameworld.exceptions.ItemNotFoundException;
 
 public class UseCommand extends DerelictUserCommandLineAction {
 
-    @Override
-    public void run(Place level, CharacterActor actor, String operand,
-                    ApplicationClient client) throws ItemNotFoundException, ItemActionNotSupportedException {
+	@Override
+	public void run(Place level, CharacterActor actor, String operand,
+					ApplicationClient client) throws ItemNotFoundException, ItemActionNotSupportedException {
 
-        Astronaut hero = (Astronaut) actor;
+		Astronaut hero = (Astronaut) actor;
 
-        Item item = hero.useItem(operand);
-        client.alert("item " + operand + " used");
-        client.playMedia(item.getUseItemSound(), "*click*");
-    }
+		Item item = hero.useItem(operand);
+		client.alert("item " + operand + " used");
+		client.playMedia(item.getUseItemSound(), "*click*");
+	}
 
-    @Override
-    public String toString() {
-        return "use";
-    }
+	@Override
+	public String toString() {
+		return "use";
+	}
 
-    @Override
-    public String getDescription() {
-        return "<currnetly held object name> - use said object (depending on context).";
-    }
+	@Override
+	public String getDescription() {
+		return "<currnetly held object name> - use said object (depending on context).";
+	}
 
-    @Override
-    public int requiredOperands() {
-        return 1;
-    }
+	@Override
+	public int requiredOperands() {
+		return 1;
+	}
 }

@@ -22,137 +22,137 @@ import br.odb.libsvg.SVGGraphic;
 
 public class RootGameMenuActivity extends Activity implements OnClickListener, OnTouchListener {
 
-    private android.widget.CheckBox chkSound;
-    private GameView gvLogoInkscape;
-    private GameView gvGithub;
-    private GameView gvBeer;
-    private GameView gvSplash;
+	private android.widget.CheckBox chkSound;
+	private GameView gvLogoInkscape;
+	private GameView gvGithub;
+	private GameView gvBeer;
+	private GameView gvSplash;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_root_game_menu);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_root_game_menu);
 
-        findViewById(R.id.btnExploreStation).setOnClickListener(this);
-        findViewById(R.id.btnAbout).setOnClickListener(this);
-        findViewById(R.id.btnHowToPlay).setOnClickListener(this);
+		findViewById(R.id.btnExploreStation).setOnClickListener(this);
+		findViewById(R.id.btnAbout).setOnClickListener(this);
+		findViewById(R.id.btnHowToPlay).setOnClickListener(this);
 
-        chkSound = findViewById(R.id.chkSound);
+		chkSound = findViewById(R.id.chkSound);
 
-        chkSound.setChecked(((Derelict2DApplication) getApplication())
-                .mayEnableSound());
+		chkSound.setChecked(((Derelict2DApplication) getApplication())
+				.mayEnableSound());
 
 
-        gvSplash = findViewById(R.id.gvbg);
-        gvLogoInkscape = findViewById(R.id.gvLogoInkscape);
-        gvGithub = findViewById(R.id.gvLogoGithub);
-        gvBeer = findViewById(R.id.gvBeer);
-        findViewById(R.id.llGithub).setOnTouchListener(this);
-        findViewById(R.id.llBeer).setOnTouchListener(this);
-        findViewById(R.id.llInkscape).setOnTouchListener(this);
-    }
+		gvSplash = findViewById(R.id.gvbg);
+		gvLogoInkscape = findViewById(R.id.gvLogoInkscape);
+		gvGithub = findViewById(R.id.gvLogoGithub);
+		gvBeer = findViewById(R.id.gvBeer);
+		findViewById(R.id.llGithub).setOnTouchListener(this);
+		findViewById(R.id.llBeer).setOnTouchListener(this);
+		findViewById(R.id.llInkscape).setOnTouchListener(this);
+	}
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
 
-        initImage();
+		initImage();
 
-        AndroidUtils.initImage(gvGithub, "logo_github",
-                ((Derelict2DApplication) getApplication()).getAssetManager());
-        AndroidUtils.initImage(gvLogoInkscape, "logo_inkscape",
-                ((Derelict2DApplication) getApplication()).getAssetManager());
-        AndroidUtils.initImage(gvBeer, "beer",
-                ((Derelict2DApplication) getApplication()).getAssetManager());
-    }
+		AndroidUtils.initImage(gvGithub, "logo_github",
+				((Derelict2DApplication) getApplication()).getAssetManager());
+		AndroidUtils.initImage(gvLogoInkscape, "logo_inkscape",
+				((Derelict2DApplication) getApplication()).getAssetManager());
+		AndroidUtils.initImage(gvBeer, "beer",
+				((Derelict2DApplication) getApplication()).getAssetManager());
+	}
 
-    private void initImage() {
+	private void initImage() {
 
-        DisplayList dl = new DisplayList("dl");
-        AssetManager resManager = ((Derelict2DApplication) getApplication())
-                .getAssetManager();
+		DisplayList dl = new DisplayList("dl");
+		AssetManager resManager = ((Derelict2DApplication) getApplication())
+				.getAssetManager();
 
-        SVGGraphic graphic = resManager.getGraphics("logo");
+		SVGGraphic graphic = resManager.getGraphics("logo");
 
-        float scale = 1;
-        Vec2 trans = new Vec2();
+		float scale = 1;
+		Vec2 trans = new Vec2();
 
-        if (gvSplash.getWidth() > 0 && gvSplash.getHeight() > 0) {
+		if (gvSplash.getWidth() > 0 && gvSplash.getHeight() > 0) {
 
-            Rect bound = graphic.makeBounds();
+			Rect bound = graphic.makeBounds();
 
-            // não me interessa a parte acima da "página".
-            float newWidth = bound.p1.x;
-            float newHeight = bound.p1.y;
+			// não me interessa a parte acima da "página".
+			float newWidth = bound.p1.x;
+			float newHeight = bound.p1.y;
 
-            if (newWidth > newHeight) {
-                scale = gvSplash.getWidth() / newWidth;
-                trans.y = (gvSplash.getHeight() - (bound.p1.y * scale)) / 2.0f;
-            } else {
-                scale = gvSplash.getHeight() / newHeight;
-                trans.x = (gvSplash.getWidth() - (bound.p1.x * scale)) / 2.0f;
-            }
-        }
+			if (newWidth > newHeight) {
+				scale = gvSplash.getWidth() / newWidth;
+				trans.y = (gvSplash.getHeight() - (bound.p1.y * scale)) / 2.0f;
+			} else {
+				scale = gvSplash.getHeight() / newHeight;
+				trans.x = (gvSplash.getWidth() - (bound.p1.x * scale)) / 2.0f;
+			}
+		}
 
-        graphic = graphic.scale(scale, scale);
-        SVGRenderingNode node = new SVGRenderingNode(graphic, "title");
-        node.translate.set(trans);
+		graphic = graphic.scale(scale, scale);
+		SVGRenderingNode node = new SVGRenderingNode(graphic, "title");
+		node.translate.set(trans);
 
-        dl.setItems(new RenderingNode[]{node});
+		dl.setItems(new RenderingNode[]{node});
 
-        gvSplash.setRenderingContent(dl);
-        gvSplash.postInvalidate();
-    }
+		gvSplash.setRenderingContent(dl);
+		gvSplash.postInvalidate();
+	}
 
-    @Override
-    public void onClick(View v) {
-        Intent intent;
-        Bundle bundle = new Bundle();
-        bundle.putString("hasSound", chkSound.isChecked() ? "y" : "n");
+	@Override
+	public void onClick(View v) {
+		Intent intent;
+		Bundle bundle = new Bundle();
+		bundle.putString("hasSound", chkSound.isChecked() ? "y" : "n");
 
-        switch (v.getId()) {
+		switch (v.getId()) {
 
-            case R.id.btnExploreStation:
+			case R.id.btnExploreStation:
 
-                ((Derelict2DApplication) this.getApplication()).startNewGame();
+				((Derelict2DApplication) this.getApplication()).startNewGame();
 
-                intent = new Intent(getBaseContext(), ExploreStationActivity.class);
+				intent = new Intent(getBaseContext(), ExploreStationActivity.class);
 
-                intent.putExtras(bundle);
-                startActivityForResult(intent, 1);
+				intent.putExtras(bundle);
+				startActivityForResult(intent, 1);
 
-                break;
+				break;
 
-            case R.id.btnHowToPlay:
-                intent = new Intent(this, ShowHowToPlayActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.btnAbout:
-                intent = new Intent(this, ShowCreditsActivity.class);
-                startActivity(intent);
-                break;
-        }
-    }
+			case R.id.btnHowToPlay:
+				intent = new Intent(this, ShowHowToPlayActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.btnAbout:
+				intent = new Intent(this, ShowCreditsActivity.class);
+				startActivity(intent);
+				break;
+		}
+	}
 
-    @Override
-    public boolean onTouch(View v, MotionEvent arg1) {
-        Intent i;
+	@Override
+	public boolean onTouch(View v, MotionEvent arg1) {
+		Intent i;
 
-        switch (v.getId()) {
-            case R.id.llBeer:
-                Toast.makeText(this, "Soon! Still have some things to sort out.", Toast.LENGTH_LONG).show();
-                break;
-            case R.id.llInkscape:
-                i = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://inkscape.org/"));
-                startActivity(i);
-                break;
-            case R.id.llGithub:
-                i = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://github.com/TheFakeMontyOnTheRun/derelict"));
-                startActivity(i);
-                break;
-        }
-        return true;
-    }
+		switch (v.getId()) {
+			case R.id.llBeer:
+				Toast.makeText(this, "Soon! Still have some things to sort out.", Toast.LENGTH_LONG).show();
+				break;
+			case R.id.llInkscape:
+				i = new Intent(Intent.ACTION_VIEW,
+						Uri.parse("https://inkscape.org/"));
+				startActivity(i);
+				break;
+			case R.id.llGithub:
+				i = new Intent(Intent.ACTION_VIEW,
+						Uri.parse("https://github.com/TheFakeMontyOnTheRun/derelict"));
+				startActivity(i);
+				break;
+		}
+		return true;
+	}
 }

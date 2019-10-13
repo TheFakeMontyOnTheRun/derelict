@@ -2,49 +2,49 @@ package br.odb.gameutils;
 
 public enum Direction {
 
-    N("N", "North"), E("E", "East"), S("S", "South"), W("W", "West"), FLOOR(
-            "D", "Down"), CEILING("U", "Up");
+	N("N", "North"), E("E", "East"), S("S", "South"), W("W", "West"), FLOOR(
+			"D", "Down"), CEILING("U", "Up");
 
-    final public String prettyName;
-    private final String simpleName;
+	final public String prettyName;
+	private final String simpleName;
 
-    Direction(String simpleName, String name) {
-        prettyName = name;
-        this.simpleName = simpleName;
-    }
+	Direction(String simpleName, String name) {
+		prettyName = name;
+		this.simpleName = simpleName;
+	}
 
-    public static Direction getDirectionForPrettyName(String prettyName) {
+	public static Direction getDirectionForPrettyName(String prettyName) {
 
-        if (prettyName == null || prettyName.length() == 0) {
-            return null;
-        }
+		if (prettyName == null || prettyName.length() == 0) {
+			return null;
+		}
 
-        for (Direction d : Direction.values()) {
-            if (d.prettyName.toUpperCase().equals(prettyName.toUpperCase())) {
-                return d;
-            }
-        }
+		for (Direction d : Direction.values()) {
+			if (d.prettyName.toUpperCase().equals(prettyName.toUpperCase())) {
+				return d;
+			}
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    public static Direction getDirectionForSimpleName(String simpleName) {
+	public static Direction getDirectionForSimpleName(String simpleName) {
 
-        if (simpleName == null || simpleName.length() == 0) {
-            return null;
-        }
+		if (simpleName == null || simpleName.length() == 0) {
+			return null;
+		}
 
-        for (Direction d : Direction.values()) {
-            if (d.simpleName.equals(simpleName.toUpperCase())) {
-                return d;
-            }
-        }
+		for (Direction d : Direction.values()) {
+			if (d.simpleName.equals(simpleName.toUpperCase())) {
+				return d;
+			}
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    @Override
-    public String toString() {
-        return prettyName;
-    }
+	@Override
+	public String toString() {
+		return prettyName;
+	}
 }

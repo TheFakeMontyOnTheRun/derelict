@@ -8,33 +8,33 @@ import br.odb.gameworld.Place;
 
 public final class TurnToDirectionCommand extends DerelictUserMoveCommandLineAction {
 
-    @Override
-    public void run(Place level, CharacterActor actor, String operand,
-                    ApplicationClient client) {
+	@Override
+	public void run(Place level, CharacterActor actor, String operand,
+					ApplicationClient client) {
 
-        Direction d;
-        Astronaut hero = (Astronaut) actor;
+		Direction d;
+		Astronaut hero = (Astronaut) actor;
 
-        if ((d = Direction.getDirectionForSimpleName(operand)) != null) {
-            hero.direction = d;
-        } else if ((d = Direction.getDirectionForPrettyName(operand)) != null) {
-            hero.direction = d;
-        }
-    }
+		if ((d = Direction.getDirectionForSimpleName(operand)) != null) {
+			hero.direction = d;
+		} else if ((d = Direction.getDirectionForPrettyName(operand)) != null) {
+			hero.direction = d;
+		}
+	}
 
-    @Override
-    public String toString() {
-        return "turnTo";
-    }
+	@Override
+	public String toString() {
+		return "turnTo";
+	}
 
-    @Override
-    public String getDescription() {
-        return "<direction name or direction initial letter> - turn player to said direction.";
-    }
+	@Override
+	public String getDescription() {
+		return "<direction name or direction initial letter> - turn player to said direction.";
+	}
 
-    @Override
-    public int requiredOperands() {
-        return 1;
-    }
+	@Override
+	public int requiredOperands() {
+		return 1;
+	}
 
 }

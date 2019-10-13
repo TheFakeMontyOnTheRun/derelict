@@ -5,22 +5,22 @@ import br.odb.libsvg.SVGGraphic;
 
 public class SVGRenderingNode extends RenderingNode {
 
-    public final SVGGraphic graphic;
+	public final SVGGraphic graphic;
 
-    public SVGRenderingNode(SVGGraphic graphic, String id) {
-        super("SVGRenderingNode_" + id);
-        this.graphic = graphic;
-    }
+	public SVGRenderingNode(SVGGraphic graphic, String id) {
+		super("SVGRenderingNode_" + id);
+		this.graphic = graphic;
+	}
 
-    @Override
-    public void render(RenderingContext renderingContext) {
+	@Override
+	public void render(RenderingContext renderingContext) {
 
-        for (ColoredPolygon c : graphic.shapes) {
+		for (ColoredPolygon c : graphic.shapes) {
 
-            if (c.visible) {
-                renderingContext.drawColoredPolygon(c, bounds, null,
-                        graphic.gradients);
-            }
-        }
-    }
+			if (c.visible) {
+				renderingContext.drawColoredPolygon(c, bounds, null,
+						graphic.gradients);
+			}
+		}
+	}
 }

@@ -9,40 +9,40 @@ import br.odb.gameworld.exceptions.ItemNotFoundException;
 
 public class DropCommand extends DerelictUserCommandLineAction {
 
-    @Override
-    public void run(Place level, CharacterActor actor, String operand,
-                    ApplicationClient client) throws ItemNotFoundException {
+	@Override
+	public void run(Place level, CharacterActor actor, String operand,
+					ApplicationClient client) throws ItemNotFoundException {
 
-        Astronaut hero = (Astronaut) actor;
+		Astronaut hero = (Astronaut) actor;
 
-        if (operand.equalsIgnoreCase("all")) {
+		if (operand.equalsIgnoreCase("all")) {
 
-            for (Item i : hero.getItems()) {
+			for (Item i : hero.getItems()) {
 
-                hero.getLocation().takeItemFrom(i.getName(), hero);
-            }
-            client.alert("dropped all items");
+				hero.getLocation().takeItemFrom(i.getName(), hero);
+			}
+			client.alert("dropped all items");
 
-        } else {
+		} else {
 
-            Item item = hero.getLocation().takeItemFrom(operand, hero);
-            client.alert("item " + operand + " dropped");
-            client.playMedia(item.getDropSound(), "*click*");
-        }
-    }
+			Item item = hero.getLocation().takeItemFrom(operand, hero);
+			client.alert("item " + operand + " dropped");
+			client.playMedia(item.getDropSound(), "*click*");
+		}
+	}
 
-    @Override
-    public String toString() {
-        return "drop";
-    }
+	@Override
+	public String toString() {
+		return "drop";
+	}
 
-    @Override
-    public int requiredOperands() {
-        return 1;
-    }
+	@Override
+	public int requiredOperands() {
+		return 1;
+	}
 
-    @Override
-    public String getDescription() {
-        return "<currently held item name> - drops the item in the current room.";
-    }
+	@Override
+	public String getDescription() {
+		return "<currently held item name> - drops the item in the current room.";
+	}
 }

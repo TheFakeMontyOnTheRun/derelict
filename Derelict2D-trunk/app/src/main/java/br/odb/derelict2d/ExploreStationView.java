@@ -14,54 +14,53 @@ import br.odb.gamerendering.rendering.DisplayList;
 
 public class ExploreStationView extends PointerNodeSelectableScrollableView {
 
-    private final DerelictGraphicsAdapter adapter = new DerelictGraphicsAdapter();
+	private final DerelictGraphicsAdapter adapter = new DerelictGraphicsAdapter();
 
-    public ExploreStationView(Context context) {
-        super(context);
-    }
+	public ExploreStationView(Context context) {
+		super(context);
+	}
 
-    public ExploreStationView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
+	public ExploreStationView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+	}
 
-    public void setSnapshot(DerelictGame game, AssetManager resManager, boolean showText) {
+	public void setSnapshot(DerelictGame game, AssetManager resManager, boolean showText) {
 
-        DisplayList node = adapter.parse(game, resManager, showText);
+		DisplayList node = adapter.parse(game, resManager, showText);
 
-        super.setSelectedItem(node
-                .getElementById("SVGRenderingNode_heroGraphic"));
-        super.shouldFollowTarget = true;
+		super.setSelectedItem(node
+				.getElementById("SVGRenderingNode_heroGraphic"));
+		super.shouldFollowTarget = true;
 
-        this.setRenderingContent(node);
-    }
-
-
-    @Override
-    public void doDraw(Canvas canvas) {
-
-        Paint paint = new Paint();
-
-        int gridSize = 1024;
-
-        paint.setARGB(128, 0, 255, 0);
-        paint.setStyle(Style.STROKE);
-
-        for (int c = 0; c < gridSize; c += 25) {
-
-            canvas.drawLine(c + accScroll.x, accScroll.y, c + accScroll.x, accScroll.y + gridSize, paint);
-        }
-
-        for (int c = 0; c < gridSize; c += 25) {
-
-            canvas.drawLine(accScroll.x, c + accScroll.y, gridSize + accScroll.x, c + accScroll.y, paint);
-        }
-
-        canvas.drawLine(accScroll.x, accScroll.y, gridSize + accScroll.x, accScroll.y, paint);
-        canvas.drawLine(accScroll.x, gridSize + accScroll.y, gridSize + accScroll.x, gridSize + accScroll.y, paint);
-        canvas.drawLine(gridSize + accScroll.x, accScroll.y, gridSize + accScroll.x, gridSize + accScroll.y, paint);
-        canvas.drawLine(accScroll.x, accScroll.y, accScroll.x, gridSize + accScroll.y, paint);
+		this.setRenderingContent(node);
+	}
 
 
-        super.doDraw(canvas);
-    }
+	@Override
+	public void doDraw(Canvas canvas) {
+
+		Paint paint = new Paint();
+
+		int gridSize = 1024;
+
+		paint.setARGB(128, 0, 255, 0);
+		paint.setStyle(Style.STROKE);
+
+		for (int c = 0; c < gridSize; c += 25) {
+
+			canvas.drawLine(c + accScroll.x, accScroll.y, c + accScroll.x, accScroll.y + gridSize, paint);
+		}
+
+		for (int c = 0; c < gridSize; c += 25) {
+
+			canvas.drawLine(accScroll.x, c + accScroll.y, gridSize + accScroll.x, c + accScroll.y, paint);
+		}
+
+		canvas.drawLine(accScroll.x, accScroll.y, gridSize + accScroll.x, accScroll.y, paint);
+		canvas.drawLine(accScroll.x, gridSize + accScroll.y, gridSize + accScroll.x, gridSize + accScroll.y, paint);
+		canvas.drawLine(gridSize + accScroll.x, accScroll.y, gridSize + accScroll.x, gridSize + accScroll.y, paint);
+		canvas.drawLine(accScroll.x, accScroll.y, accScroll.x, gridSize + accScroll.y, paint);
+
+		super.doDraw(canvas);
+	}
 }

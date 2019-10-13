@@ -5,12 +5,12 @@ import br.odb.gameapp.ConsoleApplication;
 
 public abstract class UserCommandLineAction {
 
-    public abstract void run(ConsoleApplication application, String operands) throws Exception;
+	public abstract void run(ConsoleApplication application, String operands) throws Exception;
 
-    @Override
-    public abstract String toString();
+	@Override
+	public abstract String toString();
 
-    public abstract int requiredOperands();
+	public abstract int requiredOperands();
 
-    protected abstract String getDescription();
+	protected abstract String getDescription();
 }

@@ -13,40 +13,40 @@ import br.odb.gameworld.exceptions.InvalidSlotException;
 
 public class MoveCommand extends DerelictUserMoveCommandLineAction {
 
-    @Override
-    public void run(Place level, CharacterActor actor, String operand,
-                    ApplicationClient client) throws CharacterIsNotMovableException,
-            InvalidLocationException, InvalidSlotException, DoorActionException {
+	@Override
+	public void run(Place level, CharacterActor actor, String operand,
+					ApplicationClient client) throws CharacterIsNotMovableException,
+			InvalidLocationException, InvalidSlotException, DoorActionException {
 
-        Direction d;
-        TotautisSpaceStation station = (TotautisSpaceStation) level;
-        Astronaut hero = (Astronaut) actor;
+		Direction d;
+		TotautisSpaceStation station = (TotautisSpaceStation) level;
+		Astronaut hero = (Astronaut) actor;
 
-        if ((d = Direction.getDirectionForSimpleName(operand)) != null) {
-            station.moveCharacter(hero.getName(), d);
-            hero.direction = d;
-        } else if ((d = Direction.getDirectionForPrettyName(operand)) != null) {
-            station.moveCharacter(hero.getName(), d);
-            hero.direction = d;
-        } else if (hero.getLocation().hasConnection(operand)) {
-            station.moveCharacter(hero.getName(), operand);
-        } else {
-            throw new InvalidLocationException();
-        }
-    }
+		if ((d = Direction.getDirectionForSimpleName(operand)) != null) {
+			station.moveCharacter(hero.getName(), d);
+			hero.direction = d;
+		} else if ((d = Direction.getDirectionForPrettyName(operand)) != null) {
+			station.moveCharacter(hero.getName(), d);
+			hero.direction = d;
+		} else if (hero.getLocation().hasConnection(operand)) {
+			station.moveCharacter(hero.getName(), operand);
+		} else {
+			throw new InvalidLocationException();
+		}
+	}
 
-    @Override
-    public String toString() {
-        return "move";
-    }
+	@Override
+	public String toString() {
+		return "move";
+	}
 
-    @Override
-    public String getDescription() {
-        return "<room name, direction name or direction initial letter> - walk into said room, if possible.";
-    }
+	@Override
+	public String getDescription() {
+		return "<room name, direction name or direction initial letter> - walk into said room, if possible.";
+	}
 
-    @Override
-    public int requiredOperands() {
-        return 1;
-    }
+	@Override
+	public int requiredOperands() {
+		return 1;
+	}
 }

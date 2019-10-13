@@ -12,99 +12,99 @@ import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 
 public class PlasmaGun extends ActiveItem implements Destructive {
 
-    private static final String CLANK_SOUND = "clank";
-    private static final String SHOT_SOUND = "shot";
-    private static final String NAME = "plasma-gun";
-    public final ArrayList<PlasmaPellet> firedPellets = new ArrayList<>();
-    private int ammo;
+	private static final String CLANK_SOUND = "clank";
+	private static final String SHOT_SOUND = "shot";
+	private static final String NAME = "plasma-gun";
+	public final ArrayList<PlasmaPellet> firedPellets = new ArrayList<>();
+	private int ammo;
 
-    public PlasmaGun(int initialAmmo) {
-        super(NAME);
+	public PlasmaGun(int initialAmmo) {
+		super(NAME);
 
-        ammo = initialAmmo;
-        weight = 10.0f;
-        updateAmmoStatus();
-    }
+		ammo = initialAmmo;
+		weight = 10.0f;
+		updateAmmoStatus();
+	}
 
-    @Override
-    public void update(long milisseconds) {
+	@Override
+	public void update(long milisseconds) {
 
-        ArrayList<PlasmaPellet> toDelete = new ArrayList<>();
+		ArrayList<PlasmaPellet> toDelete = new ArrayList<>();
 
-        for (PlasmaPellet pp : firedPellets) {
-            if (!pp.isDepleted()) {
-                pp.update(milisseconds);
-            } else {
-                toDelete.add(pp);
-            }
-        }
+		for (PlasmaPellet pp : firedPellets) {
+			if (!pp.isDepleted()) {
+				pp.update(milisseconds);
+			} else {
+				toDelete.add(pp);
+			}
+		}
 
-        for (PlasmaPellet pp : toDelete) {
-            firedPellets.remove(pp);
-        }
-    }
+		for (PlasmaPellet pp : toDelete) {
+			firedPellets.remove(pp);
+		}
+	}
 
-    @Override
-    public String getUseItemSound() {
+	@Override
+	public String getUseItemSound() {
 
-        return isActive() ? SHOT_SOUND : CLANK_SOUND;
-    }
+		return isActive() ? SHOT_SOUND : CLANK_SOUND;
+	}
 
-    private boolean performShooting() {
-        if (isActive()) {
+	private boolean performShooting() {
+		if (isActive()) {
 
-            --ammo;
-            updateAmmoStatus();
+			--ammo;
+			updateAmmoStatus();
 
-            return true;
-        }
+			return true;
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    @Override
-    public void use(CharacterActor user) throws ItemActionNotSupportedException {
+	@Override
+	public void use(CharacterActor user) throws ItemActionNotSupportedException {
 
-        if (isActive()) {
+		if (isActive()) {
 
-            super.use(user);
-            shootDirection(((Astronaut) user).direction, user.getLocation());
-        } else {
-            throw new ItemActionNotSupportedException("It's inactive!");
-        }
-    }
+			super.use(user);
+			shootDirection(((Astronaut) user).direction, user.getLocation());
+		} else {
+			throw new ItemActionNotSupportedException("It's inactive!");
+		}
+	}
 
-    private void shootDirection(Direction d, Location place) {
+	private void shootDirection(Direction d, Location place) {
 
-        PlasmaPellet pellet;
+		PlasmaPellet pellet;
 
-        if (performShooting()) {
+		if (performShooting()) {
 
-            pellet = new PlasmaPellet(d, place);
-            firedPellets.add(pellet);
-        }
-    }
+			pellet = new PlasmaPellet(d, place);
+			firedPellets.add(pellet);
+		}
+	}
 
-    private void updateAmmoStatus() {
+	private void updateAmmoStatus() {
 
-        if (ammo < 0) {
-            ammo = 0;
-        }
+		if (ammo < 0) {
+			ammo = 0;
+		}
 
-        setIsDepleted(ammo <= 0);
-        setDescription("A mostly harmless gun. Useful for heating surfaces and light defense. (ammo: "
-                + ammo + ").");
-    }
+		setIsDepleted(ammo <= 0);
+		setDescription("A mostly harmless gun. Useful for heating surfaces and light defense. (ammo: "
+				+ ammo + ").");
+	}
 
-    @Override
-    public void wasUsedOn(Item item1) throws ItemActionNotSupportedException {
+	@Override
+	public void wasUsedOn(Item item1) throws ItemActionNotSupportedException {
 
-        if (isDepleted() || !isActive()) {
-            return;
-        }
+		if (isDepleted() || !isActive()) {
+			return;
+		}
 
-        super.wasUsedOn(item1);
+		super.wasUsedOn(item1);
 
-        performShooting();
-    }
+		performShooting();
+	}
 }

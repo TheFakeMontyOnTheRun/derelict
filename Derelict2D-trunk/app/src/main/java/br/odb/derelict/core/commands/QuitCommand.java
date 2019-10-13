@@ -6,25 +6,25 @@ import br.odb.gameworld.Place;
 
 public class QuitCommand extends DerelictUserMetaCommandLineAction {
 
-    @Override
-    public void run(Place level, CharacterActor actor, String operand,
-                    ApplicationClient client) {
+	@Override
+	public void run(Place level, CharacterActor actor, String operand,
+					ApplicationClient client) {
 
-        client.sendQuit();
-    }
+		client.sendQuit();
+	}
 
-    @Override
-    public int requiredOperands() {
-        return 0;
-    }
+	@Override
+	public int requiredOperands() {
+		return 0;
+	}
 
-    @Override
-    public String toString() {
-        return "quit";
-    }
+	@Override
+	public String toString() {
+		return "quit";
+	}
 
-    @Override
-    public String getDescription() {
-        return "- Quit the game and (if applicable) send highscore to the online leaderboard.";
-    }
+	@Override
+	public String getDescription() {
+		return "- Quit the game and (if applicable) send highscore to the online leaderboard.";
+	}
 }

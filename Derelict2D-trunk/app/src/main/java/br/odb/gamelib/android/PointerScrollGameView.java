@@ -8,72 +8,72 @@ import android.view.MotionEvent;
 import br.odb.gameutils.math.Vec2;
 
 public class PointerScrollGameView extends GameView {
-    protected Vec2 accScroll;
-    private Vec2 cameraScroll;
-    private Vec2 lastTouchPosition;
+	protected Vec2 accScroll;
+	private Vec2 cameraScroll;
+	private Vec2 lastTouchPosition;
 
-    public PointerScrollGameView(Context context) {
-        super(context);
+	public PointerScrollGameView(Context context) {
+		super(context);
 
-        initPointerScrollGameView();
-    }
+		initPointerScrollGameView();
+	}
 
-    public PointerScrollGameView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+	public PointerScrollGameView(Context context, AttributeSet attrs) {
+		super(context, attrs);
 
-        initPointerScrollGameView();
-    }
+		initPointerScrollGameView();
+	}
 
-    private void initPointerScrollGameView() {
-        accScroll = new Vec2();
-        new Vec2();
-        cameraScroll = new Vec2();
-        lastTouchPosition = new Vec2();
-    }
+	private void initPointerScrollGameView() {
+		accScroll = new Vec2();
+		new Vec2();
+		cameraScroll = new Vec2();
+		lastTouchPosition = new Vec2();
+	}
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
 
-        super.setAntiAliasing(false);
+		super.setAntiAliasing(false);
 
-        if (event.getAction() == MotionEvent.ACTION_MOVE) {
+		if (event.getAction() == MotionEvent.ACTION_MOVE) {
 
-            cameraScroll.x += (event.getX() - lastTouchPosition.x);
-            cameraScroll.y += (event.getY() - lastTouchPosition.y);
+			cameraScroll.x += (event.getX() - lastTouchPosition.x);
+			cameraScroll.y += (event.getY() - lastTouchPosition.y);
 
-            accScroll.x += (event.getX() - lastTouchPosition.x);
-            accScroll.y += (event.getY() - lastTouchPosition.y);
+			accScroll.x += (event.getX() - lastTouchPosition.x);
+			accScroll.y += (event.getY() - lastTouchPosition.y);
 
-            lastTouchPosition.x = (int) event.getX();
-            lastTouchPosition.y = (int) event.getY();
+			lastTouchPosition.x = (int) event.getX();
+			lastTouchPosition.y = (int) event.getY();
 
-            cameraScroll.x = 0;
-            cameraScroll.y = 0;
+			cameraScroll.x = 0;
+			cameraScroll.y = 0;
 
-        } else if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            lastTouchPosition.x = (int) event.getX();
-            lastTouchPosition.y = (int) event.getY();
-        } else {
+		} else if (event.getAction() == MotionEvent.ACTION_DOWN) {
+			lastTouchPosition.x = (int) event.getX();
+			lastTouchPosition.y = (int) event.getY();
+		} else {
 
-            lastTouchPosition.x = (int) event.getX();
-            lastTouchPosition.y = (int) event.getY();
-            super.setAntiAliasing(true);
-        }
+			lastTouchPosition.x = (int) event.getX();
+			lastTouchPosition.y = (int) event.getY();
+			super.setAntiAliasing(true);
+		}
 
-        postInvalidate();
+		postInvalidate();
 
-        return true;
+		return true;
 
-    }
+	}
 
-    @Override
-    public void doDraw(Canvas canvas) {
+	@Override
+	public void doDraw(Canvas canvas) {
 
-        if (this.getRenderingContent() != null) {
+		if (this.getRenderingContent() != null) {
 
-            this.getRenderingContent().translate.set(accScroll);
-        }
+			this.getRenderingContent().translate.set(accScroll);
+		}
 
-        super.doDraw(canvas);
-    }
+		super.doDraw(canvas);
+	}
 }

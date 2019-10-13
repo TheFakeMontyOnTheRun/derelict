@@ -13,52 +13,52 @@ import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 
 public class ShowItemStatsDialogFragment extends DialogFragment implements
-        OnClickListener {
+		OnClickListener {
 
-    private WebView wvStats;
-    private GameView gvItemView;
+	private WebView wvStats;
+	private GameView gvItemView;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.show_item_stats_layout,
-                container, true);
+		View view = inflater.inflate(R.layout.show_item_stats_layout,
+				container, true);
 
-        view.findViewById(R.id.btnCloseItemStat).setOnClickListener(this);
-        wvStats = view.findViewById(R.id.wvStats);
-        gvItemView = view.findViewById(R.id.gvItemView);
-        final Bundle args = getArguments();
-        final String title = args.getString("name").substring(0, 1).toUpperCase() + args.getString("name").substring(1);
-        getDialog().setTitle(title.replace('-', ' '));
+		view.findViewById(R.id.btnCloseItemStat).setOnClickListener(this);
+		wvStats = view.findViewById(R.id.wvStats);
+		gvItemView = view.findViewById(R.id.gvItemView);
+		final Bundle args = getArguments();
+		final String title = args.getString("name").substring(0, 1).toUpperCase() + args.getString("name").substring(1);
+		getDialog().setTitle(title.replace('-', ' '));
 
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                updateDescription(title, args.getString("desc"), args);
-            }
-        }, 100);
+		final Handler handler = new Handler();
+		handler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				updateDescription(title, args.getString("desc"), args);
+			}
+		}, 100);
 
-        return view;
-    }
+		return view;
+	}
 
-    private void updateDescription(String title, String desc, Bundle args) {
+	private void updateDescription(String title, String desc, Bundle args) {
 
-        AndroidUtils.initImage(gvItemView, args.getString("image"), ((Derelict2DApplication) getActivity()
-                .getApplication()).getAssetManager());
+		AndroidUtils.initImage(gvItemView, args.getString("image"), ((Derelict2DApplication) getActivity()
+				.getApplication()).getAssetManager());
 
-        desc = desc.replaceAll("\n", "<br/>");
-        wvStats.getSettings().setJavaScriptEnabled(false);
-        wvStats.loadDataWithBaseURL(null, "<html><body bgcolor = '#0D0' >"
-                + desc + "</body></html>", "text/html", "utf-8", null);
-    }
+		desc = desc.replaceAll("\n", "<br/>");
+		wvStats.getSettings().setJavaScriptEnabled(false);
+		wvStats.loadDataWithBaseURL(null, "<html><body bgcolor = '#0D0' >"
+				+ desc + "</body></html>", "text/html", "utf-8", null);
+	}
 
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.btnCloseItemStat) {
-            dismiss();
-        }
-    }
+	@Override
+	public void onClick(View v) {
+		if (v.getId() == R.id.btnCloseItemStat) {
+			dismiss();
+		}
+	}
 }

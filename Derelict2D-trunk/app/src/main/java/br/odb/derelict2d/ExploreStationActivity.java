@@ -20,204 +20,204 @@ import br.odb.gameapp.ApplicationClient;
 import br.odb.gamerendering.rendering.AssetManager;
 
 public class ExploreStationActivity extends Activity implements
-        ApplicationClient, GameUpdateDelegate,
-        DerelictGame.EndGameListener,
-        OnClickListener {
+		ApplicationClient, GameUpdateDelegate,
+		DerelictGame.EndGameListener,
+		OnClickListener {
 
-    private final ArrayList<GameUpdateDelegate> updateDelegates = new ArrayList<>();
-    private final HashMap<String, MediaPlayer> mediaPlayers = new HashMap<>();
-    AssetManager resManager;
-    private boolean shouldPlaySound;
-    private DerelictGame game;
-    private MediaPlayer playerSound;
-    private long lastTimeCough = -1;
+	private final ArrayList<GameUpdateDelegate> updateDelegates = new ArrayList<>();
+	private final HashMap<String, MediaPlayer> mediaPlayers = new HashMap<>();
+	AssetManager resManager;
+	private boolean shouldPlaySound;
+	private DerelictGame game;
+	private MediaPlayer playerSound;
+	private long lastTimeCough = -1;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-        Intent intent;
-        intent = getIntent();
+		Intent intent;
+		intent = getIntent();
 
-        String hasSound = intent.getExtras().getString("hasSound");
+		String hasSound = intent.getExtras().getString("hasSound");
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_explore_station);
+		setContentView(R.layout.activity_explore_station);
 
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LOW_PROFILE);
+		getWindow().getDecorView().setSystemUiVisibility(
+				View.SYSTEM_UI_FLAG_LOW_PROFILE);
 
-        resManager = ((Derelict2DApplication) getApplication())
-                .getAssetManager();
+		resManager = ((Derelict2DApplication) getApplication())
+				.getAssetManager();
 
-        game = ((Derelict2DApplication) getApplication()).game;
-        game.endGameListener = this;
-        game.hero.setGender("m");
+		game = ((Derelict2DApplication) getApplication()).game;
+		game.endGameListener = this;
+		game.hero.setGender("m");
 
-        shouldPlaySound = (hasSound != null && hasSound.equals("y"));
+		shouldPlaySound = (hasSound != null && hasSound.equals("y"));
 
 
-        if (shouldPlaySound) {
-            playerSound = MediaPlayer.create(this, R.raw.playersounds);
-            // music = MediaPlayer.create(this, R.raw.ravelbolero);
-        }
+		if (shouldPlaySound) {
+			playerSound = MediaPlayer.create(this, R.raw.playersounds);
+			// music = MediaPlayer.create(this, R.raw.ravelbolero);
+		}
 
-        game.setApplicationClient(this);
+		game.setApplicationClient(this);
 
-        showInfoDialog();
-        update();
-    }
+		showInfoDialog();
+		update();
+	}
 
-    @Override
-    public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
+	@Override
+	public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
 
-        event.getText().add(game.getTextOutput());
+		event.getText().add(game.getTextOutput());
 
-        return true;
-    }
+		return true;
+	}
 
-    @Override
-    protected void onPause() {
+	@Override
+	protected void onPause() {
 
-        // if (music != null) {
-        //
-        // music.pause();
-        // }
+		// if (music != null) {
+		//
+		// music.pause();
+		// }
 
-        if (playerSound != null) {
+		if (playerSound != null) {
 
-            playerSound.pause();
-        }
+			playerSound.pause();
+		}
 
-        super.onPause();
-    }
+		super.onPause();
+	}
 
-    @Override
-    protected void onResume() {
+	@Override
+	protected void onResume() {
 
-        if (shouldPlaySound) {
+		if (shouldPlaySound) {
 
-            // music.start();
-            playerSound.start();
-            playerSound.setLooping(true);
-        }
+			// music.start();
+			playerSound.start();
+			playerSound.setLooping(true);
+		}
 
-        update();
+		update();
 
-        super.onResume();
-    }
+		super.onResume();
+	}
 
-    @Override
-    protected void onDestroy() {
+	@Override
+	protected void onDestroy() {
 
-        // if (music != null) {
-        //
-        // music.stop();
-        // }
+		// if (music != null) {
+		//
+		// music.stop();
+		// }
 
-        if (playerSound != null) {
+		if (playerSound != null) {
 
-            playerSound.stop();
-        }
+			playerSound.stop();
+		}
 
-        super.onDestroy();
-    }
+		super.onDestroy();
+	}
 
-    @Override
-    public void alert(String string) {
+	@Override
+	public void alert(String string) {
 
-        string = string.substring(0, 1).toUpperCase() + string.substring(1);
+		string = string.substring(0, 1).toUpperCase() + string.substring(1);
 
-        Toast.makeText(this, string.replace('-', ' '), Toast.LENGTH_SHORT).show();
-    }
+		Toast.makeText(this, string.replace('-', ' '), Toast.LENGTH_SHORT).show();
+	}
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
 
-        finish();
-    }
+		finish();
+	}
 
-    @Override
-    public void update() {
+	@Override
+	public void update() {
 
-        if (game.hero.toxicity > 99.9f) {
-            playMedia("coughdeathm", "*cough*");
-        } else if (game.getTextOutput().contains("*cough*")
-                && lastTimeCough < game.station.elapsedTime) {
-            playMedia("cough" + game.hero.getGender(), "*cough*");
-            lastTimeCough = game.station.elapsedTime;
-        }
+		if (game.hero.toxicity > 99.9f) {
+			playMedia("coughdeathm", "*cough*");
+		} else if (game.getTextOutput().contains("*cough*")
+				&& lastTimeCough < game.station.elapsedTime) {
+			playMedia("cough" + game.hero.getGender(), "*cough*");
+			lastTimeCough = game.station.elapsedTime;
+		}
 
-        game.station.update(1250);
+		game.station.update(1250);
 
-        for (GameUpdateDelegate gup : updateDelegates) {
-            gup.update();
-        }
-    }
+		for (GameUpdateDelegate gup : updateDelegates) {
+			gup.update();
+		}
+	}
 
-    @Override
-    public void playMedia(String uri, String alt) {
+	@Override
+	public void playMedia(String uri, String alt) {
 
-        if (!shouldPlaySound) {
-            return;
-        }
+		if (!shouldPlaySound) {
+			return;
+		}
 
-        MediaPlayer mp;
+		MediaPlayer mp;
 
-        if (this.mediaPlayers.containsKey(uri)) {
-            mp = mediaPlayers.get(uri);
-        } else {
-            mp = MediaPlayer.create(this, resManager.getResIdForUri(uri));
-            mediaPlayers.put(uri, mp);
-        }
+		if (this.mediaPlayers.containsKey(uri)) {
+			mp = mediaPlayers.get(uri);
+		} else {
+			mp = MediaPlayer.create(this, resManager.getResIdForUri(uri));
+			mediaPlayers.put(uri, mp);
+		}
 
-        mp.start();
-    }
+		mp.start();
+	}
 
-    @Override
-    public void sendQuit() {
-        finish();
-    }
+	@Override
+	public void sendQuit() {
+		finish();
+	}
 
-    public void addUpdateListener(GameUpdateDelegate delegate) {
-        updateDelegates.add(delegate);
-    }
+	public void addUpdateListener(GameUpdateDelegate delegate) {
+		updateDelegates.add(delegate);
+	}
 
-    @Override
-    public void onGameEnd(int ending) {
-        Intent intent = new Intent(this, ShowOutcomeActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("outcome", DerelictGame.finalMessage[ending]);
-        bundle.putString("ending", Integer.toString(ending));
-        intent.putExtras(bundle);
-        this.startActivityForResult(intent, 1);
-    }
+	@Override
+	public void onGameEnd(int ending) {
+		Intent intent = new Intent(this, ShowOutcomeActivity.class);
+		Bundle bundle = new Bundle();
+		bundle.putString("outcome", DerelictGame.finalMessage[ending]);
+		bundle.putString("ending", Integer.toString(ending));
+		intent.putExtras(bundle);
+		this.startActivityForResult(intent, 1);
+	}
 
-    @Override
-    public void onClick(View v) {
-        FragmentManager fm = getFragmentManager();
-        InfoDialog dialog = new InfoDialog();
-        Bundle args = new Bundle();
-        // args.putString("name", item.getName());
-        // args.putString("desc", item.getDescription());
-        dialog.setArguments(args);
-        dialog.show(fm, "fragment_info_dialog");
-    }
+	@Override
+	public void onClick(View v) {
+		FragmentManager fm = getFragmentManager();
+		InfoDialog dialog = new InfoDialog();
+		Bundle args = new Bundle();
+		// args.putString("name", item.getName());
+		// args.putString("desc", item.getDescription());
+		dialog.setArguments(args);
+		dialog.show(fm, "fragment_info_dialog");
+	}
 
-    private void showInfoDialog() {
+	private void showInfoDialog() {
 
-        final FragmentManager fm = getFragmentManager();
-        final ShowGameIntroDialogFragment gameIntro = new ShowGameIntroDialogFragment();
-        Bundle args = new Bundle();
-        args.putString("desc", DerelictGame.GAME_STORY1 + "\n\n\n"
-                + DerelictGame.GAME_STORY2 + "\n\n\n" + DerelictGame.GAME_RULES);
-        gameIntro.setArguments(args);
+		final FragmentManager fm = getFragmentManager();
+		final ShowGameIntroDialogFragment gameIntro = new ShowGameIntroDialogFragment();
+		Bundle args = new Bundle();
+		args.putString("desc", DerelictGame.GAME_STORY1 + "\n\n\n"
+				+ DerelictGame.GAME_STORY2 + "\n\n\n" + DerelictGame.GAME_RULES);
+		gameIntro.setArguments(args);
 
-        gameIntro.show(fm, "show_game_intro");
-    }
+		gameIntro.show(fm, "show_game_intro");
+	}
 
 }

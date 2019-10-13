@@ -21,93 +21,92 @@ import br.odb.gameworld.Item;
 
 public class ManageInventoryActivity extends Activity implements ApplicationClient, GameUpdateDelegate, OnClickListener {
 
-    private DerelictGame game;
-    private Spinner spnCollectedItems;
-    private Spinner spnLocationItems;
-    private Spinner spnActions;
-    private AssetManager resManager;
+	private DerelictGame game;
+	private Spinner spnCollectedItems;
+	private Spinner spnLocationItems;
+	private Spinner spnActions;
+	private AssetManager resManager;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.activity_manage_inventory);
+
+		resManager = ((Derelict2DApplication) getApplication()).getAssetManager();
+
+		spnCollectedItems = findViewById(R.id.spnCollected);
+		spnLocationItems = findViewById(R.id.spnLocationItems);
+		spnActions = findViewById(R.id.spnActions);
+		findViewById(R.id.btnDo).setOnClickListener(this);
+
+		game = ((Derelict2DApplication) getApplication()).game;
+		game.setApplicationClient(this);
+		update();
+	}
+
+	@Override
+	public void update() {
+		spnLocationItems.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, game.getCollectableItems()));
+		spnCollectedItems.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, game.getCollectedItems()));
+		spnActions.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, game.getAvailableCommands()));
+	}
 
 
-        setContentView(R.layout.activity_manage_inventory);
+	@Override
+	public void onClick(View v) {
+		int index;
+		Item locationItem = null;
+		Item collectedItem = null;
 
-        resManager = ((Derelict2DApplication) getApplication()).getAssetManager();
+		try {
+			UserCommandLineAction cmd = ((UserCommandLineAction) spnActions.getSelectedItem());
+			index = spnLocationItems.getSelectedItemPosition();
 
-        spnCollectedItems = findViewById(R.id.spnCollected);
-        spnLocationItems = findViewById(R.id.spnLocationItems);
-        spnActions = findViewById(R.id.spnActions);
-        findViewById(R.id.btnDo).setOnClickListener(this);
+			if (index != -1) {
 
-        game = ((Derelict2DApplication) getApplication()).game;
-        game.setApplicationClient(this);
-        update();
-    }
+				locationItem = game.getCollectableItems()[index];
+			}
 
-    @Override
-    public void update() {
-        spnLocationItems.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, game.getCollectableItems()));
-        spnCollectedItems.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, game.getCollectedItems()));
-        spnActions.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, game.getAvailableCommands()));
-    }
+			index = spnCollectedItems.getSelectedItemPosition();
 
+			if (index != -1) {
 
-    @Override
-    public void onClick(View v) {
-        int index;
-        Item locationItem = null;
-        Item collectedItem = null;
+				collectedItem = game.getCollectedItems()[index];
+			}
 
-        try {
-            UserCommandLineAction cmd = ((UserCommandLineAction) spnActions.getSelectedItem());
-            index = spnLocationItems.getSelectedItemPosition();
+			String data = "";
 
-            if (index != -1) {
+			if (cmd instanceof PickCommand) {
+				data = cmd.toString() + " " + locationItem.getName();
+			} else if (cmd instanceof ToggleCommand) {
+				data = cmd.toString() + " " + collectedItem.getName();
+			} else if (cmd instanceof UseCommand) {
+				data = cmd.toString() + " " + collectedItem.getName();
+			} else if (cmd instanceof UseWithCommand) {
+				data = cmd.toString() + " " + locationItem.getName() + " " + collectedItem.getName();
+			} else {
+				Toast.makeText(this, "Action not supported", Toast.LENGTH_SHORT).show();
+			}
 
-                locationItem = game.getCollectableItems()[index];
-            }
+			game.sendData(data);
+			Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
+		} catch (Exception e) {
+			Toast.makeText(this, "Action not supported", Toast.LENGTH_SHORT).show();
+		}
+	}
 
-            index = spnCollectedItems.getSelectedItemPosition();
+	@Override
+	public void alert(String string) {
 
-            if (index != -1) {
+	}
 
-                collectedItem = game.getCollectedItems()[index];
-            }
+	@Override
+	public void playMedia(String uri, String alt) {
+		MediaPlayer.create(this, resManager.getResIdForUri(uri)).start();
+	}
 
-            String data = "";
-
-            if (cmd instanceof PickCommand) {
-                data = cmd.toString() + " " + locationItem.getName();
-            } else if (cmd instanceof ToggleCommand) {
-                data = cmd.toString() + " " + collectedItem.getName();
-            } else if (cmd instanceof UseCommand) {
-                data = cmd.toString() + " " + collectedItem.getName();
-            } else if (cmd instanceof UseWithCommand) {
-                data = cmd.toString() + " " + locationItem.getName() + " " + collectedItem.getName();
-            } else {
-                Toast.makeText(this, "Action not supported", Toast.LENGTH_SHORT).show();
-            }
-
-            game.sendData(data);
-            Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Toast.makeText(this, "Action not supported", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void alert(String string) {
-
-    }
-
-    @Override
-    public void playMedia(String uri, String alt) {
-        MediaPlayer.create(this, resManager.getResIdForUri(uri)).start();
-    }
-
-    @Override
-    public void sendQuit() {
-    }
+	@Override
+	public void sendQuit() {
+	}
 }

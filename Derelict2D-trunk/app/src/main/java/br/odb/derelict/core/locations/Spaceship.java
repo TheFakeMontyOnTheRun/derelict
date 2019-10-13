@@ -4,9 +4,9 @@ import br.odb.gameworld.Location;
 
 public class Spaceship extends Location {
 
-    public boolean operative;
+	public boolean operative;
 
-    Spaceship(String shipName) {
-        super(shipName);
-    }
+	Spaceship(String shipName) {
+		super(shipName);
+	}
 }

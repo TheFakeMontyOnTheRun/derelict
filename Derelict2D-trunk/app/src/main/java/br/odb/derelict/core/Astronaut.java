@@ -13,106 +13,106 @@ import br.odb.gameworld.exceptions.ItemNotFoundException;
 
 public class Astronaut extends CharacterActor {
 
-    public static final int INVENTORY_LIMIT = 9;
-    public float toxicity;
-    public Direction direction = Direction.N;
-    private String gender;
+	public static final int INVENTORY_LIMIT = 9;
+	public float toxicity;
+	public Direction direction = Direction.N;
+	private String gender;
 
-    public Astronaut() {
-        super("hero");
+	public Astronaut() {
+		super("hero");
 
-        init("M");
-    }
+		init("M");
+	}
 
-    public Astronaut(String name, String gender) {
-        super(name);
+	public Astronaut(String name, String gender) {
+		super(name);
 
-        init(gender);
-    }
+		init(gender);
+	}
 
-    private void init(String gender) {
-        this.toxicity = 0.0f;
-        this.gender = gender;
-    }
+	private void init(String gender) {
+		this.toxicity = 0.0f;
+		this.gender = gender;
+	}
 
-    public void addItem(String name, Item i)
-            throws InventoryManipulationException {
-        if (super.getItems().length >= INVENTORY_LIMIT) {
-            throw new InventoryManipulationException("Cannot hold more");
-        }
-        super.addItem(i.getName(), i);
-    }
+	public void addItem(String name, Item i)
+			throws InventoryManipulationException {
+		if (super.getItems().length >= INVENTORY_LIMIT) {
+			throw new InventoryManipulationException("Cannot hold more");
+		}
+		super.addItem(i.getName(), i);
+	}
 
-    public Clearance getClearance() {
+	public Clearance getClearance() {
 
-        Clearance biggestClearance = null;
-        KeyCard card;
+		Clearance biggestClearance = null;
+		KeyCard card;
 
-        for (Item i : getItems()) {
-            if (i instanceof KeyCard) {
-                card = (KeyCard) i;
+		for (Item i : getItems()) {
+			if (i instanceof KeyCard) {
+				card = (KeyCard) i;
 
-                if (biggestClearance == null
-                        || card.clearance.ordinal() > biggestClearance
-                        .ordinal()) {
-                    biggestClearance = card.clearance;
-                }
-            }
-        }
+				if (biggestClearance == null
+						|| card.clearance.ordinal() > biggestClearance
+						.ordinal()) {
+					biggestClearance = card.clearance;
+				}
+			}
+		}
 
-        if (biggestClearance != null) {
+		if (biggestClearance != null) {
 
-            return biggestClearance;
-        } else {
+			return biggestClearance;
+		} else {
 
-            return Clearance.DEFAULT_CLEARANCE;
-        }
-    }
+			return Clearance.DEFAULT_CLEARANCE;
+		}
+	}
 
-    public String getGender() {
-        return gender;
-    }
+	public String getGender() {
+		return gender;
+	}
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
-    public float getMaterialWorth() {
+	public float getMaterialWorth() {
 
-        float worth = 0.0f;
+		float worth = 0.0f;
 
-        for (Item i : getItems()) {
-            if (i instanceof ValuableItem) {
-                worth += ((ValuableItem) i).getWorth();
-            }
-        }
-        return worth;
-    }
+		for (Item i : getItems()) {
+			if (i instanceof ValuableItem) {
+				worth += ((ValuableItem) i).getWorth();
+			}
+		}
+		return worth;
+	}
 
-    @Override
-    public boolean isMovable() {
+	@Override
+	public boolean isMovable() {
 
-        try {
+		try {
 
-            return ((ActiveItem) getItem(MagneticBoots.NAME))
-                    .isActive();
-        } catch (ItemNotFoundException e) {
-            return false;
-        }
-    }
+			return ((ActiveItem) getItem(MagneticBoots.NAME))
+					.isActive();
+		} catch (ItemNotFoundException e) {
+			return false;
+		}
+	}
 
-    public void update(long MS) {
-        for (Item i : getItems()) {
-            if (i instanceof Toxic) {
-                toxicity += ((Toxic) i).getToxicity();
-            }
+	public void update(long MS) {
+		for (Item i : getItems()) {
+			if (i instanceof Toxic) {
+				toxicity += ((Toxic) i).getToxicity();
+			}
 
-            i.update(MS);
-        }
-    }
+			i.update(MS);
+		}
+	}
 
-    @Override
-    public String toString() {
-        return "Toxicity: " + toxicity + ". \n\nYour world view:\n \n" + getLocation().getName() + ". \n" + getLocation(); //$NON-NLS-2$
-    }
+	@Override
+	public String toString() {
+		return "Toxicity: " + toxicity + ". \n\nYour world view:\n \n" + getLocation().getName() + ". \n" + getLocation(); //$NON-NLS-2$
+	}
 }
