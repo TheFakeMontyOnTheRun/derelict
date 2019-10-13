@@ -9,8 +9,8 @@ import br.odb.libsvg.SVGParsingUtils.Gradient;
 
 public class SVGGraphic {
 
-    public ColoredPolygon[] shapes;
     public final HashMap<String, Gradient> gradients = new HashMap<>();
+    public ColoredPolygon[] shapes;
 
     public SVGGraphic(ColoredPolygon[] shapes) {
         this.shapes = shapes;

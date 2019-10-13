@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -25,18 +24,18 @@ import br.odb.libsvg.SVGGraphic;
 
 public class RootGameMenuActivity extends Activity implements OnClickListener, OnTouchListener, CompoundButton.OnCheckedChangeListener {
 
+    private android.widget.CheckBox chkSound;
+    private android.widget.CheckBox chkSpeech;
+    private Spinner spnLevel;
+    private GameView gvLogoInkscape;
+    private GameView gvGithub;
+    private GameView gvBeer;
+    private GameView gvSplash;
+
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         ((Derelict2DApplication) getApplication()).toggleSpeech();
     }
-
-    private android.widget.CheckBox chkSound;
-    private android.widget.CheckBox chkSpeech;
-    private Spinner spnLevel;
-
-    private GameView gvLogoInkscape;
-    private GameView gvGithub;
-    private GameView gvBeer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +63,6 @@ public class RootGameMenuActivity extends Activity implements OnClickListener, O
         findViewById(R.id.llBeer).setOnTouchListener(this);
         findViewById(R.id.llInkscape).setOnTouchListener(this);
     }
-
-    private GameView gvSplash;
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

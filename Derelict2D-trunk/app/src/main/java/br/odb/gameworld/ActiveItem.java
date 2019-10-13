@@ -4,18 +4,18 @@ public class ActiveItem extends Item {
 
     private boolean active;
 
+    protected ActiveItem(String name) {
+        super(name);
+
+        active = false;
+    }
+
     public String getTurnOnSound() {
         return "click";
     }
 
     public String getTurnOffSound() {
         return "click";
-    }
-
-    protected ActiveItem(String name) {
-        super(name);
-
-        active = false;
     }
 
     public boolean isActive() {

@@ -6,10 +6,10 @@ import br.odb.gameutils.math.Vec2;
 
 public abstract class RenderingNode implements Updatable {
 
-    final Rect bounds = new Rect();
-    private final boolean visible = true;
     final public Vec2 translate = new Vec2(0.0f, 0.0f);
     public final float alpha = 1.0f;
+    final Rect bounds = new Rect();
+    private final boolean visible = true;
     private final String id;
 
     RenderingNode(String id) {

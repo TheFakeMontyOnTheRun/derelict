@@ -35,15 +35,28 @@ public class ExploreStationFragment extends Fragment implements
         GameUpdateDelegate, OnClickListener, OnItemSelectedListener,
         OnCheckedChangeListener {
 
+    private final HashMap<String, String> locationPrettyNames = new HashMap<>();
     private ExploreStationView gameView;
     private Spinner spnDirections;
     private DerelictGame game;
     private MediaPlayer fiveSteps;
     private MediaPlayer ding;
     private CheckBox chkShowPlaceNames;
-
-    private final HashMap<String, String> locationPrettyNames = new HashMap<>();
     private GameView gvMove;
+
+    //http://stackoverflow.com/questions/1892765/capitalize-first-char-of-each-word-in-a-string-java served as a basis...
+    private static String capitalizeString(String string) {
+
+        StringBuilder sb = new StringBuilder();
+        String[] tokens = string.split("[ ]+");
+
+        for (String token : tokens) {
+            sb.append(token.substring(0, 1).toUpperCase()).append(token.substring(1));
+            sb.append(" ");
+        }
+
+        return sb.toString().trim();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -185,20 +198,6 @@ public class ExploreStationFragment extends Fragment implements
             gameView.update(100);
         }
 
-    }
-
-    //http://stackoverflow.com/questions/1892765/capitalize-first-char-of-each-word-in-a-string-java served as a basis...
-    private static String capitalizeString(String string) {
-
-        StringBuilder sb = new StringBuilder();
-        String[] tokens = string.split("[ ]+");
-
-        for (String token : tokens) {
-            sb.append(token.substring(0, 1).toUpperCase()).append(token.substring(1));
-            sb.append(" ");
-        }
-
-        return sb.toString().trim();
     }
 
     @Override

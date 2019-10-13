@@ -8,12 +8,18 @@ import android.view.MotionEvent;
 import br.odb.gameutils.math.Vec2;
 
 public class PointerScrollGameView extends GameView {
+    protected Vec2 accScroll;
     private Vec2 cameraScroll;
     private Vec2 lastTouchPosition;
-    protected Vec2 accScroll;
 
     public PointerScrollGameView(Context context) {
         super(context);
+
+        initPointerScrollGameView();
+    }
+
+    public PointerScrollGameView(Context context, AttributeSet attrs) {
+        super(context, attrs);
 
         initPointerScrollGameView();
     }
@@ -23,12 +29,6 @@ public class PointerScrollGameView extends GameView {
         new Vec2();
         cameraScroll = new Vec2();
         lastTouchPosition = new Vec2();
-    }
-
-    public PointerScrollGameView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-
-        initPointerScrollGameView();
     }
 
     @Override

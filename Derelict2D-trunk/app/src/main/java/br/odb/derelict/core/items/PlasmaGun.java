@@ -15,8 +15,8 @@ public class PlasmaGun extends ActiveItem implements Destructive {
     private static final String CLANK_SOUND = "clank";
     private static final String SHOT_SOUND = "shot";
     private static final String NAME = "plasma-gun";
-    private int ammo;
     public final ArrayList<PlasmaPellet> firedPellets = new ArrayList<>();
+    private int ammo;
 
     public PlasmaGun(int initialAmmo) {
         super(NAME);

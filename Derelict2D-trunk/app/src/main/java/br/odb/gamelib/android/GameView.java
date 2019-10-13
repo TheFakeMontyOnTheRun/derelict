@@ -18,61 +18,12 @@ import br.odb.gameutils.Updatable;
 public class GameView extends View implements Updatable {
 
     private final Paint paint = new Paint();
-
-    public class Updater implements Runnable {
-
-        final GameView view;
-        boolean stillRunning;
-
-        final long latency = 100;
-
-        Updater(GameView view) {
-            this.stillRunning = false;
-            this.view = view;
-        }
-
-        public void setRunning(boolean running) {
-            stillRunning = running;
-        }
-
-        @Override
-        public void run() {
-            while (stillRunning) {
-                try {
-                    Thread.sleep(latency);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                update(latency);
-                postInvalidate();
-
-            }
-        }
-    }
-
-    @Override
-    public boolean onTouchEvent(final MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_UP) {
-            return performClick();
-        }
-        return true;
-    }
-
+    public Updater updater;
     private GameRenderer gameRenderer;
     private AndroidCanvasRenderingContext renderingContext;
     volatile private DisplayList renderingNode;
     private long renderingBudget;
     private RenderingNode defaultRenderingNode;
-
-    public Updater updater;
-
-    public void update(long ms) {
-        if (renderingNode != null) {
-
-            renderingNode.update(ms);
-        }
-    }
-
     public GameView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
@@ -89,6 +40,21 @@ public class GameView extends View implements Updatable {
         super(context);
 
         init(context);
+    }
+
+    @Override
+    public boolean onTouchEvent(final MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            return performClick();
+        }
+        return true;
+    }
+
+    public void update(long ms) {
+        if (renderingNode != null) {
+
+            renderingNode.update(ms);
+        }
     }
 
     private void init(Context context) {
@@ -125,6 +91,11 @@ public class GameView extends View implements Updatable {
         return renderingNode;
     }
 
+    public void setRenderingContent(DisplayList displayList) {
+        this.renderingNode = displayList;
+        this.renderingContext.currentOrigin.set(0.0f, 0.0f);
+    }
+
     void doDraw(Canvas canvas) {
 
         long t0 = System.currentTimeMillis();
@@ -158,11 +129,6 @@ public class GameView extends View implements Updatable {
         gameRenderer.renderNode(defaultRenderingNode);
     }
 
-    public void setRenderingContent(DisplayList displayList) {
-        this.renderingNode = displayList;
-        this.renderingContext.currentOrigin.set(0.0f, 0.0f);
-    }
-
     void setAntiAliasing(boolean b) {
 
         boolean previous;
@@ -174,6 +140,36 @@ public class GameView extends View implements Updatable {
             if (b != previous) {
                 renderingContext.setAntiAlias(b);
                 postInvalidate();
+            }
+        }
+    }
+
+    public class Updater implements Runnable {
+
+        final GameView view;
+        final long latency = 100;
+        boolean stillRunning;
+
+        Updater(GameView view) {
+            this.stillRunning = false;
+            this.view = view;
+        }
+
+        public void setRunning(boolean running) {
+            stillRunning = running;
+        }
+
+        @Override
+        public void run() {
+            while (stillRunning) {
+                try {
+                    Thread.sleep(latency);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                update(latency);
+                postInvalidate();
+
             }
         }
     }

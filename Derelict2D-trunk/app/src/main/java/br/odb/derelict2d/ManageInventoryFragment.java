@@ -35,6 +35,9 @@ import br.odb.libsvg.ColoredPolygon;
 public class ManageInventoryFragment extends Fragment implements
         GameUpdateDelegate, OnClickListener {
 
+    private final HashMap<GameView, Item> itemForView = new HashMap<>();
+    private final HashMap<Item, GameView> viewForItem = new HashMap<>();
+    TextView tvFloor;
     private DerelictGame game;
     private GameView gvPick;
     private GameView gvUseWith;
@@ -48,17 +51,11 @@ public class ManageInventoryFragment extends Fragment implements
     private LinearLayout llCollectedItems;
     private LinearLayout llLocationItems;
     private TextView tvLocationName;
-
     private TextView tvToxicty;
-    TextView tvFloor;
     private TextView tvFacing;
     private TextView tvMoney;
     private TextView tvTemperature;
     private TextView tvTime;
-
-    private final HashMap<GameView, Item> itemForView = new HashMap<>();
-    private final HashMap<Item, GameView> viewForItem = new HashMap<>();
-
     private TextView tvCapacity;
 
     @Override

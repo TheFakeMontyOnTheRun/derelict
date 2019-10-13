@@ -10,11 +10,11 @@ import br.odb.gamerendering.rendering.RasterImage;
  */
 public class AndroidRasterImage extends RasterImage {
 
+    final Bitmap bitmap;
+
     public AndroidRasterImage(Bitmap bitmap) {
         this.bitmap = bitmap;
     }
-
-    final Bitmap bitmap;
 
     @Override
     public int getHeight() {

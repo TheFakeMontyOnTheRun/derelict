@@ -16,12 +16,12 @@ import br.odb.gamelib.android.GameView;
 public class ShowGameIntroDialogFragment extends DialogFragment implements
         OnClickListener {
 
+    private final String[] buttonTitles = {"Next", "Next", "Dismiss"};
+    private final String[] imagePath = {"intro-comics2", "intro-comics2", "intro-comics2"};
     private WebView wvStory;
     private GameView gvIntroComics;
     private Button btNextFinish;
     private String[] storyBits;
-    private final String[] buttonTitles = {"Next", "Next", "Dismiss"};
-    private final String[] imagePath = {"intro-comics2", "intro-comics2", "intro-comics2"};
     private int currentStoryPoint = 0;
 
     @Override

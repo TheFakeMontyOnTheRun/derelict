@@ -9,6 +9,11 @@ public class MagneticBoots extends ActiveItem implements MagnecticActive {
 
     public static final String NAME = "magboots";
 
+    public MagneticBoots() {
+        super(NAME);
+        setDescription("boots with strong electro-magnets. Ideal for walking on low-gravity situations - as long as the surface in question is metallic (like most of the surfaces here).");
+    }
+
     @Override
     public String getTurnOnSound() {
         return "magbootson";
@@ -44,10 +49,5 @@ public class MagneticBoots extends ActiveItem implements MagnecticActive {
     @Override
     public String getTurnOffSound() {
         return "magbootsoff";
-    }
-
-    public MagneticBoots() {
-        super(NAME);
-        setDescription("boots with strong electro-magnets. Ideal for walking on low-gravity situations - as long as the surface in question is metallic (like most of the surfaces here).");
     }
 }

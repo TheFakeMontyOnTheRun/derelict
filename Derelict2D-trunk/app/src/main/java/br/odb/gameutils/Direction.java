@@ -13,11 +13,6 @@ public enum Direction {
         this.simpleName = simpleName;
     }
 
-    @Override
-    public String toString() {
-        return prettyName;
-    }
-
     public static Direction getDirectionForPrettyName(String prettyName) {
 
         if (prettyName == null || prettyName.length() == 0) {
@@ -46,5 +41,10 @@ public enum Direction {
         }
 
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return prettyName;
     }
 }

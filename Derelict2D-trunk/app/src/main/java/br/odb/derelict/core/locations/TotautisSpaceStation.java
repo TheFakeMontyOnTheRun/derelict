@@ -25,11 +25,10 @@ import br.odb.gameworld.exceptions.ItemNotFoundException;
 
 public class TotautisSpaceStation extends Place {
 
+    public static final String WEAK_SPOT = "lab 1";
     private static final int TIME_FOR_ORBITAL_DECAY = 17 * Utils.MINUTE_IN_MILISSECONDS;
     private static final int TIMEBOMB_DEFAULT_FUSE_TIME = 4 * Utils.MINUTE_IN_MILISSECONDS;
     private static final float HEATING_RATE_SECOND = 1000 / Utils.SECOND_IN_MILISSECONDS;
-    public static final String WEAK_SPOT = "lab 1";
-
     private static final String BOOK0_TEXT = "...And so, I realized that when you apply a presure in MicroG...";
     private static final String BOOK2_TEXT = "...Look in the mirror e try laughing. It's going to be hard first, but once you get used to it, it is easy to leave the room with a smile in your face.";
     private static final String BOOK3_TEXT = "...We meet every night in the empty lab, to make out. I asked her for a access key and hid it in the tubes - probably a good place to hide it. Those are inactive for years! If they catch me, I'm scr...";

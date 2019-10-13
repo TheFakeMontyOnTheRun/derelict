@@ -5,6 +5,8 @@ import br.odb.libsvg.SVGGraphic;
 
 public class SVGRenderingNode extends RenderingNode {
 
+    public final SVGGraphic graphic;
+
     public SVGRenderingNode(SVGGraphic graphic, String id) {
         super("SVGRenderingNode_" + id);
         this.graphic = graphic;
@@ -21,6 +23,4 @@ public class SVGRenderingNode extends RenderingNode {
             }
         }
     }
-
-    public final SVGGraphic graphic;
 }

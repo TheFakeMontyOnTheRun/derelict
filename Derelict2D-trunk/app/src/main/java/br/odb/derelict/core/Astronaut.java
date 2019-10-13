@@ -14,9 +14,9 @@ import br.odb.gameworld.exceptions.ItemNotFoundException;
 public class Astronaut extends CharacterActor {
 
     public static final int INVENTORY_LIMIT = 9;
-    private String gender;
     public float toxicity;
     public Direction direction = Direction.N;
+    private String gender;
 
     public Astronaut() {
         super("hero");
@@ -73,6 +73,10 @@ public class Astronaut extends CharacterActor {
         return gender;
     }
 
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public float getMaterialWorth() {
 
         float worth = 0.0f;
@@ -95,10 +99,6 @@ public class Astronaut extends CharacterActor {
         } catch (ItemNotFoundException e) {
             return false;
         }
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public void update(long MS) {

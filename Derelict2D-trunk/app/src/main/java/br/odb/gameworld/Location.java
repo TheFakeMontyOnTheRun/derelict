@@ -16,22 +16,21 @@ import br.odb.gameworld.exceptions.ItemNotFoundException;
  */
 public class Location implements Updatable {
 
+    private final Door[] door = new Door[Direction.values().length];
+    private final ArrayList<Item> items = new ArrayList<>();
+    private final String name;
+    private final Location[] connections;
+    private final List<CharacterActor> characters = new ArrayList<>();
+    public boolean hasBeenExplored;
+    private String[] material = new String[Direction.values().length];
+    private Place place;
+    private String description;
+    private String floorId;
     public Location(String name) {
         this.name = name;
         connections = new Location[6];
         material = new String[6];
     }
-
-    private String[] material = new String[Direction.values().length];
-    private Place place;
-    private final Door[] door = new Door[Direction.values().length];
-    private final ArrayList<Item> items = new ArrayList<>();
-    private final String name;
-    private final Location[] connections;
-    private String description;
-    private final List<CharacterActor> characters = new ArrayList<>();
-    public boolean hasBeenExplored;
-    private String floorId;
 
     @Override
     public void update(long milisseconds) {
@@ -107,6 +106,12 @@ public class Location implements Updatable {
 
     public String getDescription() {
         return description;
+    }
+
+    public Location setDescription(String description) {
+        this.description = description;
+
+        return this;
     }
 
     /*
@@ -185,12 +190,6 @@ public class Location implements Updatable {
         }
 
         throw new InvalidSlotException();
-    }
-
-    public Location setDescription(String description) {
-        this.description = description;
-
-        return this;
     }
 
     public void setConnected(Direction d, Location location) {

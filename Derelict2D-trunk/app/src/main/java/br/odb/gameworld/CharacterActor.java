@@ -19,11 +19,8 @@ public class CharacterActor implements Updatable {
      * @see java.lang.Object#hashCode()
      */
 
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        return result;
+    public CharacterActor(String name) {
+        this.name = name;
     }
 
     /*
@@ -31,6 +28,13 @@ public class CharacterActor implements Updatable {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
+
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
+    }
 
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -66,20 +70,16 @@ public class CharacterActor implements Updatable {
         return items.values().toArray(new Item[0]);
     }
 
-    public CharacterActor(String name) {
-        this.name = name;
-    }
-
     public Location getLocation() {
         return location;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setLocation(Location l) {
         this.location = l;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Item getItem(String itemName) throws ItemNotFoundException {

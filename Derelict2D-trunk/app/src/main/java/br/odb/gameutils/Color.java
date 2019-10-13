@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class Color implements Serializable {
 
+    public int a;
     private int r;
     private int g;
     private int b;
-    public int a;
 
     /**
      * @param argb a 32-bit integer with a ARGB colour encoded.

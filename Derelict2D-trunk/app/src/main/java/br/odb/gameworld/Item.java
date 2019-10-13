@@ -7,13 +7,13 @@ public class Item implements Updatable {
 
     public static final String PICK_DENIAL_MESSAGE = "Object is not pickable. It's either stuck or it is completely impossible to pick it up.";
     public static final String TOGGLE_DENIAL_MESSAGE = "Maybe you should revise your thoughts on this object. Are you sure you want to 'activate' this?";
-    private String description;
     private final String name;
-    private boolean depleted;
-    private boolean pickable;
     public float weight;
     public Location location;
     protected CharacterActor carrier;
+    private String description;
+    private boolean depleted;
+    private boolean pickable;
 
     protected Item(String name) {
         this.name = name;
@@ -22,6 +22,12 @@ public class Item implements Updatable {
 
     public String getDescription() {
         return description;
+    }
+
+    public Item setDescription(String description) {
+        this.description = description;
+
+        return this;
     }
 
     public String getUseItemSound() {
@@ -40,16 +46,9 @@ public class Item implements Updatable {
         return "click";
     }
 
-
     @Override
     public String toString() {
         return getName() + " - " + description;
-    }
-
-    public Item setDescription(String description) {
-        this.description = description;
-
-        return this;
     }
 
     protected void setIsDepleted(boolean depleted) {

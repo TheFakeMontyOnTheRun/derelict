@@ -10,6 +10,11 @@ public class DaedalusSpaceShip extends Spaceship {
     public static final String DEFAULT_NAME = "LSS DAEDALUS";
     public static final int INITIAL_AMMO_AVAILABLE = 50;
 
+    public DaedalusSpaceShip() {
+        super(DEFAULT_NAME);
+        setDescription("My trusty old scrap ship. Built it myself. Still leaks fuel like a drunken horse, but it's mine, damn it! Well, at least until some of fines I have to pay results in repo men knocking my door.");
+    }
+
     public static class Ignition extends ActiveItem {
 
         static final String NAME = "ship-ignition-key";
@@ -48,10 +53,5 @@ public class DaedalusSpaceShip extends Spaceship {
 
             return super.activate();
         }
-    }
-
-    public DaedalusSpaceShip() {
-        super(DEFAULT_NAME);
-        setDescription("My trusty old scrap ship. Built it myself. Still leaks fuel like a drunken horse, but it's mine, damn it! Well, at least until some of fines I have to pay results in repo men knocking my door.");
     }
 }

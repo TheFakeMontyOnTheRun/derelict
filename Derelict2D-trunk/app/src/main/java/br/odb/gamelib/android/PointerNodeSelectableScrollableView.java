@@ -10,8 +10,8 @@ import br.odb.gameutils.math.Vec2;
 public class PointerNodeSelectableScrollableView extends PointerScrollGameView {
 
     private final Vec2 targetTranslate = new Vec2();
-    private RenderingNode selectedItem;
     public boolean shouldFollowTarget;
+    private RenderingNode selectedItem;
 
     public PointerNodeSelectableScrollableView(Context context) {
         super(context);

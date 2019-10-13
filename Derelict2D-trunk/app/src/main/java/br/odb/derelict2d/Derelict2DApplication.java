@@ -18,9 +18,9 @@ import br.odb.libsvg.SVGParsingUtils;
 public class Derelict2DApplication extends Application implements
         FileServerDelegate, TextToSpeech.OnInitListener {
 
-    volatile public DerelictGame game;
-    final private AssetManager resManager = new AssetManager();
     final ArrayList<String> notes = new ArrayList<>();
+    final private AssetManager resManager = new AssetManager();
+    volatile public DerelictGame game;
     public TextToSpeech tts;
 
     @Override

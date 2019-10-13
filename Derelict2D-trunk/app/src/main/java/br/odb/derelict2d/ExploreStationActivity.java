@@ -30,14 +30,12 @@ public class ExploreStationActivity extends Activity implements
         DerelictGame.EndGameListener,
         OnClickListener {
 
-    private TextToSpeech tts;
-    private boolean shouldPlaySound;
-
     private final ArrayList<GameUpdateDelegate> updateDelegates = new ArrayList<>();
     private final HashMap<String, MediaPlayer> mediaPlayers = new HashMap<>();
-
-    private DerelictGame game;
     AssetManager resManager;
+    private TextToSpeech tts;
+    private boolean shouldPlaySound;
+    private DerelictGame game;
     private MediaPlayer playerSound;
     private long lastTimeCough = -1;
 

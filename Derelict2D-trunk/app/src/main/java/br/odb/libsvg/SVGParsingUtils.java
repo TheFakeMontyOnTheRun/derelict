@@ -20,47 +20,6 @@ import br.odb.gameutils.Color;
  */
 public final class SVGParsingUtils {
 
-    public static final class Gradient {
-
-        Gradient() {
-        }
-
-        String id;
-        String link;
-        public GradientStop[] stops;
-        public float x1;
-        public float x2;
-        public float y1;
-        public float y2;
-
-        void copy(HashMap<String, Gradient> gradients) {
-
-            if (gradients.get(link).link != null) {
-                gradients.get(link).copy(gradients);
-            }
-
-            stops = gradients.get(link).stops;
-        }
-
-    }
-
-    public static final class GradientStop {
-
-        GradientStop() {
-        }
-
-        GradientStop(GradientStop gradientStop) {
-            this.index = gradientStop.index;
-            this.style = gradientStop.style;
-        }
-
-        int index;
-        public String style;
-        public Color color;
-    }
-
-    // -----------------------------------------------------------------------------
-
     /**
      *
      */
@@ -276,5 +235,41 @@ public final class SVGParsingUtils {
         pol.originalStyle = style;
 
         return pol;
+    }
+
+    public static final class Gradient {
+
+        public GradientStop[] stops;
+        public float x1;
+        public float x2;
+        public float y1;
+        public float y2;
+        String id;
+        String link;
+        Gradient() {
+        }
+
+        void copy(HashMap<String, Gradient> gradients) {
+
+            if (gradients.get(link).link != null) {
+                gradients.get(link).copy(gradients);
+            }
+
+            stops = gradients.get(link).stops;
+        }
+
+    }
+
+    public static final class GradientStop {
+
+        public String style;
+        public Color color;
+        int index;
+        GradientStop() {
+        }
+        GradientStop(GradientStop gradientStop) {
+            this.index = gradientStop.index;
+            this.style = gradientStop.style;
+        }
     }
 }

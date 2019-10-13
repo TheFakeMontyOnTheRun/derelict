@@ -9,14 +9,14 @@ import br.odb.gameapp.command.UserCommandLineAction;
 public abstract class ConsoleApplication {
 
 
-    private ApplicationClient client;
     private final HashMap<String, UserCommandLineAction> commands = new HashMap<>();
+    private final ArrayList<String> cmdHistory = new ArrayList<>();
+    public boolean continueRunning;
+    private ApplicationClient client;
     private String appName;
     private String authorName;
     private String licenseName;
     private int yearRelease;
-    public boolean continueRunning;
-    private final ArrayList<String> cmdHistory = new ArrayList<>();
     private boolean saveInHistory = true;
 
     protected HashMap<String, UserCommandLineAction> getCommandList() {
@@ -65,11 +65,6 @@ public abstract class ConsoleApplication {
         return this;
     }
 
-    public ConsoleApplication setLicenseName(final String licenseName) {
-        this.licenseName = sanitize(licenseName);
-        return this;
-    }
-
     public ConsoleApplication init() {
         return this;
     }
@@ -99,6 +94,11 @@ public abstract class ConsoleApplication {
 
     private String getLicenseName() {
         return licenseName;
+    }
+
+    public ConsoleApplication setLicenseName(final String licenseName) {
+        this.licenseName = sanitize(licenseName);
+        return this;
     }
 
     public void sendData(String data) {

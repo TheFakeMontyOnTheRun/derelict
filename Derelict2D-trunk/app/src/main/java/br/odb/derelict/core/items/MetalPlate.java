@@ -13,16 +13,6 @@ public class MetalPlate extends ValuableItem {
     private static final float PLATE_WEIGHT_RAW = 30.0f;
     private static final String NAME = "metal-plate";
 
-    @Override
-    public String getUsedOnSound() {
-        return "clink";
-    }
-
-    @Override
-    public String getUseItemSound() {
-        return "clink";
-    }
-
     public MetalPlate(String name) {
         super(name);
         setDescription("A piece of metal that might be valuable.");
@@ -31,6 +21,16 @@ public class MetalPlate extends ValuableItem {
 
     public MetalPlate() {
         this(NAME);
+    }
+
+    @Override
+    public String getUsedOnSound() {
+        return "clink";
+    }
+
+    @Override
+    public String getUseItemSound() {
+        return "clink";
     }
 
     @Override

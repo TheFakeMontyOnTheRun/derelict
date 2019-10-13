@@ -3,12 +3,16 @@ package br.odb.gamerendering.rendering;
 public class DisplayList extends RenderingNode {
     RenderingNode[] items;
 
+    public DisplayList(String id) {
+        super(id);
+    }
+
     public RenderingNode[] getItems() {
         return items;
     }
 
-    public DisplayList(String id) {
-        super(id);
+    public void setItems(RenderingNode[] items) {
+        this.items = items;
     }
 
     @Override
@@ -27,10 +31,6 @@ public class DisplayList extends RenderingNode {
             return items.length;
         else
             return 0;
-    }
-
-    public void setItems(RenderingNode[] items) {
-        this.items = items;
     }
 
     public RenderingNode getElementById(String id) {

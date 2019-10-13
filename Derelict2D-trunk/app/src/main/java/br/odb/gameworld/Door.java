@@ -7,17 +7,17 @@ public class Door implements Updatable {
 
     private boolean open;
 
+    public Door() {
+        open = false;
+
+    }
+
     public boolean isOpen() {
         return open;
     }
 
     private void doOpen() {
         open = true;
-    }
-
-    public Door() {
-        open = false;
-
     }
 
     public void openFor(CharacterActor character) throws DoorActionException {

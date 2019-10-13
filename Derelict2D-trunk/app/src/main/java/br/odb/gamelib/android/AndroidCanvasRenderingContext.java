@@ -23,10 +23,10 @@ import br.odb.libsvg.SVGUtils;
  */
 public class AndroidCanvasRenderingContext extends RenderingContext {
 
-    private Canvas canvas;
-    Paint paint;
     private final HashMap<Gradient, LinearGradient> gradientsCache = new HashMap<>();
     private final Path path = new Path();
+    Paint paint;
+    private Canvas canvas;
 
     public void prepareWithCanvasAndPaint(Canvas canvas, Paint paint) {
         this.canvas = canvas;
