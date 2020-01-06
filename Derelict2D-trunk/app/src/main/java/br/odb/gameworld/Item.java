@@ -15,7 +15,7 @@ public class Item implements Updatable {
 	private boolean depleted;
 	private boolean pickable;
 
-	protected Item(String name) {
+	public Item(String name) {
 		this.name = name;
 		pickable = true;
 	}

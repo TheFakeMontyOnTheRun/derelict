@@ -299,4 +299,18 @@ public class Location implements Updatable {
 	protected Door[] getDoors() {
 		return door;
 	}
+
+	public boolean containsItem(String itemName) {
+		for ( Item item : items ) {
+			if (item.getName().equals(itemName)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean containsCharacter(String character) {
+		//Having this much generality was a mistake.
+		return !characters.isEmpty();
+	}
 }

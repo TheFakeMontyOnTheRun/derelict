@@ -7,9 +7,9 @@ import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 
 public class MetalPlate extends ValuableItem {
 
-	private static final float PLATE_WEIGHT_BAD_CUT = 15.0f;
-	private static final float PLATE_WEIGHT_GOOD_CUT = 20.0f;
-	private static final float PLATE_WEIGHT_REALLY_BAD_CUT = 10.0f;
+	public static final float PLATE_WEIGHT_BAD_CUT = 15.0f;
+	public static final float PLATE_WEIGHT_GOOD_CUT = 20.0f;
+	public static final float PLATE_WEIGHT_REALLY_BAD_CUT = 10.0f;
 	private static final float PLATE_WEIGHT_RAW = 30.0f;
 	private static final String NAME = "metal-plate";
 

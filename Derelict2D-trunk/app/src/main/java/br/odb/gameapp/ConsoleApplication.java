@@ -10,7 +10,7 @@ public abstract class ConsoleApplication {
 	public boolean continueRunning;
 	private ApplicationClient client;
 
-	protected HashMap<String, UserCommandLineAction> getCommandList() {
+	public HashMap<String, UserCommandLineAction> getCommandList() {
 		return commands;
 	}
 

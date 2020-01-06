@@ -8,6 +8,7 @@ import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 
 public class PlasmaPellet extends Item implements Destructive {
 
+	public static final long REGULAR_SPEED_TO_COVER_ONE_CELL = 1;
 	private static final String NAME = "plasma-pellet";
 	private final Direction direction;
 

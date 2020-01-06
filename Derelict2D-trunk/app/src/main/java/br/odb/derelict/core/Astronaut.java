@@ -2,6 +2,8 @@ package br.odb.derelict.core;
 
 import br.odb.derelict.core.items.KeyCard;
 import br.odb.derelict.core.items.MagneticBoots;
+import br.odb.derelict.core.items.PlasmaGun;
+import br.odb.derelict.core.items.PlasmaPellet;
 import br.odb.derelict.core.items.Toxic;
 import br.odb.derelict.core.items.ValuableItem;
 import br.odb.gameutils.Direction;
@@ -17,6 +19,7 @@ public class Astronaut extends CharacterActor {
 	public float toxicity;
 	public Direction direction = Direction.N;
 	private String gender;
+	private PlasmaGun gun;
 
 	public Astronaut() {
 		super("hero");
@@ -35,12 +38,16 @@ public class Astronaut extends CharacterActor {
 		this.gender = gender;
 	}
 
-	public void addItem(String name, Item i)
+	public void addItem(Item i)
 			throws InventoryManipulationException {
 		if (super.getItems().length >= INVENTORY_LIMIT) {
 			throw new InventoryManipulationException("Cannot hold more");
 		}
 		super.addItem(i.getName(), i);
+
+		if (i instanceof PlasmaGun) {
+			gun = (PlasmaGun) i;
+		}
 	}
 
 	public Clearance getClearance() {
@@ -114,5 +121,14 @@ public class Astronaut extends CharacterActor {
 	@Override
 	public String toString() {
 		return "Toxicity: " + toxicity + ". \n\nYour world view:\n \n" + getLocation().getName() + ". \n" + getLocation(); //$NON-NLS-2$
+	}
+
+	public PlasmaGun getGun() {
+		return gun;
+	}
+
+	public PlasmaPellet shoot(Direction direction) {
+		gun.shootDirection(direction, getLocation());
+		return gun.firedPellets.get(((PlasmaGun)gun).firedPellets.size() - 1);
 	}
 }

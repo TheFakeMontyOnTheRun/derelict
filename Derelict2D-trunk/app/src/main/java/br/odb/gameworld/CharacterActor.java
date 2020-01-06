@@ -136,4 +136,8 @@ public class CharacterActor implements Updatable {
 
 		return item;
 	}
+
+	public boolean hasItem(String name) {
+		return items.containsKey(name);
+	}
 }

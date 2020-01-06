@@ -6,7 +6,7 @@ public enum Direction {
 			"D", "Down"), CEILING("U", "Up");
 
 	final public String prettyName;
-	private final String simpleName;
+	public final String simpleName;
 
 	Direction(String simpleName, String name) {
 		prettyName = name;

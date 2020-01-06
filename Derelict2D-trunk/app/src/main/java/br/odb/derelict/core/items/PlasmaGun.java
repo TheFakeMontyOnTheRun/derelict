@@ -12,8 +12,8 @@ import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 
 public class PlasmaGun extends ActiveItem implements Destructive {
 
-	private static final String CLANK_SOUND = "clank";
-	private static final String SHOT_SOUND = "shot";
+	public static final String CLANK_SOUND = "clank";
+	public static final String SHOT_SOUND = "shot";
 	private static final String NAME = "plasma-gun";
 	public final ArrayList<PlasmaPellet> firedPellets = new ArrayList<>();
 	private int ammo;
@@ -74,7 +74,7 @@ public class PlasmaGun extends ActiveItem implements Destructive {
 		}
 	}
 
-	private void shootDirection(Direction d, Location place) {
+	public void shootDirection(Direction d, Location place) {
 
 		PlasmaPellet pellet;
 
@@ -106,5 +106,9 @@ public class PlasmaGun extends ActiveItem implements Destructive {
 		super.wasUsedOn(item1);
 
 		performShooting();
+	}
+
+	public int getAmmo() {
+		return ammo;
 	}
 }

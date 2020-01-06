@@ -5,7 +5,7 @@ import br.odb.gameworld.Location;
 
 public class SecuredLocation extends Location {
 
-	private final Clearance rank = Clearance.DEFAULT_CLEARANCE;
+	public final Clearance rank = Clearance.DEFAULT_CLEARANCE;
 
 	public SecuredLocation(String name) {
 		super(name);

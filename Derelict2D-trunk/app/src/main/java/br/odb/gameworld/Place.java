@@ -3,6 +3,7 @@ package br.odb.gameworld;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import br.odb.derelict.core.Astronaut;
 import br.odb.gameutils.Direction;
 import br.odb.gameutils.Updatable;
 import br.odb.gameworld.exceptions.DoorActionException;
