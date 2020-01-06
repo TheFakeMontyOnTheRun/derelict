@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/derelict_background"/>
-
-</shape><!-- From: file:/Users/monty/gitcenter/derelict/Derelict2D/res/drawable-nodpi/background_outer.xml -->
