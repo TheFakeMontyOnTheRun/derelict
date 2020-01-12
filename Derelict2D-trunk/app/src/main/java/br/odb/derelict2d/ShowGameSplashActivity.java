@@ -7,11 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import br.odb.gamelib.android.AndroidUtils;
 import br.odb.gamelib.android.GameView;
 
-public class ShowGameSplashActivity extends Activity implements OnClickListener {
+public class ShowGameSplashActivity extends Activity implements OnClickListener, CompoundButton.OnCheckedChangeListener {
 
 	private MediaPlayer theme;
 	private GameView gvSplash;
@@ -28,6 +29,8 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 
 		chkSound.setChecked(((Derelict2DApplication) getApplication())
 				.mayEnableSound());
+
+		chkSound.setOnCheckedChangeListener(this);
 
 
 		gvSplash = findViewById(R.id.gvSplash);
@@ -71,6 +74,10 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 
 		startLoading();
 
+		startTheme();
+	}
+
+	private void startTheme() {
 		if (theme == null
 				&& ((Derelict2DApplication) getApplication()).mayEnableSound()) {
 			theme = MediaPlayer.create(this, R.raw.derelicttheme);
@@ -135,6 +142,19 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener 
 				intent = new Intent(this, ShowCreditsActivity.class);
 				startActivity(intent);
 				break;
+		}
+	}
+
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		if (!isChecked) {
+			if (theme != null) {
+				theme.stop();
+				theme = null;
+			}
+
+		} else {
+			startTheme();
 		}
 	}
 }
