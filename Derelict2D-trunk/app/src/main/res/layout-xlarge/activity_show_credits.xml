@@ -49,7 +49,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="Daniel Monteiro - That&apos;s me! The programmer. I&apos;ve been trying to create this for quite some time! Tap this square for more info on my other games (and to check out the Derelict online highscores too!)"
+                    android:text="Daniel Monteiro - That&apos;s me! The programmer. I&apos;ve been trying to create this for quite some time!"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
 
@@ -72,7 +72,7 @@
                     android:layout_weight="1"
                     android:background="#888"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="Paulo Nideck kindly providede me with the Derelict theme song. Tap this square to reach his languages course"
+                    android:text="Paulo Nideck kindly providede me with the Derelict theme song."
                     android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
 
@@ -94,7 +94,7 @@
                     android:layout_height="match_parent"
                     android:background="#999"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="Cindy Dalfovo helped-me develop the concept (previously developed in many botched ways). She&apos;s also a photographer. You can reach her by tapping this square."
+                    android:text="Cindy Dalfovo helped-me develop the concept (previously developed in many botched ways). She&apos;s also a photographer."
                     android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
 
@@ -116,7 +116,7 @@
                     android:layout_height="match_parent"
                     android:background="#888"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="Pedro Fernandes gave numerous tips on the game look and UX. Without him, this would be a messy, ugly, thing. He&apos;s a great designer! You can reach him by tapping this square as well."
+                    android:text="Pedro Fernandes gave numerous tips on the game look and UX. Without him, this would be a messy, ugly, thing. He&apos;s a great designer!"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
 
