@@ -46,7 +46,6 @@ public class DerelictGraphicsAdapter {
 		for (ColoredPolygon cp : stationGraphics.shapes) {
 
 			try {
-				System.out.println("location: " + cp.id);
 
 				try {
 					location = station.getLocation(cp.id);

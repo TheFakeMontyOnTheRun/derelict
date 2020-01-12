@@ -129,6 +129,6 @@ public class Astronaut extends CharacterActor {
 
 	public PlasmaPellet shoot(Direction direction) {
 		gun.shootDirection(direction, getLocation());
-		return gun.firedPellets.get(((PlasmaGun)gun).firedPellets.size() - 1);
+		return gun.firedPellets.get(gun.firedPellets.size() - 1);
 	}
 }

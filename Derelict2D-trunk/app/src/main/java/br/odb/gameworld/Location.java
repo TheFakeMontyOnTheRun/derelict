@@ -301,7 +301,7 @@ public class Location implements Updatable {
 	}
 
 	public boolean containsItem(String itemName) {
-		for ( Item item : items ) {
+		for (Item item : items) {
 			if (item.getName().equals(itemName)) {
 				return true;
 			}

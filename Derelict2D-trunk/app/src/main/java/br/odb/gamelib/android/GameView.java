@@ -74,7 +74,6 @@ public class GameView extends View implements Updatable {
 				new SolidSquareRenderingNode(new Rect(210, 10, 100, 100), new Color(0, 0, 255))});
 		defaultRenderingNode = dl;
 
-
 		updater = new Updater(this);
 		updater.setRunning(true);
 		Thread updateThread = new Thread(updater);

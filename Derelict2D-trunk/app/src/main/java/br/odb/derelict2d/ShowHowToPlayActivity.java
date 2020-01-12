@@ -20,8 +20,6 @@ public class ShowHowToPlayActivity extends Activity {
 
 		AndroidUtils.initImage((GameView) findViewById(R.id.gvHowToPlayHero), "hero-centered", ((Derelict2DApplication) getApplication()).getAssetManager(), 200, 200, "");
 		AndroidUtils.initImage((GameView) findViewById(R.id.gvHowToPlayItem), "plasma-gun", ((Derelict2DApplication) getApplication()).getAssetManager());
-
-
 		AndroidUtils.initImage((GameView) findViewById(R.id.gvHowToPlayPick), "icon-pick", ((Derelict2DApplication) getApplication()).getAssetManager());
 		AndroidUtils.initImage((GameView) findViewById(R.id.gvHowToPlayToggle), "icon-toggle", ((Derelict2DApplication) getApplication()).getAssetManager());
 		AndroidUtils.initImage((GameView) findViewById(R.id.gvHowToPlayUseWith), "icon-use-with", ((Derelict2DApplication) getApplication()).getAssetManager());
