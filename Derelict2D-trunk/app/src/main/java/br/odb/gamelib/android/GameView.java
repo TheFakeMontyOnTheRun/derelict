@@ -69,9 +69,6 @@ public class GameView extends View implements Updatable {
 		gameRenderer.setCurrentRenderingContext(renderingContext);
 
 		DisplayList dl = new DisplayList("dl");
-		dl.setItems(new RenderingNode[]{new SolidSquareRenderingNode(new Rect(10, 10, 100, 100), new Color(255, 0, 0)),
-				new SolidSquareRenderingNode(new Rect(110, 10, 100, 100), new Color(0, 255, 0)),
-				new SolidSquareRenderingNode(new Rect(210, 10, 100, 100), new Color(0, 0, 255))});
 		defaultRenderingNode = dl;
 
 		updater = new Updater(this);
