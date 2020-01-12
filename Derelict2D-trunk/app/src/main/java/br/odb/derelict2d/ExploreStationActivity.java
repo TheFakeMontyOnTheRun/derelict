@@ -63,7 +63,10 @@ public class ExploreStationActivity extends Activity implements
 
 		game.setApplicationClient(this);
 
-		showInfoDialog();
+		if (savedInstanceState == null) {
+			showInfoDialog();
+		}
+
 		update();
 	}
 
