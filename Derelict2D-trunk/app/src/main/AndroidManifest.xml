@@ -4,6 +4,9 @@
     android:versionCode="5"
     android:versionName="1.2" >
 
+    <uses-feature android:name="android.hardware.touchscreen"
+        android:required="true" />
+
     <application
         android:name=".Derelict2DApplication"
         android:allowBackup="false"
