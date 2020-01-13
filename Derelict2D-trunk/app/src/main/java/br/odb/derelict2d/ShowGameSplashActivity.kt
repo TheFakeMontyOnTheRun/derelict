@@ -19,7 +19,7 @@ class ShowGameSplashActivity : Activity(), View.OnClickListener, CompoundButton.
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_game_splash)
 
-        chkSound.setChecked((application as Derelict2DApplication)
+        chkSound.setChecked(    (application as Derelict2DApplication)
                 .mayEnableSound())
 
         chkSound.setOnCheckedChangeListener(this)
@@ -45,19 +45,22 @@ class ShowGameSplashActivity : Activity(), View.OnClickListener, CompoundButton.
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        startLoading()
-        startTheme()
+        if ( hasFocus ) {
+            startLoading()
+            startTheme()
+        }
     }
 
     private fun startTheme() {
         if (theme == null
-                && (application as Derelict2DApplication).mayEnableSound()) {
+                && chkSound.isChecked) {
             theme = MediaPlayer.create(this, R.raw.derelicttheme)
+        }
 
-            if ( theme != null ) {
-                theme!!.setLooping(true)
-                theme!!.start()
-            }
+        if (theme != null
+                && chkSound.isChecked) {
+            theme!!.isLooping = true
+            theme!!.start()
         }
     }
 
@@ -74,6 +77,7 @@ class ShowGameSplashActivity : Activity(), View.OnClickListener, CompoundButton.
     override fun onPause() {
         if (theme != null) {
             theme!!.stop()
+            theme = null
         }
         super.onPause()
     }
