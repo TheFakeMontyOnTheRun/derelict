@@ -1,5 +1,7 @@
 package br.odb.gameutils.math;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 
 public class Vec2 implements Serializable {
@@ -27,6 +29,7 @@ public class Vec2 implements Serializable {
 		return new Vec2(x + v.x, y + v.y);
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 

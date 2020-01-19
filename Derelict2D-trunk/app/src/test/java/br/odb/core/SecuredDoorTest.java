@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.odb.core;
 
 import org.junit.Assert;
@@ -41,13 +38,13 @@ public class SecuredDoorTest {
 
 		try {
 			s0.openFor(char0);
-		} catch (DoorActionException e1) {
+		} catch (DoorActionException ignored) {
 		}
 
 		try {
 			s1.openFor(char1);
 			Assert.fail();
-		} catch (DoorActionException e1) {
+		} catch (DoorActionException ignored) {
 		}
 
 		Assert.assertFalse(s1.willOpenFor(char0));

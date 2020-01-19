@@ -1,5 +1,7 @@
 package br.odb.derelict.core;
 
+import org.jetbrains.annotations.NotNull;
+
 import br.odb.derelict.core.items.KeyCard;
 import br.odb.derelict.core.items.MagneticBoots;
 import br.odb.derelict.core.items.PlasmaGun;
@@ -118,6 +120,7 @@ public class Astronaut extends CharacterActor {
 		}
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 		return "Toxicity: " + toxicity + ". \n\nYour world view:\n \n" + getLocation().getName() + ". \n" + getLocation(); //$NON-NLS-2$

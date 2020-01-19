@@ -1,5 +1,7 @@
 package br.odb.gameutils;
 
+import org.jetbrains.annotations.NotNull;
+
 public enum Direction {
 
 	N("N", "North"), E("E", "East"), S("S", "South"), W("W", "West"), FLOOR(
@@ -43,6 +45,7 @@ public enum Direction {
 		return null;
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 		return prettyName;

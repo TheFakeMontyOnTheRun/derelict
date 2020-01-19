@@ -68,8 +68,7 @@ public class GameView extends View implements Updatable {
 		gameRenderer = new GameRenderer();
 		gameRenderer.setCurrentRenderingContext(renderingContext);
 
-		DisplayList dl = new DisplayList("dl");
-		defaultRenderingNode = dl;
+		defaultRenderingNode = new DisplayList("dl");
 
 		updater = new Updater(this);
 		updater.setRunning(true);

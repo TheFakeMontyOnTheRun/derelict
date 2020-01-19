@@ -1,5 +1,7 @@
 package br.odb.derelict.core.commands;
 
+import org.jetbrains.annotations.NotNull;
+
 import br.odb.derelict.core.Astronaut;
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gameworld.CharacterActor;
@@ -21,6 +23,7 @@ public class UseCommand extends DerelictUserCommandLineAction {
 		client.playMedia(item.getUseItemSound(), "*click*");
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 		return "use";

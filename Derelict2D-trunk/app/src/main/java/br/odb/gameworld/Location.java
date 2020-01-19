@@ -1,5 +1,7 @@
 package br.odb.gameworld;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,6 +42,7 @@ public class Location implements Updatable {
 		}
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 

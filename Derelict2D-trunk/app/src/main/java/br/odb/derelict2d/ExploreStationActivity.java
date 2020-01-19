@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,6 +18,10 @@ import java.util.HashMap;
 import br.odb.derelict.core.DerelictGame;
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gamerendering.rendering.AssetManager;
+
+import static android.view.View.SYSTEM_UI_FLAG_FULLSCREEN;
+import static android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+import static android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
 public class ExploreStationActivity extends Activity implements
 		ApplicationClient, GameUpdateDelegate,
@@ -39,6 +44,11 @@ public class ExploreStationActivity extends Activity implements
 
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+		if (Build.VERSION.SDK_INT >= 29) {
+			enterStickyImmersiveMode();
+		}
+
 
 		setContentView(R.layout.activity_explore_station);
 
@@ -68,6 +78,10 @@ public class ExploreStationActivity extends Activity implements
 		}
 
 		update();
+	}
+
+	private void enterStickyImmersiveMode() {
+		getWindow().getDecorView().setSystemUiVisibility(SYSTEM_UI_FLAG_IMMERSIVE_STICKY | SYSTEM_UI_FLAG_FULLSCREEN | SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 	}
 
 	@Override

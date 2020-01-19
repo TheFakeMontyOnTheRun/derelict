@@ -5,7 +5,6 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
 import br.odb.derelict.core.DerelictGame
 import br.odb.derelict.core.commands.PickCommand
@@ -53,16 +52,22 @@ class ManageInventoryActivity : Activity(), ApplicationClient, GameUpdateDelegat
                 collectedItem = game!!.collectedItems[index]
             }
             var data = ""
-            if (cmd is PickCommand) {
-                data = cmd.toString() + " " + locationItem!!.name
-            } else if (cmd is ToggleCommand) {
-                data = cmd.toString() + " " + collectedItem!!.name
-            } else if (cmd is UseCommand) {
-                data = cmd.toString() + " " + collectedItem!!.name
-            } else if (cmd is UseWithCommand) {
-                data = cmd.toString() + " " + locationItem!!.name + " " + collectedItem!!.name
-            } else {
-                Toast.makeText(this, "Action not supported", Toast.LENGTH_SHORT).show()
+            when (cmd) {
+                is PickCommand -> {
+                    data = cmd.toString() + " " + locationItem!!.name
+                }
+                is ToggleCommand -> {
+                    data = cmd.toString() + " " + collectedItem!!.name
+                }
+                is UseCommand -> {
+                    data = cmd.toString() + " " + collectedItem!!.name
+                }
+                is UseWithCommand -> {
+                    data = cmd.toString() + " " + locationItem!!.name + " " + collectedItem!!.name
+                }
+                else -> {
+                    Toast.makeText(this, "Action not supported", Toast.LENGTH_SHORT).show()
+                }
             }
             game!!.sendData(data)
             Toast.makeText(this, data, Toast.LENGTH_SHORT).show()

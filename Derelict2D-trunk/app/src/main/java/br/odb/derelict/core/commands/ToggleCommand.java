@@ -1,5 +1,7 @@
 package br.odb.derelict.core.commands;
 
+import org.jetbrains.annotations.NotNull;
+
 import br.odb.derelict.core.Astronaut;
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gameworld.ActiveItem;
@@ -23,6 +25,7 @@ public class ToggleCommand extends DerelictUserCommandLineAction {
 		client.playMedia(sound, sound);
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 		return "toggle";

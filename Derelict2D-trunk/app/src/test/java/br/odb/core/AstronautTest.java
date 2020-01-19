@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.odb.core;
 
 import org.junit.Assert;
@@ -143,7 +140,7 @@ public class AstronautTest {
 		try {
 			astro.addItem( new MetalPlate() );
 			Assert.fail();
-		} catch (InventoryManipulationException e) {
+		} catch (InventoryManipulationException ignored) {
 			
 		}
 	}

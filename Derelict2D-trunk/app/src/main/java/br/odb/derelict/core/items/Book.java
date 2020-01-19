@@ -1,5 +1,7 @@
 package br.odb.derelict.core.items;
 
+import org.jetbrains.annotations.NotNull;
+
 import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
@@ -17,6 +19,7 @@ public class Book extends Item {
 		this.title = name;
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 

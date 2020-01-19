@@ -3,9 +3,6 @@ package br.odb.derelict2d
 import android.app.Activity
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
-import br.odb.gamelib.android.GameView
 import br.odb.gamerendering.rendering.DisplayList
 import br.odb.gamerendering.rendering.RenderingNode
 import br.odb.gamerendering.rendering.SVGRenderingNode
@@ -28,7 +25,7 @@ class ShowOutcomeActivity : Activity() {
             theme = MediaPlayer.create(this, R.raw.derelicttheme)
 
             if ( theme != null ) {
-                theme!!.setLooping(true)
+                theme!!.isLooping = true
                 theme!!.start()
             }
         }

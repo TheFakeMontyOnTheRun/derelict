@@ -11,7 +11,7 @@ public class BlowTorch extends ActiveItem implements Toxic, Destructive {
 	public static final float DEFAULT_IDLE_FUEL_USAGE = 0.0001f;
 	private static final String NAME = "blowtorch";
 	private static final float DEFAULT_TOXICITY = 0.25f;
-	private static final String ORIGINAL_DESCRIPTION = "precision vintage-but-rather-well-kept metal cutter (fuel: %.2f).";
+	private static final String ORIGINAL_DESCRIPTION = "precision vintage-but-rather-well-kept metal cutter (fuel: %).";
 
 	private float fuel;
 
@@ -58,7 +58,7 @@ public class BlowTorch extends ActiveItem implements Toxic, Destructive {
 
 		weight = 20 + (fuel / 10);
 
-		setDescription(String.format(ORIGINAL_DESCRIPTION, fuel));
+		setDescription(ORIGINAL_DESCRIPTION.replace("@", fuel + "%"));
 		setIsDepleted(fuel <= 0.0f);
 		setActive(isActive() && (!isDepleted()));
 	}

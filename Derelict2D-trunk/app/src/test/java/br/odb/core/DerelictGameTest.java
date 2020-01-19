@@ -1,12 +1,10 @@
-/**
- *
- */
 package br.odb.core;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import br.odb.derelict.core.DerelictGame;
 import br.odb.derelict.core.items.MagneticBoots;
@@ -112,9 +110,7 @@ public class DerelictGameTest {
 
 		tmp = new ArrayList<>();
 
-		for (Item i : game.getCollectableItems()) {
-			tmp.add(i);
-		}
+		tmp.addAll(Arrays.asList(game.getCollectableItems()));
 
 		for (Item i : game.hero.getLocation().getCollectableItems()) {
 			if (!tmp.contains(i)) {
@@ -124,9 +120,7 @@ public class DerelictGameTest {
 
 		tmp.clear();
 
-		for (Item i : game.getCollectedItems()) {
-			tmp.add(i);
-		}
+		tmp.addAll(Arrays.asList(game.getCollectedItems()));
 
 		for (Item i : game.hero.getItems()) {
 			if (!tmp.contains(i)) {
@@ -143,11 +137,9 @@ public class DerelictGameTest {
 
 		game.setApplicationClient(client);
 
-		ArrayList<UserCommandLineAction> cmds = new ArrayList<UserCommandLineAction>();
+		ArrayList<UserCommandLineAction> cmds = new ArrayList<>();
 
-		for (UserCommandLineAction ucl : game.getAvailableCommands()) {
-			cmds.add(ucl);
-		}
+		cmds.addAll(Arrays.asList(game.getAvailableCommands()));
 		for (UserCommandLineAction ucl : game.getCommandList().values()) {
 			if (!cmds.contains(ucl)) {
 				Assert.fail();
@@ -160,7 +152,7 @@ public class DerelictGameTest {
 	@Test
 	public final void testBombingOnSpot() {
 
-		TimeBomb tb = null;
+		TimeBomb tb;
 		game = new DerelictGame();
 		client = new DummyApplicationClient();
 

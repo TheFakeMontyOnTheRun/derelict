@@ -5,10 +5,8 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
-import android.widget.CheckBox
 import android.widget.CompoundButton
 import br.odb.gamelib.android.AndroidUtils
-import br.odb.gamelib.android.GameView
 import kotlinx.android.synthetic.main.activity_show_game_splash.*
 
 class ShowGameSplashActivity : Activity(), View.OnClickListener, CompoundButton.OnCheckedChangeListener {
@@ -19,12 +17,12 @@ class ShowGameSplashActivity : Activity(), View.OnClickListener, CompoundButton.
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_game_splash)
 
-        chkSound.setChecked(    (application as Derelict2DApplication)
-                .mayEnableSound())
+        chkSound.isChecked = (application as Derelict2DApplication)
+                .mayEnableSound()
 
         chkSound.setOnCheckedChangeListener(this)
-        gvSplash.setVisibility(View.INVISIBLE)
-        gvLogo.setVisibility(View.INVISIBLE)
+        gvSplash.visibility = View.INVISIBLE
+        gvLogo.visibility = View.INVISIBLE
         btnExploreStation.setOnClickListener(this)
         btnAbout.setOnClickListener(this)
         btnHowToPlay.setOnClickListener(this)

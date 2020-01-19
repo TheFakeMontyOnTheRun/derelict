@@ -1,5 +1,7 @@
 package br.odb.gameworld.exceptions;
 
+import org.jetbrains.annotations.NotNull;
+
 public class ItemActionNotSupportedException extends Exception {
 
 	private final String message;
@@ -9,6 +11,7 @@ public class ItemActionNotSupportedException extends Exception {
 		this.message = msg;
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 		return this.message;

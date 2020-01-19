@@ -1,5 +1,7 @@
 package br.odb.gameworld;
 
+import org.jetbrains.annotations.NotNull;
+
 import br.odb.gameutils.Updatable;
 import br.odb.gameworld.exceptions.ItemActionNotSupportedException;
 
@@ -46,6 +48,7 @@ public class Item implements Updatable {
 		return "click";
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 		return getName() + " - " + description;

@@ -1,5 +1,7 @@
 package br.odb.derelict.core.commands;
 
+import org.jetbrains.annotations.NotNull;
+
 import br.odb.derelict.core.Astronaut;
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gameutils.Direction;
@@ -22,6 +24,7 @@ public final class TurnToDirectionCommand extends DerelictUserMoveCommandLineAct
 		}
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 		return "turnTo";

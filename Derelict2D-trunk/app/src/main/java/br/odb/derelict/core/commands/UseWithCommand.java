@@ -1,5 +1,7 @@
 package br.odb.derelict.core.commands;
 
+import org.jetbrains.annotations.NotNull;
+
 import br.odb.derelict.core.Astronaut;
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gameworld.CharacterActor;
@@ -31,6 +33,7 @@ public class UseWithCommand extends DerelictUserCommandLineAction {
 		}
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.odb.core;
 
 import org.junit.Assert;
@@ -42,7 +39,7 @@ public class MetalPlateTest {
 		try {
 			metalPlate.useWith( magboots );
 			Assert.fail();
-		} catch (Exception e) {
+		} catch (Exception ignored) {
 		}
 
 		blowTorch = new BlowTorch(0);
@@ -51,7 +48,7 @@ public class MetalPlateTest {
 			blowTorch.useWith(metalPlate);
 			hero.getLocation().giveItemTo("metal-plate", hero);
 			Assert.fail();
-		} catch (Exception e) {
+		} catch (Exception ignored) {
 		}
 	}
 }

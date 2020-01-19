@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.odb.core;
 
 import org.junit.Assert;
@@ -25,9 +22,6 @@ public class DoorTest {
 	KeyCard card1;
 	KeyCard card2;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
 	public void setUp() throws Exception {
 		hero = new Astronaut("hero", "M");
@@ -55,7 +49,7 @@ public class DoorTest {
 			Assert.assertTrue(door1.willOpenFor(hero));
 			Assert.assertTrue(door2.willOpenFor(hero));
 
-		} catch (InventoryManipulationException e) {
+		} catch (InventoryManipulationException ignored) {
 
 		}
 	}

@@ -1,5 +1,7 @@
 package br.odb.gameutils;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 
 public class Color implements Serializable {
@@ -40,6 +42,7 @@ public class Color implements Serializable {
 		set((int) (r * 256), (int) (g * 256), (int) (b * 256), (int) (a * 256));
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 

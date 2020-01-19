@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.odb.core;
 
 import org.junit.Assert;

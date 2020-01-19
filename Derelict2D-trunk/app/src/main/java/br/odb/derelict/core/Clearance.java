@@ -1,5 +1,7 @@
 package br.odb.derelict.core;
 
+import org.jetbrains.annotations.NotNull;
+
 public enum Clearance {
 
 	DEFAULT_CLEARANCE("default-clearance"),
@@ -13,6 +15,7 @@ public enum Clearance {
 		prettyName = name;
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 		return prettyName;

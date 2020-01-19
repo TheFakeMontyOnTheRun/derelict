@@ -1,5 +1,7 @@
 package br.odb.gameworld;
 
+import org.jetbrains.annotations.NotNull;
+
 public class ActiveItem extends Item {
 
 	private boolean active;
@@ -31,6 +33,7 @@ public class ActiveItem extends Item {
 		return this;
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 		return (active ? "(active)" : "(inactive)") + super.toString();

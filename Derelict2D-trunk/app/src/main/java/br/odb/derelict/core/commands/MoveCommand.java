@@ -1,5 +1,7 @@
 package br.odb.derelict.core.commands;
 
+import org.jetbrains.annotations.NotNull;
+
 import br.odb.derelict.core.Astronaut;
 import br.odb.derelict.core.locations.TotautisSpaceStation;
 import br.odb.gameapp.ApplicationClient;
@@ -35,6 +37,7 @@ public class MoveCommand extends DerelictUserMoveCommandLineAction {
 		}
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 		return "move";

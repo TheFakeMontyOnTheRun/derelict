@@ -1,5 +1,7 @@
 package br.odb.derelict.core.commands;
 
+import org.jetbrains.annotations.NotNull;
+
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Place;
@@ -18,6 +20,7 @@ public class QuitCommand extends DerelictUserMetaCommandLineAction {
 		return 0;
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 		return "quit";

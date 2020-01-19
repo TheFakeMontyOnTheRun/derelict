@@ -1,5 +1,7 @@
 package br.odb.derelict.core.commands;
 
+import org.jetbrains.annotations.NotNull;
+
 import br.odb.gameapp.ApplicationClient;
 import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Place;
@@ -11,6 +13,7 @@ public class ItemsCommand extends DerelictUserMetaCommandLineAction {
 					ApplicationClient client) {
 	}
 
+	@NotNull
 	@Override
 	public String toString() {
 		return "items";

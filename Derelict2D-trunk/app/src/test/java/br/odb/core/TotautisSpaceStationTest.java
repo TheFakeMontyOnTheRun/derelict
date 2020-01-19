@@ -1,6 +1,3 @@
-/**
- *
- */
 package br.odb.core;
 
 import org.junit.Assert;
@@ -22,10 +19,8 @@ import br.odb.derelict.core.locations.TotautisSpaceStation;
 import br.odb.gameutils.Direction;
 import br.odb.gameutils.Utils;
 import br.odb.gameworld.ActiveItem;
-import br.odb.gameworld.CharacterActor;
 import br.odb.gameworld.Item;
 import br.odb.gameworld.Location;
-import br.odb.gameworld.exceptions.InvalidCharacterHandlingException;
 import br.odb.gameworld.exceptions.InvalidLocationException;
 import br.odb.gameworld.exceptions.InvalidSlotException;
 import br.odb.gameworld.exceptions.InventoryManipulationException;
@@ -40,9 +35,6 @@ public class TotautisSpaceStationTest {
 
 	TotautisSpaceStation station;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
 	public void setUp() throws Exception {
 		station = new TotautisSpaceStation();
@@ -97,15 +89,15 @@ public class TotautisSpaceStationTest {
 			station.getLocation("hangar").getConnectionDirectionForLocation(
 					station.getLocation("not a place!"));
 			Assert.fail();
-		} catch (InvalidSlotException ex) {
+		} catch (InvalidSlotException ignored) {
 
-		} catch (InvalidLocationException e) {
+		} catch (InvalidLocationException ignored) {
 		}
 
 		try {
 			station.getLocation(null);
 			Assert.fail();
-		} catch (InvalidLocationException ex) {
+		} catch (InvalidLocationException ignored) {
 
 		}
 
@@ -356,7 +348,7 @@ public class TotautisSpaceStationTest {
 		gun.toggle();
 		Assert.assertEquals( PlasmaGun.SHOT_SOUND, gun.getUseItemSound() );
 
-		Assert.assertTrue(gun.getAmmo() == 1);
+		Assert.assertEquals(1, gun.getAmmo());
 		Assert.assertFalse(plate.isPickable());
 
 		try {
@@ -367,7 +359,7 @@ public class TotautisSpaceStationTest {
 		Assert.assertTrue( ammoBefore != gun.getAmmo() );
 
 		Assert.assertTrue(plate.isPickable());
-		Assert.assertTrue(gun.getAmmo() == 0);
+		Assert.assertEquals(0, gun.getAmmo());
 		Assert.assertTrue(gun.isDepleted());
 		Assert.assertTrue(plate.isPickable());
 		Assert.assertEquals(MetalPlate.PLATE_WEIGHT_BAD_CUT, plate.weight, 1.0f);
@@ -386,7 +378,7 @@ public class TotautisSpaceStationTest {
 			Assert.fail();
 		}
 		Assert.assertFalse(plate.isPickable());
-		Assert.assertTrue(gun.getAmmo() == 0);
+		Assert.assertEquals(0, gun.getAmmo());
 		Assert.assertTrue(gun.isDepleted());
 
 	}
@@ -401,7 +393,7 @@ public class TotautisSpaceStationTest {
 		try {
 			plate.useWith(plate);
 			Assert.fail();
-		} catch (ItemActionNotSupportedException e) {
+		} catch (ItemActionNotSupportedException ignored) {
 		}
 
 		bw = new BlowTorch(200);
@@ -433,7 +425,7 @@ public class TotautisSpaceStationTest {
 		try {
 			plate.useWith(bw);
 			Assert.fail();
-		} catch (ItemActionNotSupportedException e) {
+		} catch (ItemActionNotSupportedException ignored) {
 		}
 
 		bw = new BlowTorch(-1);
@@ -456,7 +448,7 @@ public class TotautisSpaceStationTest {
 
 		try {
 			plate.useWith(bw);
-		} catch (ItemActionNotSupportedException e) {
+		} catch (ItemActionNotSupportedException ignored) {
 		}
 		Assert.assertTrue(bw.isActive());
 		Assert.assertEquals(100.0f - BlowTorch.DEFAULT_FUEL_USAGE, bw.getFuel(), 0.1f);
@@ -468,7 +460,7 @@ public class TotautisSpaceStationTest {
 	public final void testShootingPlasmaGun() {
 
 		PlasmaGun gun = new PlasmaGun(1);
-		Assert.assertTrue(gun.getAmmo() == 1);
+		Assert.assertEquals(1, gun.getAmmo());
 		Assert.assertFalse(gun.isDepleted());
 		PlasmaPellet pellet = null;
 		MetalPlate plate = new MetalPlate();
@@ -482,7 +474,7 @@ public class TotautisSpaceStationTest {
 
 		plate.setPickable(false);
 
-		Assert.assertTrue(gun.getAmmo() == 1);
+		Assert.assertEquals(1, gun.getAmmo());
 		Assert.assertFalse(plate.isPickable());
 		try {
 			station.getLocation("elevator-level-1").addItem(plate);
@@ -518,15 +510,15 @@ public class TotautisSpaceStationTest {
 
 		Assert.assertEquals(MetalPlate.PLATE_WEIGHT_REALLY_BAD_CUT,
 				plate.weight, 1.0f);
-		Assert.assertTrue(gun.getAmmo() == 0);
+		Assert.assertEquals(0, gun.getAmmo());
 		Assert.assertTrue(gun.isDepleted());
 //		Assert.assertTrue(plate.isPickable());
 
 		gun = new PlasmaGun(-1);
-		Assert.assertTrue(gun.getAmmo() == 0);
+		Assert.assertEquals(0, gun.getAmmo());
 		Assert.assertTrue(gun.isDepleted());
 
-		ActiveItem interferenceSource = null;
+		ActiveItem interferenceSource;
 
 		try {
 			interferenceSource = (ActiveItem) station
@@ -563,7 +555,7 @@ public class TotautisSpaceStationTest {
 		try {
 			astro.getItem("token");
 			Assert.fail();
-		} catch (ItemNotFoundException e) {
+		} catch (ItemNotFoundException ignored) {
 		}
 	}
 
@@ -670,4 +662,4 @@ public class TotautisSpaceStationTest {
 		station.update(1000);
 		Assert.assertTrue(hero.toxicity >= 1.4f && hero.toxicity <= 1.6f);
 	}
-};
+}
