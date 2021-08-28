@@ -26,7 +26,6 @@ class ShowGameSplashActivity : Activity(), View.OnClickListener, CompoundButton.
         btnExploreStation.setOnClickListener(this)
         btnAbout.setOnClickListener(this)
         btnHowToPlay.setOnClickListener(this)
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LOW_PROFILE
     }
 
     private fun startLoading() {
