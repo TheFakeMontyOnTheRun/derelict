@@ -29,3 +29,5 @@ Derelict2D-trunk/.idea
 Derelict2D-trunk/.gradle
 Derelict2D-trunk/app/build
 *.iml
+Derelict2D-trunk/app/release
+Derelict2D-trunk/build
