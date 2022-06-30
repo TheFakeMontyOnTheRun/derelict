@@ -31,3 +31,7 @@ Derelict2D-trunk/app/build
 *.iml
 Derelict2D-trunk/app/release
 Derelict2D-trunk/build
+local.properties
+.idea
+.gradle
+app/build
