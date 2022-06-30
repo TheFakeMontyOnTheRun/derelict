@@ -23,6 +23,7 @@
         <activity
             android:name=".ShowGameSplashActivity"
             android:label="@string/title_activity_show_game_splash"
+            android:exported="true"
             android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
