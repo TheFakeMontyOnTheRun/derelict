@@ -3,15 +3,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 32
+    compileSdk 35
 
 	defaultConfig {
-        minSdkVersion 17
-        versionCode 10
+        versionCode 11
         versionName "1.0"
         applicationId "br.odb.derelict2d"
-        minSdkVersion 17
-        targetSdkVersion 32
+        minSdk 22
+        targetSdk 35
     }
 
     buildTypes {
